@@ -28,7 +28,7 @@ Autopilot provides fully automated exclusions of emergency access accounts when 
 
 Autopilot will make fully automated adjustments to your policies in case of accidental or malicious deletion of emergency access accounts, so you don’t get locked out!	
 
-![Autopilot Emergency Account Management within Conditional Access](/images/AutoPilotEmergencyAccounts.PNG)
+![](images/AutoPilotEmergencyAccounts.PNG)
 
 
 
