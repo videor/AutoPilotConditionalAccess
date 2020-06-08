@@ -22,6 +22,8 @@ And if that doesn’t happen in your org — well, some well-meaning individuals
 
 Okay, let’s say that makes sense, and you agree with me — we all can do with an autopilot to correct the course if mistakes happen. 
 
+# What do you get from this automation
+
 
 
 
