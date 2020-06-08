@@ -1,0 +1,318 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "workflows_301_conditionalaccess_breakglass_automation_name": {
+            "defaultValue": "301-conditionalaccess-breakglass-automation",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Logic/workflows",
+            "apiVersion": "2017-07-01",
+            "name": "[parameters('workflows_301_conditionalaccess_breakglass_automation_name')]",
+            "location": "centralus",
+            "properties": {
+                "state": "Enabled",
+                "definition": {
+                    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+                    "contentVersion": "1.0.0.0",
+                    "parameters": {
+                        "AutoPilotConditionalAccessKeyVaultClientCredentials": {
+                            "defaultValue": "ReplaceWithYourKeyVaultURI",
+                            "type": "SecureString"
+                        },
+                        "ClientID": {
+                            "defaultValue": "ReplaceWithYourClientID",
+                            "type": "String"
+                        },
+                        "EmergencyAccountsGroupObjectID": {
+                            "defaultValue": "ReplaceWithYourEmergencyAccountsGroupObjectID",
+                            "type": "String"
+                        },
+                        "TenantID": {
+                            "defaultValue": "ReplaceWithYourTenantID",
+                            "type": "String"
+                        }
+                    },
+                    "triggers": {
+                        "Recurrence": {
+                            "recurrence": {
+                                "frequency": "Hour",
+                                "interval": 1,
+                                "startTime": "2020-06-08T18:00:00",
+                                "timeZone": "GMT Standard Time"
+                            },
+                            "type": "Recurrence"
+                        }
+                    },
+                    "actions": {
+                        "For_each_Conditional_Access_Policy": {
+                            "foreach": "@body('Parse_All_Conditional_Access_Policies')?['value']",
+                            "actions": {
+                                "Auto_Pilot_Exclusions_Of_Emergency_Accounts_Within_Conditional_Access_": {
+                                    "runAfter": {},
+                                    "type": "Http",
+                                    "inputs": {
+                                        "authentication": {
+                                            "audience": "https://graph.microsoft.com",
+                                            "clientId": "@parameters('ClientID')",
+                                            "secret": "@body('Parse_Response_from_Key_Vault')?['value']",
+                                            "tenant": "@parameters('TenantID')",
+                                            "type": "ActiveDirectoryOAuth"
+                                        },
+                                        "body": {
+                                            "conditions": {
+                                                "users": {
+                                                    "excludeGroups": [
+                                                        "@{parameters('EmergencyAccountsGroupObjectID')}"
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        "headers": {
+                                            "Content-Type": "application/json"
+                                        },
+                                        "method": "PATCH",
+                                        "uri": "https://graph.microsoft.com/beta/identity/conditionalAccess/policies/@{items('For_each_Conditional_Access_Policy')?['id']}"
+                                    },
+                                    "runtimeConfiguration": {
+                                        "secureData": {
+                                            "properties": [
+                                                "inputs"
+                                            ]
+                                        }
+                                    }
+                                }
+                            },
+                            "runAfter": {
+                                "Parse_All_Conditional_Access_Policies": [
+                                    "Succeeded"
+                                ]
+                            },
+                            "type": "Foreach"
+                        },
+                        "GET_All_Conditional_Access_Policies_Using_App_Only_Token": {
+                            "runAfter": {
+                                "Parse_Response_from_Key_Vault": [
+                                    "Succeeded"
+                                ]
+                            },
+                            "type": "Http",
+                            "inputs": {
+                                "authentication": {
+                                    "audience": "https://graph.microsoft.com",
+                                    "clientId": "@parameters('ClientID')",
+                                    "secret": "@body('Parse_Response_from_Key_Vault')?['value']",
+                                    "tenant": "@parameters('TenantID')",
+                                    "type": "ActiveDirectoryOAuth"
+                                },
+                                "method": "GET",
+                                "uri": "https://graph.microsoft.com/beta/identity/conditionalAccess/policies"
+                            },
+                            "runtimeConfiguration": {
+                                "secureData": {
+                                    "properties": [
+                                        "inputs"
+                                    ]
+                                }
+                            }
+                        },
+                        "GET_Client_Secret_from_Key_Vault_using_Managed_Identity": {
+                            "runAfter": {},
+                            "type": "Http",
+                            "inputs": {
+                                "authentication": {
+                                    "audience": "https://vault.azure.net",
+                                    "type": "ManagedServiceIdentity"
+                                },
+                                "method": "GET",
+                                "queries": {
+                                    "api-version": "2016-10-01"
+                                },
+                                "uri": "@parameters('AutoPilotConditionalAccessKeyVaultClientCredentials')"
+                            },
+                            "runtimeConfiguration": {
+                                "secureData": {
+                                    "properties": [
+                                        "outputs"
+                                    ]
+                                }
+                            }
+                        },
+                        "Parse_All_Conditional_Access_Policies": {
+                            "runAfter": {
+                                "GET_All_Conditional_Access_Policies_Using_App_Only_Token": [
+                                    "Succeeded"
+                                ]
+                            },
+                            "type": "ParseJson",
+                            "inputs": {
+                                "content": "@body('GET_All_Conditional_Access_Policies_Using_App_Only_Token')",
+                                "schema": {
+                                    "properties": {
+                                        "@@odata.context": {
+                                            "type": "string"
+                                        },
+                                        "value": {
+                                            "items": {
+                                                "properties": {
+                                                    "conditions": {
+                                                        "properties": {
+                                                            "applications": {
+                                                                "properties": {
+                                                                    "excludeApplications": {
+                                                                        "type": "array"
+                                                                    },
+                                                                    "includeApplications": {
+                                                                        "items": {
+                                                                            "type": "string"
+                                                                        },
+                                                                        "type": "array"
+                                                                    },
+                                                                    "includeUserActions": {
+                                                                        "type": "array"
+                                                                    }
+                                                                },
+                                                                "type": "object"
+                                                            },
+                                                            "clientAppTypes": {
+                                                                "type": "array"
+                                                            },
+                                                            "deviceStates": {},
+                                                            "locations": {},
+                                                            "platforms": {},
+                                                            "signInRiskLevels": {
+                                                                "type": "array"
+                                                            },
+                                                            "users": {
+                                                                "properties": {
+                                                                    "excludeGroups": {
+                                                                        "type": "array"
+                                                                    },
+                                                                    "excludeRoles": {
+                                                                        "type": "array"
+                                                                    },
+                                                                    "excludeUsers": {
+                                                                        "type": "array"
+                                                                    },
+                                                                    "includeGroups": {
+                                                                        "type": "array"
+                                                                    },
+                                                                    "includeRoles": {
+                                                                        "type": "array"
+                                                                    },
+                                                                    "includeUsers": {
+                                                                        "items": {
+                                                                            "type": "string"
+                                                                        },
+                                                                        "type": "array"
+                                                                    }
+                                                                },
+                                                                "type": "object"
+                                                            }
+                                                        },
+                                                        "type": "object"
+                                                    },
+                                                    "createdDateTime": {},
+                                                    "displayName": {
+                                                        "type": "string"
+                                                    },
+                                                    "grantControls": {
+                                                        "properties": {
+                                                            "builtInControls": {
+                                                                "items": {
+                                                                    "type": "string"
+                                                                },
+                                                                "type": "array"
+                                                            },
+                                                            "customAuthenticationFactors": {
+                                                                "type": "array"
+                                                            },
+                                                            "operator": {
+                                                                "type": "string"
+                                                            },
+                                                            "termsOfUse": {
+                                                                "type": "array"
+                                                            }
+                                                        },
+                                                        "type": [
+                                                            "object",
+                                                            "null"
+                                                        ]
+                                                    },
+                                                    "id": {
+                                                        "type": "string"
+                                                    },
+                                                    "modifiedDateTime": {
+                                                        "type": [
+                                                            "string",
+                                                            "null"
+                                                        ]
+                                                    },
+                                                    "sessionControls": {},
+                                                    "state": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "id"
+                                                ],
+                                                "type": "object"
+                                            },
+                                            "type": "array"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        },
+                        "Parse_Response_from_Key_Vault": {
+                            "runAfter": {
+                                "GET_Client_Secret_from_Key_Vault_using_Managed_Identity": [
+                                    "Succeeded"
+                                ]
+                            },
+                            "type": "ParseJson",
+                            "inputs": {
+                                "content": "@body('GET_Client_Secret_from_Key_Vault_using_Managed_Identity')",
+                                "schema": {
+                                    "properties": {
+                                        "attributes": {
+                                            "properties": {
+                                                "created": {
+                                                    "type": "integer"
+                                                },
+                                                "enabled": {
+                                                    "type": "boolean"
+                                                },
+                                                "recoveryLevel": {
+                                                    "type": "string"
+                                                },
+                                                "updated": {
+                                                    "type": "integer"
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "value": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "outputs": {}
+                },
+                "parameters": {}
+            }
+        }
+    ]
+}
