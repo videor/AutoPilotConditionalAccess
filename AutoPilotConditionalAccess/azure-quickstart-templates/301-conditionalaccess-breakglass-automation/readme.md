@@ -24,6 +24,11 @@ Okay, let’s say that makes sense, and you agree with me — we all can do with
 
 # What do you get from this automation
 
+Autopilot provides fully automated exclusions of emergency access accounts when you create new conditional access policies. 
+
+Autopilot will make fully automated adjustments to your policies in case of accidental or malicious deletion of emergency access accounts, so you don’t get locked out!	
+
+![Autopilot Emergency Account Management within Conditional Access](/images/AutoPilotEmergencyAccounts.PNG)
 
 
 
