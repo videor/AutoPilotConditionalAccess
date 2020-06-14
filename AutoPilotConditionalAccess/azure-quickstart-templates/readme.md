@@ -4,6 +4,16 @@ This repo contains all currently available Azure Resource Manager templates for 
 
 See the [**Contribution guide**](/1-CONTRIBUTION-GUIDE/README.md#contribution-guide) for how to use or contribute to this repo.
 
+# How to Deploy the Azure Resource Manager QuickStart Templates for Azure Active Directory Conditional Access
+
+## Deploy through Azure portal
+
+### Deploy with Azure CLI
+
+To deploy to a specific Azure resource group, use the following command:
+
+az group deployment create -g <Azure-resource-group-name> --template-uri <https://GitHubTemplateURL>
+
 ## NOTE
 
 A draft of the new [**best practices document**](/1-CONTRIBUTION-GUIDE/best-practices.md) has been merged.
