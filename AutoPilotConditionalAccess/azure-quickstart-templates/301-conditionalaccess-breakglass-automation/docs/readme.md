@@ -30,5 +30,10 @@ Once you have connected your user-Assigned Managed Identity to your Logic App ad
 
 ![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-breakglass-automation/images/LogicApp-301-CA-breakglass-automation-9.PNG)
 
+# Success!
+
+You now don't have to worry about manually managing emergency access accounts when you create or update you conditional access policies. The Logic App will wake up and run regularly using app-only permissions completely in Azure Cloud and bring all policies to compliance so you don't get locked out! (Tip: Look at all the Green ticks, they show that the process ran successfully. :-))
+
+![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-breakglass-automation/images/LogicApp-301-CA-breakglass-automation-10.PNG)
 
 
