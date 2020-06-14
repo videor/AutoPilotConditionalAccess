@@ -47,10 +47,7 @@ Generate The Application Secret for your app in the app registration portal.
 
 ![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/images/AppRegistration7.PNG)
 
-# Step 3: Deploy the Azure Quickstart Template
-
-
-# Step 4: Create a Managed Identity for your Automation
+# Step 3: Create a Managed Identity for your Automation
 
 Managed identities for Azure resources is a feature of Azure Active Directory. Please look at [**managed Identity**]( https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview) for more information.
 
@@ -97,7 +94,7 @@ create a user-assigned managed identity
 5. Click Create.
 
 
-# Step 5: Store client secret in your Azure Key Vault
+# Step 4: Store client secret in your Azure Key Vault
 
 Azure Key Vault helps with secrets management. Azure Key Vault can be used to Securely store and tightly control access to tokens, passwords, certificates, API keys, and other secrets.  Please look at [**Azure Key Vault**](https://docs.microsoft.com/en-us/azure/key-vault/general/overview) for more information on how to use Azure Key Vault. 
 
@@ -169,22 +166,5 @@ Create an access policy in Key Vault for the application identity you created ea
 6. The user-assigned managed identity will now apper in the policy list. Click Save. (Tip: Don't Forget to hit Save).
 
 
-# Step 6: Connect User-Assigned Managed Identity to your Logic App
-
-Please look at [**Logic Apps and Managed Identities**](https://docs.microsoft.com/en-us/azure/logic-apps/create-managed-service-identity) to learn more on how to use managed identities within Logic App.
-
-Once you have deployed the automation template from this repository. Connect the user-Assigned Managed Identity to your Logic App by doing the following:
-
-1. In the left-hand navigation pane, select the Logic App service, and then select Identity > User Assigned > Select Add.
-
-![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/images/LogicApp-301-CA-breakglass-automation-5.PNG)
-
-2. Select the User-assigned managed identity from the context pane that appears on the right, select Add.
-
-![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/images/LogicApp-301-CA-breakglass-automation-6.PNG)
-
-3. You should see the screen below with your registered user-assigned managed identity connected to your logic app. 
-
-![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/images/LogicApp-301-CA-breakglass-automation-7.PNG).
 
 
