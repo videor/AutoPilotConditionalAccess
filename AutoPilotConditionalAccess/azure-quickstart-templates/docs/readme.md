@@ -73,6 +73,26 @@ Managed identity types
 
 There are two types of managed identities: System-assigned managed identity and User-assigned managed identity
 
+For a collection of automations needing to share a managed identity, you can enable user-assigned managed identities. 
+
+To create a user-assigned managed identity
+
+1. To create a user-assigned managed identity, your account needs the Managed Identity Contributor role assignment.
+2. Sign in to the Azure portal using an account associated with the Azure subscription to create the user-assigned managed identity.
+3. In the search box, type Managed Identities, and under Services, click Managed Identities.
+
+![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/images/ManagedIdentities1.PNG)
+
+4. Click Add and enter values in the following fields under Create user assigned managed identity pane: (a) Resource Name: This is the name for your user-assigned managed identity, for example AutoPilotCAUAI1. (b) Subscription: Choose the subscription to create the user-assigned managed identity under. (c) Resource Group: Create a new resource group to contain your user-assigned managed identity or choose Use existing to create the user-assigned managed identity in an existing resource group. (d) Location: Choose a location to deploy the user-assigned managed identity, for example UK South. 
+
+![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/images/ManagedIdentities2.PNG)
+
+![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/images/ManagedIdentities3.PNG)
+
+5. Click Create.
+
+
+
 For stand-alone automations, you can enable system-assigned managed identities. System-assigned managed identities provide the most convenient support from the identity management perspective. With just one click, you can enable the automated life cycle management of an identity for your resource.
 
 Once you have deployed the automation template from this repository. 
