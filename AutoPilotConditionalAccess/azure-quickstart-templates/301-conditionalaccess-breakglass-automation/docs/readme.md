@@ -18,7 +18,7 @@ Once you have deployed the automation template from this repository. Connect the
 
 ![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/images/LogicApp-301-CA-breakglass-automation-7.PNG).
 
-# Step 3: Add parameters and select your user-assigned managed identity within the Logic App to connect to Key Vault.
+# Step 3: Update parameters value and click Save. That is it!
 
 Once you have connected your user-Assigned Managed Identity to your Logic App add the parameters within your logic app:
 
