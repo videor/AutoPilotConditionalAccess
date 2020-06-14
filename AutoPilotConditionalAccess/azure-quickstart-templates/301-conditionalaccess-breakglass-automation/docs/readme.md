@@ -18,3 +18,17 @@ Once you have deployed the automation template from this repository. Connect the
 
 ![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/images/LogicApp-301-CA-breakglass-automation-7.PNG).
 
+# Step 3: Add parameters and select your user-assigned managed identity within the Logic App to connect to Key Vault.
+
+Once you have connected your user-Assigned Managed Identity to your Logic App add the parameters within your logic app:
+
+1. In the left-hand navigation pane, select the Logic App you deployed, and then select Logic App designer > Parameters > Replace the default value with yours for (a) Key Vault URI (b) Client ID of your app registration (c) The Group Object ID you will like to automate for exclusion and (d) Tenant ID.
+
+![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-breakglass-automation/images/LogicApp-301-CA-breakglass-automation-8.PNG)
+
+2. Now open the Logic App step for Get Client Secret from Key Vault using Managed Identity and select the Managed Identity you linked to the logic app from the drop down.
+
+![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-breakglass-automation/images/LogicApp-301-CA-breakglass-automation-9.PNG)
+
+
+
