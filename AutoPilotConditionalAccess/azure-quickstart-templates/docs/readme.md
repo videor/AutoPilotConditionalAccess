@@ -87,7 +87,7 @@ Once you have deployed the automation template from this repository.
 
 3. You should see the screen below with your registered managed identity. 
 
-![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/images/LogicApp-301-CA-breakglass-automation-3.PNG)
+![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/images/LogicApp-301-CA-breakglass-automation-4.PNG)
 
 
 
