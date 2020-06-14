@@ -3,6 +3,8 @@
 
 Accessing Microsoft Graph endpoints requires that the application and / or user making the request has the appropriate permissions assigned.  These permissions can be one of two types: delegated permissions or application permissions. Delegated permissions, sometimes called “on behalf of” permissions, require a user context to also be supplied when making the request.  
 
+To learn more on permissions, app registration and using app-only token please look at [**Create App Registration**]( https://docs.microsoft.com/en-us/graph/auth-register-app-v2) and [**Get access without a user/app-only**](https://docs.microsoft.com/en-us/graph/auth-v2-service)
+
 # Application (app-only or “without a user”)
 
 Some apps call Microsoft Graph with their own identity and not on behalf of a user. In many cases, these are background services or daemons that run on a server without the presence of a signed-in user. An example of such an app might be an email archival service that wakes up and runs overnight. In some cases, apps that have a signed-in user present may also need to call Microsoft Graph under their own identity. For example, an app may need to use functionality that requires more elevated privileges in an organization than those carried by the signed-in user.
