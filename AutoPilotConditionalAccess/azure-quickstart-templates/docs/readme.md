@@ -77,10 +77,17 @@ For stand-alone automations, you can enable system-assigned managed identities. 
 
 Once you have deployed the automation template from this repository. 
 
-1. In the left-hand navigation pane, select the Logic App service, and then select Identity > System Assigned > Swith status to "On".
+1. In the left-hand navigation pane, select the Logic App service, and then select Identity > System Assigned > Switch status to "On".
 
 ![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/images/LogicApp-301-CA-breakglass-automation-2.PNG)
 
+2. When finished, select Yes.
+
+![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/images/LogicApp-301-CA-breakglass-automation-3.PNG)
+
+3. You should see the screen below with your registered managed identity. 
+
+![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/images/LogicApp-301-CA-breakglass-automation-3.PNG)
 
 
 
