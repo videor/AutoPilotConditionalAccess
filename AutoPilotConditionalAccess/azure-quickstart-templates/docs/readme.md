@@ -75,7 +75,9 @@ There are two types of managed identities: System-assigned managed identity and 
 
 For a collection of automations needing to share a managed identity, you can enable user-assigned managed identities. 
 
-To create a user-assigned managed identity
+To learn more on user-assigned managed identity refer to this [**Create User-Assigned manage identities**] (https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal#create-a-user-assigned-managed-identity)
+
+create a user-assigned managed identity
 
 1. To create a user-assigned managed identity, your account needs the Managed Identity Contributor role assignment.
 2. Sign in to the Azure portal using an account associated with the Azure subscription to create the user-assigned managed identity.
@@ -83,31 +85,17 @@ To create a user-assigned managed identity
 
 ![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/images/ManagedIdentities1.PNG)
 
-4. Click Add and enter values in the following fields under Create user assigned managed identity pane: (a) Resource Name: This is the name for your user-assigned managed identity, for example AutoPilotCAUAI1. (b) Subscription: Choose the subscription to create the user-assigned managed identity under. (c) Resource Group: Create a new resource group to contain your user-assigned managed identity or choose Use existing to create the user-assigned managed identity in an existing resource group. (d) Location: Choose a location to deploy the user-assigned managed identity, for example UK South. 
-
-![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/images/ManagedIdentities2.PNG)
+4. Click Create/Add Managed Identities. 
 
 ![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/images/ManagedIdentities3.PNG)
 
+5. Enter values in the following fields under Create user assigned managed identity pane: (a) Resource Name: This is the name for your user-assigned managed identity, for example AutoPilotCAUAI1. (b) Subscription: Choose the subscription to create the user-assigned managed identity under. (c) Resource Group: Create a new resource group to contain your user-assigned managed identity or choose Use existing to create the user-assigned managed identity in an existing resource group. (d) Location: Choose a location to deploy the user-assigned managed identity, for example UK South. 
+
+![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/images/ManagedIdentities2.PNG)
+
+
 5. Click Create.
 
-
-
-For stand-alone automations, you can enable system-assigned managed identities. System-assigned managed identities provide the most convenient support from the identity management perspective. With just one click, you can enable the automated life cycle management of an identity for your resource.
-
-Once you have deployed the automation template from this repository. 
-
-1. In the left-hand navigation pane, select the Logic App service, and then select Identity > System Assigned > Switch status to "On".
-
-![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/images/LogicApp-301-CA-breakglass-automation-2.PNG)
-
-2. When finished, select Yes.
-
-![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/images/LogicApp-301-CA-breakglass-automation-3.PNG)
-
-3. You should see the screen below with your registered managed identity. 
-
-![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/images/LogicApp-301-CA-breakglass-automation-4.PNG).
 
 # Step 5: Store client secret in your Azure Key Vault
 
@@ -166,8 +154,40 @@ Access to a key vault requires proper authentication and authorization before a 
 
 Authentication is done via Azure Active Directory. Authorization may be done via role-based access control (RBAC) or Key Vault access policy. RBAC is used when dealing with the management of the vaults and key vault access policy is used when attempting to access data stored in a vault.
 
+Create an access policy in Key Vault for the application identity you created earlier. Enable the "Get" secret permission on this policy. 
+
+1. In the left-hand navigation pane for the selected KeyVault AutoPilotCAVault1, select the Access policies menu item, and then select + Add Access Policy.
+
+![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/images/KeyVaultandUAI1.PNG)
+
+4. When the Add access policy page appears, enter your assignment information. (a) Secret permission - Select Get. (b) Select Principal - Select the User-assigned managed identity we created earlier, AutoPilotCAUAI1.	
+
+![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/images/KeyVaultandUAI2.PNG)
+
+5. When finished, select Add.
+
+6. The user-assigned managed identity will now apper in the policy list. Click Save. (Tip: Don't Forget to hit Save).
+
+
+# Step 6: Connect User-Assigned Managed Identity to your Logic App
+
 Please look at [**Logic Apps and Managed Identities**](https://docs.microsoft.com/en-us/azure/logic-apps/create-managed-service-identity) to learn more on how to use managed identities within Logic App.
 
 
+For stand-alone automations, you can enable system-assigned managed identities. System-assigned managed identities provide the most convenient support from the identity management perspective. With just one click, you can enable the automated life cycle management of an identity for your resource.
+
+Once you have deployed the automation template from this repository. 
+
+1. In the left-hand navigation pane, select the Logic App service, and then select Identity > System Assigned > Switch status to "On".
+
+![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/images/LogicApp-301-CA-breakglass-automation-2.PNG)
+
+2. When finished, select Yes.
+
+![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/images/LogicApp-301-CA-breakglass-automation-3.PNG)
+
+3. You should see the screen below with your registered managed identity. 
+
+![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/images/LogicApp-301-CA-breakglass-automation-4.PNG).
 
 
