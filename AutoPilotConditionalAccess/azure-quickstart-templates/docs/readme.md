@@ -47,3 +47,41 @@ Generate The Application Secret for your app in the app registration portal.
 
 ![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/images/AppRegistration7.PNG)
 
+# Step 3: Deploy the Azure Quickstart Template
+
+
+# Step 4: Create a Managed Identity for your Automation
+
+Managed identities for Azure resources is a feature of Azure Active Directory. Please look at [**managed Identity**]( https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview) for more information.
+
+As a identity admin, you are probably looking for the simplest and most secure method to access Conditional Access APIs in your automation.
+
+The managed identities for Azure can help you with this requirement because managed identities:
+
+1. Eliminates the need for credentials.
+2. Rotate credentials automatically.
+3. Reduces your involvement in managing identities to a minimum.
+
+All Azure resources that support managed identities can obtain tokens to exchange data without having credentials in the code. The process consists of the following steps:
+
+Enable – Create the Managed Identity for the resource.
+Grant access – Allow access to resources with Azure RBAC.
+Access - Perform the allowed actions.
+Disable – Delete the Managed Identity.
+
+Managed identity types
+
+There are two types of managed identities: System-assigned managed identity and User-assigned managed identity
+
+For stand-alone automations, you can enable system-assigned managed identities. System-assigned managed identities provide the most convenient support from the identity management perspective. With just one click, you can enable the automated life cycle management of an identity for your resource.
+
+Once you have deployed the automation template from this repository. 
+
+1. In the left-hand navigation pane, select the Logic App service, and then select Identity > System Assigned > Swith status to "On".
+
+
+
+
+
+
+
