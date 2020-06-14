@@ -1,6 +1,6 @@
 # Azure Resource Manager QuickStart Templates for Azure Active Directory Conditional Access
 
-This repo contains all currently available Azure Resource Manager templates contributed by the community. 
+This repo contains all currently available Azure Resource Manager templates for Azure Active Directory Conditional Access automation contributed by the community. 
 
 See the [**Contribution guide**](/1-CONTRIBUTION-GUIDE/README.md#contribution-guide) for how to use or contribute to this repo.
 
