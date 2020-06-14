@@ -87,8 +87,46 @@ Once you have deployed the automation template from this repository.
 
 3. You should see the screen below with your registered managed identity. 
 
-![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/images/LogicApp-301-CA-breakglass-automation-4.PNG)
+![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/images/LogicApp-301-CA-breakglass-automation-4.PNG).
+
+# Step 5: Connect Managed Identity to your Azure Key Vault
+
+Azure Key Vault helps with secrets management. Azure Key Vault can be used to Securely store and tightly control access to tokens, passwords, certificates, API keys, and other secrets.  Please look at [**Azure Key Vault**](https://docs.microsoft.com/en-us/azure/key-vault/general/overview) for more information on how to use Azure Key Vault. 
+
+Create a Key vault from the Azure portal menu, or from the Home page, select Create a resource.
+
+1. In the Search box, enter Key Vault.
+2. From the results list, choose Key Vault.
+3. On the Key Vault section, choose Create.
+
+![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/images/KeyVaults0.PNG).
+
+4. On the Create key vault section provide the following information: (a) Name: A unique name is required. For this quickstart, we use AutoPilotCAVault1.
+
+![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/images/KeyVaults1.PNG).
+
+5. Subscription: Choose a subscription. 
+6. Under Resource Group, choose Create new and enter a resource group name.
+7. In the Location pull-down menu, choose a location.
+8. Leave the other options to their defaults.
+9. After providing the information above, select Create.
+
+Take note of the two properties listed below:
+
+Vault Name: In the example, this is AutoPilotCAVault1. You will use this name for other steps.
+Vault URI: In the example, this is https://autopilotcavault1.vault.azure.net/. Logic Apps that use this vault through its REST API must use this URI.
 
 
+Centralizing storage of application secrets in Azure Key Vault allows you to control their distribution. Key Vault greatly reduces the chances that secrets may be accidentally leaked. When using Key Vault, application admins no longer need to store security information in their automation workflow. Not having to store security information in automation workflows eliminates the need to make this information part of the code. For example, an automation may need to connect to a conditional access APIs. Instead of storing the client secret in the automation code, you can store it securely in Key Vault.
+
+Your automation script can securely access the information they need by using URIs. These URIs allow the applications to retrieve specific versions of a secret. There is no need to write custom code to protect any of the secret information stored in Key Vault.
+
+Access to a key vault requires proper authentication and authorization before a caller (user or application) can get access. Authentication establishes the identity of the caller, while authorization determines the operations that they are allowed to perform.
+
+Authentication is done via Azure Active Directory. Authorization may be done via role-based access control (RBAC) or Key Vault access policy. RBAC is used when dealing with the management of the vaults and key vault access policy is used when attempting to access data stored in a vault.
+
+Please look at [**Logic Apps and Managed Identities**](https://docs.microsoft.com/en-us/azure/logic-apps/create-managed-service-identity) to learn more on how to use managed identities within Logic App.
+
+# 
 
 
