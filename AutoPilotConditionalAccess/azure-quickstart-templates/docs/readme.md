@@ -41,5 +41,5 @@ To configure application permissions for your app in the Azure app registrations
 
 The following screenshot shows the Select Permissions dialog box for Microsoft Graph application permissions.
 
-![](https://docs.microsoft.com/en-us/graph/images/auth-v2/v2-application-permissions.png)
+![](/images/AppRegistration7.PNG)
 
