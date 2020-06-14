@@ -12,7 +12,7 @@ See the [**Contribution guide**](/1-CONTRIBUTION-GUIDE/README.md#contribution-gu
 
 To deploy to a specific Azure resource group, use the following command:
 
-az group deployment create -g <Azure-resource-group-name> --template-uri <https://GitHubTemplateURL>
+az group deployment create -g <Azure-resource-group-name> --template-uri <GitHubTemplateURL>
 
 ## NOTE
 
