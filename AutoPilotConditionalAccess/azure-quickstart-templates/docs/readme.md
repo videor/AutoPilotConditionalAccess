@@ -29,7 +29,7 @@ Register a new application using the Azure portal
 
 5. When finished, select Register.
 
-![](https://docs.microsoft.com/en-us/graph/images/auth-v2/new-app-registration-expanded.png)
+![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/images/AppRegistration1.PNG)
 
 With the OAuth 2.0 client credentials grant flow, your app authenticates directly at the Microsoft identity platform /token endpoint using the Application ID assigned by Azure AD and the Application Secret that you create using the portal.
 
