@@ -1,5 +1,5 @@
 
-# Types of permissions
+# Secure your Automation for Conditional Access
 
 Accessing Microsoft Graph endpoints requires that the application and / or user making the request has the appropriate permissions assigned.  These permissions can be one of two types: delegated permissions or application permissions. Delegated permissions, sometimes called “on behalf of” permissions, require a user context to also be supplied when making the request.  
 
