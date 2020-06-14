@@ -79,7 +79,7 @@ Once you have deployed the automation template from this repository.
 
 1. In the left-hand navigation pane, select the Logic App service, and then select Identity > System Assigned > Swith status to "On".
 
-
+![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/images/LogicApp-301-CA-breakglass-automation-2.PNG)
 
 
 
