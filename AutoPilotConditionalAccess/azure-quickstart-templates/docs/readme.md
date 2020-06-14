@@ -173,21 +173,18 @@ Create an access policy in Key Vault for the application identity you created ea
 
 Please look at [**Logic Apps and Managed Identities**](https://docs.microsoft.com/en-us/azure/logic-apps/create-managed-service-identity) to learn more on how to use managed identities within Logic App.
 
+Once you have deployed the automation template from this repository. Connect the user-Assigned Managed Identity to your Logic App by doing the following:
 
-For stand-alone automations, you can enable system-assigned managed identities. System-assigned managed identities provide the most convenient support from the identity management perspective. With just one click, you can enable the automated life cycle management of an identity for your resource.
+1. In the left-hand navigation pane, select the Logic App service, and then select Identity > User Assigned > Select Add.
 
-Once you have deployed the automation template from this repository. 
+![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/images/LogicApp-301-CA-breakglass-automation-5.PNG)
 
-1. In the left-hand navigation pane, select the Logic App service, and then select Identity > System Assigned > Switch status to "On".
+2. Select the User-assigned managed identity from the context pane that appears on the right, select Add.
 
-![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/images/LogicApp-301-CA-breakglass-automation-2.PNG)
+![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/images/LogicApp-301-CA-breakglass-automation-6.PNG)
 
-2. When finished, select Yes.
+3. You should see the screen below with your registered user-assigned managed identity connected to your logic app. 
 
-![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/images/LogicApp-301-CA-breakglass-automation-3.PNG)
-
-3. You should see the screen below with your registered managed identity. 
-
-![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/images/LogicApp-301-CA-breakglass-automation-4.PNG).
+![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/images/LogicApp-301-CA-breakglass-automation-7.PNG).
 
 
