@@ -21,26 +21,22 @@
                     "contentVersion": "1.0.0.0",
                     "parameters": {
                         "AutoPilotConditionalAccessKeyVaultClientCredentials": {
-                            "defaultValue": "ReplaceWithYourKeyVaultURI",
-                            "type": "SecureString"
+                            "type": "String"
                         },
                         "ClientID": {
-                            "defaultValue": "ReplaceWithYourClientID",
                             "type": "String"
                         },
                         "EmergencyAccountsGroupObjectID": {
-                            "defaultValue": "ReplaceWithYourEmergencyAccountsGroupObjectID",
                             "type": "String"
                         },
                         "TenantID": {
-                            "defaultValue": "ReplaceWithYourTenantID",
                             "type": "String"
                         }
                     },
                     "triggers": {
-                        "Recurrence": {
+                        "Schedule_automation_of_Break_Glass_account_management_within_Conditional_Access": {
                             "recurrence": {
-                                "frequency": "Hour",
+                                "frequency": "Month",
                                 "interval": 1,
                                 "startTime": "2020-06-08T18:00:00",
                                 "timeZone": "GMT Standard Time"
@@ -126,6 +122,7 @@
                             "inputs": {
                                 "authentication": {
                                     "audience": "https://vault.azure.net",
+                                    "identity": "",
                                     "type": "ManagedServiceIdentity"
                                 },
                                 "method": "GET",
