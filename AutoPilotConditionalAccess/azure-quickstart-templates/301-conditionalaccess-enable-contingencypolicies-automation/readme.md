@@ -1,4 +1,4 @@
-# Azure Resource Manager QuickStart Template to Manage emergency access accounts in Azure AD
+# Azure Resource Manager QuickStart Template to manage Contingency policies in Azure AD
 
 Organizations that rely on a single access control, such as multi-factor authentication (MFA) or a single network location, to secure their IT systems are susceptible to access failures to their apps and resources if that single access control becomes unavailable or misconfigured. For example, a natural disaster can result in the unavailability of large segments of telecommunications infrastructure or corporate networks. Such a disruption could prevent end users and administrators from being able to sign in.
 
@@ -30,7 +30,7 @@ Autopilot provides fully automated management of contingency policies so you hav
 
 Autopilot will make fully automated adjustments to your policies in case of disruptions, so your users don’t get locked out!	
 
-![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-enable-contingencypolicies-automation/images/ResilientPoliciesStatusChange.PNG)
+![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-enable-contingencypolicies-automation/images/ResilientPoliciesStatusChange1.PNG)
 
 
 
