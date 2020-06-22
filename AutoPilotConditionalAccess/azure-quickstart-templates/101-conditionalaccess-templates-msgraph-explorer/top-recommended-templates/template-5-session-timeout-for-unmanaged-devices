@@ -1,0 +1,50 @@
+{
+    "displayName": "Template 5 - Session timeout for unmanaged devices",
+    "state": "enabledForReportingButNotEnforced",
+    "grantControls": null,
+    "conditions": {
+        "signInRiskLevels": [],
+        "clientAppTypes": [],
+        "platforms": null,
+        "locations": null,
+        "applications": {
+            "includeApplications": [
+                "All"
+            ],
+            "excludeApplications": [],
+            "includeUserActions": []
+        },
+        "users": {
+            "includeGroups": [
+                "6c96716b-b32b-40b8-9009-49748bb6fcd5"
+            ],
+            "excludeGroups": [
+                "f753047e-de31-4c74-a6fb-c38589047723"
+            ],
+            "includeRoles": [],
+            "excludeRoles": []
+        },
+        "devices": {
+            "includeDeviceStates": [
+                "All"
+            ],
+            "excludeDeviceStates": [
+                "Compliant",
+                "DomainJoined"
+            ]
+        }
+    },
+    "sessionControls": {
+        "applicationEnforcedRestrictions": null,
+        "cloudAppSecurity": null,
+        "signInFrequency": {
+            "value": 1,
+            "type": "hours",
+            "isEnabled": true
+        },
+        "persistentBrowser": {
+            "mode": "never",
+            "isEnabled": true
+        }
+    }
+}
