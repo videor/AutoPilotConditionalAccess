@@ -1,5 +1,7 @@
 # Step 1: Deploy the Azure Quickstart Template
 
+See the [**Deployment guide**](https://docs.microsoft.com/en-us/azure/logic-apps/logic-apps-deploy-azure-resource-manager-templates) for how to deploy the scripts to your Azure tenant.
+
 # Step 2: Connect User-Assigned Managed Identity to your Logic App
 
 Please look at [**Logic Apps and Managed Identities**](https://docs.microsoft.com/en-us/azure/logic-apps/create-managed-service-identity) to learn more on how to use managed identities within Logic App.
