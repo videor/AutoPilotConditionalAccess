@@ -6,13 +6,7 @@ See the [**Contribution guide**](/1-CONTRIBUTION-GUIDE/README.md#contribution-gu
 
 # How to Deploy the Azure Resource Manager QuickStart Templates for Azure Active Directory Conditional Access
 
-## Deploy through Azure portal
-
-### Deploy with Azure CLI
-
-To deploy to a specific Azure resource group, use the following command:
-
-az group deployment create -g <Azure-resource-group-name> --template-uri <GitHubTemplateURL>
+See the [**Deployment guide**](https://docs.microsoft.com/en-us/azure/logic-apps/logic-apps-deploy-azure-resource-manager-templates) for how to deploy the scripts to your Azure tenant.
 
 ## NOTE
 
