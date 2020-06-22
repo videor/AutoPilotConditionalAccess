@@ -1,7 +1,5 @@
 {
             "displayName": "Template 9 – Monitor sessions with app control on unmanaged devices",
-            "createdDateTime": null,
-            "modifiedDateTime": "2020-06-22T08:17:30.732072Z",
             "state": "enabledForReportingButNotEnforced",
             "grantControls": null,
             "conditions": {
