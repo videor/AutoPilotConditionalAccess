@@ -1,0 +1,37 @@
+{
+"displayName": "Template 8 – App enforced restrictions on untrusted devices",
+    "state": "enabledForReportingButNotEnforced",
+    "conditions": {
+        "clientAppTypes": [
+            "browser"
+        ],
+        "applications": {
+            "includeApplications": [
+                "00000002-0000-0ff1-ce00-000000000000",
+                "00000003-0000-0ff1-ce00-000000000000"
+            ],
+        },
+        "users": {
+            "includeGroups": [
+                "6c96716b-b32b-40b8-9009-49748bb6fcd5"
+            ],
+            "excludeGroups": [
+                "f753047e-de31-4c74-a6fb-c38589047723"
+            ]
+        },
+        "devices": {
+            "includeDeviceStates": [
+                "All"
+            ],
+            "excludeDeviceStates": [
+                "Compliant",
+                "DomainJoined"
+            ]
+        }
+    },
+    "sessionControls": {
+        "applicationEnforcedRestrictions": {
+            "isEnabled": true
+        }
+    }
+}
