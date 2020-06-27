@@ -8,7 +8,7 @@ Audit log events are only retained for seven days. Plan to download and store yo
 
 The Azure AD Conditional Access category in audit logs contains the following types of activities:
 
-![](images/AutoPilotEmergencyAccounts.PNG)
+![](images/AzureMonitor2.PNG)
 
 # Azure Monitor to manage alerts on policy changes
 
