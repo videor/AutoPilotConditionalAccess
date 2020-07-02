@@ -28,9 +28,20 @@ If you would like to apply restrictions to users that are already registered but
 
 # Template 2 - Require MFA for elevated privileged accounts
 
-And if that doesn’t happen in your org — well, some well-meaning individuals with the appropriate privileges may make a change to a Conditional Access policy — which suddenly causes your org not to have the necessary exclusions for emergency access accounts. 
+Accounts that are assigned administrative rights are targeted by attackers. Requiring multi-factor authentication (MFA) on those accounts is an easy way to reduce the risk of those accounts being compromised.
 
-Okay, let’s say that makes sense, and you agree with me — we all can do with an autopilot to correct the course if mistakes happen. 
+We recommend you require MFA on the following roles at a minimum:
+
+1. Billing administrator
+2. Conditional Access administrator
+3. Exchange administrator
+4. Global administrator
+5. Helpdesk (Password) administrator
+6. Password administrator
+7. Security administrator
+8. SharePoint administrator
+9. User administrator
+10. Organizations can choose to include or exclude roles as they see fit.
 
 # What do you get from this automation
 
