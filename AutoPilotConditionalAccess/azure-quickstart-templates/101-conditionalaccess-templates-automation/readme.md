@@ -21,6 +21,9 @@ This template applies the trusted network restriction to new MFA registration. N
 
 If you would like to apply restrictions to users that are already registered but are now updating their registration information change the template to use the block control.
 
+[**One Click Deploy This Template**](https://developer.microsoft.com/en-us/graph/graph-explorer?request=identity/conditionalAccess/policies&method=POST&version=v1.0&GraphUrl=https://graph.microsoft.com&requestBody=eyJkaXNwbGF5TmFtZSI6IlRlbXBsYXRlIDEgLSBNRkEgUmVnaXN0cmF0aW9uIFJlc3RyaWN0aW9ucyIsInN0YXRlIjoiZW5hYmxlZEZvclJlcG9ydGluZ0J1dE5vdEVuZm9yY2VkIiwiY29uZGl0aW9ucyI6eyJhcHBsaWNhdGlvbnMiOnsiaW5jbHVkZVVzZXJBY3Rpb25zIjpbInVybjp1c2VyOnJlZ2lzdGVyc2VjdXJpdHlpbmZvIl19LCJ1c2VycyI6eyJpbmNsdWRlR3JvdXBzIjpbIjZjOTY3MTZiLWIzMmItNDBiOC05MDA5LTQ5NzQ4YmI2ZmNkNSJdLCJleGNsdWRlR3JvdXBzIjpbImY3NTMwNDdlLWRlMzEtNGM3NC1hNmZiLWMzODU4OTA0NzcyMyJdfSwibG9jYXRpb25zIjp7ImluY2x1ZGVMb2NhdGlvbnMiOlsiQWxsIl0sImV4Y2x1ZGVMb2NhdGlvbnMiOlsiQWxsVHJ1c3RlZCJdfX0sImdyYW50Q29udHJvbHMiOnsib3BlcmF0b3IiOiJPUiIsImJ1aWx0SW5Db250cm9scyI6WyJtZmEiLCJjb21wbGlhbnREZXZpY2UiLCJkb21haW5Kb2luZWREZXZpY2UiXX19)
+
+
 
 # Accidental or malicious removal of emergency accounts from Azure AD Conditional Access Policies during policy update.
 
