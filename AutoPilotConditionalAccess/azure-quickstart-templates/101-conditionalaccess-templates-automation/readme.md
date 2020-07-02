@@ -17,9 +17,9 @@ Some common restrictions you can include are:
 
 Make sure that all users you want to apply this policy to are part of the [combined MFA and SSPR experience](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/combined-mfa-and-password-reset-registration-is-now-generally/ba-p/1257355). This is required because users not within scope of combined registration will use the older security information page and the policy will not be enforced. 
 
-This template applies the trusted network restriction to both new registration and users that are already registered but are now updating their registration information.
+This template applies the trusted network restriction to new MFA registration. Now, if a user is outside of a trusted network and attempts to register MFA for first time, they will be blocked. As soon as they register MFA, they’ll be able to manage MFA and SSPR registration details from anywhere by performing MFA or when using a compliant or Hybrid Azure AD joined device.
 
-Now, if a user is outside of a trusted network and attempts to register MFA for first time or re-register MFA, they will be blocked.
+If you would like to apply restrictions to users that are already registered but are now updating their registration information change the template to use the block control.
 
 
 # Accidental or malicious removal of emergency accounts from Azure AD Conditional Access Policies during policy update.
