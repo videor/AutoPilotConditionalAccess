@@ -26,7 +26,7 @@ If you would like to apply restrictions to users that are already registered but
 ![](images/Template1.PNG)
 
 
-# Accidental or malicious removal of emergency accounts from Azure AD Conditional Access Policies during policy update.
+# Template 2 - Require MFA for elevated privileged accounts
 
 And if that doesn’t happen in your org — well, some well-meaning individuals with the appropriate privileges may make a change to a Conditional Access policy — which suddenly causes your org not to have the necessary exclusions for emergency access accounts. 
 
