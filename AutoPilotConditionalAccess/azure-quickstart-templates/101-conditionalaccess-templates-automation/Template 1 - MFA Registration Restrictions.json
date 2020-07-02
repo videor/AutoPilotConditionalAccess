@@ -1,6 +1,6 @@
 {
     "displayName": "Template 1 - MFA Registration Restrictions",
-    "state": "enabled",
+    "state": "enabledForReportingButNotEnforced",
     "conditions": {
         "applications": {
             "includeUserActions": [
