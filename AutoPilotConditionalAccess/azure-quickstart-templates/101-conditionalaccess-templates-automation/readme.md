@@ -1,15 +1,8 @@
 # One-click deploy templates for Conditional Access policies
 
-This is the equivalent of your quick-start templates in your favourite IDE. We have made an Azure Resource Manager (ARM) template available that you can One-click Deploy to your organization. These includes top used CA policies and sophisticated policies incorporating other products like MCAS. You can deploy these templates with one click to your organization. Fork this repository, and you can create templates specific to your organization’s needs that you can make available to your branch offices and subsidiaries!
+This is the equivalent of your quick-start templates in your favourite IDE. We have made templates available that you can One-click Deploy to your organization. These includes top used CA policies and sophisticated policies incorporating other products like MCAS. You can deploy these templates with one click to your organization. Fork this repository, and you can create templates specific to your organization’s needs that you can make available to your branch offices and subsidiaries!
 
-See the [**Create Emergency Accounts**](https://docs.microsoft.com/en-us/azure/active-directory/users-groups-roles/directory-emergency-access) for how to create, configure and manage emergency access accounts. 
-
-One of the guidance from this [article](https://docs.microsoft.com/en-us/azure/active-directory/users-groups-roles/directory-emergency-access) is to exclude at least one account from Conditional Access policies. So during an emergency, you do not want a policy to potentially block your access to fix an issue. At least one emergency access account should be excluded from all Conditional Access policies. 
-
-
-
-
-# Why do you need this templates
+# Why do you need these templates
 
 # Template 1 - MFA Registration Restrictions.
 
@@ -24,7 +17,7 @@ Some common restrictions you can include are:
 
 Make sure that all users you want to apply this policy to are part of the [combined MFA and SSPR experience](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/combined-mfa-and-password-reset-registration-is-now-generally/ba-p/1257355). This is required because users not within scope of combined registration will use the older security information page and the policy will not be enforced. 
 
-This template applies the policy to both new registration and users that are already registered but are now updating their registration information.
+This template applies the trusted network restriction to both new registration and users that are already registered but are now updating their registration information.
 
 Now, if a user is outside of a trusted network and attempts to register MFA for first time or re-register MFA, they will be blocked.
 
