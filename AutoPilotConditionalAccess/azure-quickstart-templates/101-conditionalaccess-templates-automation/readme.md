@@ -20,7 +20,7 @@ In this tutorial, you'll learn how to:
 
 # Pre-requisites
 
-Conditional Access APIs can be called by Global administrators, Security administrators, Conditional Access administrators (recommended), and Global readers (can only use the read APIs). The ability to manage conditional access policies is very powerful, so be sure to enforce Template 2 below which will require MFA for these roles!
+Conditional Access APIs can be called by Global administrators, Security administrators, Conditional Access administrators (recommended), and Global readers (can only use the read APIs). The ability to manage conditional access policies is very powerful, so be sure to require MFA for these roles!
 
 # Why do you need these templates
 
