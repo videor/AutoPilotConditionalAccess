@@ -1,6 +1,20 @@
-# One-click deploy templates for Conditional Access policies
+# One-click deploy policy blueprints using Conditional Access APIs
 
-This is the equivalent of your quick-start templates in your favourite IDE. We have made templates available that you can One-click Deploy to your organization. These includes top used CA policies and sophisticated policies incorporating other products like MCAS. You can deploy these templates with one click to your organization. Fork this repository, and you can create templates specific to your organization’s needs that you can make available to your branch offices and subsidiaries!
+You can use the conditional access APIs to manage policy blueprints that you can make available to your branch offices and subsidiaries. For example, you can:
+
+1. As a central admin, add a new policy blueprint using conditional access API JSON schema to a shared onedrive. All subsidieries and branch offices who have been given access to this onedrive will receive notification to create a new conditional access policy based on the policy blueprint. Admins in branch offices and subsidiaries can approve or reject this blueprint. If admins accept the policy blueprint, the conditional access APIs will be used to deploy the blueprint to consented branch offices and subsidiaries! 
+
+2. Update or delete a conditional access policy blueprint using conditional access APIs and rollout the changes to your branch offices and subsidiaries.
+
+3. Enable or disable the conditional access policy blueprint state using conditional access APIs and rollout the changes to your branch offices and subsidiaries. This may be needed in case of business continuity.
+
+In this tutorial, you'll learn how to:
+
+- Authenticate your app to Azure AD with the right roles and permissions
+- Create policy blueprints using conditional access schema.
+- Add new policy blueprint to all your branch offices and subsidiaries in one click.
+- Update and Remove a policy blueprint.
+- Update state of a policy blueprint.
 
 # Pre-requisites
 
