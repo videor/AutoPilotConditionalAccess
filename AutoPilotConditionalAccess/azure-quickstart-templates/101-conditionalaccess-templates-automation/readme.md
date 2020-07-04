@@ -14,6 +14,7 @@ This automation can be very useful for organizations that manage large numbers o
 
 In this tutorial, you'll learn how to:
 
+- Deploy this app/automation script to your organization.
 - Authenticate your app to Azure AD with the right permissions.
 - Create policy blueprints using conditional access schema.
 - Add new policy blueprint to all your branch offices and subsidiaries in one click.
