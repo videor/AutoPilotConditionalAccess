@@ -12,11 +12,11 @@ This automation can be very useful for organizations that manage large numbers o
 
 In this tutorial, you'll learn how to:
 
-- Authenticate your app to Azure AD with the right roles and permissions
+- Authenticate your app to Azure AD with the right permissions.
 - Create policy blueprints using conditional access schema.
 - Add new policy blueprint to all your branch offices and subsidiaries in one click.
-- Update and remove a policy blueprint.
-- Update state of a policy blueprint.
+- Update and remove a policy blueprint and rollout the changes.
+- Update state of a policy blueprint and rollout the changes.
 
 # Pre-requisites
 
