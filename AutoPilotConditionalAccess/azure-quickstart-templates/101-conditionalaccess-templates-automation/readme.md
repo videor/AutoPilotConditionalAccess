@@ -2,7 +2,7 @@
 
 This is the equivalent of your quick-start templates in your favourite IDE. We have made templates available that you can One-click Deploy to your organization. These includes top used CA policies and sophisticated policies incorporating other products like MCAS. You can deploy these templates with one click to your organization. Fork this repository, and you can create templates specific to your organization’s needs that you can make available to your branch offices and subsidiaries!
 
-# Why do you need these templates
+#Pre-requisites
 
 Conditional Access APIs can be called by Global administrators, Security administrators, Conditional Access administrators (recommended), and Global readers (can only use the read APIs). The ability to manage conditional access policies is very powerful, so be sure to enforce Template 2 below which will require MFA for these roles!
 
