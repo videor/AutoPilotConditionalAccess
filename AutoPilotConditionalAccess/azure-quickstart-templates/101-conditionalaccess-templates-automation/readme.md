@@ -43,7 +43,7 @@ Follow the option that you want to use for deploying the quickstart template:
 
 1. Select the following image to sign in with your Azure account and open the quickstart template in the Azure portal:
 
-   [![Deploy to Azure](https://github.com/videor/azure-docs/raw/master/articles/media/template-deployments/deploy-to-azure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-logic-app-create%2fazuredeploy.json)
+   [![Deploy to Azure](https://github.com/videor/azure-docs/raw/master/articles/media/template-deployments/deploy-to-azure.svg?sanitize=true)](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/101-conditionalaccess-templates-automation/azuredeploy.json)
 
 1. In the portal, on the **Create a logic app using a template** page, enter or select these values:
 
