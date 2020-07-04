@@ -41,7 +41,8 @@ We recommend you require MFA on the following roles at a minimum:
 7. Security administrator
 8. SharePoint administrator
 9. User administrator
-10. Organizations can choose to include or exclude roles as they see fit.
+
+Organizations can choose to include or exclude roles as they see fit.
 
 # What do you get from this automation
 
