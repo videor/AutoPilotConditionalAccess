@@ -4,6 +4,10 @@ This is the equivalent of your quick-start templates in your favourite IDE. We h
 
 # Why do you need these templates
 
+Conditional Access APIs can be called by Global administrators, Security administrators, Conditional Access administrators (recommended), and Global readers (can only use the read APIs). The ability to manage conditional access policies is very powerful, so be sure to enforce Template 2 below which will require MFA for these roles!
+
+# Why do you need these templates
+
 # Template 1 - MFA Registration Restrictions.
 
 Conditional Access Policy using MFA Registration Restrictions feature is one of the top 5 configured policies globally. This template allows you to control the conditions in which security sensitive MFA or SSPR information can be registered. This helps ensure it’s the right user—not an attacker—registering this security sensitive info. 
