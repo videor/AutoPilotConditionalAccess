@@ -8,14 +8,14 @@ You can use the conditional access APIs to manage policy blueprints that you can
 
 3. Enable or disable the conditional access policy blueprint state using conditional access APIs and rollout the changes to your branch offices and subsidiaries. This may be needed in case of business continuity.
 
-This scenario can be very useful for organizations that manage large numbers of Azure AD tenants representing branch offices and subsidiaries. Identity partners that need to provide policy blueprints to a number of their customers regularly or even in cases of mergers and acquisitions. 
+This automation can be very useful for organizations that manage large numbers of Azure AD tenants representing branch offices and subsidiaries. Identity partners that need to provide policy blueprints to a number of their customers regularly or even in cases of mergers and acquisitions. 
 
 In this tutorial, you'll learn how to:
 
 - Authenticate your app to Azure AD with the right roles and permissions
 - Create policy blueprints using conditional access schema.
 - Add new policy blueprint to all your branch offices and subsidiaries in one click.
-- Update and Remove a policy blueprint.
+- Update and remove a policy blueprint.
 - Update state of a policy blueprint.
 
 # Pre-requisites
