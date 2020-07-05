@@ -139,7 +139,7 @@ Once you have deployed the automation template from this repository. Connect the
 
 1. In the left-hand navigation pane, select the Logic App you deployed, and then select Logic App designer > Parameters > Replace the default value with Key Vault URI, Client ID and Tenant ID.
 
-![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-breakglass-automation/images/LogicApp-301-CA-breakglass-automation-8.PNG)
+![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-blueprint-automation/images/blueprint-parameters-edit.png)
 
 
 # Step 4: Add a trigger that monitors OneDrive folder for policy blueprint requests
