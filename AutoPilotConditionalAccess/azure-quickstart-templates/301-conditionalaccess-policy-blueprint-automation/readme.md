@@ -148,4 +148,10 @@ Once you have connected your user-Assigned Managed Identity to your Logic App ad
 
 # Step 4: Add a trigger that monitors OneDrive folder for policy blueprint requests
 
+1. On the Logic App Designer, in the search box, enter `when email arrives` as your filter. From the **Triggers** list, select the **When a new email arrives** trigger for your email provider.
 
+   This example uses the Office 365 OneDrive trigger:
+
+   ![Select "When a new email arrives" trigger for email provider](./media/tutorial-process-mailing-list-subscriptions-workflow/add-trigger-new-email.png)
+
+   * For Azure work or school accounts, select OneDrive for Business.
