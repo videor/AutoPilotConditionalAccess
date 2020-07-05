@@ -146,4 +146,6 @@ Once you have connected your user-Assigned Managed Identity to your Logic App ad
 
 ![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-breakglass-automation/images/LogicApp-301-CA-breakglass-automation-9.PNG)
 
+# Step 4: Add a trigger that monitors OneDrive folder for policy blueprint requests
+
 
