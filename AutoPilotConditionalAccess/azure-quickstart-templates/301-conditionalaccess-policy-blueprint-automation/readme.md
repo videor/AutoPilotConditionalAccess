@@ -193,9 +193,9 @@ Once you have connected your user-Assigned Managed Identity to your Logic App ad
       
 # Step 6: Add a condition that checks the approval response.
 
-1. On the Logic App Designer, in the Condition box, verify `approve` response. This example uses response from earlier Teams connector:
+1. On the Logic App Designer, in the Condition box, verify response. This example uses response from earlier Teams connector:
 
-    1. Specify the Team card response, expression and verify `approve` response in the condition.
+1. Specify the Team card response, expression and verify `approve` response in the condition.
     
       ![Select "Condition to check the response from adaptive card that was posted earlier to Teams channel"](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-blueprint-automation/images/blueprint5-edit.png)
     
