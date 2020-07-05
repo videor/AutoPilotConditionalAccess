@@ -16,8 +16,8 @@ This tutorial shows how to build a [logic app](../logic-apps/logic-apps-overview
 
 In this tutorial, you learn how to:
 
-:heavy_check_mark: Deploy this logic app to your organization.  \newline
-:heavy_check_mark: Authenticate your logic app to Azure AD with the right permissions.  \n
+:heavy_check_mark: Deploy this logic app to your organization.  <br /> 
+:heavy_check_mark: Authenticate your logic app to Azure AD with the right permissions.  <br /> 
 :heavy_check_mark: Add a trigger that monitors OneDrive folder for policy blueprint requests.
 :heavy_check_mark: Add an action that sends a message to Teams security channel for approving or rejecting these requests.
 :heavy_check_mark: Add a condition that checks the approval response.
