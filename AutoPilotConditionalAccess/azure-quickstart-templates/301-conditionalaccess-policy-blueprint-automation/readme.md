@@ -12,14 +12,24 @@ You can use the conditional access APIs to manage policy blueprints that you can
 
 This automation can be very useful for organizations that manage large numbers of Azure AD tenants representing branch offices and subsidiaries. Identity partners that need to provide policy blueprints to a number of their customers regularly. Or even in cases of mergers and acquisitions. 
 
-In this tutorial, you'll learn how to:
+This tutorial shows how to build a [logic app](../logic-apps/logic-apps-overview.md) that automates policy blueprint deployment to branch offices and subsidiaries based on an approval-based workflow. Specifically, this logic app monitors a shared onedrive account for new or updated policy blueprints submissions, sends requests for approval, and deploys the policy blueprint to approved branch offices and subsidiaries.
 
-- Deploy this app/automation script to your organization.
-- Authenticate your app to Azure AD with the right permissions.
-- Create policy blueprints using conditional access schema.
-- Add new policy blueprint to all your branch offices and subsidiaries in one click.
-- Update and remove a policy blueprint and rollout the changes.
-- Update state of a policy blueprint and rollout the changes.
+In this tutorial, you learn how to:
+
+> [!div class="checklist"]
+> * Deploy this logic app to your organization.
+> * Authenticate your logic app to Azure AD with the right permissions.
+> * Add a trigger that monitors OneDrive folder for policy blueprint requests.
+> * Add an action that sends a message to Teams security channel for approving or rejecting these requests.
+> * Add a condition that checks the approval response.
+> * Add an action that deploys the policy blueprint request.
+> * Add a condition that checks whether the policy blueprint was deployed successfully.
+> * Add an action that sends email confirming deployment of policy blueprint.
+
+
+When you're done, your logic app looks like this workflow at a high level:
+
+![High-level finished logic app overview](./media/tutorial-process-mailing-list-subscriptions-workflow/tutorial-high-level-overview.png)
 
 # Pre-requisites
 
