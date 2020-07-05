@@ -152,6 +152,6 @@ Once you have connected your user-Assigned Managed Identity to your Logic App ad
 
    This example uses the Office 365 OneDrive trigger:
 
-   ![Select "When a new email arrives" trigger for email provider](./media/tutorial-process-mailing-list-subscriptions-workflow/add-trigger-new-email.png)
+   ![Select "When a new email arrives" trigger for email provider](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-blueprint-automation/images/blueprint1-edit.png)
 
    * For Azure work or school accounts, select OneDrive for Business.
