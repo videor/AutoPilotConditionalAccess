@@ -19,12 +19,12 @@ In this tutorial, you learn how to:
 :heavy_check_mark: Authenticate your logic app to Azure AD with the right permissions.  <br /> 
 :heavy_check_mark: Add parameters specific to your organization within logic app.  <br /> 
 :heavy_check_mark: Add a trigger that monitors OneDrive folder for policy blueprint requests.<br /> 
-:heavy_check_mark: Add an action that sends a message to Teams security channel for approving or rejecting these requests.<br /> 
+:heavy_check_mark: Add an action that sends a message to Team channel for approving or rejecting these requests.<br /> 
 :heavy_check_mark: Add a condition that checks the approval response.<br /> 
 :heavy_check_mark: Get client secret from key vault using managed identity.<br /> 
 :heavy_check_mark: Add an action that deploys the policy blueprint request.<br /> 
 :heavy_check_mark: Add a condition that checks whether the policy blueprint was deployed successfully.<br /> 
-:heavy_check_mark: Add an action that sends email confirming deployment of policy blueprint.<br /> 
+:heavy_check_mark: Add an action that sends a message to Team channel confirming the outcome of policy blueprint deployment.<br /> 
 
 
 When you're done, your logic app looks like this workflow at a high level:
@@ -249,4 +249,19 @@ Once you have connected your user-Assigned Managed Identity to your Logic App ad
       | **Client ID** | `Client ID` | Client ID configured in step 3 |
       | **Credential Type** | `Secret` | Client Secret  |
       | **Secret** | `value` | Secret value retrieved from key vault |
+      ||||
+
+# Step 8: Add a condition that checks whether the policy blueprint was deployed successfully and send message in Team channel.
+
+1. On the Logic App Designer, in the HTTP connection box, click `Check if deployment is successful`. This example uses logic app conditions.
+
+1. Specify the Team, channel and message for posting to Team channel. The message is shorterned for readability.
+
+   ![Select "Check if deployment is successful" condition](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-blueprint-automation/images/blueprint8-edit.png)
+
+      | Property | Value | Description |
+      |----------|-------|-------------|
+      | **Team** | `ConditionalAccess` | The Team to post the outcome of deployment |
+      | **Channel** | `Blueprints` | The Teams channel to post the outcome of deployment |
+      | **Message** | `Adaptive card message` | Update the adaptive card to show a message depending on the outcome of deployment |
       ||||
