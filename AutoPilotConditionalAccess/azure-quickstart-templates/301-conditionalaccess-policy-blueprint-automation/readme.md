@@ -148,9 +148,9 @@ Once you have connected your user-Assigned Managed Identity to your Logic App ad
 
 # Step 4: Add a trigger that monitors OneDrive folder for policy blueprint requests
 
-1. On the Logic App Designer, in the connection box, click `Add new`. This example uses OneDrive trigger:
+1. On the Logic App Designer, in the Onedrive connection box, click `Add new`. This example uses OneDrive trigger:
 
-   ![Select "When a new email arrives" trigger for email provider](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-blueprint-automation/images/blueprint1-edit.png)
+   ![Select "When a new file arrives" trigger for Onedrive](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-blueprint-automation/images/blueprint1-edit.png)
 
 1. If prompted, sign in to your email account with your credentials so that Logic Apps can create a connection to your Onedrive account.
 
@@ -166,3 +166,28 @@ Once you have connected your user-Assigned Managed Identity to your Logic App ad
       | **Interval** | `1` | The number of intervals to wait between checks |
       | **Frequency** | `Hour` | The unit of time to use for the recurrence |
       ||||
+      
+1. Following the trigger, the response is parsed.
+
+# Step 5: Add an action that sends a message to Teams channel for approving or rejecting these requests.
+
+1. On the Logic App Designer, in the Teams connection box, click `Add new`. This example uses Teams connector:
+
+   ![Select "Post an adaptive card to Teams channel and wait for a response" connector for Teams](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-blueprint-automation/images/blueprint3-edit.png)
+
+1. If prompted, sign in to your email account with your credentials so that Logic Apps can create a connection to your Teams account.
+
+1. In the connector box, provide the criteria for posting an adaptive card to Teams channel.
+
+   1. Specify the Team, channel, update card and update message for posting to Teams.
+
+      ![Specify Team, channel, update card and update message for posting to Teams](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-blueprint-automation/images/blueprint4-edit.png)
+
+      | Property | Value | Description |
+      |----------|-------|-------------|
+      | **Team** | `ConditionalAccess` | The Team to post approval workflow |
+      | **Channel** | `Blueprints` | The Teams channel to post approval workflow |
+      | **Update card** | `Yes` | Update the adaptive card to show a member of Teams channel has taken an action |
+      | **update message** | `Processing requested blueprint deployment` | Update the adaptive card to show a message once an approval action is taken |
+      ||||
+      
