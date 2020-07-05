@@ -125,15 +125,11 @@ Once you have deployed the automation template from this repository. Connect the
 
 1. In the left-hand navigation pane, select the Logic App service, and then select Identity > User Assigned > Select Add.
 
-![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/images/LogicApp-301-CA-breakglass-automation-5.PNG)
-
 2. Select the User-assigned managed identity from the context pane that appears on the right, select Add.
-
-![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/images/LogicApp-301-CA-breakglass-automation-6.PNG)
 
 3. You should see the screen below with your registered user-assigned managed identity connected to your logic app. 
 
-![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/images/LogicApp-301-CA-breakglass-automation-7.PNG).
+![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-blueprint-automation/images/blueprintMI-edit.png).
 
 # Step 3: Update parameters value and click Save. 
 
