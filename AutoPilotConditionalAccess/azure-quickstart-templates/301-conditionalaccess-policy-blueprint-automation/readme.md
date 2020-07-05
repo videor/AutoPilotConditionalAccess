@@ -113,5 +113,5 @@ For more information, see these topics:
 * [Deploy resources with ARM templates and Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md)
 
 
-Step 2: Authenticate your logic app to Azure AD with the right permissions
+# Step 2: Authenticate your logic app to Azure AD with the right permissions
 
