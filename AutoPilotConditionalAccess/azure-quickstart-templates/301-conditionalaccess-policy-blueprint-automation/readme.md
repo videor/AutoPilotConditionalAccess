@@ -4,11 +4,7 @@ Intent: As an IT admin, I want to be able to easily deploy conditional access po
 
 You can use the conditional access APIs to manage policy blueprints that you can make available to your branch offices and subsidiaries. For example, you can:
 
-1. As a central IT admin, add a new policy blueprint using conditional access API JSON schema to a shared onedrive. All subsidieries and branch offices who have been given access to this onedrive will receive notification to create a new conditional access policy based on the policy blueprint. Admins in branch offices and subsidiaries can approve or reject this blueprint. If admins accept the policy blueprint, the conditional access APIs will be used to deploy the blueprint to consented branch offices and subsidiaries! 
-
-2. Update or delete a conditional access policy blueprint and rollout the changes to your branch offices and subsidiaries.
-
-3. Enable or disable the conditional access policy blueprint state using conditional access APIs and rollout the changes to your branch offices and subsidiaries. This may be needed in case of business continuity.
+As a central IT admin, add a new policy blueprint using conditional access schema to a shared onedrive. All subsidieries and branch offices who have been given access to this onedrive will receive notification to create a new conditional access policy based on the policy blueprint. Admins in branch offices and subsidiaries can approve or reject this blueprint. If approved, the policy blueprint will be deployed to consented branch offices and subsidiaries! 
 
 This automation can be very useful for organizations that manage large numbers of Azure AD tenants representing branch offices and subsidiaries. Identity partners that need to provide policy blueprints to a number of their customers regularly. Or even in cases of mergers and acquisitions. 
 
