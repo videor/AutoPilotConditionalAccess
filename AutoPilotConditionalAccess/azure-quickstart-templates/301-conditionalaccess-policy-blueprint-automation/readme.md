@@ -116,7 +116,9 @@ For more information, see these topics:
 
 # Step 2: Authenticate your logic app to Azure AD with the right permissions
 
-Please look at [**Logic Apps and Managed Identities**](https://docs.microsoft.com/en-us/azure/logic-apps/create-managed-service-identity) to learn more on how to use managed identities within Logic App.
+This logic app uses user assigned managed identity for getting secrets from KeyVault in order to call conditional access APIs. Please look at [Authenticate your logic app to Azure AD with the right permissions](https://github.com/videor/AutoPilotConditionalAccess/tree/master/AutoPilotConditionalAccess/azure-quickstart-templates/docs) on how to create managed identity. 
+
+To learn more on how to use managed identities within Logic App please look at [**Logic Apps and Managed Identities**](https://docs.microsoft.com/en-us/azure/logic-apps/create-managed-service-identity) .
 
 Once you have deployed the automation template from this repository. Connect the user-Assigned Managed Identity to your Logic App by doing the following:
 
