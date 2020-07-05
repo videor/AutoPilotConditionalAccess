@@ -124,9 +124,9 @@ This logic app uses managed identity for getting secrets from key vault in order
 
 ![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-blueprint-automation/images/blueprintMI-edit.png).
 
-# Step 3: Update parameters value and click Save. 
+# Step 3: Update parameters. 
 
-1. In the left-hand navigation pane, select the Logic App you deployed, and then select Logic App designer > Parameters > Replace the default value with Key Vault URI, Client ID and Tenant ID.
+1. In the left-hand navigation pane, select Logic App designer > Parameters > Replace the default value with Key Vault URI, Client ID and Tenant ID.
 
 ![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-blueprint-automation/images/blueprint-parameters-edit.png)
 
@@ -235,7 +235,7 @@ This logic app uses managed identity for getting secrets from key vault in order
       | **Secret** | `value` | Secret value retrieved from key vault |
       ||||
 
-# Step 8: Add a condition that checks whether the policy blueprint was deployed successfully and send message in Team channel.
+# Step 9: Add a condition that checks whether the policy blueprint was deployed successfully and send message in Team channel.
 
 1. On the Logic App Designer, in the HTTP connection box, click `Check if deployment is successful`. This example uses logic app conditions.
 
