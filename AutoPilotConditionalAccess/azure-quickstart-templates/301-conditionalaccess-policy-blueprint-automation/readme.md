@@ -48,27 +48,25 @@ Follow the option that you want to use for deploying the quickstart template:
 
 <a name="deploy-azure-portal"></a>
 
-#### [Portal](#tab/azure-portal)
+#### [Azure Portal](#tab/azure-portal)
 
-1. Select the following image to sign in with your Azure account and open the quickstart template in the Azure portal:
+1. Select the following image to sign in with your Azure account and open the logic app in the Azure portal:
 
    [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fvideor%2FAutoPilotConditionalAccess%2Fmaster%2FAutoPilotConditionalAccess%2Fazure-quickstart-templates%2F301-conditionalaccess-policy-blueprint-automation%2Fazuredeploy.json)
 
-1. In the portal, on the **Create a logic app using a template** page, enter or select these values:
+1. In the portal, on the **Custom deployment** page, enter or select these values:
 
    | Property | Value | Description |
    |----------|-------|-------------|
    | **Subscription** | <*Azure-subscription-name*> | The name for the Azure subscription to use |
-   | **Resource group** | <*Azure-resource-group-name*> | The name for a new or existing Azure resource group. This example uses `Check-Azure-Status-RG`. |
-   | **Region** | <*Azure-region*> | The Azure datacenter region to use your logic app. This example uses `West US`. |
-   | **Logic App Name** | <*logic-app-name*> | The name to use for your logic app. This example uses `Check-Azure-Status-LA`. |
-   | **Test Uri** | <*test-URI*> | The URI for the service to call based on a specific schedule. This example uses `https://status.azure.com/en-us/status/`, which is the Azure status page. |
+   | **Resource group** | <*Azure-resource-group-name*> | The name for a new or existing Azure resource group. This example uses `AutoPilotConditionalAccess`. |
    | **Location** |  <*Azure-region-for-all-resources*> | The Azure region to use for all resources, if different from the default value. This example uses the default value, `[resourceGroup().location]`, which is the resource group location. |
+   | **Logic App Name** | <*logic-app-name*> | The name to use for your logic app. This example uses `301-conditionalaccess-policy-blueprint-automation`. |
    ||||
 
    Here is how the page looks with the values used in this example:
 
-   ![Provide information for quickstart template](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-blueprint-automation/images/Deployment.PNG)
+   ![Provide information for quickstart template](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-blueprint-automation/images/Deploy-LA-edit.png)
 
 1. When you're done, select **Purchase**.
 
