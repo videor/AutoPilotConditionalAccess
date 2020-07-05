@@ -415,7 +415,7 @@
                             "teams": {
                                 "connectionId": "[parameters('connections_teams_externalid')]",
                                 "connectionName": "teams",
-                                "id": "/subscriptions/e047b6ea-7532-4b75-8b21-2cd113c17048/providers/Microsoft.Web/locations/uksouth/managedApis/teams"
+                                "id": ""
                             }
                         }
                     }
