@@ -34,7 +34,7 @@ When you're done, your logic app looks like this workflow at a high level:
 
 If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you start.
 
-# Step 1: Deploy the template
+# Step 1: Deploy this logic app to your organization
 
 Follow the option that you want to use for deploying the quickstart template:
 
