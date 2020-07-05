@@ -211,7 +211,7 @@ Once you have connected your user-Assigned Managed Identity to your Logic App ad
 
 1. On the Logic App Designer, in the HTTP connection box, click `GET client secret from key vault using managed identity`. This example uses HTTP connector.
 
-1. Specify the Team, channel, update card and update message for posting to Teams.
+1. Specify the Method, URI, Queries, Authentication type, Managed Identity and Audience.
 
    ![Select "GET client secret from key vault using managed identity" HTTP connector](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-blueprint-automation/images/blueprint6-edit.png)
 
@@ -223,4 +223,30 @@ Once you have connected your user-Assigned Managed Identity to your Logic App ad
       | **Authentication type** | `Managed Identity` | Authentication type is managed identity |
       | **Managed Identity** | `AutoPilotCAUAI1` | User assigned managed identity connected in step 2 |
       | **Audience** | `https://vault.azure.net` | Key vault |
+      ||||
+
+1. Response from Key vault is parsed.
+
+1. The blueprint is checked to ensure it is enabled in report-only mode and read-only attributes (`id`, `createdDateTime` and `modifiedDateTime`) are removed.
+
+# Step 8: Add an action that deploys the policy blueprint request.
+
+1. On the Logic App Designer, in the HTTP connection box, click `Deploy new conditional access policy blueprint to branch office and subsidiaries`. This example uses HTTP connector.
+
+1. Specify the Method, URI, Headers, Body, Authentication type, Tenant, Audience, Client ID, Credential Type and Secret.
+
+   ![Select "GET client secret from key vault using managed identity" HTTP connector](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-blueprint-automation/images/blueprint7-edit.png)
+
+      | Property | Value | Description |
+      |----------|-------|-------------|
+      | **Method** | `POST` | Method to call |
+      | **URI** | `https://graph.microsoft.com/v1.0/identity/conditionalAccess/policies` | Conditional Access API v1.0 endpoint |
+      | **Headers** | `application/json` | Content-Type |
+      | **Body** | `Outputs` | Output from blueprint JSON after clensing from previous step |
+      | **Authentication type** | `Active Directory OAuth` | Authentication type for App-only flow |
+      | **Tenant** | `TenantID` | Tennat ID configured in step 3 |
+      | **Audience** | `https://graph.microsoft.com` | MS Graph |
+      | **Client ID** | `Client ID` | Client ID configured in step 3 |
+      | **Credential Type** | `Secret` | Client Secret  |
+      | **Secret** | `value` | Secret value retrieved from key vault |
       ||||
