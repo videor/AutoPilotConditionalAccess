@@ -28,7 +28,7 @@ In this tutorial, you learn how to:
 
 When you're done, your logic app looks like this workflow at a high level:
 
-![High-level finished logic app overview](./images/tutorial-high-level-overview.png)
+![High-level finished logic app overview](./images/High-Level-View-1.png)
 
 # Pre-requisites
 
