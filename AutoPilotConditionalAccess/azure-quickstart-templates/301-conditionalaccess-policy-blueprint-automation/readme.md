@@ -70,8 +70,6 @@ Follow the option that you want to use for deploying the quickstart template:
 
 1. When you're done, select **Purchase**.
 
-1. Continue with the steps in [Review deployed resources](#review-deployed-resources).
-
 #### [CLI](#tab/azure-cli)
 
 ```azurecli-interactive
