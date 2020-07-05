@@ -29,7 +29,7 @@ In this tutorial, you learn how to:
 
 When you're done, your logic app looks like this workflow at a high level:
 
-![High-level finished logic app overview](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-blueprint-automation/images/High-Level-View-1.PNG)
+![High-level finished logic app overview](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-blueprint-automation/images/Blueprint0.PNG)
 
 # Pre-requisites
 
@@ -255,12 +255,13 @@ Once you have connected your user-Assigned Managed Identity to your Logic App ad
 
 1. On the Logic App Designer, in the HTTP connection box, click `Check if deployment is successful`. This example uses logic app conditions.
 
-1. Specify the Team, channel and message for posting to Team channel. The message is shorterned for readability.
+1. Specify the Status code, Team, channel and message for posting to Team channel. The message is shorterned for readability.
 
    ![Select "Check if deployment is successful" condition](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-blueprint-automation/images/blueprint8-edit.png)
 
       | Property | Value | Description |
       |----------|-------|-------------|
+      | **Status code** | `201` | Check the status code for deployment |
       | **Team** | `ConditionalAccess` | The Team to post the outcome of deployment |
       | **Channel** | `Blueprints` | The Teams channel to post the outcome of deployment |
       | **Message** | `Adaptive card message` | Update the adaptive card to show a message depending on the outcome of deployment |
