@@ -70,7 +70,7 @@ Follow the option that you want to use for deploying the quickstart template:
 
    ![Provide information for quickstart template](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-blueprint-automation/images/Deployment.PNG)
 
-1. When you're done, select **Review + create**.
+1. When you're done, select **Purchase**.
 
 1. Continue with the steps in [Review deployed resources](#review-deployed-resources).
 
@@ -79,7 +79,7 @@ Follow the option that you want to use for deploying the quickstart template:
 ```azurecli-interactive
 read -p "Enter a project name name to use for generating resource names:" projectName &&
 read -p "Enter the location, such as 'westus':" location &&
-templateUri="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json" &&
+templateUri="https://raw.githubusercontent.com/videor/AutoPilotConditionalAccess/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-blueprint-automation/azuredeploy.json" &&
 resourceGroupName="${projectName}rg" &&
 az group create --name $resourceGroupName --location "$location" &&
 az deployment group create --resource-group $resourceGroupName --template-uri  $templateUri &&
@@ -97,7 +97,7 @@ For more information, see these topics:
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter a project name to use for generating resource names"
 $location = Read-Host -Prompt "Enter the location, such as 'westus'"
-$templateUri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json"
+$templateUri = "https://raw.githubusercontent.com/videor/AutoPilotConditionalAccess/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-blueprint-automation/azuredeploy.json"
 
 $resourceGroupName = "${projectName}rg"
 
