@@ -7,7 +7,7 @@ You can use the conditional access APIs to manage policy blueprints that you can
 As a central IT admin, add a new policy blueprint using conditional access schema to a shared onedrive. All subsidieries and branch offices who have been given access to this onedrive will receive notification to create a new conditional access policy based on the policy blueprint. Admins in branch offices and subsidiaries can approve or reject this blueprint. If approved, the policy blueprint will be deployed.
 
 This automation can be very useful for: 
-- organizations that manages large numbers of Azure AD tenants representing branch offices and subsidiaries.
+- Organizations that manages large numbers of Azure AD tenants representing branch offices and subsidiaries.
 - Identity partners that manages policy blueprints for a large number of customers. OR
 - Mergers and acquisitions. 
 
