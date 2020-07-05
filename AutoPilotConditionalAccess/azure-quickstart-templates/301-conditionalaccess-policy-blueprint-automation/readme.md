@@ -148,11 +148,9 @@ Once you have connected your user-Assigned Managed Identity to your Logic App ad
 
 # Step 4: Add a trigger that monitors OneDrive folder for policy blueprint requests
 
-1. On the Logic App Designer, in the connection box, click `add new`. This example uses OneDrive trigger:
+1. On the Logic App Designer, in the connection box, click `Add new`. This example uses OneDrive trigger:
 
    ![Select "When a new email arrives" trigger for email provider](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-blueprint-automation/images/blueprint1-edit.png)
-
-   * For Azure work or school accounts, select OneDrive for Business.
 
 1. If prompted, sign in to your email account with your credentials so that Logic Apps can create a connection to your Onedrive account.
 
@@ -164,7 +162,7 @@ Once you have connected your user-Assigned Managed Identity to your Logic App ad
 
       | Property | Value | Description |
       |----------|-------|-------------|
-      | **Folder** | `Inbox` | The Onedrive folder to monitor |
+      | **Folder** | `/ConditionalAccess/Blueprints` | The Onedrive folder to monitor |
       | **Interval** | `1` | The number of intervals to wait between checks |
       | **Frequency** | `Hour` | The unit of time to use for the recurrence |
       ||||
