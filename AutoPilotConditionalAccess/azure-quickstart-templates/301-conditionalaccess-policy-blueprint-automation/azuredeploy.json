@@ -7,15 +7,15 @@
             "type": "String"
         },
         "userAssignedIdentities_AutoPilotCAUAI1_externalid": {
-            "defaultValue": "/subscriptions/e047b6ea-7532-4b75-8b21-2cd113c17048/resourceGroups/AutoPilotConditionalAccess/providers/Microsoft.ManagedIdentity/userAssignedIdentities/AutoPilotCAUAI1",
+            "defaultValue": "",
             "type": "String"
         },
         "connections_onedriveforbusiness_externalid": {
-            "defaultValue": "/subscriptions/e047b6ea-7532-4b75-8b21-2cd113c17048/resourceGroups/AutoPilotConditionalAccess/providers/Microsoft.Web/connections/onedriveforbusiness",
+            "defaultValue": "",
             "type": "String"
         },
         "connections_teams_externalid": {
-            "defaultValue": "/subscriptions/e047b6ea-7532-4b75-8b21-2cd113c17048/resourceGroups/AutoPilotConditionalAccess/providers/Microsoft.Web/connections/teams",
+            "defaultValue": "",
             "type": "String"
         }
     },
