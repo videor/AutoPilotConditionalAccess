@@ -1,31 +1,30 @@
 # Tutorial:	Backup and Restore Conditional Acess Policies
 
-Intent: As an IT admin, I want to be able to easily backup conditional access policies so I can undo policy changes or recover from a disaster.
+Intent: As an IT admin, I want to be able to easily backup conditional access policies so I can undo policy changes.
 
-You can use the conditional access APIs to manage policy blueprints that you can make available to your branch offices and subsidiaries. For example, you can:
+You can use the conditional access APIs to manage policy backups that you can use to recover from accidental policy changes. For example, you can:
 
-As a central IT admin, add a new policy blueprint using conditional access schema to a shared onedrive. All subsidieries and branch offices who have been given access to this onedrive will receive notification to create a new conditional access policy based on the policy blueprint. Admins in branch offices and subsidiaries can approve or reject this blueprint. If approved, the policy blueprint will be deployed.
+As a IT admin, you can add, update or delete a conditional access policy using conditional APIs. The cretion of conditional access policy will backup the policy within onedrive and any updates to the conditional access policy will update the relevant backup copy within Onedrive. 
 
 This automation can be very useful for: 
-- Organizations that manages large numbers of Azure AD tenants representing branch offices and subsidiaries.
-- Identity partners that manages policy blueprints for a large number of customers. OR
-- Mergers and acquisitions. 
+- Organizations that manages large numbers of conditional access policies. OR
+- Identity partners that manages policy backups for customers. 
 
-This tutorial shows how to build a [logic app](../logic-apps/logic-apps-overview.md) that automates policy blueprint deployment to branch offices and subsidiaries based on an approval-based workflow. Specifically, this logic app monitors a shared onedrive account for new policy blueprints submissions, sends requests for approval, and deploys the policy blueprint to approved branch offices and subsidiaries.
+This tutorial shows how to build a [logic app](https://docs.microsoft.com/en-us/azure/logic-apps/) that automates policy backup to Onedrive. Specifically, this logic app monitors the audit logs for policy changes made using conditional access APIs and either creates a new backup file or updates exisiting backup file within onedrive.
 
 In this tutorial, you learn how to:
 
 :heavy_check_mark: Deploy this logic app to your organization.  <br /> 
 :heavy_check_mark: Authenticate your logic app to Azure AD with the right permissions.  <br /> 
 :heavy_check_mark: Add parameters specific to your organization within logic app.  <br /> 
-:heavy_check_mark: Add a trigger that monitors OneDrive folder for policy blueprint requests.<br /> 
-:heavy_check_mark: Add an action that sends a message to Team channel for approving or rejecting these requests.<br /> 
-:heavy_check_mark: Add a condition that checks the approval response.<br /> 
+:heavy_check_mark: Add the Recurrence trigger to run a schedule workflow task.<br /> 
 :heavy_check_mark: Get client secret from key vault using managed identity.<br /> 
-:heavy_check_mark: Add an action that deploys the policy blueprint request.<br /> 
-:heavy_check_mark: Add a condition that checks whether the policy blueprint was deployed successfully.<br /> 
-:heavy_check_mark: Add an action that sends a message to Team channel confirming the outcome of policy blueprint deployment.<br /> 
-
+:heavy_check_mark: Get audit logs for CRUD operation on conditional access policies.<br /> 
+:heavy_check_mark: Add a condition that checks if any CRUD operations were returned.<br /> 
+:heavy_check_mark: Add a switch statement that checks whether the conditional access policy was added, updated or deleted.<br /> 
+:heavy_check_mark: Add a check to find if the newly created conditional access policy has already been backed up.<br /> 
+:heavy_check_mark: Backup the newly created conditional access policy in Onedrive. <br /> 
+:heavy_check_mark: Update the backup file in Onedrive. <br /> 
 
 When you're done, your logic app looks like this workflow at a high level:
 
