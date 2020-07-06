@@ -228,6 +228,23 @@ By default, the previous **recurrence** action returns the time in seconds when 
       | **Condition** | `1` | response to verify in the condition |
       ||||
 
+# Step 8: Add a switch statement that checks whether the conditional access policy was added, updated or deleted.
+
+1. On the Logic App Designer, in the HTTP connection box, click `Switch`. This example uses logic app switch statement.
+
+1. Specify the Switch On and Case to evaluate. Specify `Add conditional access policy` for case 1, `Update conditional access policy` for case 2 and `Delete conditional access policy` for case 3.
+
+   ![Select "Check if deployment is successful" condition](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-backup-automation/images/backup5-edit.png)
+
+      | Property | Value | Description |
+      |----------|-------|-------------|
+      | **Switch On** | `Activity display name` | Check the activity display name retrieved from audit logs |
+      | **Case 1 equals** | `Add conditional access policy` | Case 1 to check Add operations on conditional access policies |
+      | **Case 2 equals** | `Update conditional access policy` | Case 2 to check Update operations on conditional access policies|
+      | **Case 3 equals** | `Delete conditional access policy` | Case 3 to check Delete operations on conditional access policies|
+      ||||
+      
+      
 # Step 7: Get client secret from key vault using managed identity.
 
 1. On the Logic App Designer, in the HTTP connection box, click `GET client secret from key vault using managed identity`. This example uses HTTP connector.
