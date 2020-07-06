@@ -244,6 +244,27 @@ By default, the previous **recurrence** action returns the time in seconds when 
       | **Case 3 equals** | `Delete conditional access policy` | Case 3 to check Delete operations on conditional access policies|
       ||||
       
+# Step 9: Add a check to find if the newly created conditional access policy has already been backed up out of band.
+
+1. On the Logic App Designer, in the Onedrive connection box, click `find if the newly created conditional access policy has already been backed up`. This example uses OneDrive trigger:
+
+   ![Select "find if the newly created conditional access policy has already been backed up" trigger for Onedrive](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-backup-automation/images/backup6-edit.png)
+
+1. If prompted, sign in to your email account with your credentials so that Logic Apps can create a connection to your Onedrive account.
+
+1. In the trigger, provide the criteria for checking files.
+
+1. Specify the search query, folder, file search mode, and number of files to retrieve.
+
+      | Property | Value | Description |
+      |----------|-------|-------------|
+      | **Search query** | `id` | The Onedrive folder to monitor |
+      | **Folder** | `/ConditionalAccess/Backup` | The Onedrive folder to search |
+      | **File search mode** | `OneDriveSearch` | Search mode |
+      | **Number of files** | `1` | The number of files to retrieve from search |
+      ||||
+      
+      
       
 # Step 7: Get client secret from key vault using managed identity.
 
