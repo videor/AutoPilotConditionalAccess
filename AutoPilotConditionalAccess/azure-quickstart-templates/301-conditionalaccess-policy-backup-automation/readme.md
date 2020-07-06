@@ -294,63 +294,36 @@ By default, the previous **recurrence** action returns the time in seconds when 
       | **File content** | `newValue` | The new JSON value retrieved from audit log |
       ||||
       
-# Step 7: Get client secret from key vault using managed identity.
+# Step 11: Update the backup file in Onedrive.
 
-1. On the Logic App Designer, in the HTTP connection box, click `GET client secret from key vault using managed identity`. This example uses HTTP connector.
+1. On the Logic App Designer, in the Switch box, select case for `Update of conditional access policies`. 
 
-1. Specify the Method, URI, Queries, Authentication type, Managed Identity and Audience.
+1. Select the Onedrive connection box, click `Get file content`. This example uses OneDrive connector:
+    
+      ![Select "Condition to check the response from get audit logs HTTP connector"](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-backup-automation/images/backup8-edit.png)    
+ 
+1. If prompted, sign in to your email account with your credentials so that Logic Apps can create a connection to your Onedrive account.
 
-   ![Select "GET client secret from key vault using managed identity" HTTP connector](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-blueprint-automation/images/blueprint6-edit.png)
+1. In the trigger, provide the criteria for getting file content from onedrive.
 
-      | Property | Value | Description |
-      |----------|-------|-------------|
-      | **Method** | `GET` | Method to call |
-      | **URI** | `AutoPilotConditionalAccessKeyVaultClientCredentials` | The key vault parameter URI configured in step 3  |
-      | **Queries** | `2016-10-01` | api-version |
-      | **Authentication type** | `Managed Identity` | Authentication type is managed identity |
-      | **Managed Identity** | `AutoPilotCAUAI1` | User assigned managed identity connected in step 2 |
-      | **Audience** | `https://vault.azure.net` | Key vault |
-      ||||
-
-1. Response from Key vault is parsed.
-
-1. The blueprint is checked to ensure it is enabled in report-only mode and read-only attributes (`id`, `createdDateTime` and `modifiedDateTime`) are removed.
-
-# Step 8: Add an action that deploys the policy blueprint request.
-
-1. On the Logic App Designer, in the HTTP connection box, click `Deploy new conditional access policy blueprint to branch office and subsidiaries`. This example uses HTTP connector.
-
-1. Specify the Method, URI, Headers, Body, Authentication type, Tenant, Audience, Client ID, Credential Type and Secret.
-
-   ![Select "GET client secret from key vault using managed identity" HTTP connector](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-blueprint-automation/images/blueprint7-edit.png)
+1. Specify the file id.
 
       | Property | Value | Description |
       |----------|-------|-------------|
-      | **Method** | `POST` | Method to call |
-      | **URI** | `https://graph.microsoft.com/v1.0/identity/conditionalAccess/policies` | Conditional Access API v1.0 endpoint |
-      | **Headers** | `application/json` | Content-Type |
-      | **Body** | `Outputs` | Output from blueprint JSON after clensing from previous step |
-      | **Authentication type** | `Active Directory OAuth` | Authentication type for App-only flow |
-      | **Tenant** | `TenantID` | Tennat ID configured in step 3 |
-      | **Audience** | `https://graph.microsoft.com` | MS Graph |
-      | **Client ID** | `Client ID` | Client ID configured in step 3 |
-      | **Credential Type** | `Secret` | Client Secret  |
-      | **Secret** | `value` | Secret value retrieved from key vault |
+      | **File id** | `id` | The Onedrive file id to get content |
       ||||
+      
+   
+1. Select the Onedrive connection box, click `Update file`. This example uses OneDrive connector:    
+ 
+1. If prompted, sign in to your email account with your credentials so that Logic Apps can create a connection to your Onedrive account.
 
-# Step 9: Add a condition that checks whether the policy blueprint was deployed successfully and send message in Team channel.
+1. In the trigger, provide the criteria for updating file content within onedrive.
 
-1. On the Logic App Designer, in the HTTP connection box, click `Check if deployment is successful`. This example uses logic app conditions.
-
-1. Specify the Status code, Team, channel and message for posting to Team channel. The message is shorterned for readability.
-
-   ![Select "Check if deployment is successful" condition](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-blueprint-automation/images/blueprint8-edit.png)
+1. Specify the file id and file content.
 
       | Property | Value | Description |
       |----------|-------|-------------|
-      | **Status code** | `201` | Check the status code for deployment |
-      | **Team** | `ConditionalAccess` | The Team to post the outcome of deployment |
-      | **Channel** | `Blueprints` | The Teams channel to post the outcome of deployment |
-      | **Message** | `Adaptive card message` | Update the adaptive card to show a message depending on the outcome of deployment |
+      | **File id** | `Id` | File id |
+      | **File content** | `Outputs` | The new JSON value output from audit log |
       ||||
-
