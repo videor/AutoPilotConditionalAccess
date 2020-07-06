@@ -270,7 +270,7 @@ By default, the previous **recurrence** action returns the time in seconds when 
 
 1. Specify the HTTP response to evaluate, expression and verify the greater than or equal to `1` response in the condition.
     
-      ![Select "Condition to check the response from get audit logs HTTP connector"]((https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-backup-automation/images/backup7-edit.png)
+      ![Select "Condition to check the response from get audit logs HTTP connector"](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-backup-automation/images/backup7-edit.png)
     
       | Property | Value | Description |
       |----------|-------|-------------|
