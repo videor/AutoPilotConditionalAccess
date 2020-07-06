@@ -1,0 +1,650 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "workflows_301_conditionalaccess_backup_automation_onedrive_name": {
+            "defaultValue": "301-conditionalaccess-backup-automation-onedrive",
+            "type": "String"
+        },
+        "userAssignedIdentities_AutoPilotCAUAI1_externalid": {
+            "defaultValue": "/subscriptions/e047b6ea-7532-4b75-8b21-2cd113c17048/resourceGroups/AutoPilotConditionalAccess/providers/Microsoft.ManagedIdentity/userAssignedIdentities/AutoPilotCAUAI1",
+            "type": "String"
+        },
+        "connections_onedriveforbusiness_externalid": {
+            "defaultValue": "/subscriptions/e047b6ea-7532-4b75-8b21-2cd113c17048/resourceGroups/AutoPilotConditionalAccess/providers/Microsoft.Web/connections/onedriveforbusiness",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Logic/workflows",
+            "apiVersion": "2017-07-01",
+            "name": "[parameters('workflows_301_conditionalaccess_backup_automation_onedrive_name')]",
+            "location": "uksouth",
+            "properties": {
+                "state": "Enabled",
+                "definition": {
+                    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+                    "contentVersion": "1.0.0.0",
+                    "parameters": {
+                        "$connections": {
+                            "defaultValue": {},
+                            "type": "Object"
+                        },
+                        "AutoPilotConditionalAccessKeyVaultClientCredentials": {
+                            "defaultValue": "https://autopilotcavault2.vault.azure.net/secrets/AutoPilotConditionalAccessClientSecret/04e3b95b7f0e49dea10e4189b5374595",
+                            "type": "String"
+                        },
+                        "ClientID": {
+                            "defaultValue": "3ad0fe30-3640-4364-a39a-bd1fae04ac9a",
+                            "type": "String"
+                        },
+                        "TenantID": {
+                            "defaultValue": "638f6240-1182-4adb-a12a-fdb1c768d7f2",
+                            "type": "String"
+                        }
+                    },
+                    "triggers": {
+                        "Recurrence": {
+                            "recurrence": {
+                                "frequency": "Minute",
+                                "interval": 1,
+                                "startTime": "2020-06-28T10:54:00.0000000Z"
+                            },
+                            "type": "Recurrence"
+                        }
+                    },
+                    "actions": {
+                        "Audit_logs_endpoint_for_conditional_access_policies": {
+                            "runAfter": {},
+                            "type": "InitializeVariable",
+                            "inputs": {
+                                "variables": [
+                                    {
+                                        "name": "URL",
+                                        "type": "string",
+                                        "value": "https://graph.microsoft.com/v1.0/auditLogs/directoryAudits?$orderby=activityDateTime asc&$filter=loggedByService eq 'Conditional Access' and activityDateTime le @{subtractFromTime(utcNow(),2,'Minute')}  and activityDateTime ge @{subtractFromTime(utcNow(),3,'Minute')}"
+                                    }
+                                ]
+                            }
+                        },
+                        "Condition": {
+                            "actions": {
+                                "For_each": {
+                                    "foreach": "@body('Parse_Audit_Logs_retrieved_for_CRUD_operations_on_Conditional_Access_Policies')?['value']",
+                                    "actions": {
+                                        "Create_Audit_Logs_backup_for_Conditional_Access_Policies": {
+                                            "runAfter": {
+                                                "Switch": [
+                                                    "Succeeded"
+                                                ]
+                                            },
+                                            "type": "ApiConnection",
+                                            "inputs": {
+                                                "body": "@items('For_each')",
+                                                "host": {
+                                                    "connection": {
+                                                        "name": "@parameters('$connections')['onedriveforbusiness']['connectionId']"
+                                                    }
+                                                },
+                                                "method": "post",
+                                                "path": "/datasets/default/files",
+                                                "queries": {
+                                                    "folderPath": "/AI Hero/AzureAD/ConditionalAccess/AuditLogs",
+                                                    "name": "@{items('For_each')?['correlationId']}.json"
+                                                }
+                                            },
+                                            "runtimeConfiguration": {
+                                                "contentTransfer": {
+                                                    "transferMode": "Chunked"
+                                                }
+                                            }
+                                        },
+                                        "Parse_Audit_Logs": {
+                                            "runAfter": {},
+                                            "type": "ParseJson",
+                                            "inputs": {
+                                                "content": "@items('For_each')",
+                                                "schema": {
+                                                    "properties": {
+                                                        "activityDateTime": {
+                                                            "type": "string"
+                                                        },
+                                                        "activityDisplayName": {
+                                                            "type": "string"
+                                                        },
+                                                        "category": {
+                                                            "type": "string"
+                                                        },
+                                                        "correlationId": {
+                                                            "type": "string"
+                                                        },
+                                                        "id": {
+                                                            "type": "string"
+                                                        },
+                                                        "loggedByService": {
+                                                            "type": "string"
+                                                        },
+                                                        "operationType": {
+                                                            "type": "string"
+                                                        },
+                                                        "targetResources": {
+                                                            "items": {
+                                                                "properties": {
+                                                                    "displayName": {
+                                                                        "type": "string"
+                                                                    },
+                                                                    "id": {
+                                                                        "type": "string"
+                                                                    },
+                                                                    "modifiedProperties": {
+                                                                        "items": {
+                                                                            "properties": {
+                                                                                "displayName": {
+                                                                                    "type": "string"
+                                                                                },
+                                                                                "newValue": {
+                                                                                    "type": [
+                                                                                        "string",
+                                                                                        "null"
+                                                                                    ]
+                                                                                },
+                                                                                "oldValue": {
+                                                                                    "type": [
+                                                                                        "string",
+                                                                                        "null"
+                                                                                    ]
+                                                                                }
+                                                                            },
+                                                                            "required": [
+                                                                                "displayName",
+                                                                                "oldValue",
+                                                                                "newValue"
+                                                                            ],
+                                                                            "type": "object"
+                                                                        },
+                                                                        "type": "array"
+                                                                    },
+                                                                    "type": {
+                                                                        "type": "string"
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "id",
+                                                                    "displayName",
+                                                                    "type",
+                                                                    "modifiedProperties"
+                                                                ],
+                                                                "type": "object"
+                                                            },
+                                                            "type": "array"
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                }
+                                            }
+                                        },
+                                        "Switch": {
+                                            "runAfter": {
+                                                "Parse_Audit_Logs": [
+                                                    "Succeeded"
+                                                ]
+                                            },
+                                            "cases": {
+                                                "Case": {
+                                                    "case": "Add conditional access policy",
+                                                    "actions": {
+                                                        "For_each_target_resources_within_audit_logs": {
+                                                            "foreach": "@body('Parse_Audit_Logs')?['targetResources']",
+                                                            "actions": {
+                                                                "For_each_modified_properties_within_audit_logs": {
+                                                                    "foreach": "@items('For_each_target_resources_within_audit_logs')?['modifiedProperties']",
+                                                                    "actions": {
+                                                                        "Check_if_conditional_access_policy_has_already_been_backed_up": {
+                                                                            "actions": {},
+                                                                            "runAfter": {
+                                                                                "Find_if_the_newly_created_conditional_access_policy_has_already_been_backed_up": [
+                                                                                    "Succeeded"
+                                                                                ]
+                                                                            },
+                                                                            "else": {
+                                                                                "actions": {
+                                                                                    "Create_backup_of_newly_created_conditional_access_policy": {
+                                                                                        "runAfter": {},
+                                                                                        "type": "ApiConnection",
+                                                                                        "inputs": {
+                                                                                            "body": "@items('For_each_modified_properties_within_audit_logs')?['newValue']",
+                                                                                            "host": {
+                                                                                                "connection": {
+                                                                                                    "name": "@parameters('$connections')['onedriveforbusiness']['connectionId']"
+                                                                                                }
+                                                                                            },
+                                                                                            "method": "post",
+                                                                                            "path": "/datasets/default/files",
+                                                                                            "queries": {
+                                                                                                "folderPath": "/AI Hero/AzureAD/ConditionalAccess/Backup",
+                                                                                                "name": " [@{body('Parse_newly_created_conditional_access_policies')?['Id']}] @{body('Parse_newly_created_conditional_access_policies')?['displayName']}.json"
+                                                                                            }
+                                                                                        },
+                                                                                        "runtimeConfiguration": {
+                                                                                            "contentTransfer": {
+                                                                                                "transferMode": "Chunked"
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            },
+                                                                            "expression": {
+                                                                                "and": [
+                                                                                    {
+                                                                                        "greaterOrEquals": [
+                                                                                            "@length(body('Find_if_the_newly_created_conditional_access_policy_has_already_been_backed_up'))",
+                                                                                            1
+                                                                                        ]
+                                                                                    }
+                                                                                ]
+                                                                            },
+                                                                            "type": "If"
+                                                                        },
+                                                                        "Find_if_the_newly_created_conditional_access_policy_has_already_been_backed_up": {
+                                                                            "runAfter": {
+                                                                                "Parse_newly_created_conditional_access_policies": [
+                                                                                    "Succeeded"
+                                                                                ]
+                                                                            },
+                                                                            "metadata": {
+                                                                                "b!S_mQ8pRickKStdgCwQA2ZYs5CwfTlTdFgOHtghxQUT-NGQ06AnNzSqHWQhBs6nsx.01DNPMLTGVSJPFF2VDJVDKQHB3UOEHCXI3": "/AI Hero/AzureAD/ConditionalAccess/Backup"
+                                                                            },
+                                                                            "type": "ApiConnection",
+                                                                            "inputs": {
+                                                                                "host": {
+                                                                                    "connection": {
+                                                                                        "name": "@parameters('$connections')['onedriveforbusiness']['connectionId']"
+                                                                                    }
+                                                                                },
+                                                                                "method": "get",
+                                                                                "path": "/datasets/default/folders/@{encodeURIComponent(encodeURIComponent('b!S_mQ8pRickKStdgCwQA2ZYs5CwfTlTdFgOHtghxQUT-NGQ06AnNzSqHWQhBs6nsx.01DNPMLTGVSJPFF2VDJVDKQHB3UOEHCXI3'))}/search",
+                                                                                "queries": {
+                                                                                    "findMode": "OneDriveSearch",
+                                                                                    "maxFileCount": 1,
+                                                                                    "query": "@body('Parse_newly_created_conditional_access_policies')?['Id']"
+                                                                                }
+                                                                            }
+                                                                        },
+                                                                        "Parse_newly_created_conditional_access_policies": {
+                                                                            "runAfter": {
+                                                                                "Set_Old_JSON_value_from_Audit_Logs": [
+                                                                                    "Succeeded"
+                                                                                ]
+                                                                            },
+                                                                            "type": "ParseJson",
+                                                                            "inputs": {
+                                                                                "content": "@items('For_each_modified_properties_within_audit_logs')?['newValue']",
+                                                                                "schema": {
+                                                                                    "properties": {
+                                                                                        "CreatedDateTime": {
+                                                                                            "type": "string"
+                                                                                        },
+                                                                                        "Id": {
+                                                                                            "type": "string"
+                                                                                        },
+                                                                                        "displayName": {
+                                                                                            "type": "string"
+                                                                                        },
+                                                                                        "state": {
+                                                                                            "type": "string"
+                                                                                        }
+                                                                                    },
+                                                                                    "type": "object"
+                                                                                }
+                                                                            }
+                                                                        },
+                                                                        "Set_New_JSON_value_from_Audit_Logs": {
+                                                                            "runAfter": {},
+                                                                            "type": "SetVariable",
+                                                                            "inputs": {
+                                                                                "name": "NewJSON",
+                                                                                "value": "@{items('For_each_modified_properties_within_audit_logs')?['newValue']}"
+                                                                            }
+                                                                        },
+                                                                        "Set_Old_JSON_value_from_Audit_Logs": {
+                                                                            "runAfter": {
+                                                                                "Set_New_JSON_value_from_Audit_Logs": [
+                                                                                    "Succeeded"
+                                                                                ]
+                                                                            },
+                                                                            "type": "SetVariable",
+                                                                            "inputs": {
+                                                                                "name": "OldJSON",
+                                                                                "value": "@{items('For_each_modified_properties_within_audit_logs')?['oldValue']}"
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "runAfter": {},
+                                                                    "type": "Foreach"
+                                                                }
+                                                            },
+                                                            "runAfter": {},
+                                                            "type": "Foreach"
+                                                        }
+                                                    }
+                                                },
+                                                "Case_2": {
+                                                    "case": "Update conditional access policy",
+                                                    "actions": {
+                                                        "For_each_conditional_access_policy_update": {
+                                                            "foreach": "@body('Parse_Audit_Logs')?['targetResources']",
+                                                            "actions": {
+                                                                "For_each_modified_properties_within_audit_logs_update_": {
+                                                                    "foreach": "@items('For_each_conditional_access_policy_update')?['modifiedProperties']",
+                                                                    "actions": {
+                                                                        "Compose_the_updated_JSON": {
+                                                                            "runAfter": {
+                                                                                "Parse_JSON": [
+                                                                                    "Succeeded"
+                                                                                ]
+                                                                            },
+                                                                            "type": "Compose",
+                                                                            "inputs": "@items('For_each_modified_properties_within_audit_logs_update_')?['newValue']"
+                                                                        },
+                                                                        "Find_files_in_folder": {
+                                                                            "runAfter": {
+                                                                                "Compose_the_updated_JSON": [
+                                                                                    "Succeeded"
+                                                                                ]
+                                                                            },
+                                                                            "metadata": {
+                                                                                "b!S_mQ8pRickKStdgCwQA2ZYs5CwfTlTdFgOHtghxQUT-NGQ06AnNzSqHWQhBs6nsx.01DNPMLTGVSJPFF2VDJVDKQHB3UOEHCXI3": "/AI Hero/AzureAD/ConditionalAccess/Backup"
+                                                                            },
+                                                                            "type": "ApiConnection",
+                                                                            "inputs": {
+                                                                                "host": {
+                                                                                    "connection": {
+                                                                                        "name": "@parameters('$connections')['onedriveforbusiness']['connectionId']"
+                                                                                    }
+                                                                                },
+                                                                                "method": "get",
+                                                                                "path": "/datasets/default/folders/@{encodeURIComponent(encodeURIComponent('b!S_mQ8pRickKStdgCwQA2ZYs5CwfTlTdFgOHtghxQUT-NGQ06AnNzSqHWQhBs6nsx.01DNPMLTGVSJPFF2VDJVDKQHB3UOEHCXI3'))}/search",
+                                                                                "queries": {
+                                                                                    "findMode": "OneDriveSearch",
+                                                                                    "maxFileCount": 1,
+                                                                                    "query": "@body('Parse_JSON')?['Id']"
+                                                                                }
+                                                                            }
+                                                                        },
+                                                                        "Parse_JSON": {
+                                                                            "runAfter": {},
+                                                                            "type": "ParseJson",
+                                                                            "inputs": {
+                                                                                "content": "@items('For_each_modified_properties_within_audit_logs_update_')?['newValue']",
+                                                                                "schema": {
+                                                                                    "properties": {
+                                                                                        "CreatedDateTime": {
+                                                                                            "type": "string"
+                                                                                        },
+                                                                                        "Id": {
+                                                                                            "type": "string"
+                                                                                        },
+                                                                                        "displayName": {
+                                                                                            "type": "string"
+                                                                                        },
+                                                                                        "state": {
+                                                                                            "type": "string"
+                                                                                        }
+                                                                                    },
+                                                                                    "type": "object"
+                                                                                }
+                                                                            }
+                                                                        },
+                                                                        "Update_the_backup_files_to_the_new_version_of_conditional_access_policies": {
+                                                                            "foreach": "@body('Find_files_in_folder')",
+                                                                            "actions": {
+                                                                                "Get_file_content": {
+                                                                                    "runAfter": {},
+                                                                                    "type": "ApiConnection",
+                                                                                    "inputs": {
+                                                                                        "host": {
+                                                                                            "connection": {
+                                                                                                "name": "@parameters('$connections')['onedriveforbusiness']['connectionId']"
+                                                                                            }
+                                                                                        },
+                                                                                        "method": "get",
+                                                                                        "path": "/datasets/default/files/@{encodeURIComponent(encodeURIComponent(items('Update_the_backup_files_to_the_new_version_of_conditional_access_policies')?['Id']))}/content",
+                                                                                        "queries": {
+                                                                                            "inferContentType": true
+                                                                                        }
+                                                                                    }
+                                                                                },
+                                                                                "Update_file": {
+                                                                                    "runAfter": {
+                                                                                        "Get_file_content": [
+                                                                                            "Succeeded"
+                                                                                        ]
+                                                                                    },
+                                                                                    "type": "ApiConnection",
+                                                                                    "inputs": {
+                                                                                        "body": "@outputs('Compose_the_updated_JSON')",
+                                                                                        "host": {
+                                                                                            "connection": {
+                                                                                                "name": "@parameters('$connections')['onedriveforbusiness']['connectionId']"
+                                                                                            }
+                                                                                        },
+                                                                                        "method": "put",
+                                                                                        "path": "/datasets/default/files/@{encodeURIComponent(encodeURIComponent(items('Update_the_backup_files_to_the_new_version_of_conditional_access_policies')?['Id']))}"
+                                                                                    },
+                                                                                    "runtimeConfiguration": {
+                                                                                        "contentTransfer": {
+                                                                                            "transferMode": "Chunked"
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            },
+                                                                            "runAfter": {
+                                                                                "Find_files_in_folder": [
+                                                                                    "Succeeded"
+                                                                                ]
+                                                                            },
+                                                                            "type": "Foreach"
+                                                                        }
+                                                                    },
+                                                                    "runAfter": {},
+                                                                    "type": "Foreach"
+                                                                }
+                                                            },
+                                                            "runAfter": {},
+                                                            "type": "Foreach"
+                                                        }
+                                                    }
+                                                },
+                                                "Case_3": {
+                                                    "case": "Delete conditional access policy",
+                                                    "actions": {}
+                                                }
+                                            },
+                                            "default": {
+                                                "actions": {}
+                                            },
+                                            "expression": "@body('Parse_Audit_Logs')?['activityDisplayName']",
+                                            "type": "Switch"
+                                        }
+                                    },
+                                    "runAfter": {},
+                                    "type": "Foreach"
+                                }
+                            },
+                            "runAfter": {
+                                "Parse_Audit_Logs_retrieved_for_CRUD_operations_on_Conditional_Access_Policies": [
+                                    "Succeeded"
+                                ]
+                            },
+                            "expression": {
+                                "and": [
+                                    {
+                                        "greaterOrEquals": [
+                                            "@length(body('Parse_Audit_Logs_retrieved_for_CRUD_operations_on_Conditional_Access_Policies')?['value'])",
+                                            1
+                                        ]
+                                    }
+                                ]
+                            },
+                            "type": "If"
+                        },
+                        "GET_Client_Secret_from_Key_Vault_using_Managed_Identity": {
+                            "runAfter": {
+                                "New_policy_JSON_after_change_is_made_to_conditional_access_policy": [
+                                    "Succeeded"
+                                ]
+                            },
+                            "type": "Http",
+                            "inputs": {
+                                "authentication": {
+                                    "audience": "https://vault.azure.net",
+                                    "identity": "[parameters('userAssignedIdentities_AutoPilotCAUAI1_externalid')]",
+                                    "type": "ManagedServiceIdentity"
+                                },
+                                "method": "GET",
+                                "queries": {
+                                    "api-version": "2016-10-01"
+                                },
+                                "uri": "@parameters('AutoPilotConditionalAccessKeyVaultClientCredentials')"
+                            }
+                        },
+                        "Get_Audit_Logs_for_CRUD_operations_on_Conditional_Access_Policies": {
+                            "runAfter": {
+                                "Parse_Response_from_Key_Vault": [
+                                    "Succeeded"
+                                ]
+                            },
+                            "type": "Http",
+                            "inputs": {
+                                "authentication": {
+                                    "audience": "https://graph.microsoft.com",
+                                    "clientId": "@parameters('ClientID')",
+                                    "secret": "@body('Parse_Response_from_Key_Vault')?['value']",
+                                    "tenant": "@parameters('TenantID')",
+                                    "type": "ActiveDirectoryOAuth"
+                                },
+                                "method": "GET",
+                                "uri": "@variables('URL')"
+                            }
+                        },
+                        "New_policy_JSON_after_change_is_made_to_conditional_access_policy": {
+                            "runAfter": {
+                                "Old_policy_JSON_before_change_is_made_to_conditional_access_policy": [
+                                    "Succeeded"
+                                ]
+                            },
+                            "type": "InitializeVariable",
+                            "inputs": {
+                                "variables": [
+                                    {
+                                        "name": "NewJSON",
+                                        "type": "string"
+                                    }
+                                ]
+                            }
+                        },
+                        "Old_policy_JSON_before_change_is_made_to_conditional_access_policy": {
+                            "runAfter": {
+                                "Audit_logs_endpoint_for_conditional_access_policies": [
+                                    "Succeeded"
+                                ]
+                            },
+                            "type": "InitializeVariable",
+                            "inputs": {
+                                "variables": [
+                                    {
+                                        "name": "OldJSON",
+                                        "type": "string"
+                                    }
+                                ]
+                            }
+                        },
+                        "Parse_Audit_Logs_retrieved_for_CRUD_operations_on_Conditional_Access_Policies": {
+                            "runAfter": {
+                                "Get_Audit_Logs_for_CRUD_operations_on_Conditional_Access_Policies": [
+                                    "Succeeded"
+                                ]
+                            },
+                            "type": "ParseJson",
+                            "inputs": {
+                                "content": "@body('Get_Audit_Logs_for_CRUD_operations_on_Conditional_Access_Policies')",
+                                "schema": {
+                                    "properties": {
+                                        "value": {
+                                            "items": {
+                                                "properties": {
+                                                    "correlationId": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "correlationId"
+                                                ],
+                                                "type": "object"
+                                            },
+                                            "type": "array"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        },
+                        "Parse_Response_from_Key_Vault": {
+                            "runAfter": {
+                                "GET_Client_Secret_from_Key_Vault_using_Managed_Identity": [
+                                    "Succeeded"
+                                ]
+                            },
+                            "type": "ParseJson",
+                            "inputs": {
+                                "content": "@body('GET_Client_Secret_from_Key_Vault_using_Managed_Identity')",
+                                "schema": {
+                                    "properties": {
+                                        "attributes": {
+                                            "properties": {
+                                                "created": {
+                                                    "type": "integer"
+                                                },
+                                                "enabled": {
+                                                    "type": "boolean"
+                                                },
+                                                "recoveryLevel": {
+                                                    "type": "string"
+                                                },
+                                                "updated": {
+                                                    "type": "integer"
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "value": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "outputs": {}
+                },
+                "parameters": {
+                    "$connections": {
+                        "value": {
+                            "onedriveforbusiness": {
+                                "connectionId": "[parameters('connections_onedriveforbusiness_externalid')]",
+                                "connectionName": "onedriveforbusiness",
+                                "id": "/subscriptions/e047b6ea-7532-4b75-8b21-2cd113c17048/providers/Microsoft.Web/locations/uksouth/managedApis/onedriveforbusiness"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}
