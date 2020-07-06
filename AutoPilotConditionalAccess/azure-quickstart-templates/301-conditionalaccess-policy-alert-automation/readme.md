@@ -246,7 +246,7 @@ By default, the previous **recurrence** action returns the time in seconds when 
       
 # Step 9: Add a check to find if the newly created conditional access policy has block controls. If it does, fire an alert on Team channel<br /> 
 
-1. On the Logic App Designer, in the Onedrive connection box, click `check if the conditional access policy has been created with block controls`. This example uses logic app condition evaluation:
+1. On the Logic App Designer, in the Teams connection box, click `check if the conditional access policy has been created with block controls`. This example uses Teams connector:
 
    ![Select "fire an alert on Team channel if a new block policy is created" trigger for Teams](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-alert-automation/images/Alert9-edit.png)
 
@@ -277,67 +277,37 @@ By default, the previous **recurrence** action returns the time in seconds when 
       ||||
 
 
-# Step 10: Backup the newly created conditional access policy in Onedrive.
+# Step 10: Add a check to find if a conditional access policy has been updated from grant access to block controls. If it does, fire an alert on Team channel<br /> 
 
-1. On the Logic App Designer, in the Condition box, verify response. This example uses response from earlier HTTP connector:
+1. On the Logic App Designer, in the Onedrive connection box, click `check if the conditional access policy has been updated from Grant to block access`. This example uses Team connector:
 
-1. Specify the HTTP response to evaluate, expression and verify the greater than or equal to `1` response in the condition.
-    
-      ![Select "Condition to check the response from get audit logs HTTP connector"](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-backup-automation/images/backup7-edit.png)
-    
-      | Property | Value | Description |
-      |----------|-------|-------------|
-      | **Length** | `length of array` | The length of array response to evaluate |
-      | **Expression** | `is greater than or equal to` | The expression to evaluate |
-      | **Condition** | `1` | response to verify in the condition |
-      ||||      
- 
- 1. On the Logic App Designer, in the Onedrive connection box, click `create backup of newly created conditional access policy`. This example uses OneDrive trigger:
+   ![Select "fire an alert on Team channel when a policy is updated from grant to block" trigger for Teams](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-alert-automation/images/Alert10-edit.png)
 
-1. If prompted, sign in to your email account with your credentials so that Logic Apps can create a connection to your Onedrive account.
+1. In the condition, provide the criteria for checking the condition.
 
-1. In the trigger, provide the criteria for creating new file in onedrive.
-
-1. Specify the folder path, file name, and file content.
+1. Specify the HTTP response to evaluate, expression and verify the old policy JSON did not contain `block` control and the updated new policy JSON contains `block` control.
 
       | Property | Value | Description |
       |----------|-------|-------------|
-      | **Folder path** | `/ConditionalAccess/Backup` | The Onedrive folder to backup the policies |
-      | **File name** | `[Id] display name.json` | File name |
-      | **File content** | `newValue` | The new JSON value retrieved from audit log |
+      | **Built in control** | `built in control` | The built in control value within new policy JSON to evaluate |
+      | **Expression** | `does not contain` | The expression to evaluate |
+      | **Condition** | `block` | response to verify in the condition |
+      | **Built in control** | `built in control` | The built in control value within new policy JSON to evaluate |
+      | **Expression** | `contains` | The expression to evaluate |
+      | **Condition** | `block` | response to verify in the condition |
+      ||||   
+  
+1. On the Logic App Designer, in the Teams connection box, click `Post alert to Team channel on potentially disruptive update`. This example uses Teams connector:
+
+1. If prompted, sign in to your email account with your credentials so that Logic Apps can create a connection to your Teams account.
+
+1. In the connector box, provide the criteria for posting an adaptive card to Teams channel.
+
+1. Specify the Team, channel and message for posting to Teams. The message is shorterned for readability.
+
+      | Property | Value | Description |
+      |----------|-------|-------------|
+      | **Team** | `ConditionalAccess` | The Team to post alert |
+      | **Channel** | `General` | The Teams channel to post alert |
+      | **message** | `message` | Post the adaptive card with an alert message |
       ||||
-      
-# Step 11: Update the backup file in Onedrive.
-
-1. On the Logic App Designer, in the Switch box, select case for `Update of conditional access policies`. 
-
-1. Select the Onedrive connection box, click `Get file content`. This example uses OneDrive connector:
-    
-      ![Select "Condition to check the response from get audit logs HTTP connector"](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-backup-automation/images/backup8-edit.png)    
- 
-1. If prompted, sign in to your email account with your credentials so that Logic Apps can create a connection to your Onedrive account.
-
-1. In the trigger, provide the criteria for getting file content from onedrive.
-
-1. Specify the file id.
-
-      | Property | Value | Description |
-      |----------|-------|-------------|
-      | **File id** | `id` | The Onedrive file id to get content |
-      ||||
-      
-   
-1. Select the Onedrive connection box, click `Update file`. This example uses OneDrive connector:    
- 
-1. If prompted, sign in to your email account with your credentials so that Logic Apps can create a connection to your Onedrive account.
-
-1. In the trigger, provide the criteria for updating file content within onedrive.
-
-1. Specify the file id and file content.
-
-      | Property | Value | Description |
-      |----------|-------|-------------|
-      | **File id** | `Id` | File id |
-      | **File content** | `Outputs` | The new JSON value output from audit log |
-      ||||
-
