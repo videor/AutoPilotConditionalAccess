@@ -131,7 +131,7 @@ This logic app uses managed identity for getting secrets from key vault in order
 
 1. On the Logic App Designer, click `recurrence` box. This example uses a recurrence trigger.
 
-   ![Change the Recurrence trigger's interval and frequency](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-backup-automation/images/backup1-edit.PNG)
+   ![Change the Recurrence trigger's interval and frequency](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-backup-automation/images/backup1-edit.png)
 
    | Property | Required | Value | Description |
    |----------|----------|-------|-------------|
