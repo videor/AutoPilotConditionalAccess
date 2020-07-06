@@ -244,26 +244,39 @@ By default, the previous **recurrence** action returns the time in seconds when 
       | **Case 3 equals** | `Delete conditional access policy` | Case 3 to check Delete operations on conditional access policies|
       ||||
       
-# Step 9: Add a check to find if the newly created conditional access policy has already been backed up.
+# Step 9: Add a check to find if the newly created conditional access policy has block controls. If it does, fire an alert on Team channel<br /> 
 
-1. On the Logic App Designer, in the Onedrive connection box, click `find if the newly created conditional access policy has already been backed up`. This example uses OneDrive trigger:
+1. On the Logic App Designer, in the Onedrive connection box, click `check if the conditional access policy has been created with block controls`. This example uses logic app condition evaluation:
 
-   ![Select "find if the newly created conditional access policy has already been backed up" trigger for Onedrive](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-backup-automation/images/backup6-edit.png)
+   ![Select "fire an alert on Team channel if a new block policy is created" trigger for Teams](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-alert-automation/images/Alert9-edit.png)
 
-1. If prompted, sign in to your email account with your credentials so that Logic Apps can create a connection to your Onedrive account.
+1. In the condition, provide the criteria for checking the condition.
 
-1. In the trigger, provide the criteria for checking files.
-
-1. Specify the search query, folder, file search mode, and number of files to retrieve.
+1. Specify the HTTP response to evaluate, expression and verify it contains `block` response in the condition.
 
       | Property | Value | Description |
       |----------|-------|-------------|
-      | **Search query** | `id` | The Onedrive folder to monitor |
-      | **Folder** | `/ConditionalAccess/Backup` | The Onedrive folder to search |
-      | **File search mode** | `OneDriveSearch` | Search mode |
-      | **Number of files** | `1` | The number of files to retrieve from search |
+      | **Built in control** | `built in control` | The built in control value within new policy JSON to evaluate |
+      | **Expression** | `contains` | The expression to evaluate |
+      | **Condition** | `block` | response to verify in the condition |
+      ||||   
+  
+1. On the Logic App Designer, in the Teams connection box, click `Post alert to Team channel on new block policy creation`. This example uses Teams connector:
+
+1. If prompted, sign in to your email account with your credentials so that Logic Apps can create a connection to your Teams account.
+
+1. In the connector box, provide the criteria for posting an adaptive card to Teams channel.
+
+1. Specify the Team, channel and message for posting to Teams. The message is shorterned for readability.
+
+      | Property | Value | Description |
+      |----------|-------|-------------|
+      | **Team** | `ConditionalAccess` | The Team to post alert |
+      | **Channel** | `General` | The Teams channel to post alert |
+      | **message** | `message` | Post the adaptive card with an alert message |
       ||||
-      
+
+
 # Step 10: Backup the newly created conditional access policy in Onedrive.
 
 1. On the Logic App Designer, in the Condition box, verify response. This example uses response from earlier HTTP connector:
