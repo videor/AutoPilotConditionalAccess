@@ -127,28 +127,32 @@ This logic app uses managed identity for getting secrets from key vault in order
 ![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-blueprint-automation/images/blueprint-parameters-edit.png)
 
 
-# Step 4: Add a trigger that monitors OneDrive folder for policy blueprint requests
+# Step 4: Add the Recurrence trigger
 
-1. On the Logic App Designer, in the Onedrive connection box, click `Add new`. This example uses OneDrive trigger:
+1. On the Logic App Designer, click `recurrence` box. This example uses a recurrence trigger.
 
-   ![Select "When a new file arrives" trigger for Onedrive](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-blueprint-automation/images/blueprint1-edit.png)
+   ![Change the Recurrence trigger's interval and frequency](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-backup-automation/images/backup1-edit.PNG)
 
-1. If prompted, sign in to your email account with your credentials so that Logic Apps can create a connection to your Onedrive account.
-
-1. In the trigger, provide the criteria for checking all new files.
-
-   1. Specify the folder, interval, and frequency for checking files.
-
-      ![Specify folder, interval, and frequency for checking mails](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-blueprint-automation/images/blueprint2-edit.png)
-
-      | Property | Value | Description |
-      |----------|-------|-------------|
-      | **Folder** | `/ConditionalAccess/Blueprints` | The Onedrive folder to monitor |
-      | **Interval** | `1` | The number of intervals to wait between checks |
-      | **Frequency** | `Hour` | The unit of time to use for the recurrence |
-      ||||
+   | Property | Required | Value | Description |
+   |----------|----------|-------|-------------|
+   | **Interval** | Yes | 1 | The number of intervals to wait between checks |
+   | **Frequency** | Yes | Minute | The unit of time to use for the recurrence |
+   |||||
       
-1. Following the trigger, the response is parsed.
+ This trigger fires every 1 minute, starting at time provided in `start time`. The **recurrence** box shows the recurrence schedule. For more information, see [Schedule tasks and workflows](https://docs.microsoft.com/en-us/azure/connectors/connectors-native-recurrence) and [Workflow actions and triggers](https://docs.microsoft.com/en-us/azure/logic-apps/logic-apps-workflow-actions-triggers#recurrence-trigger).
+ 
+Sometimes, you might want to run operations on data in your workflow, and then use the results in later actions. To save these results so that you can easily reuse or reference them, you can create variables to store those results after processing them. You can create variables only at the top level in your logic app.
+
+By default, the previous **recurrence** action returns the time in seconds when the workflow has started. By converting and storing this value as a range within the audit logs endpoint filter, you make the value easier to reuse later without converting again.
+
+1. Provide the details for your variable as described here:
+
+   | Property | Required | Value | Description |
+   |----------|----------|-------|-------------|
+   | **Name** | Yes | URL | The name for your variable. This example uses "URL". |
+   | **Type** | Yes | String | The data type for your variable |
+   | **Value** | No| MS graph audit logs endpoint. | The initial value for your variable |
+   ||||
 
 # Step 5: Add an action that sends a message to Teams channel for approving or rejecting these requests.
 
