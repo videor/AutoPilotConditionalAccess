@@ -192,6 +192,27 @@ By default, the previous **recurrence** action returns the time in seconds when 
     
 1. Response from Key vault is parsed.
 
+# Step 6: Get audit logs for CRUD operation on conditional access policies.
+
+1. On the Logic App Designer, in the HTTP connection box, click `Get audit logs for CRUD operation on conditional access policies`. This example uses HTTP connector.
+
+1. Specify the Method, URI, Headers, Body, Authentication type, Tenant, Audience, Client ID, Credential Type and Secret.
+
+   ![Select "GET client secret from key vault using managed identity" HTTP connector](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-backup-automation/images/backup3-edit.png)
+
+      | Property | Value | Description |
+      |----------|-------|-------------|
+      | **Method** | `GET` | Method to call |
+      | **URI** | `URL variable` | Audit Logs API v1.0 endpoint |
+      | **Headers** | `application/json` | Content-Type |
+      | **Authentication type** | `Active Directory OAuth` | Authentication type for App-only flow |
+      | **Tenant** | `TenantID` | Tennat ID configured in step 3 |
+      | **Audience** | `https://graph.microsoft.com` | MS Graph |
+      | **Client ID** | `Client ID` | Client ID configured in step 3 |
+      | **Credential Type** | `Secret` | Client Secret  |
+      | **Secret** | `value` | Secret value retrieved from key vault |
+      ||||
+      
 # Step 6: Add a condition that checks the approval response.
 
 1. On the Logic App Designer, in the Condition box, verify response. This example uses response from earlier Teams connector:
