@@ -1,4 +1,4 @@
-# Tutorial:	Disaster recovery as a service using Conditional Access APIs
+# Tutorial:	Backup and Restore Conditional Acess Policies
 
 Intent: As an IT admin, I want to be able to easily backup conditional access policies so I can undo policy changes or recover from a disaster.
 
@@ -244,7 +244,7 @@ By default, the previous **recurrence** action returns the time in seconds when 
       | **Case 3 equals** | `Delete conditional access policy` | Case 3 to check Delete operations on conditional access policies|
       ||||
       
-# Step 9: Add a check to find if the newly created conditional access policy has already been backed up out of band.
+# Step 9: Add a check to find if the newly created conditional access policy has already been backed up.
 
 1. On the Logic App Designer, in the Onedrive connection box, click `find if the newly created conditional access policy has already been backed up`. This example uses OneDrive trigger:
 
