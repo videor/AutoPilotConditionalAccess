@@ -1,6 +1,6 @@
-# Tutorial: One-click deploy policy blueprints using Conditional Access APIs
+# Tutorial:	Disaster recovery as a service using Conditional Access APIs
 
-Intent: As an IT admin, I want to be able to easily deploy conditional access policies to large number of branch offices and subsidiaries.
+Intent: As an IT admin, I want to be able to easily backup conditional access policies so I can undo policy changes or recover from a disaster.
 
 You can use the conditional access APIs to manage policy blueprints that you can make available to your branch offices and subsidiaries. For example, you can:
 
