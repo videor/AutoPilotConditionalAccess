@@ -264,7 +264,35 @@ By default, the previous **recurrence** action returns the time in seconds when 
       | **Number of files** | `1` | The number of files to retrieve from search |
       ||||
       
-      
+# Step 10: Backup the newly created conditional access policy in Onedrive.
+
+1. On the Logic App Designer, in the Condition box, verify response. This example uses response from earlier HTTP connector:
+
+1. Specify the HTTP response to evaluate, expression and verify the greater than or equal to `1` response in the condition.
+    
+      ![Select "Condition to check the response from get audit logs HTTP connector"]((https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-backup-automation/images/backup7-edit.png)
+    
+      | Property | Value | Description |
+      |----------|-------|-------------|
+      | **Length** | `length of array` | The length of array response to evaluate |
+      | **Expression** | `is greater than or equal to` | The expression to evaluate |
+      | **Condition** | `1` | response to verify in the condition |
+      ||||      
+ 
+ 1. On the Logic App Designer, in the Onedrive connection box, click `create backup of newly created conditional access policy`. This example uses OneDrive trigger:
+
+1. If prompted, sign in to your email account with your credentials so that Logic Apps can create a connection to your Onedrive account.
+
+1. In the trigger, provide the criteria for creating new file in onedrive.
+
+1. Specify the folder path, file name, and file content.
+
+      | Property | Value | Description |
+      |----------|-------|-------------|
+      | **Folder path** | `/ConditionalAccess/Backup` | The Onedrive folder to backup the policies |
+      | **File name** | `[Id] display name.json` | File name |
+      | **File content** | `newValue` | The new JSON value retrieved from audit log |
+      ||||
       
 # Step 7: Get client secret from key vault using managed identity.
 
