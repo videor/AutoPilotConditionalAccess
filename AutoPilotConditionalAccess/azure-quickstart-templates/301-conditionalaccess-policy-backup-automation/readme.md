@@ -172,28 +172,26 @@ By default, the previous **recurrence** action returns the time in seconds when 
    | **Value** | No| empty | The initial value for your variable |
    ||||
 
-# Step 5: Add an action that sends a message to Teams channel for approving or rejecting these requests.
+# Step 5: Get client secret from key vault using managed identity.
 
-1. On the Logic App Designer, in the Teams connection box, click `Add new`. This example uses Teams connector:
+1. On the Logic App Designer, in the HTTP connection box, click `GET client secret from key vault using managed identity`. This example uses HTTP connector.
 
-   ![Select "Post an adaptive card to Teams channel and wait for a response" connector for Teams](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-blueprint-automation/images/blueprint3-edit.png)
+1. Specify the Method, URI, Queries, Authentication type, Managed Identity and Audience.
 
-1. If prompted, sign in to your email account with your credentials so that Logic Apps can create a connection to your Teams account.
-
-1. In the connector box, provide the criteria for posting an adaptive card to Teams channel.
-
-   1. Specify the Team, channel, update card and update message for posting to Teams.
-
-      ![Specify Team, channel, update card and update message for posting to Teams](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-blueprint-automation/images/blueprint4-edit.png)
+   ![Select "GET client secret from key vault using managed identity" HTTP connector](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-backup-automation/images/backup2-edit.png)
 
       | Property | Value | Description |
       |----------|-------|-------------|
-      | **Team** | `ConditionalAccess` | The Team to post approval workflow |
-      | **Channel** | `Blueprints` | The Teams channel to post approval workflow |
-      | **Update card** | `Yes` | Update the adaptive card to show a member of Teams channel has taken an action |
-      | **update message** | `Processing requested blueprint deployment` | Update the adaptive card to show a message once an approval action is taken |
+      | **Method** | `GET` | Method to call |
+      | **URI** | `AutoPilotConditionalAccessKeyVaultClientCredentials` | The key vault parameter URI configured in step 3  |
+      | **Queries** | `2016-10-01` | api-version |
+      | **Authentication type** | `Managed Identity` | Authentication type is managed identity |
+      | **Managed Identity** | `AutoPilotCAUAI1` | User assigned managed identity connected in step 2 |
+      | **Audience** | `https://vault.azure.net` | Key vault |
       ||||
-      
+    
+1. Response from Key vault is parsed.
+
 # Step 6: Add a condition that checks the approval response.
 
 1. On the Logic App Designer, in the Condition box, verify response. This example uses response from earlier Teams connector:
