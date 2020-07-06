@@ -143,15 +143,33 @@ This logic app uses managed identity for getting secrets from key vault in order
  
 Sometimes, you might want to run operations on data in your workflow, and then use the results in later actions. To save these results so that you can easily reuse or reference them, you can create variables to store those results after processing them. You can create variables only at the top level in your logic app.
 
-By default, the previous **recurrence** action returns the time in seconds when the workflow has started. By converting and storing this value as a range within the audit logs endpoint filter, you make the value easier to reuse later without converting again.
+By default, the previous **recurrence** action returns the time in seconds when the workflow has started. By converting and storing this value as a range within the audit logs endpoint filter, you make the value easier to reuse later without converting again. Similarly, storing old and new values of conditional access policy JSON, we can reuse these values in different parts of workflow. 
 
-1. Provide the details for your variable as described here:
+2. On the Logic App Designer, click `Audit logs endpoint for conditional access policies` box. Provide the details for your variable as described here:
 
    | Property | Required | Value | Description |
    |----------|----------|-------|-------------|
    | **Name** | Yes | URL | The name for your variable. This example uses "URL". |
    | **Type** | Yes | String | The data type for your variable |
    | **Value** | No| MS graph audit logs endpoint. | The initial value for your variable |
+   ||||
+   
+3. On the Logic App Designer, click `Old policy JSON before change is made to conditional access policy` box. Provide the details for your variable as described here:
+
+   | Property | Required | Value | Description |
+   |----------|----------|-------|-------------|
+   | **Name** | Yes | OldJSON | The name for your variable. This example uses "OldJSON". |
+   | **Type** | Yes | String | The data type for your variable |
+   | **Value** | No| empty | The initial value for your variable |
+   ||||
+   
+3. On the Logic App Designer, click `New policy JSON after change is made to conditional access policy` box. Provide the details for your variable as described here: 
+
+   | Property | Required | Value | Description |
+   |----------|----------|-------|-------------|
+   | **Name** | Yes | NewJSON | The name for your variable. This example uses "NewJSON". |
+   | **Type** | Yes | String | The data type for your variable |
+   | **Value** | No| empty | The initial value for your variable |
    ||||
 
 # Step 5: Add an action that sends a message to Teams channel for approving or rejecting these requests.
