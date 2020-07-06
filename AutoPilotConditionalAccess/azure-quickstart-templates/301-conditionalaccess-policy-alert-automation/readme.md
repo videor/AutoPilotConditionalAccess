@@ -281,7 +281,7 @@ By default, the previous **recurrence** action returns the time in seconds when 
 
 1. On the Logic App Designer, in the Onedrive connection box, click `check if the conditional access policy has been updated from Grant to block access`. This example uses Team connector:
 
-   ![Select "fire an alert on Team channel when a policy is updated from grant to block" trigger for Teams](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-alert-automation/images/Alert10-edit.png)
+   ![Select "fire an alert on Team channel when a policy is updated from grant to block" trigger for Teams](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-alert-automation/images/Alert10-alert.png)
 
 1. In the condition, provide the criteria for checking the condition.
 
