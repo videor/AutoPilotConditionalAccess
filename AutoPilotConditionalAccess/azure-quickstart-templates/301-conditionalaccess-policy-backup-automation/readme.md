@@ -2,9 +2,9 @@
 
 Intent: As an IT admin, I want to be able to easily backup conditional access policies so I can undo policy changes.
 
-You can use the conditional access APIs to manage policy backups that you can use to recover from accidental policy changes. For example, you can:
+You can use the conditional access APIs to manage policy backups that you can then use to recover from accidental policy changes. For example, you can:
 
-As a IT admin, you can add, update or delete a conditional access policy using conditional APIs. The cretion of conditional access policy will backup the policy within onedrive and any updates to the conditional access policy will update the relevant backup copy within Onedrive. 
+As a IT admin, add, update or delete a conditional access policy using conditional APIs. The cretion of conditional access policy will backup the policy within onedrive and any updates to the conditional access policy will update the relevant backup copy within Onedrive. 
 
 This automation can be very useful for: 
 - Organizations that manages large numbers of conditional access policies. OR
