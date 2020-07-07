@@ -10,18 +10,18 @@ This automation can be very useful for:
 - Organizations that manages large numbers of conditional access policies. OR
 - Identity partners that manages policies for customers. 
 
-This tutorial shows how to build a [logic app](https://docs.microsoft.com/en-us/azure/logic-apps/) that automates emergency account management. Specifically, this logic app retrieves all conditional access policies as a scheduled task. Checks if the policy has necessary exclusions, and if it doesn't, updates the conditional access policy with necessary exclusion. Any update to a conditional access policy for remediation of exclusion for emergency account also triggers an alert on Team channel.
+This tutorial shows how to build a [logic app](https://docs.microsoft.com/en-us/azure/logic-apps/) that automates emergency account management. Specifically, this logic app retrieves all conditional access policies as a scheduled task. Checks if the policy has necessary exclusions, and if it doesn't, updates the conditional access policy and triggers an alert on Team channel.
 
 In this tutorial, you learn how to:
 
 :heavy_check_mark: Deploy this logic app to your organization.  <br /> 
 :heavy_check_mark: Authenticate your logic app to Azure AD with the right permissions.  <br /> 
 :heavy_check_mark: Add parameters specific to your organization within logic app.  <br /> 
-:heavy_check_mark: Add the Recurrence trigger to run a schedule workflow task.<br /> 
+:heavy_check_mark: Add the recurrence trigger to run a schedule workflow task.<br /> 
 :heavy_check_mark: Get client secret from key vault using managed identity.<br /> 
-:heavy_check_mark: Get all conditional access policies.<br /> 
-:heavy_check_mark: Add a condition to check for missing emergency account within conditional access policy. <br /> 
-:heavy_check_mark: Add an exclusion for emergency account if it is missing within a conditional access policy. <br /> 
+:heavy_check_mark: Get all conditional access policies. <br /> 
+:heavy_check_mark: Add a condition to check for missing emergency account. <br /> 
+:heavy_check_mark: Add an exclusion for emergency account if it is missing within the conditional access policy. <br /> 
 :heavy_check_mark: Add a condition that checks if the policy was updated successfully. <br /> 
 :heavy_check_mark: Fire an alert on Team channel confirming the remediation taken and status. <br /> 
 
