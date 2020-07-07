@@ -24,7 +24,7 @@ In this tutorial, you learn how to:
 :heavy_check_mark: Add a switch statement that checks whether the conditional access policy was added, updated or deleted.<br /> 
 :heavy_check_mark: Add a check to find if the newly created conditional access policy has block controls.<br /> 
 :heavy_check_mark: Fire an alert on Team channel if a policy alert condition is satisfied for new policy. <br /> 
-:heavy_check_mark: Add a check to find if the any conditional access policy update has been updated from grant access to block controls. <br /> 
+:heavy_check_mark: Add a check to find if the any conditional access policy update has changed conditional access policy from grant access to block controls. <br /> 
 :heavy_check_mark: Fire an alert on Team channel if a policy alert condition is satisfied for any policy updates. <br /> 
 
 When you're done, your logic app looks like this workflow at a high level:
