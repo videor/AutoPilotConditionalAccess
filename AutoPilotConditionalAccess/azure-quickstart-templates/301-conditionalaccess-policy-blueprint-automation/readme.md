@@ -246,3 +246,8 @@ This logic app uses managed identity for getting secrets from key vault in order
       | **Channel** | `Blueprints` | The Teams channel to post the outcome of deployment |
       | **Message** | `Adaptive card message` | Update the adaptive card to show a message depending on the outcome of deployment |
       ||||
+
+# Forward Looking
+
+Try cloning the logic and build workflows to manage update and deletion of policy blueprints and rollout the changes to your organization. If you would like to request a logic app to do this, please send a request on Twitter @Vi_Deora.
+
