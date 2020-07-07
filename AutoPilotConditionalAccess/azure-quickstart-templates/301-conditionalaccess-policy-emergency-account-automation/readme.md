@@ -127,9 +127,9 @@ This logic app uses managed identity for getting secrets from key vault in order
 
 # Step 4: Add the Recurrence trigger
 
-1. On the Logic App Designer, click `recurrence` box. This example uses a recurrence trigger.
+1. On the Logic App Designer, click `schedule automation of emergency account management within conditional access` box. This example uses a recurrence trigger.
 
-   ![Change the Recurrence trigger's interval and frequency](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-backup-automation/images/backup1-edit.png)
+   ![Change the Recurrence trigger's interval and frequency](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-emergency-account-automation/images/EmergencyAccount1-edit.png)
 
    | Property | Required | Value | Description |
    |----------|----------|-------|-------------|
@@ -137,46 +137,15 @@ This logic app uses managed identity for getting secrets from key vault in order
    | **Frequency** | Yes | Minute | The unit of time to use for the recurrence |
    |||||
       
- This trigger fires every 1 minute, starting at time provided in `start time`. The **recurrence** box shows the recurrence schedule. For more information, see [Schedule tasks and workflows](https://docs.microsoft.com/en-us/azure/connectors/connectors-native-recurrence) and [Workflow actions and triggers](https://docs.microsoft.com/en-us/azure/logic-apps/logic-apps-workflow-actions-triggers#recurrence-trigger).
+ This trigger fires every `1 minute`. The **schedule** trigger box shows the recurrence schedule. For more information, see [Schedule tasks and workflows](https://docs.microsoft.com/en-us/azure/connectors/connectors-native-recurrence) and [Workflow actions and triggers](https://docs.microsoft.com/en-us/azure/logic-apps/logic-apps-workflow-actions-triggers#recurrence-trigger).
  
-Sometimes, you might want to run operations on data in your workflow, and then use the results in later actions. To save these results so that you can easily reuse or reference them, you can create variables to store those results after processing them. You can create variables only at the top level in your logic app.
-
-By default, the previous **recurrence** action returns the time in seconds when the workflow has started. By converting and storing this value as a range within the audit logs endpoint filter, you make the value easier to reuse later without converting again. Similarly, storing old and new values of conditional access policy JSON, we can reuse these values in different parts of workflow. 
-
-2. On the Logic App Designer, click `Audit logs endpoint for conditional access policies` box. Provide the details for your variable as described here:
-
-   | Property | Required | Value | Description |
-   |----------|----------|-------|-------------|
-   | **Name** | Yes | URL | The name for your variable. This example uses "URL". |
-   | **Type** | Yes | String | The data type for your variable |
-   | **Value** | No| MS graph audit logs endpoint. | The initial value for your variable |
-   ||||
-   
-3. On the Logic App Designer, click `Old policy JSON before change is made to conditional access policy` box. Provide the details for your variable as described here:
-
-   | Property | Required | Value | Description |
-   |----------|----------|-------|-------------|
-   | **Name** | Yes | OldJSON | The name for your variable. This example uses "OldJSON". |
-   | **Type** | Yes | String | The data type for your variable |
-   | **Value** | No| empty | The initial value for your variable |
-   ||||
-   
-3. On the Logic App Designer, click `New policy JSON after change is made to conditional access policy` box. Provide the details for your variable as described here: 
-
-   | Property | Required | Value | Description |
-   |----------|----------|-------|-------------|
-   | **Name** | Yes | NewJSON | The name for your variable. This example uses "NewJSON". |
-   | **Type** | Yes | String | The data type for your variable |
-   | **Value** | No| empty | The initial value for your variable |
-   ||||
-
 # Step 5: Get client secret from key vault using managed identity.
 
 1. On the Logic App Designer, in the HTTP connection box, click `GET client secret from key vault using managed identity`. This example uses HTTP connector.
 
 1. Specify the Method, URI, Queries, Authentication type, Managed Identity and Audience.
 
-   ![Select "GET client secret from key vault using managed identity" HTTP connector](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-backup-automation/images/backup2-edit.png)
+   ![Select "GET client secret from key vault using managed identity" HTTP connector](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-emergency-account-automation/images/EmergencyAccount2-edit.png)
 
       | Property | Value | Description |
       |----------|-------|-------------|
@@ -190,13 +159,13 @@ By default, the previous **recurrence** action returns the time in seconds when 
     
 1. Response from Key vault is parsed.
 
-# Step 6: Get audit logs for CRUD operation on conditional access policies.
+# Step 6: Get all conditional access policies.
 
-1. On the Logic App Designer, in the HTTP connection box, click `Get audit logs for CRUD operation on conditional access policies`. This example uses HTTP connector.
+1. On the Logic App Designer, in the HTTP connection box, click `Get all conditional access policies`. This example uses HTTP connector.
 
 1. Specify the Method, URI, Headers, Body, Authentication type, Tenant, Audience, Client ID, Credential Type and Secret.
 
-   ![Select "GET audit logs for CRUD operation on conditional access policies" HTTP connector](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-backup-automation/images/backup3-edit.png)
+   ![Select "GET all conditional access policies" HTTP connector](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-emergency-account-automation/images/EmergencyAccount3-edit.png)
 
       | Property | Value | Description |
       |----------|-------|-------------|
@@ -211,19 +180,19 @@ By default, the previous **recurrence** action returns the time in seconds when 
       | **Secret** | `value` | Secret value retrieved from key vault |
       ||||
       
-# Step 7: Add a condition that checks if any CRUD operations were returned.
+# Step 7: Add a condition that checks if any policy has missing exclusion for emergency account.
 
 1. On the Logic App Designer, in the Condition box, verify response. This example uses response from earlier HTTP connector:
 
-1. Specify the HTTP response to evaluate, expression and verify the greater than or equal to `1` response in the condition.
+1. Specify the HTTP response to evaluate, expression and verify it contains `EmergencyAccountsGroupObjectID` in the condition.
     
-      ![Select "Condition to check the response from get audit logs HTTP connector"](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-backup-automation/images/backup4-edit.png)
+      ![Select "Condition to check if policy has exclusion for emergency account"](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-emergency-account-automation/images/EmergencyAccount4-edit.png)
     
       | Property | Value | Description |
       |----------|-------|-------------|
-      | **Length** | `length of array` | The length of array response to evaluate |
-      | **Expression** | `is greater than or equal to` | The expression to evaluate |
-      | **Condition** | `1` | response to verify in the condition |
+      | **Exclude Groups** | `Exclude groups` | The exclude group attribute to evaluate within policy JSON |
+      | **Expression** | `Contains` | The expression to evaluate |
+      | **Condition** | `EmergencyAccountsGroupObjectID` | response to verify in the condition |
       ||||
 
 # Step 8: Add a switch statement that checks whether the conditional access policy was added, updated or deleted.
