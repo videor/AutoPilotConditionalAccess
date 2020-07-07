@@ -170,7 +170,7 @@ This logic app uses managed identity for getting secrets from key vault in order
       | Property | Value | Description |
       |----------|-------|-------------|
       | **Method** | `GET` | Method to call |
-      | **URI** | `URL variable` | Audit Logs API v1.0 endpoint |
+      | **URI** | `URL variable` | Conditional Access APIs v1.0 endpoint |
       | **Headers** | `application/json` | Content-Type |
       | **Authentication type** | `Active Directory OAuth` | Authentication type for App-only flow |
       | **Tenant** | `TenantID` | Tennat ID configured in step 3 |
@@ -195,40 +195,46 @@ This logic app uses managed identity for getting secrets from key vault in order
       | **Condition** | `EmergencyAccountsGroupObjectID` | response to verify in the condition |
       ||||
 
-# Step 8: Add a switch statement that checks whether the conditional access policy was added, updated or deleted.
+# Step 8: Add an exclusion for emergency account if it is missing within the conditional access policy.
 
-1. On the Logic App Designer, in the HTTP connection box, click `Switch`. This example uses logic app switch statement.
+1. On the Logic App Designer, in the HTTP connection box, click `Exclude emergency accounts within conditional access policies`. This example uses HTTP connector.
 
-1. Specify the Switch On and Case to evaluate. Specify `Add conditional access policy` for case 1, `Update conditional access policy` for case 2 and `Delete conditional access policy` for case 3.
+1. Specify the Method, URI, Headers, Body, Authentication type, Tenant, Audience, Client ID, Credential Type and Secret.
 
-   ![Select "Check if deployment is successful" condition](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-backup-automation/images/backup5-edit.png)
+   ![Select "Exclude emergency accounts within conditional access policies" HTTP connector](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-emergency-account-automation/images/EmergencyAccount5-edit.png)
 
       | Property | Value | Description |
       |----------|-------|-------------|
-      | **Switch On** | `Activity display name` | Check the activity display name retrieved from audit logs |
-      | **Case 1 equals** | `Add conditional access policy` | Case 1 to check Add operations on conditional access policies |
-      | **Case 2 equals** | `Update conditional access policy` | Case 2 to check Update operations on conditional access policies|
-      | **Case 3 equals** | `Delete conditional access policy` | Case 3 to check Delete operations on conditional access policies|
+      | **Method** | `PATCH` | Method to call |
+      | **URI** | `URL variable` | Conditional Access APIs v1.0 endpoint |
+      | **Headers** | `application/json` | Content-Type |
+      | **Body** | `json body with exclude groups condition` | Updated JSON to patch the conditional access policy  |
+      | **Authentication type** | `Active Directory OAuth` | Authentication type for App-only flow |
+      | **Tenant** | `TenantID` | Tennat ID configured in step 3 |
+      | **Audience** | `https://graph.microsoft.com` | MS Graph |
+      | **Client ID** | `Client ID` | Client ID configured in step 3 |
+      | **Credential Type** | `Secret` | Client Secret  |
+      | **Secret** | `value` | Secret value retrieved from key vault |
       ||||
       
-# Step 9: Add a check to find if the newly created conditional access policy has block controls. If it does, fire an alert on Team channel<br /> 
+# Step 9: Add a check to find if the conditional access policy update was successful. If true, fire an alert on Team channel. 
 
-1. On the Logic App Designer, in the Teams connection box, click `check if the conditional access policy has been created with block controls`. This example uses Teams connector:
+1. On the Logic App Designer, in the conditions connection box, click `check if the conditional access policy was updated successfully`. This example uses logic app condition evaluation:
 
-   ![Select "fire an alert on Team channel if a new block policy is created" trigger for Teams](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-alert-automation/images/Alert9-edit.png)
+   ![Select "check to find if the conditional access policy update was successful" condition](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-emergency-account-automation/images/EmergencyAccount6-edit.png)
 
 1. In the condition, provide the criteria for checking the condition.
 
-1. Specify the HTTP response to evaluate, expression and verify it contains `block` response in the condition.
+1. Specify the HTTP response to evaluate, expression and verify it is equal to `204` response in the condition.
 
       | Property | Value | Description |
       |----------|-------|-------------|
-      | **Built in control** | `built in control` | The built in control value within new policy JSON to evaluate |
-      | **Expression** | `contains` | The expression to evaluate |
-      | **Condition** | `block` | response to verify in the condition |
+      | **Status code** | `Status code` | The status code from previous step to evaluate |
+      | **Expression** | `is equal to` | The expression to evaluate |
+      | **Condition** | `204` | response to verify in the condition |
       ||||   
   
-1. On the Logic App Designer, in the Teams connection box, click `Post alert to Team channel on new block policy creation`. This example uses Teams connector:
+1. On the Logic App Designer, in the Teams connection box, click `Post a message to Team channel notifying remediation for emergency account`. This example uses Teams connector:
 
 1. If prompted, sign in to your email account with your credentials so that Logic Apps can create a connection to your Teams account.
 
@@ -239,32 +245,11 @@ This logic app uses managed identity for getting secrets from key vault in order
       | Property | Value | Description |
       |----------|-------|-------------|
       | **Team** | `ConditionalAccess` | The Team to post alert |
-      | **Channel** | `General` | The Teams channel to post alert |
+      | **Channel** | `Emergency Accounts` | The Teams channel to post alert |
       | **message** | `message` | Post the adaptive card with an alert message |
       ||||
 
-
-# Step 10: Add a check to find if a conditional access policy has been updated from grant access to block controls. If it does, fire an alert on Team channel<br /> 
-
-1. On the Logic App Designer, in the Onedrive connection box, click `check if the conditional access policy has been updated from Grant to block access`. This example uses Team connector:
-
-   ![Select "fire an alert on Team channel when a policy is updated from grant to block" trigger for Teams](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-alert-automation/images/Alert10-alert.png)
-
-1. In the condition, provide the criteria for checking the condition.
-
-1. Specify the HTTP response to evaluate, expression and verify the old policy JSON did not contain `block` control and the updated new policy JSON contains `block` control.
-
-      | Property | Value | Description |
-      |----------|-------|-------------|
-      | **Built in control** | `built in control` | The built in control value within new policy JSON to evaluate |
-      | **Expression** | `does not contain` | The expression to evaluate |
-      | **Condition** | `block` | response to verify in the condition |
-      | **Built in control** | `built in control` | The built in control value within new policy JSON to evaluate |
-      | **Expression** | `contains` | The expression to evaluate |
-      | **Condition** | `block` | response to verify in the condition |
-      ||||   
-  
-1. On the Logic App Designer, in the Teams connection box, click `Post alert to Team channel on potentially disruptive update`. This example uses Teams connector:
+1. On the Logic App Designer, in the Teams connection box, click `Post a message to Team channel that remediation failed but scheduled for retry`. This example uses Teams connector:
 
 1. If prompted, sign in to your email account with your credentials so that Logic Apps can create a connection to your Teams account.
 
@@ -275,7 +260,7 @@ This logic app uses managed identity for getting secrets from key vault in order
       | Property | Value | Description |
       |----------|-------|-------------|
       | **Team** | `ConditionalAccess` | The Team to post alert |
-      | **Channel** | `General` | The Teams channel to post alert |
+      | **Channel** | `Emergency Accounts` | The Teams channel to post alert |
       | **message** | `message` | Post the adaptive card with an alert message |
       ||||
 
