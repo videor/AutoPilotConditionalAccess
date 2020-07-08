@@ -470,10 +470,10 @@ Once the 'DELETE' request is submitted, a 204 (successful) response is returned.
 
 ## Next steps
 
-[Create a backup policy for backing up an Azure VM in this vault](backup-azure-arm-userestapi-createorupdatepolicy.md).
+[Create a backup of your conditional access policies in Onedrive](https://github.com/videor/AutoPilotConditionalAccess/tree/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-backup-automation).
 
-For more information on the Azure REST APIs, see the following documents:
+For more information on the Conditional Access APIs, see the following documents:
 
-- [Azure Recovery Services provider REST API](/rest/api/recoveryservices/)
-- [Get started with Azure REST API](/rest/api/azure/)
+- [Conditional Access API](https://docs.microsoft.com/en-us/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta)
+- [Named Location API](https://docs.microsoft.com/en-us/graph/api/resources/namedlocation?view=graph-rest-beta)
 
