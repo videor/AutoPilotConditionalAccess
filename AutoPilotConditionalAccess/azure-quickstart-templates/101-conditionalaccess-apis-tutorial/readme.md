@@ -117,7 +117,7 @@ The successful response for the 'GET' operation is shown below:
 Once the 'GET' request is submitted, a 200 (successful) response is returned. 
 
 ```json
-        {
+{
             "id": "2a945ba4-2b5f-4b1c-8f05-db014df71b83",
             "displayName": "CA001 - Enforce MAM Policy for Android and IOS",
             "createdDateTime": "2020-06-28T09:37:53.6366773Z",
@@ -168,22 +168,22 @@ Once the 'GET' request is submitted, a 200 (successful) response is returned.
                 "customAuthenticationFactors": [],
                 "termsOfUse": []
             }
-        }
+}
 ```
 
-# Create Conditional Access Policies using API
+# Create Conditional Access Policies 
 
-The steps to create an Azure Recovery Services Vault using REST API are outlined in [create vault REST API](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate) documentation. Let us use this document as a reference to create a vault called "testVault" in "West US".
+The steps to create a Sign-in risk-based Conditional Access policy [create sign-in risk policy](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/howto-conditional-access-policy-risk) within Azure Portal is documented. Let us use this document as a reference to create a policy called "CA002: Require MFA for medium + sign-in risk" using the APIs.
 
-To create or update an Azure Recovery Services vault, use the following *POST* operation.
+To create a conditional access policy, use the following *POST* operation.
 
 ```http
-POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}?api-version=2016-06-01
+POST https://graph.microsoft.com/v1.0/identity/conditionalAccess/policies
 ```
 
 ## Create a request
 
-To create the *PUT* request, the `{subscription-id}` parameter is required. If you have multiple subscriptions, see [Working with multiple subscriptions](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest). You define a `{resourceGroupName}` and `{vaultName}` for your resources, along with the `api-version` parameter. This article uses `api-version=2016-06-01`.
+To create the *POST* request
 
 The following headers are required:
 
@@ -200,11 +200,10 @@ The following common definitions are used to build a request body:
 
 |Name  |Required  |Type  |Description  |
 |---------|---------|---------|---------|
-|eTag     |         |   String      |  Optional eTag       |
-|location     |  true       |String         |   Resource location      |
-|properties     |         | [VaultProperties](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  Properties of the vault       |
-|sku     |         |  [Sku](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#sku)       |    Identifies the unique system identifier for each Azure resource     |
-|tags     |         | Object        |     Resource tags    |
+|displayName     |   true      |   String      |  Policy name       |
+|state     |  true       |String         |   Policy state      |
+|conditions     |   true      | [Condition Set](https://docs.microsoft.com/en-us/graph/api/resources/conditionalaccessconditionset?view=graph-rest-beta)        |  Represents the type of conditions that govern when the policy applies       |
+|grantControls     |  true       |  [Grant Controls Set](https://docs.microsoft.com/en-us/graph/api/resources/conditionalaccessgrantcontrols?view=graph-rest-beta)       |    Represents grant controls that must be fulfilled to pass the policy     |
 
 Note that vault name and resource group name are provided in the PUT URI. The request body defines the location.
 
@@ -213,13 +212,34 @@ Note that vault name and resource group name are provided in the PUT URI. The re
 The following example body is used to create a vault in "West US". Specify the location. The SKU is always "Standard".
 
 ```json
-{
-  "properties": {},
-  "sku": {
-    "name": "Standard"
-  },
-  "location": "West US"
-}
+{ 
+    "displayName": "ZT1: Require MFA for medium + sign-in risk", 
+    "state": "enabledForReportingButNotEnforced", 
+    "conditions": { 
+        "signInRiskLevels": [ "high" ,
+            "medium" 
+        ], 
+        "applications": { 
+            "includeApplications": [ 
+                "All" 
+            ] 
+        }, 
+        "users": { 
+            "includeGroups": [ 
+                "6c96716b-b32b-40b8-9009-49748bb6fcd5" 
+            ], 
+            "excludeGroups": [ 
+                "f753047e-de31-4c74-a6fb-c38589047723" 
+            ] 
+        } 
+    }, 
+    "grantControls": { 
+        "operator": "OR", 
+        "builtInControls": [ 
+            "mfa" 
+        ] 
+    } 
+} 
 ```
 
 ## Responses
