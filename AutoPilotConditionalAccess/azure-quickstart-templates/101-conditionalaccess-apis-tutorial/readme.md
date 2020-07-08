@@ -75,7 +75,7 @@ The following headers are required:
 
 For more information about how to create the request, see [Components of API request/response](https://docs.microsoft.com/en-us/rest/api/azure/#components-of-a-rest-api-requestresponse).
 
-## Step 4: Create the request body
+## Create the request body
 
 The following common definitions are used to build a request body:
 
@@ -184,7 +184,7 @@ A *201 Created* response from the previous example request body shows an *id* ha
 }
 ```
 
-# Step 5: List all conditional access policies
+# Step 4: List all conditional access policies
 
 To fetch all conditional access policies, use the following *GET* operation
 
@@ -267,7 +267,7 @@ Once the 'GET' request is submitted, a 200 (successful) response is returned. Al
 }
 ```
 
-# Step 6: Get a specific conditional access policy
+# Step 5: Get a specific conditional access policy
 
 To get a specific conditional access policy, use the following *GET* operation
 
@@ -348,7 +348,7 @@ Once the 'GET' request is submitted, a 200 (successful) response is returned.
 }
 ```
 
-# Step 7: Update a Conditional Access Policy 
+# Step 6: Update a Conditional Access Policy 
 
 Let us now update the conditional access policy we retrieved in the previous step.
 
@@ -470,7 +470,7 @@ A *204 No Content* response from the previous example request body shows the *gr
 }
 ```
 
-# Delete a specific conditional access policy
+# Step 7: Delete a specific conditional access policy
 
 To delete a specific conditional access policy, use the following *DELETE* operation
 
