@@ -277,6 +277,54 @@ By default, the previous **HTTP** action returns the disruption tag when the wor
       | **Secret** | `value` | Secret value retrieved from key vault |
       ||||      
 
+# Step 11: Add a check to find if the conditional access policy update was successful. If true, fire an alert on Team channel. 
+
+1. On the Logic App Designer, in the conditions connection box, click `check if the conditional access policy was enabled successfully`. This example uses logic app condition evaluation:
+
+   ![Select "check to find if the conditional access policy was enabled successfully" condition](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-blueprint-automation/images/blueprint8-edit.png)
+
+1. In the condition, provide the criteria for checking the condition.
+
+1. Specify the HTTP response to evaluate, expression and verify it is equal to `204` response in the condition.
+
+      | Property | Value | Description |
+      |----------|-------|-------------|
+      | **Status code** | `Status code` | The status code from previous step to evaluate |
+      | **Expression** | `is equal to` | The expression to evaluate |
+      | **Condition** | `204` | response to verify in the condition |
+      ||||   
+  
+1. On the Logic App Designer, in the Teams connection box, click `Post to team channel that contingency policy was enabled successfully`. This example uses Teams connector:
+
+1. If prompted, sign in to your email account with your credentials so that Logic Apps can create a connection to your Teams account.
+
+1. In the connector box, provide the criteria for posting an adaptive card to Teams channel.
+
+1. Specify the Team, channel and message for posting to Teams. The message is shorterned for readability.
+
+      | Property | Value | Description |
+      |----------|-------|-------------|
+      | **Team** | `ConditionalAccess` | The Team to post alert |
+      | **Channel** | `Contingency plan` | The Teams channel to post alert |
+      | **message** | `message` | Post the adaptive card with an alert message |
+      ||||
+
+1. On the Logic App Designer, in the Teams connection box, click `Post to team channel that enabling contingency policy failed`. This example uses Teams connector:
+
+1. If prompted, sign in to your email account with your credentials so that Logic Apps can create a connection to your Teams account.
+
+1. In the connector box, provide the criteria for posting an adaptive card to Teams channel.
+
+1. Specify the Team, channel and message for posting to Teams. The message is shorterned for readability.
+
+      | Property | Value | Description |
+      |----------|-------|-------------|
+      | **Team** | `ConditionalAccess` | The Team to post alert |
+      | **Channel** | `Emergency Accounts` | The Teams channel to post alert |
+      | **message** | `message` | Post the adaptive card with an alert message |
+      ||||
+
+
 # Step 8: Add a switch statement that checks whether the conditional access policy was added, updated or deleted.
 
 1. On the Logic App Designer, in the HTTP connection box, click `Switch`. This example uses logic app switch statement.
