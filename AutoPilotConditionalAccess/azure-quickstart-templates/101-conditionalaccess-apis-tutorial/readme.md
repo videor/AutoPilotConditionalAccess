@@ -507,7 +507,7 @@ Try practising the above steps with some quick-start api templates here
 - [Template 4](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/101-conditionalaccess-apis-tutorial/Quickstart%20api%20template%204%20-Require%20mam%20policies%20for%20android%20and%20ios.json)
 - [Template 5](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/101-conditionalaccess-apis-tutorial/Quickstart%20api%20template%205%20-%20Require%20trusted%20device%20for%20app%20access.json)
 
-[Create a backup of your conditional access policies in Onedrive](https://github.com/videor/AutoPilotConditionalAccess/tree/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-backup-automation).
+Next, [try creating a backup of your conditional access policies in Onedrive](https://github.com/videor/AutoPilotConditionalAccess/tree/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-backup-automation).
 
 For more information on the Conditional Access APIs, see the following documents:
 
