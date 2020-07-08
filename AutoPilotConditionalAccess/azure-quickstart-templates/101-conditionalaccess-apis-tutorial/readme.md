@@ -501,11 +501,11 @@ Once the 'DELETE' request is submitted, a 204 (successful) response is returned.
 
 Try practising the above steps with some quick-start api templates here
 
-- Template 1(https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/101-conditionalaccess-apis-tutorial/Quickstart%20api%20template%201%20-%20MFA%20registration%20restrictions.json)
-- Template 2(https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/101-conditionalaccess-apis-tutorial/Quickstart%20api%20template%202%20-%20Require%20mfa%20for%20privileged%20accounts.json)
-- Template 3(https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/101-conditionalaccess-apis-tutorial/Quickstart%20api%20template%203%20-%20Require%20mfa%20guest%20access.json)
-- Template 4(https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/101-conditionalaccess-apis-tutorial/Quickstart%20api%20template%204%20-Require%20mam%20policies%20for%20android%20and%20ios.json)
-- Template 5(https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/101-conditionalaccess-apis-tutorial/Quickstart%20api%20template%205%20-%20Require%20trusted%20device%20for%20app%20access.json)
+- [Template 1](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/101-conditionalaccess-apis-tutorial/Quickstart%20api%20template%201%20-%20MFA%20registration%20restrictions.json)
+- [Template 2](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/101-conditionalaccess-apis-tutorial/Quickstart%20api%20template%202%20-%20Require%20mfa%20for%20privileged%20accounts.json)
+- [Template 3](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/101-conditionalaccess-apis-tutorial/Quickstart%20api%20template%203%20-%20Require%20mfa%20guest%20access.json)
+- [Template 4](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/101-conditionalaccess-apis-tutorial/Quickstart%20api%20template%204%20-Require%20mam%20policies%20for%20android%20and%20ios.json)
+- [Template 5](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/101-conditionalaccess-apis-tutorial/Quickstart%20api%20template%205%20-%20Require%20trusted%20device%20for%20app%20access.json)
 
 [Create a backup of your conditional access policies in Onedrive](https://github.com/videor/AutoPilotConditionalAccess/tree/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-backup-automation).
 
