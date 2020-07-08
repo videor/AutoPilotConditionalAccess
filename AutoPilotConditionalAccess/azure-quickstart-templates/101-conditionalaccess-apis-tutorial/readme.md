@@ -26,7 +26,7 @@ In this tutorial, you'll learn how to:
 :heavy_check_mark: Delete a conditional access policy  <br /> 
 
 
-## Step 1: Authenticate with the right roles
+# Step 1: Authenticate with the right roles
 
 If you are using delegated permissions flow, sign in using an account with one of these roles:
 
@@ -41,7 +41,7 @@ For reading conditional access policies:
 - [Security Reader permissions](https://docs.microsoft.com/en-us/azure/active-directory/users-groups-roles/directory-assign-admin-roles#security-reader-permissions)
 - [Global Reader permissions](https://docs.microsoft.com/en-us/azure/active-directory/users-groups-roles/directory-assign-admin-roles#global-reader-permissions)
 
-## Step 2: Authenticate with the right permissions
+# Step 2: Authenticate with the right permissions
 
 One of the following permissions is required to call this API. To learn more, including how to choose permissions, see [Permissions](/graph/permissions-reference).
 
