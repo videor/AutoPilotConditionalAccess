@@ -261,7 +261,7 @@ By default, the previous **HTTP** action returns the disruption tag when the wor
 
 1. Specify the Method, URI, Headers, Body, Authentication type, Tenant, Audience, Client ID, Credential Type and Secret.
 
-   ![Select "Enable contingency policies within conditional access" HTTP connector](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-blueprint-automation/images/blueprint7-edit.png)
+   ![Select "Enable contingency policies within conditional access" HTTP connector](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-contingency-policies-automation/images/contingency7-edit.png)
 
       | Property | Value | Description |
       |----------|-------|-------------|
@@ -281,7 +281,7 @@ By default, the previous **HTTP** action returns the disruption tag when the wor
 
 1. On the Logic App Designer, in the conditions connection box, click `check if the conditional access policy was enabled successfully`. This example uses logic app condition evaluation:
 
-   ![Select "check to find if the conditional access policy was enabled successfully" condition](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-blueprint-automation/images/blueprint8-edit.png)
+   ![Select "check to find if the conditional access policy was enabled successfully" condition](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-contingency-policies-automation/images/contingency8-edit.png)
 
 1. In the condition, provide the criteria for checking the condition.
 
@@ -320,7 +320,7 @@ By default, the previous **HTTP** action returns the disruption tag when the wor
       | Property | Value | Description |
       |----------|-------|-------------|
       | **Team** | `ConditionalAccess` | The Team to post alert |
-      | **Channel** | `Emergency Accounts` | The Teams channel to post alert |
+      | **Channel** | `Contingency plan` | The Teams channel to post alert |
       | **message** | `message` | Post the adaptive card with an alert message |
       ||||
 
