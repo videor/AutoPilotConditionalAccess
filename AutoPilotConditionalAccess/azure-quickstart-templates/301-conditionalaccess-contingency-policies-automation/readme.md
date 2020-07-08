@@ -229,7 +229,7 @@ By default, the previous **HTTP** action returns the disruption tag when the wor
 
 1. In the connector box, provide the criteria for posting an adaptive card to Teams channel.
 
-1. Specify the Team, message, channel, update card and update message for posting to Teams.
+1. Specify the Team, message, channel, update card and update message for posting to Teams. The message is shorterned for readability.
 
       | Property | Value | Description |
       |----------|-------|-------------|
@@ -239,6 +239,43 @@ By default, the previous **HTTP** action returns the disruption tag when the wor
       | **Update card** | `Yes` | Update the adaptive card to show a member of Teams channel has taken an action |
       | **Update message** | `Processing requested action` | Update the adaptive card to show a message once an approval action is taken |
       ||||
+      
+# Step 9: Add a condition that checks the approval response.
+
+1. On the Logic App Designer, in the Condition box, verify response. This example uses response from earlier Teams connector:
+
+1. Specify the Team card response, expression and verify `approve` response in the condition.
+    
+      ![Select "Condition to check the response from adaptive card that was posted earlier to Teams channel"](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-contingency-policies-automation/images/contingency6-edit.png)
+    
+      | Property | Value | Description |
+      |----------|-------|-------------|
+      | **Team Card** | `data.action` | The Team card response to evaluate |
+      | **Expression** | `is equal to` | The expression to evaluate |
+      | **Condition** | `Approve` | response to verify in the condition |
+      ||||
+      
+# Step 10: Add an action on approval, to enable contingency policies.
+
+1. On the Logic App Designer, in the HTTP connection box, click `Enable contingency policies within conditional access`. This example uses HTTP connector.
+
+1. Specify the Method, URI, Headers, Body, Authentication type, Tenant, Audience, Client ID, Credential Type and Secret.
+
+   ![Select "Enable contingency policies within conditional access" HTTP connector](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-blueprint-automation/images/blueprint7-edit.png)
+
+      | Property | Value | Description |
+      |----------|-------|-------------|
+      | **Method** | `PATCH` | Method to call |
+      | **URI** | `https://graph.microsoft.com/v1.0/identity/conditionalAccess/policies/{id}` | Conditional Access API v1.0 endpoint |
+      | **Headers** | `application/json` | Content-Type |
+      | **Body** | `state: enabled` | Enabling the contingency policies |
+      | **Authentication type** | `Active Directory OAuth` | Authentication type for App-only flow |
+      | **Tenant** | `TenantID` | Tennat ID configured in step 3 |
+      | **Audience** | `https://graph.microsoft.com` | MS Graph |
+      | **Client ID** | `Client ID` | Client ID configured in step 3 |
+      | **Credential Type** | `Secret` | Client Secret  |
+      | **Secret** | `value` | Secret value retrieved from key vault |
+      ||||      
 
 # Step 8: Add a switch statement that checks whether the conditional access policy was added, updated or deleted.
 
