@@ -23,7 +23,33 @@ In this tutorial, you'll learn how to:
 :heavy_check_mark: Update a conditional access policy  <br /> 
 :heavy_check_mark: Delete a conditional access policy  <br /> 
 
-# Create a Conditional Access Policy 
+
+## Step 1: Authenticate with the right roles
+
+If you are using delegated permissions flow, sign in using an account with one of these roles:
+
+For read and write of conditional access policies:
+
+- Global administrator
+- [Conditional Access administrator](https://docs.microsoft.com/en-us/azure/active-directory/users-groups-roles/directory-assign-admin-roles#conditional-access-administrator-permissions)
+- Security administrator
+
+For reading conditional access policies:
+
+- [Security Reader permissions](https://docs.microsoft.com/en-us/azure/active-directory/users-groups-roles/directory-assign-admin-roles#security-reader-permissions)
+
+## Step 2: Authenticate with the right permissions
+
+One of the following permissions is required to call this API. To learn more, including how to choose permissions, see [Permissions](/graph/permissions-reference).
+
+|Permission type                        | Permissions (from least to most privileged)                    |
+|:--------------------------------------|:---------------------------------------------------------------|
+|Delegated (work or school account)     | Policy.Read.All, Policy.ReadWrite.ConditionalAccess and Application.Read.All |
+|Delegated (personal Microsoft account) | Not supported. |
+|Application                            | Policy.Read.All, Policy.ReadWrite.ConditionalAccess and Application.Read.All |
+
+
+# Step 3: Create a Conditional Access Policy 
 
 The steps to create a Sign-in risk-based Conditional Access policy [create sign-in risk policy](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/howto-conditional-access-policy-risk) within Azure Portal is documented. Let us use this document as a reference to create a policy called "CA002: Require MFA for medium + sign-in risk" using the APIs.
 
@@ -46,7 +72,7 @@ The following headers are required:
 
 For more information about how to create the request, see [Components of API request/response](https://docs.microsoft.com/en-us/rest/api/azure/#components-of-a-rest-api-requestresponse).
 
-## Create the request body
+## Step 4: Create the request body
 
 The following common definitions are used to build a request body:
 
@@ -155,7 +181,7 @@ A *201 Created* response from the previous example request body shows an *id* ha
 }
 ```
 
-# List all conditional access policies
+# Step 5: List all conditional access policies
 
 To fetch all conditional access policies, use the following *GET* operation
 
@@ -238,7 +264,7 @@ Once the 'GET' request is submitted, a 200 (successful) response is returned. Al
 }
 ```
 
-# Get a specific conditional access policy
+# Step 6: Get a specific conditional access policy
 
 To get a specific conditional access policy, use the following *GET* operation
 
@@ -319,7 +345,7 @@ Once the 'GET' request is submitted, a 200 (successful) response is returned.
 }
 ```
 
-# Update a Conditional Access Policy 
+# Step 7: Update a Conditional Access Policy 
 
 Let us now update the conditional access policy we retrieved in the previous step.
 
