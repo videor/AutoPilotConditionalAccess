@@ -90,6 +90,86 @@ Once the 'GET' request is submitted, a 200 (successful) response is returned. Al
 }
 ```
 
+# Get a specific conditional access policy
+
+To fetch all conditional access policies, use the following *GET* operation
+
+```http
+GET https://graph.microsoft.com/v1.0/identity/conditionalAccess/policies/{policyid}
+```
+
+The GET URI has `{policyid}` parameter. In this example, `{policyid}` is "2a945ba4-2b5f-4b1c-8f05-db014df71b83".  As all the required parameters are given in the URI, there is no need for a separate request body.
+
+```http
+GET https://graph.microsoft.com/v1.0/identity/conditionalAccess/policies/2a945ba4-2b5f-4b1c-8f05-db014df71b83
+```
+
+#### Responses
+
+The successful response for the 'GET' operation is shown below:
+
+|Name  | Description  |
+|---------|---------|
+|200 OK    | OK        |
+
+##### Example response
+
+Once the 'GET' request is submitted, a 200 (successful) response is returned. 
+
+```json
+        {
+            "id": "2a945ba4-2b5f-4b1c-8f05-db014df71b83",
+            "displayName": "CA001 - Enforce MAM Policy for Android and IOS",
+            "createdDateTime": "2020-06-28T09:37:53.6366773Z",
+            "modifiedDateTime": null,
+            "state": "enabledForReportingButNotEnforced",
+            "sessionControls": null,
+            "conditions": {
+                "signInRiskLevels": [],
+                "clientAppTypes": [
+                    "mobileAppsAndDesktopClients"
+                ],
+                "locations": null,
+                "devices": null,
+                "applications": {
+                    "includeApplications": [
+                        "00000002-0000-0ff1-ce00-000000000000",
+                        "00000003-0000-0ff1-ce00-000000000000"
+                    ],
+                    "excludeApplications": [],
+                    "includeUserActions": []
+                },
+                "users": {
+                    "includeUsers": [],
+                    "excludeUsers": [],
+                    "includeGroups": [
+                        "6c96716b-b32b-40b8-9009-49748bb6fcd5"
+                    ],
+                    "excludeGroups": [
+                        "f753047e-de31-4c74-a6fb-c38589047723"
+                    ],
+                    "includeRoles": [],
+                    "excludeRoles": []
+                },
+                "platforms": {
+                    "includePlatforms": [
+                        "android",
+                        "iOS"
+                    ],
+                    "excludePlatforms": []
+                }
+            },
+            "grantControls": {
+                "operator": "OR",
+                "builtInControls": [
+                    "approvedApplication",
+                    "compliantApplication"
+                ],
+                "customAuthenticationFactors": [],
+                "termsOfUse": []
+            }
+        }
+```
 
 # Create Conditional Access Policies using API
 
