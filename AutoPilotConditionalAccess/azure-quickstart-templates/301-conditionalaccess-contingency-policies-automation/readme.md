@@ -134,48 +134,31 @@ This logic app uses managed identity for getting secrets from key vault in order
 
 # Step 4: Add the Recurrence trigger
 
-1. On the Logic App Designer, click `recurrence` box. This example uses a recurrence trigger.
+1. On the Logic App Designer, click `When a HTTP request is received` box. This example uses a HTTP trigger.
 
-   ![Change the Recurrence trigger's interval and frequency](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-backup-automation/images/backup1-edit.png)
+   ![Change the HTTP trigger](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-contingency-policies-automation/images/contingency1-edit.png)
 
-   | Property | Required | Value | Description |
-   |----------|----------|-------|-------------|
-   | **Interval** | Yes | 1 | The number of intervals to wait between checks |
-   | **Frequency** | Yes | Minute | The unit of time to use for the recurrence |
+   | Property | Value | Description |
+   |----------|-------|-------------|
+   | **Request Body JSON Schema** | disruption tag | The json schema to capture disruption tag |
+   | **Method** | POST | The HTTP method to call this logic app |
    |||||
       
- This trigger fires every 1 minute, starting at time provided in `start time`. The **recurrence** box shows the recurrence schedule. For more information, see [Schedule tasks and workflows](https://docs.microsoft.com/en-us/azure/connectors/connectors-native-recurrence) and [Workflow actions and triggers](https://docs.microsoft.com/en-us/azure/logic-apps/logic-apps-workflow-actions-triggers#recurrence-trigger).
+This trigger fires when a `HTTP` request is received at the HTTP POST URL endpoint of the logic app. 
  
 Sometimes, you might want to run operations on data in your workflow, and then use the results in later actions. To save these results so that you can easily reuse or reference them, you can create variables to store those results after processing them. You can create variables only at the top level in your logic app.
 
-By default, the previous **recurrence** action returns the time in seconds when the workflow has started. By converting and storing this value as a range within the audit logs endpoint filter, you make the value easier to reuse later without converting again. Similarly, storing old and new values of conditional access policy JSON, we can reuse these values in different parts of workflow. 
+By default, the previous **HTTP** action returns the disruption tag when the workflow is started. By storing this value as a variable, you make the value easier to reuse later. 
 
-2. On the Logic App Designer, click `Audit logs endpoint for conditional access policies` box. Provide the details for your variable as described here:
+2. On the Logic App Designer, click `Disruption Tag` box. Provide the details for your variable as described here:
 
    | Property | Required | Value | Description |
    |----------|----------|-------|-------------|
-   | **Name** | Yes | URL | The name for your variable. This example uses "URL". |
+   | **Name** | Yes | Disruption tag | The name for your variable. This example uses "Disruption tag". |
    | **Type** | Yes | String | The data type for your variable |
-   | **Value** | No| MS graph audit logs endpoint. | The initial value for your variable |
+   | **Value** | Yes| Disruption tag retrieved from previous HTTP request. | The initial value for your variable |
    ||||
    
-3. On the Logic App Designer, click `Old policy JSON before change is made to conditional access policy` box. Provide the details for your variable as described here:
-
-   | Property | Required | Value | Description |
-   |----------|----------|-------|-------------|
-   | **Name** | Yes | OldJSON | The name for your variable. This example uses "OldJSON". |
-   | **Type** | Yes | String | The data type for your variable |
-   | **Value** | No| empty | The initial value for your variable |
-   ||||
-   
-3. On the Logic App Designer, click `New policy JSON after change is made to conditional access policy` box. Provide the details for your variable as described here: 
-
-   | Property | Required | Value | Description |
-   |----------|----------|-------|-------------|
-   | **Name** | Yes | NewJSON | The name for your variable. This example uses "NewJSON". |
-   | **Type** | Yes | String | The data type for your variable |
-   | **Value** | No| empty | The initial value for your variable |
-   ||||
 
 # Step 5: Get client secret from key vault using managed identity.
 
