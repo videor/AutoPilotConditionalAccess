@@ -132,7 +132,7 @@ This logic app uses managed identity for getting secrets from key vault in order
 ![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-blueprint-automation/images/blueprint-parameters-edit.png)
 
 
-# Step 4: Add the Recurrence trigger
+# Step 4: Add the HTTP trigger
 
 1. On the Logic App Designer, click `When a HTTP request is received` box. This example uses a HTTP trigger.
 
@@ -166,7 +166,7 @@ By default, the previous **HTTP** action returns the disruption tag when the wor
 
 1. Specify the Method, URI, Queries, Authentication type, Managed Identity and Audience.
 
-   ![Select "GET client secret from key vault using managed identity" HTTP connector](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-backup-automation/images/backup2-edit.png)
+   ![Select "GET client secret from key vault using managed identity" HTTP connector](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-contingency-policies-automation/images/contingency2-edit.png)
 
       | Property | Value | Description |
       |----------|-------|-------------|
@@ -180,18 +180,18 @@ By default, the previous **HTTP** action returns the disruption tag when the wor
     
 1. Response from Key vault is parsed.
 
-# Step 6: Get audit logs for CRUD operation on conditional access policies.
+# Step 6: Get all conditional access policies.
 
-1. On the Logic App Designer, in the HTTP connection box, click `Get audit logs for CRUD operation on conditional access policies`. This example uses HTTP connector.
+1. On the Logic App Designer, in the HTTP connection box, click `Get all conditional access policies`. This example uses HTTP connector.
 
 1. Specify the Method, URI, Headers, Body, Authentication type, Tenant, Audience, Client ID, Credential Type and Secret.
 
-   ![Select "GET audit logs for CRUD operation on conditional access policies" HTTP connector](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-backup-automation/images/backup3-edit.png)
+   ![Select "GET all conditional access policies" HTTP connector](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-contingency-policies-automation/images/contingency3-edit.png)
 
       | Property | Value | Description |
       |----------|-------|-------------|
       | **Method** | `GET` | Method to call |
-      | **URI** | `URL variable` | Audit Logs API v1.0 endpoint |
+      | **URI** | `URL variable` | Conditional Access APIs v1.0 endpoint |
       | **Headers** | `application/json` | Content-Type |
       | **Authentication type** | `Active Directory OAuth` | Authentication type for App-only flow |
       | **Tenant** | `TenantID` | Tennat ID configured in step 3 |
@@ -201,19 +201,43 @@ By default, the previous **HTTP** action returns the disruption tag when the wor
       | **Secret** | `value` | Secret value retrieved from key vault |
       ||||
       
-# Step 7: Add a condition that checks if any CRUD operations were returned.
+# Step 7: Add a condition that checks if any policy has disruption tag and enable in emergency.
 
 1. On the Logic App Designer, in the Condition box, verify response. This example uses response from earlier HTTP connector:
 
-1. Specify the HTTP response to evaluate, expression and verify the greater than or equal to `1` response in the condition.
+1. Specify the HTTP response to evaluate, expression and verify it contains `Disruption tag`  and `Enable tag` in the condition.
     
-      ![Select "Condition to check the response from get audit logs HTTP connector"](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-backup-automation/images/backup4-edit.png)
+      ![Select "Condition to check if policy has disruption tag and Enable tag"](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-contingency-policies-automation/images/contingency4-edit.png)
     
       | Property | Value | Description |
       |----------|-------|-------------|
-      | **Length** | `length of array` | The length of array response to evaluate |
-      | **Expression** | `is greater than or equal to` | The expression to evaluate |
-      | **Condition** | `1` | response to verify in the condition |
+      | **Display name** | `Display name` | The display name attribute to evaluate within policy JSON |
+      | **Expression** | `Contains` | The expression to evaluate |
+      | **Condition** | `Disruption tag` | response to verify in the condition |
+      | **Display name** | `Display name` | The display name attribute to evaluate within policy JSON |
+      | **Expression** | `Contains` | The expression to evaluate |
+      | **Condition** | `Enable tag` | response to verify in the condition |
+      ||||
+
+# Step 8: Add an action that sends a message to Teams channel for approving or rejecting enabling contingency policies request.
+
+1. On the Logic App Designer, in the Teams connection box, click `Post an Adaptive card to Teams channel and wait for a response`. This example uses Teams connector:
+
+     ![Specify Team, message, channel, update card and update message for posting to Teams](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-contingency-policies-automation/images/contingency5-edit.png)
+
+1. If prompted, sign in to your email account with your credentials so that Logic Apps can create a connection to your Teams account.
+
+1. In the connector box, provide the criteria for posting an adaptive card to Teams channel.
+
+1. Specify the Team, message, channel, update card and update message for posting to Teams.
+
+      | Property | Value | Description |
+      |----------|-------|-------------|
+      | **Team** | `ConditionalAccess` | The Team to post approval workflow |
+      | **Message** | `message to send` | The message to post to Team channel |
+      | **Channel** | `Contingency Plan` | The Teams channel to post approval workflow |
+      | **Update card** | `Yes` | Update the adaptive card to show a member of Teams channel has taken an action |
+      | **Update message** | `Processing requested action` | Update the adaptive card to show a message once an approval action is taken |
       ||||
 
 # Step 8: Add a switch statement that checks whether the conditional access policy was added, updated or deleted.
