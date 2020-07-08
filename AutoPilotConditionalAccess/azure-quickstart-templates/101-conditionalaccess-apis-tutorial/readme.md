@@ -2,9 +2,9 @@
 
 Planning your Conditional Access deployment is critical to achieving your organization's access strategy for apps and resources.
 
-CA policies are if-then statements: If an assignment is met, then apply these access controls.
+Conditional Access policies are if-then statements: If an assignment is met, then apply these access controls.
 
-When configuring CA policies, conditions are called assignments. CA policies allow you to enforce access controls on your organization’s apps based on certain assignments.
+When configuring Conditional Access policies, conditions are called assignments. Conditional Access policies allow you to enforce access controls on your organization’s apps based on certain assignments.
 
 For more information, see [Components of CA policy](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/concept-conditional-access-policies).
 
