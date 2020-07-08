@@ -7,6 +7,89 @@
 :heavy_check_mark: Remediate errors within conditional access policy  <br /> 
 :heavy_check_mark: Delete conditional access policy  <br /> 
 
+### List all conditional access policies
+
+To fetch all conditional access policies, use the following *GET* operation
+
+```http
+GET https://graph.microsoft.com/v1.0/identity/conditionalAccess/policies
+```
+
+The GET URI has `{v1.0}`, `{identity}`, `{conditionalAccess}` and `{policies}` within the endpoint. As all the required parameters are given in the URI, there is no need for a separate request body.
+
+
+#### Responses
+
+The successful response for the 'GET' operation is shown below:
+
+|Name  | Description  |
+|---------|---------|
+|200 OK    | OK        |
+
+##### Example response
+
+Once the 'GET' request is submitted, a 200 (successful) response is returned. All conditional access policies (upto the current maximum limit of 194 policies) are returned in the response. 
+
+```json
+{
+    "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#identity/conditionalAccess/policies",
+    "value": [
+        {
+            "id": "2a945ba4-2b5f-4b1c-8f05-db014df71b83",
+            "displayName": "CA001 - Enforce MAM Policy for Android and IOS",
+            "createdDateTime": "2020-06-28T09:37:53.6366773Z",
+            "modifiedDateTime": null,
+            "state": "enabledForReportingButNotEnforced",
+            "sessionControls": null,
+            "conditions": {
+                "signInRiskLevels": [],
+                "clientAppTypes": [
+                    "mobileAppsAndDesktopClients"
+                ],
+                "locations": null,
+                "devices": null,
+                "applications": {
+                    "includeApplications": [
+                        "00000002-0000-0ff1-ce00-000000000000",
+                        "00000003-0000-0ff1-ce00-000000000000"
+                    ],
+                    "excludeApplications": [],
+                    "includeUserActions": []
+                },
+                "users": {
+                    "includeUsers": [],
+                    "excludeUsers": [],
+                    "includeGroups": [
+                        "6c96716b-b32b-40b8-9009-49748bb6fcd5"
+                    ],
+                    "excludeGroups": [
+                        "f753047e-de31-4c74-a6fb-c38589047723"
+                    ],
+                    "includeRoles": [],
+                    "excludeRoles": []
+                },
+                "platforms": {
+                    "includePlatforms": [
+                        "android",
+                        "iOS"
+                    ],
+                    "excludePlatforms": []
+                }
+            },
+            "grantControls": {
+                "operator": "OR",
+                "builtInControls": [
+                    "approvedApplication",
+                    "compliantApplication"
+                ],
+                "customAuthenticationFactors": [],
+                "termsOfUse": []
+            }
+        }
+}
+```
+
+
 # Create Conditional Access Policies using API
 
 The steps to create an Azure Recovery Services Vault using REST API are outlined in [create vault REST API](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate) documentation. Let us use this document as a reference to create a vault called "testVault" in "West US".
