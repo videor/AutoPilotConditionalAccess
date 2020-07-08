@@ -224,13 +224,13 @@ Once the 'GET' request is submitted, a 200 (successful) response is returned. Al
 
 # Get a specific conditional access policy
 
-To fetch all conditional access policies, use the following *GET* operation
+To get a specific conditional access policy, use the following *GET* operation
 
 ```http
 GET https://graph.microsoft.com/v1.0/identity/conditionalAccess/policies/{policyid}
 ```
 
-The GET URI has `{policyid}` parameter. In this example, `{policyid}` is "2a945ba4-2b5f-4b1c-8f05-db014df71b83".  As all the required parameters are given in the URI, there is no need for a separate request body.
+The GET URI has `{policyid}` parameter. In this example, `{policyid}` is "34ab2fe6-51ec-4442-9558-723f480ee29f".  As all the required parameters are given in the URI, there is no need for a separate request body.
 
 ```http
 GET https://graph.microsoft.com/v1.0/identity/conditionalAccess/policies/34ab2fe6-51ec-4442-9558-723f480ee29f
@@ -302,6 +302,131 @@ Once the 'GET' request is submitted, a 200 (successful) response is returned.
             }
 }
 ```
+
+# Update a Conditional Access Policy 
+
+Let us now update the conditional access policy we retrieved in the previous step.
+
+To update a conditional access policy, use the following *PATCH* operation.
+
+```http
+PATCH https://graph.microsoft.com/v1.0/identity/conditionalAccess/policies/{policyid}
+```
+The PATCH URI has `{policyid}` parameter. In this example, `{policyid}` is "34ab2fe6-51ec-4442-9558-723f480ee29f".  
+
+```http
+PATCH https://graph.microsoft.com/v1.0/identity/conditionalAccess/policies/34ab2fe6-51ec-4442-9558-723f480ee29f
+```
+
+## Create a request
+
+To create the *PATCH* request
+
+The following headers are required:
+
+| Request header   | Description |
+|------------------|-----------------|
+| *Content-Type:*  | Required. Set to `application/json`. |
+| *Authorization:* | Required. Set to a valid `Bearer` [access token](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients). |
+
+For more information about how to create the request, see [Components of API request/response](https://docs.microsoft.com/en-us/rest/api/azure/#components-of-a-rest-api-requestresponse).
+
+## Create the request body
+
+The following common definitions are used to build a request body:
+
+|Name  |Required  |Type  |Description  |
+|---------|---------|---------|---------|
+|displayName     |   true      |   String      |  Policy name       |
+|state     |  true       |String         |   Policy state      |
+|conditions     |   true      | [Condition Set](https://docs.microsoft.com/en-us/graph/api/resources/conditionalaccessconditionset?view=graph-rest-beta)        |  Represents the type of conditions that govern when the policy applies       |
+|grantControls     |  true       |  [Grant Controls Set](https://docs.microsoft.com/en-us/graph/api/resources/conditionalaccessgrantcontrols?view=graph-rest-beta)       |    Represents grant controls that must be fulfilled to pass the policy     |
+
+## Example request body
+
+The following example body is used to update the conditional access policy with an additional group id {"ba8e7ded-8b0f-4836-ba06-8ff1ecc5c8ba"}.
+
+```json
+{ 
+    "conditions": { 
+        "users": { 
+            "includeGroups": [ 
+                "6c96716b-b32b-40b8-9009-49748bb6fcd5", "ba8e7ded-8b0f-4836-ba06-8ff1ecc5c8ba"
+            ]
+        } 
+    }
+} 
+```
+
+## Responses
+
+A successful response for the operation to create a conditional access policy:
+
+|Name  |Description  |
+|---------|---------|
+|204 No Content     |   Updated      |
+
+For more information about REST API responses, see [Process the response message](https://docs.microsoft.com/en-us/rest/api/azure/#process-the-response-message).
+
+### Example response
+
+A *204 No Content* response from the previous example request body shows the *groupid* has been added to *includeGroups* property:
+
+```json
+{
+    "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#identity/conditionalAccess/policies/$entity",
+    "id": "34ab2fe6-51ec-4442-9558-723f480ee29f",
+    "displayName": "ZT1: Require MFA for medium + sign-in risk",
+    "createdDateTime": "2020-07-08T11:34:24.6674365Z",
+    "modifiedDateTime": "2020-07-08T12:22:42.3500388Z",
+    "state": "enabledForReportingButNotEnforced",
+    "sessionControls": null,
+    "conditions": {
+        "signInRiskLevels": [
+            "high",
+            "medium"
+        ],
+        "clientAppTypes": [
+            "browser",
+            "mobileAppsAndDesktopClients"
+        ],
+        "platforms": null,
+        "locations": null,
+        "devices": null,
+        "applications": {
+            "includeApplications": [
+                "All"
+            ],
+            "excludeApplications": [],
+            "includeUserActions": []
+        },
+        "users": {
+            "includeUsers": [],
+            "excludeUsers": [],
+            "includeGroups": [
+                "6c96716b-b32b-40b8-9009-49748bb6fcd5",
+                "ba8e7ded-8b0f-4836-ba06-8ff1ecc5c8ba"
+            ],
+            "excludeGroups": [
+                "f753047e-de31-4c74-a6fb-c38589047723"
+            ],
+            "includeRoles": [],
+            "excludeRoles": []
+        }
+    },
+    "grantControls": {
+        "operator": "OR",
+        "builtInControls": [
+            "mfa"
+        ],
+        "customAuthenticationFactors": [],
+        "termsOfUse": []
+    }
+}
+```
+
+
+
 
 ## Next steps
 
