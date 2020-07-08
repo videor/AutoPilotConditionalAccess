@@ -28,15 +28,16 @@ In this tutorial, you'll learn how to:
 
 If you are using delegated permissions flow, sign in using an account with one of these roles:
 
-For read and write of conditional access policies:
+For read and write to conditional access policies:
 
 - Global administrator
-- [Conditional Access administrator](https://docs.microsoft.com/en-us/azure/active-directory/users-groups-roles/directory-assign-admin-roles#conditional-access-administrator-permissions)
+- [Conditional Access administrator](https://docs.microsoft.com/en-us/azure/active-directory/users-groups-roles/directory-assign-admin-roles#conditional-access-administrator-permissions) ***Recommended***
 - Security administrator
 
 For reading conditional access policies:
 
 - [Security Reader permissions](https://docs.microsoft.com/en-us/azure/active-directory/users-groups-roles/directory-assign-admin-roles#security-reader-permissions)
+- [Global Reader permissions](https://docs.microsoft.com/en-us/azure/active-directory/users-groups-roles/directory-assign-admin-roles#global-reader-permissions)
 
 ## Step 2: Authenticate with the right permissions
 
