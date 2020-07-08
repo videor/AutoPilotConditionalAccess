@@ -324,41 +324,100 @@ By default, the previous **HTTP** action returns the disruption tag when the wor
       | **message** | `message` | Post the adaptive card with an alert message |
       ||||
 
+# Step 12: Add a condition that checks if any operational policy has disruption tag.
 
-# Step 8: Add a switch statement that checks whether the conditional access policy was added, updated or deleted.
+1. On the Logic App Designer, in the Condition box, verify response. This example uses response from earlier HTTP connector:
 
-1. On the Logic App Designer, in the HTTP connection box, click `Switch`. This example uses logic app switch statement.
+1. Specify the HTTP response to evaluate, expression and verify it contains `Disruption tag`  and does not contain `Enable tag` in the condition.
+    
+      ![Select "Condition to check if policy has disruption tag and doesn't contain Enable tag"](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-contingency-policies-automation/images/contingency9-edit.png)
+    
+      | Property | Value | Description |
+      |----------|-------|-------------|
+      | **Display name** | `Display name` | The display name attribute to evaluate within policy JSON |
+      | **Expression** | `Contains` | The expression to evaluate |
+      | **Condition** | `Disruption tag` | response to verify in the condition |
+      | **Display name** | `Display name` | The display name attribute to evaluate within policy JSON |
+      | **Expression** | `Does not contains` | The expression to evaluate |
+      | **Condition** | `Enable tag` | response to verify in the condition |
+      ||||
 
-1. Specify the Switch On and Case to evaluate. Specify `Add conditional access policy` for case 1, `Update conditional access policy` for case 2 and `Delete conditional access policy` for case 3.
+# Step 13: Add an action that sends a message to Teams channel for approving or rejecting disabling operational policies request.
 
-   ![Select "Check if deployment is successful" condition](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-backup-automation/images/backup5-edit.png)
+1. On the Logic App Designer, in the Teams connection box, click `Post an Adaptive card to Teams channel and wait for a response 2`. This example uses Teams connector:
+
+     ![Specify Team, message, channel, update card and update message for posting to Teams](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-contingency-policies-automation/images/contingency5-edit.png)
+
+1. If prompted, sign in to your email account with your credentials so that Logic Apps can create a connection to your Teams account.
+
+1. In the connector box, provide the criteria for posting an adaptive card to Teams channel.
+
+1. Specify the Team, message, channel, update card and update message for posting to Teams. The message is shorterned for readability.
 
       | Property | Value | Description |
       |----------|-------|-------------|
-      | **Switch On** | `Activity display name` | Check the activity display name retrieved from audit logs |
-      | **Case 1 equals** | `Add conditional access policy` | Case 1 to check Add operations on conditional access policies |
-      | **Case 2 equals** | `Update conditional access policy` | Case 2 to check Update operations on conditional access policies|
-      | **Case 3 equals** | `Delete conditional access policy` | Case 3 to check Delete operations on conditional access policies|
+      | **Team** | `ConditionalAccess` | The Team to post approval workflow |
+      | **Message** | `message to send` | The message to post to Team channel |
+      | **Channel** | `Contingency Plan` | The Teams channel to post approval workflow |
+      | **Update card** | `Yes` | Update the adaptive card to show a member of Teams channel has taken an action |
+      | **Update message** | `Processing requested action` | Update the adaptive card to show a message once an approval action is taken |
       ||||
       
-# Step 9: Add a check to find if the newly created conditional access policy has block controls. If it does, fire an alert on Team channel<br /> 
+# Step 14: Add a condition that checks the approval response.
 
-1. On the Logic App Designer, in the Teams connection box, click `check if the conditional access policy has been created with block controls`. This example uses Teams connector:
+1. On the Logic App Designer, in the Condition box, verify response. This example uses response from earlier Teams connector:
 
-   ![Select "fire an alert on Team channel if a new block policy is created" trigger for Teams](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-alert-automation/images/Alert9-edit.png)
+1. Specify the Team card response, expression and verify `approve` response in the condition.
+    
+      ![Select "Condition to check the response from adaptive card that was posted earlier to Teams channel"](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-contingency-policies-automation/images/contingency10-edit.png)
+    
+      | Property | Value | Description |
+      |----------|-------|-------------|
+      | **Team Card** | `data.action` | The Team card response to evaluate |
+      | **Expression** | `is equal to` | The expression to evaluate |
+      | **Condition** | `Approve` | response to verify in the condition |
+      ||||
+      
+# Step 15: Add an action on approval, to Change status of tagged operational policies to report-only mode.
 
-1. In the condition, provide the criteria for checking the condition.
+1. On the Logic App Designer, in the HTTP connection box, click `Change status of tagged operational policies to report-only mode`. This example uses HTTP connector.
 
-1. Specify the HTTP response to evaluate, expression and verify it contains `block` response in the condition.
+1. Specify the Method, URI, Headers, Body, Authentication type, Tenant, Audience, Client ID, Credential Type and Secret.
+
+   ![Select "Change status of tagged operational policies to report-only mode" HTTP connector](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-contingency-policies-automation/images/contingency11-edit.png)
 
       | Property | Value | Description |
       |----------|-------|-------------|
-      | **Built in control** | `built in control` | The built in control value within new policy JSON to evaluate |
-      | **Expression** | `contains` | The expression to evaluate |
-      | **Condition** | `block` | response to verify in the condition |
+      | **Method** | `PATCH` | Method to call |
+      | **URI** | `https://graph.microsoft.com/v1.0/identity/conditionalAccess/policies/{id}` | Conditional Access API v1.0 endpoint |
+      | **Headers** | `application/json` | Content-Type |
+      | **Body** | `state: enabledForReportingButNotEnforced` | Changing the operational policies state to report-only |
+      | **Authentication type** | `Active Directory OAuth` | Authentication type for App-only flow |
+      | **Tenant** | `TenantID` | Tennat ID configured in step 3 |
+      | **Audience** | `https://graph.microsoft.com` | MS Graph |
+      | **Client ID** | `Client ID` | Client ID configured in step 3 |
+      | **Credential Type** | `Secret` | Client Secret  |
+      | **Secret** | `value` | Secret value retrieved from key vault |
+      ||||      
+
+# Step 11: Add a check to find if the conditional access policy update was successful. If true, fire an alert on Team channel. 
+
+1. On the Logic App Designer, in the conditions connection box, click `check if operational policy was disabled successfully`. This example uses logic app condition evaluation:
+
+   ![Select "check if operational policy was disabled successfully" condition](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-contingency-policies-automation/images/contingency12-edit.png)
+
+1. In the condition, provide the criteria for checking the condition.
+
+1. Specify the HTTP response to evaluate, expression and verify it is equal to `204` response in the condition.
+
+      | Property | Value | Description |
+      |----------|-------|-------------|
+      | **Status code** | `Status code` | The status code from previous step to evaluate |
+      | **Expression** | `is equal to` | The expression to evaluate |
+      | **Condition** | `204` | response to verify in the condition |
       ||||   
   
-1. On the Logic App Designer, in the Teams connection box, click `Post alert to Team channel on new block policy creation`. This example uses Teams connector:
+1. On the Logic App Designer, in the Teams connection box, click `Post to team channel that operational policy was disabled successfully`. This example uses Teams connector:
 
 1. If prompted, sign in to your email account with your credentials so that Logic Apps can create a connection to your Teams account.
 
@@ -369,32 +428,11 @@ By default, the previous **HTTP** action returns the disruption tag when the wor
       | Property | Value | Description |
       |----------|-------|-------------|
       | **Team** | `ConditionalAccess` | The Team to post alert |
-      | **Channel** | `General` | The Teams channel to post alert |
+      | **Channel** | `Contingency plan` | The Teams channel to post alert |
       | **message** | `message` | Post the adaptive card with an alert message |
       ||||
 
-
-# Step 10: Add a check to find if a conditional access policy has been updated from grant access to block controls. If it does, fire an alert on Team channel<br /> 
-
-1. On the Logic App Designer, in the Onedrive connection box, click `check if the conditional access policy has been updated from Grant to block access`. This example uses Team connector:
-
-   ![Select "fire an alert on Team channel when a policy is updated from grant to block" trigger for Teams](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-alert-automation/images/Alert10-alert.png)
-
-1. In the condition, provide the criteria for checking the condition.
-
-1. Specify the HTTP response to evaluate, expression and verify the old policy JSON did not contain `block` control and the updated new policy JSON contains `block` control.
-
-      | Property | Value | Description |
-      |----------|-------|-------------|
-      | **Built in control** | `built in control` | The built in control value within new policy JSON to evaluate |
-      | **Expression** | `does not contain` | The expression to evaluate |
-      | **Condition** | `block` | response to verify in the condition |
-      | **Built in control** | `built in control` | The built in control value within new policy JSON to evaluate |
-      | **Expression** | `contains` | The expression to evaluate |
-      | **Condition** | `block` | response to verify in the condition |
-      ||||   
-  
-1. On the Logic App Designer, in the Teams connection box, click `Post alert to Team channel on potentially disruptive update`. This example uses Teams connector:
+1. On the Logic App Designer, in the Teams connection box, click `Post to team channel that disabling operational policy failed`. This example uses Teams connector:
 
 1. If prompted, sign in to your email account with your credentials so that Logic Apps can create a connection to your Teams account.
 
@@ -405,7 +443,9 @@ By default, the previous **HTTP** action returns the disruption tag when the wor
       | Property | Value | Description |
       |----------|-------|-------------|
       | **Team** | `ConditionalAccess` | The Team to post alert |
-      | **Channel** | `General` | The Teams channel to post alert |
+      | **Channel** | `Contingency plan` | The Teams channel to post alert |
       | **message** | `message` | Post the adaptive card with an alert message |
       ||||
+
+
 
