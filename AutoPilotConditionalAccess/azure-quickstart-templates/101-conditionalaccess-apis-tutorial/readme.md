@@ -2,12 +2,6 @@
 
 Planning your Conditional Access deployment is critical to achieving your organization's access strategy for apps and resources.
 
-In a mobile-first, cloud-first world, your users access your organization's resources from anywhere using a variety of devices and apps. As a result, focusing on who can access a resource is no longer enough. You also need to consider where the user is, the device being used, the resource being accessed, and more.
-
-Azure Active Directory (Azure AD) Conditional Access (CA) analyses signals such as user, device, and location to automate decisions and enforce organizational access policies for resource. You can use CA policies to apply access controls like Multi-Factor Authentication (MFA). CA policies allow you to prompt users for MFA when needed for security, and stay out of users’ way when not needed.
-
-# Understand CA policy components
-
 CA policies are if-then statements: If an assignment is met, then apply these access controls.
 
 When configuring CA policies, conditions are called assignments. CA policies allow you to enforce access controls on your organization’s apps based on certain assignments.
