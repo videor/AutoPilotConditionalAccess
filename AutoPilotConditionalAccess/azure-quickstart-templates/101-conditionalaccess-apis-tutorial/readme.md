@@ -1,11 +1,33 @@
 # Tutorial: How to use Conditional Access APIs 101
 
+Planning your Conditional Access deployment is critical to achieving your organization's access strategy for apps and resources.
+
+In a mobile-first, cloud-first world, your users access your organization's resources from anywhere using a variety of devices and apps. As a result, focusing on who can access a resource is no longer enough. You also need to consider where the user is, the device being used, the resource being accessed, and more.
+
+Azure Active Directory (Azure AD) Conditional Access (CA) analyses signals such as user, device, and location to automate decisions and enforce organizational access policies for resource. You can use CA policies to apply access controls like Multi-Factor Authentication (MFA). CA policies allow you to prompt users for MFA when needed for security, and stay out of users’ way when not needed.
+
+# Understand CA policy components
+
+CA policies are if-then statements: If an assignment is met, then apply these access controls.
+
+When configuring CA policies, conditions are called assignments. CA policies allow you to enforce access controls on your organization’s apps based on certain assignments.
+
+For more information, see [Components of CA policy](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/concept-conditional-access-policies).
+
+You can use the conditional access APIs to manage policies at scale. For example, you can:
+
+- Get a snapshhot of all conditional access policies within your organization and take backups.
+- Update a conditional access policy to add new groups as you rollout your policies within your organization.
+- Update the list of applications you are targeting within the conditional access policies as new line of business application are added in your organization.
+- Delete a policy that is no longer needed.
+
+In this tutorial, you'll learn how to:
+
 :heavy_check_mark: Create a conditional access policy  <br /> 
 :heavy_check_mark: List all conditional access policies.  <br /> 
 :heavy_check_mark: Get a specific conditional access policy.  <br /> 
 :heavy_check_mark: Update a conditional access policy  <br /> 
-:heavy_check_mark: Remediate errors within conditional access policy  <br /> 
-:heavy_check_mark: Delete conditional access policy  <br /> 
+:heavy_check_mark: Delete a conditional access policy  <br /> 
 
 # Create a Conditional Access Policy 
 
@@ -425,7 +447,31 @@ A *204 No Content* response from the previous example request body shows the *gr
 }
 ```
 
+# Delete a specific conditional access policy
 
+To delete a specific conditional access policy, use the following *DELETE* operation
+
+```http
+DELETE https://graph.microsoft.com/v1.0/identity/conditionalAccess/policies/{policyid}
+```
+
+The DELETE URI has `{policyid}` parameter. In this example, `{policyid}` is "34ab2fe6-51ec-4442-9558-723f480ee29f".  As all the required parameters are given in the URI, there is no need for a separate request body.
+
+```http
+DELETE https://graph.microsoft.com/v1.0/identity/conditionalAccess/policies/34ab2fe6-51ec-4442-9558-723f480ee29f
+```
+
+#### Responses
+
+The successful response for the 'DELETE' operation is shown below:
+
+|Name  | Description  |
+|---------|---------|
+|204 No Content    | Deleted        |
+
+##### Example response
+
+Once the 'DELETE' request is submitted, a 204 (successful) response is returned. 
 
 
 ## Next steps
