@@ -17,6 +17,8 @@ You can use the conditional access APIs to manage policies at scale. For example
 
 In this tutorial, you'll learn how to:
 
+:heavy_check_mark: Authenticate with the right roles  <br /> 
+:heavy_check_mark: Authenticate with the right permissions  <br /> 
 :heavy_check_mark: Create a conditional access policy  <br /> 
 :heavy_check_mark: List all conditional access policies.  <br /> 
 :heavy_check_mark: Get a specific conditional access policy.  <br /> 
