@@ -346,7 +346,7 @@ By default, the previous **HTTP** action returns the disruption tag when the wor
 
 1. On the Logic App Designer, in the Teams connection box, click `Post an Adaptive card to Teams channel and wait for a response 2`. This example uses Teams connector:
 
-     ![Specify Team, message, channel, update card and update message for posting to Teams](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-contingency-policies-automation/images/contingency5-edit.png)
+     ![Specify Team, message, channel, update card and update message for posting to Teams](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-contingency-policies-automation/images/contingency13-edit.png)
 
 1. If prompted, sign in to your email account with your credentials so that Logic Apps can create a connection to your Teams account.
 
@@ -400,7 +400,7 @@ By default, the previous **HTTP** action returns the disruption tag when the wor
       | **Secret** | `value` | Secret value retrieved from key vault |
       ||||      
 
-# Step 11: Add a check to find if the conditional access policy update was successful. If true, fire an alert on Team channel. 
+# Step 16: Add a check to find if the conditional access policy update was successful. If true, fire an alert on Team channel. 
 
 1. On the Logic App Designer, in the conditions connection box, click `check if operational policy was disabled successfully`. This example uses logic app condition evaluation:
 
