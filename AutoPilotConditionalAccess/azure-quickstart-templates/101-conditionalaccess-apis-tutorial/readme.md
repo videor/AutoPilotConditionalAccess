@@ -7,7 +7,7 @@
 :heavy_check_mark: Remediate errors within conditional access policy  <br /> 
 :heavy_check_mark: Delete conditional access policy  <br /> 
 
-### List all conditional access policies
+# List all conditional access policies
 
 To fetch all conditional access policies, use the following *GET* operation
 
@@ -86,6 +86,7 @@ Once the 'GET' request is submitted, a 200 (successful) response is returned. Al
                 "termsOfUse": []
             }
         }
+   ]
 }
 ```
 
