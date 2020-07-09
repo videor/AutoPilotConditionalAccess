@@ -1,0 +1,18 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "workflows_301_conditionalaccess_policy_paste_automation_name": {
+            "value": null
+        },
+        "userAssignedIdentities_AutoPilotCAUAI1_externalid": {
+            "value": null
+        },
+        "connections_onedriveforbusiness_externalid": {
+            "value": null
+        },
+        "connections_teams_externalid": {
+            "value": null
+        }
+    }
+}
