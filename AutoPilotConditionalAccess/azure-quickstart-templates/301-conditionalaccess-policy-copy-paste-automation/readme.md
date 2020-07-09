@@ -388,10 +388,43 @@ When you're done, your logic app looks like this workflow at a high level:
       | **File** | `File identifier` | The Onedrive file id to delete |
       ||||
 
+# Step 17: If the paste operation was un-successful. Fire an alert on Team channel. 
+
+1. On the Logic App Designer, in the conditions connection box, click `if invalid application id`. This example uses logic app condition evaluation:
+
+   ![Select "check to find if the conditional access policy paste failed" condition](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-copy-paste-automation/images/Paste7-edit.png)
+
+1. In the condition, provide the criteria for checking the condition.
+
+1. Specify the HTTP response to evaluate, expression and verify it is equal to `1034: Policy contains invalid applications` response in the condition.
+
+      | Property | Value | Description |
+      |----------|-------|-------------|
+      | **Error Message** | `error message` | The error message from previous step to evaluate |
+      | **Expression** | `contains` | The expression to evaluate |
+      | **Condition** | `1034: Policy contains invalid applications` | response to verify in the condition |
+      ||||   
+  
+1. On the Logic App Designer, in the Teams connection box, click `Post message in team channel that policy contains un-supported application ids`. This example uses Teams connector:
+
+1. If prompted, sign in to your email account with your credentials so that Logic Apps can create a connection to your Teams account.
+
+1. In the connector box, provide the criteria for posting an adaptive card to Teams channel.
+
+1. Specify the Team, channel and message for posting to Teams. The message is shorterned for readability.
+
+      | Property | Value | Description |
+      |----------|-------|-------------|
+      | **Team** | `ConditionalAccess` | The Team to post alert |
+      | **Channel** | `General` | The Teams channel to post alert |
+      | **message** | `message` | Post the adaptive card with an alert message |
+      ||||
+
+
 
 # Forward Looking
 
-Try cloning the logic and build workflows to manage update and deletion of policy blueprints and rollout the changes to your organization. If you would like to request a logic app to do this, please send a request on Twitter @Vi_Deora.
+Try cloning the logic and build workflows to also support line of business application ids. If you would like to request a logic app to do this, please send a request on Twitter @Vi_Deora.
 
 
 
