@@ -1,16 +1,16 @@
-# Tutorial:	Backup and Restore Conditional Acess Policies
+# Tutorial:	Easy Versioning of Conditional Acess Policies
 
-Intent: As an IT admin, I want to be able to easily backup conditional access policies so I can undo policy changes.
+Intent: As an IT admin, I want to be able to version control all conditional access policies changes so I can roll-back to a previous version when needed.
 
-You can use the conditional access APIs to manage policy backups that you can then use to recover from accidental policy changes. For example, you can:
+You can use the conditional access APIs to manage policy versioning that you can then use to roll-back from non-compliant policy changes. For example, you can:
 
-As a IT admin, add, update or delete a conditional access policy using conditional APIs. The cretion of conditional access policy will backup the policy within onedrive and any updates to the conditional access policy will update the relevant backup copy within Onedrive. 
+As a IT admin, add, update or delete a conditional access policy using conditional APIs. The cretion of conditional access policy will create a versioning-enabled policy file within onedrive. Any updates to the conditional access policy will update the relevant file with new policy version. 
 
 This automation can be very useful for: 
 - Organizations that manages large numbers of conditional access policies. OR
 - Identity partners that manages policy backups for customers. 
 
-This tutorial shows how to build a [logic app](https://docs.microsoft.com/en-us/azure/logic-apps/) that automates policy backup to Onedrive. Specifically, this logic app monitors the audit logs for policy changes made using conditional access APIs and either creates a new backup file or updates exisiting backup file within onedrive.
+This tutorial shows how to build a [logic app](https://docs.microsoft.com/en-us/azure/logic-apps/) that automates policy versioning to Onedrive. Specifically, this logic app monitors the audit logs for policy changes made using conditional access APIs and either creates a new versioning-enabled file or updates exisiting file version.
 
 In this tutorial, you learn how to:
 
@@ -22,9 +22,9 @@ In this tutorial, you learn how to:
 :heavy_check_mark: Get audit logs for CRUD operation on conditional access policies.<br /> 
 :heavy_check_mark: Add a condition that checks if any CRUD operations were returned.<br /> 
 :heavy_check_mark: Add a switch statement that checks whether the conditional access policy was added, updated or deleted.<br /> 
-:heavy_check_mark: Add a check to find if the newly created conditional access policy has already been backed up.<br /> 
-:heavy_check_mark: Backup the newly created conditional access policy in Onedrive. <br /> 
-:heavy_check_mark: Update the backup file in Onedrive. <br /> 
+:heavy_check_mark: Add a check to find if the newly created conditional access policy has already been version enabled.<br /> 
+:heavy_check_mark: Initialize versioning of newly created conditional access policy in Onedrive. <br /> 
+:heavy_check_mark: Update the policy file to new version. <br /> 
 
 When you're done, your logic app looks like this workflow at a high level:
 
