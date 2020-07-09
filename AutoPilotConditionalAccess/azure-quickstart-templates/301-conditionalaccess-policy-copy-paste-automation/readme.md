@@ -48,7 +48,7 @@ Follow the option that you want to use for deploying the quickstart template:
 
 1. Select the following image to sign in with your Azure account and open the logic app in the Azure portal:
 
-   [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fvideor%2FAutoPilotConditionalAccess%2Fmaster%2FAutoPilotConditionalAccess%2Fazure-quickstart-templates%2F301-conditionalaccess-policy-emergency-account-automation%2Fazuredeploy.json)
+   [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fvideor%2FAutoPilotConditionalAccess%2Fmaster%2FAutoPilotConditionalAccess%2Fazure-quickstart-templates%2F301-conditionalaccess-policy-copy-paste-automation%2Fazuredeploy.json)
 
 1. In the portal, on the **Custom deployment** page, enter or select these values:
 
@@ -57,7 +57,7 @@ Follow the option that you want to use for deploying the quickstart template:
    | **Subscription** | <*Azure-subscription-name*> | The name for the Azure subscription to use |
    | **Resource group** | <*Azure-resource-group-name*> | The name for a new or existing Azure resource group. This example uses `AutoPilotConditionalAccess`. |
    | **Location** |  <*Azure-region-for-all-resources*> | The Azure region to use for all resources, if different from the default value. This example uses the default value, `[resourceGroup().location]`, which is the resource group location. |
-   | **Logic App Name** | <*logic-app-name*> | The name to use for your logic app. This example uses `301-conditionalaccess-policy-emergency-account-automation`. |
+   | **Logic App Name** | <*logic-app-name*> | The name to use for your logic app. This example uses `301-conditionalaccess-policy-copy-paste-automation`. |
    ||||
 
    Here is how the page looks with the values used in this example:
@@ -71,7 +71,7 @@ Follow the option that you want to use for deploying the quickstart template:
 ```azurecli-interactive
 read -p "Enter a project name name to use for generating resource names:" projectName &&
 read -p "Enter the location, such as 'westus':" location &&
-templateUri="https://raw.githubusercontent.com/videor/AutoPilotConditionalAccess/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-emergency-account-automation/azuredeploy.json" &&
+templateUri="https://raw.githubusercontent.com/videor/AutoPilotConditionalAccess/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-copy-paste-automation/azuredeploy.json" &&
 resourceGroupName="${projectName}rg" &&
 az group create --name $resourceGroupName --location "$location" &&
 az deployment group create --resource-group $resourceGroupName --template-uri  $templateUri &&
@@ -89,7 +89,7 @@ For more information, see these topics:
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter a project name to use for generating resource names"
 $location = Read-Host -Prompt "Enter the location, such as 'westus'"
-$templateUri = "https://raw.githubusercontent.com/videor/AutoPilotConditionalAccess/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-emergency-account-automation/azuredeploy.json"
+$templateUri = "https://raw.githubusercontent.com/videor/AutoPilotConditionalAccess/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-copy-paste-automation/azuredeploy.json"
 
 $resourceGroupName = "${projectName}rg"
 
