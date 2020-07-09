@@ -392,7 +392,7 @@ When you're done, your logic app looks like this workflow at a high level:
 
 1. On the Logic App Designer, in the conditions connection box, click `if invalid application id`. This example uses logic app condition evaluation:
 
-   ![Select "check to find if the conditional access policy paste failed" condition](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-copy-paste-automation/images/Paste7-edit.png)
+   ![Select "check to find if the conditional access policy paste failed" condition](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-copy-paste-automation/images/Paste8-edit.png)
 
 1. In the condition, provide the criteria for checking the condition.
 
