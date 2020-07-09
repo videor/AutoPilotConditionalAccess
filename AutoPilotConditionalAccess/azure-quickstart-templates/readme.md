@@ -1,33 +1,12 @@
-# Azure Resource Manager QuickStart Templates for Azure Active Directory Conditional Access
+# Scripts for Azure Active Directory Conditional Access
 
-This repo contains all currently available Azure Resource Manager templates for Azure Active Directory Conditional Access automation contributed by the community. 
+This repo contains all currently available scripts for Azure Active Directory Conditional Access automation contributed by the community. 
 
-See the [**Contribution guide**](/1-CONTRIBUTION-GUIDE/README.md#contribution-guide) for how to use or contribute to this repo.
+See the [**Contribution guide**](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/README.md#contribution-guide) for how to use or contribute to this repo.
 
-# How to Deploy the Azure Resource Manager QuickStart Templates for Azure Active Directory Conditional Access
+# How to Deploy the Scripts for Azure Active Directory Conditional Access
 
 See the [**Deployment guide**](https://docs.microsoft.com/en-us/azure/logic-apps/logic-apps-deploy-azure-resource-manager-templates) for how to deploy the scripts to your Azure tenant.
-
-## NOTE
-
-A draft of the new [**best practices document**](/1-CONTRIBUTION-GUIDE/best-practices.md) has been merged.
-
-## Upcoming Changes
-
-We are going to be making a few changes in the structure and practices of this repo over the next few months, including (but not limited to :wink:) the following:
-
-- Restructure the samples into sub folders to remove the noise from the root (if you made it this far you know what I mean) and provide some clarity about the samples in the repo
-- Merging best practices with the Azure marketplace (there are some contradictory practices in place today)
-- Provide static analysis automation of templates (contributions welcome [here](/test/README.md))
-- Updating documentation to reflect these changes
-
-## Why is this important
-
-If you contribute to the repo, some practices will be changing and it will be important to follow the readme since many of the samples will be grandfathered into the old practices.  Also, if you consume the repo through the API the structure will be changing.  Today many callers assume a folder contains a sample, after the restructuring the metadata.json file will be the key to finding samples.  
-
-## When
-
-We want to give everyone notice of the changes so they will be slowly rolled out over the next few months.  We'll post more detailed dates once we have them.
 
 ### Final Note
 
