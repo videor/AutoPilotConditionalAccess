@@ -25,7 +25,7 @@ In this tutorial, you learn how to:
 
 When you're done, your logic app looks like this workflow at a high level:
 
-![High-level finished logic app overview](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-copy-paste-automation/images/Copy1-edit.png)
+![High-level finished logic app overview](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-copy-paste-automation/images/Copy0.PNG)
 
 # Pre-requisites
 
