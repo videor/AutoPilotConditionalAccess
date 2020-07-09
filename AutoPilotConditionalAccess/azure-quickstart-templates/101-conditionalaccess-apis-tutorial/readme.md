@@ -211,59 +211,53 @@ Once the 'GET' request is submitted, a 200 (successful) response is returned. Al
 {
     "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#identity/conditionalAccess/policies",
     "value": [
-        {
-            "id": "34ab2fe6-51ec-4442-9558-723f480ee29f",
-            "displayName": "CA002 - Enforce MAM Policy for Android and IOS",
-            "createdDateTime": "2020-06-28T09:37:53.6366773Z",
-            "modifiedDateTime": null,
-            "state": "enabledForReportingButNotEnforced",
-            "sessionControls": null,
-            "conditions": {
-                "signInRiskLevels": [],
-                "clientAppTypes": [
-                    "mobileAppsAndDesktopClients"
-                ],
-                "locations": null,
-                "devices": null,
-                "applications": {
-                    "includeApplications": [
-                        "00000002-0000-0ff1-ce00-000000000000",
-                        "00000003-0000-0ff1-ce00-000000000000"
-                    ],
-                    "excludeApplications": [],
-                    "includeUserActions": []
-                },
-                "users": {
-                    "includeUsers": [],
-                    "excludeUsers": [],
-                    "includeGroups": [
-                        "6c96716b-b32b-40b8-9009-49748bb6fcd5"
-                    ],
-                    "excludeGroups": [
-                        "f753047e-de31-4c74-a6fb-c38589047723"
-                    ],
-                    "includeRoles": [],
-                    "excludeRoles": []
-                },
-                "platforms": {
-                    "includePlatforms": [
-                        "android",
-                        "iOS"
-                    ],
-                    "excludePlatforms": []
-                }
-            },
-            "grantControls": {
-                "operator": "OR",
-                "builtInControls": [
-                    "approvedApplication",
-                    "compliantApplication"
-                ],
-                "customAuthenticationFactors": [],
-                "termsOfUse": []
-            }
+     {
+    "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#identity/conditionalAccess/policies/$entity",
+    "id": "34ab2fe6-51ec-4442-9558-723f480ee29f",
+    "displayName": "CA002: Require MFA for medium + sign-in risk",
+    "createdDateTime": "2020-07-08T11:34:24.6674365Z",
+    "modifiedDateTime": null,
+    "state": "enabledForReportingButNotEnforced",
+    "sessionControls": null,
+    "conditions": {
+        "signInRiskLevels": [
+            "high",
+            "medium"
+        ],
+        "clientAppTypes": [],
+        "platforms": null,
+        "locations": null,
+        "devices": null,
+        "applications": {
+            "includeApplications": [
+                "All"
+            ],
+            "excludeApplications": [],
+            "includeUserActions": []
+        },
+        "users": {
+            "includeUsers": [],
+            "excludeUsers": [],
+            "includeGroups": [
+                "6c96716b-b32b-40b8-9009-49748bb6fcd5"
+            ],
+            "excludeGroups": [
+                "f753047e-de31-4c74-a6fb-c38589047723"
+            ],
+            "includeRoles": [],
+            "excludeRoles": []
         }
-   ]
+    },
+    "grantControls": {
+        "operator": "OR",
+        "builtInControls": [
+            "mfa"
+        ],
+        "customAuthenticationFactors": [],
+        "termsOfUse": []
+       }
+    }
+  ]
 }
 ```
 
@@ -295,56 +289,50 @@ Once the 'GET' request is submitted, a 200 (successful) response is returned.
 
 ```json
 {
-            "id": "34ab2fe6-51ec-4442-9558-723f480ee29f",
-            "displayName": "CA001 - Enforce MAM Policy for Android and IOS",
-            "createdDateTime": "2020-06-28T09:37:53.6366773Z",
-            "modifiedDateTime": null,
-            "state": "enabledForReportingButNotEnforced",
-            "sessionControls": null,
-            "conditions": {
-                "signInRiskLevels": [],
-                "clientAppTypes": [
-                    "mobileAppsAndDesktopClients"
-                ],
-                "locations": null,
-                "devices": null,
-                "applications": {
-                    "includeApplications": [
-                        "00000002-0000-0ff1-ce00-000000000000",
-                        "00000003-0000-0ff1-ce00-000000000000"
-                    ],
-                    "excludeApplications": [],
-                    "includeUserActions": []
-                },
-                "users": {
-                    "includeUsers": [],
-                    "excludeUsers": [],
-                    "includeGroups": [
-                        "6c96716b-b32b-40b8-9009-49748bb6fcd5"
-                    ],
-                    "excludeGroups": [
-                        "f753047e-de31-4c74-a6fb-c38589047723"
-                    ],
-                    "includeRoles": [],
-                    "excludeRoles": []
-                },
-                "platforms": {
-                    "includePlatforms": [
-                        "android",
-                        "iOS"
-                    ],
-                    "excludePlatforms": []
-                }
-            },
-            "grantControls": {
-                "operator": "OR",
-                "builtInControls": [
-                    "approvedApplication",
-                    "compliantApplication"
-                ],
-                "customAuthenticationFactors": [],
-                "termsOfUse": []
-            }
+    "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#identity/conditionalAccess/policies/$entity",
+    "id": "34ab2fe6-51ec-4442-9558-723f480ee29f",
+    "displayName": "CA002: Require MFA for medium + sign-in risk",
+    "createdDateTime": "2020-07-08T11:34:24.6674365Z",
+    "modifiedDateTime": null,
+    "state": "enabledForReportingButNotEnforced",
+    "sessionControls": null,
+    "conditions": {
+        "signInRiskLevels": [
+            "high",
+            "medium"
+        ],
+        "clientAppTypes": [],
+        "platforms": null,
+        "locations": null,
+        "devices": null,
+        "applications": {
+            "includeApplications": [
+                "All"
+            ],
+            "excludeApplications": [],
+            "includeUserActions": []
+        },
+        "users": {
+            "includeUsers": [],
+            "excludeUsers": [],
+            "includeGroups": [
+                "6c96716b-b32b-40b8-9009-49748bb6fcd5"
+            ],
+            "excludeGroups": [
+                "f753047e-de31-4c74-a6fb-c38589047723"
+            ],
+            "includeRoles": [],
+            "excludeRoles": []
+        }
+    },
+    "grantControls": {
+        "operator": "OR",
+        "builtInControls": [
+            "mfa"
+        ],
+        "customAuthenticationFactors": [],
+        "termsOfUse": []
+    }
 }
 ```
 
@@ -421,7 +409,7 @@ A *204 No Content* response from the previous example request body shows the *gr
 {
     "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#identity/conditionalAccess/policies/$entity",
     "id": "34ab2fe6-51ec-4442-9558-723f480ee29f",
-    "displayName": "ZT1: Require MFA for medium + sign-in risk",
+    "displayName": "CA002: Require MFA for medium + sign-in risk",
     "createdDateTime": "2020-07-08T11:34:24.6674365Z",
     "modifiedDateTime": "2020-07-08T12:22:42.3500388Z",
     "state": "enabledForReportingButNotEnforced",
