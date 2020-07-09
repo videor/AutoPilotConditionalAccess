@@ -22,6 +22,13 @@ In this tutorial, you learn how to:
 :heavy_check_mark: Get all conditional access policies. <br /> 
 :heavy_check_mark: Clears any previous snapshot from Onedrive. <br /> 
 :heavy_check_mark: Creates a snapshot of all conditional access policy within pre-production environment. <br /> 
+:heavy_check_mark: Add a trigger that monitors PROD OneDrive folder for paste requests.<br /> 
+:heavy_check_mark: Add an action that sends a message to Team channel for approving or rejecting these requests.<br /> 
+:heavy_check_mark: Add a condition that checks the approval response.<br /> 
+:heavy_check_mark: Get client secret from key vault using managed identity.<br /> 
+:heavy_check_mark: Add an action that paste the policy in PROD environment.<br /> 
+:heavy_check_mark: Add a condition that checks whether the policy was pasted successfully.<br /> 
+:heavy_check_mark: Add an action that sends a message to Team channel confirming the outcome of policy deployment.<br /> 
 
 When you're done, your logic app looks like this workflow at a high level:
 
