@@ -125,17 +125,17 @@ This logic app uses managed identity for getting secrets from key vault in order
 
 # Step 4: Add the Recurrence trigger
 
-1. On the Logic App Designer, click `schedule automation of emergency account management within conditional access` box. This example uses a recurrence trigger.
+1. On the Logic App Designer, click `schedule snapshot of pre-production conditional access policies` box. This example uses a recurrence trigger.
 
-   ![Change the Recurrence trigger's interval and frequency](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-emergency-account-automation/images/EmergencyAccount1-edit.png)
+   ![Change the Recurrence trigger's interval and frequency](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-copy-paste-automation/images/Copy1-edit.png)
 
    | Property | Required | Value | Description |
    |----------|----------|-------|-------------|
    | **Interval** | Yes | 1 | The number of intervals to wait between checks |
-   | **Frequency** | Yes | Minute | The unit of time to use for the recurrence |
+   | **Frequency** | Yes | Day | The unit of time to use for the recurrence |
    |||||
       
- This trigger fires every `1 minute`. The **schedule** trigger box shows the recurrence schedule. For more information, see [Schedule tasks and workflows](https://docs.microsoft.com/en-us/azure/connectors/connectors-native-recurrence) and [Workflow actions and triggers](https://docs.microsoft.com/en-us/azure/logic-apps/logic-apps-workflow-actions-triggers#recurrence-trigger).
+ This trigger fires every `day`. The **schedule** trigger box shows the recurrence schedule. For more information, see [Schedule tasks and workflows](https://docs.microsoft.com/en-us/azure/connectors/connectors-native-recurrence) and [Workflow actions and triggers](https://docs.microsoft.com/en-us/azure/logic-apps/logic-apps-workflow-actions-triggers#recurrence-trigger).
  
 # Step 5: Get client secret from key vault using managed identity.
 
@@ -143,7 +143,7 @@ This logic app uses managed identity for getting secrets from key vault in order
 
 1. Specify the Method, URI, Queries, Authentication type, Managed Identity and Audience.
 
-   ![Select "GET client secret from key vault using managed identity" HTTP connector](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-emergency-account-automation/images/EmergencyAccount2-edit.png)
+   ![Select "GET client secret from key vault using managed identity" HTTP connector](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-copy-paste-automation/images/Copy2-edit.png)
 
       | Property | Value | Description |
       |----------|-------|-------------|
@@ -163,7 +163,7 @@ This logic app uses managed identity for getting secrets from key vault in order
 
 1. Specify the Method, URI, Headers, Body, Authentication type, Tenant, Audience, Client ID, Credential Type and Secret.
 
-   ![Select "GET all conditional access policies" HTTP connector](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-emergency-account-automation/images/EmergencyAccount3-edit.png)
+   ![Select "GET all conditional access policies" HTTP connector](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-copy-paste-automation/images/Copy3-edit.png)
 
       | Property | Value | Description |
       |----------|-------|-------------|
@@ -178,87 +178,59 @@ This logic app uses managed identity for getting secrets from key vault in order
       | **Secret** | `value` | Secret value retrieved from key vault |
       ||||
       
-# Step 7: Add a condition that checks if any policy has missing exclusion for emergency account.
+# Step 7: List files in Onedrive folder.
 
-1. On the Logic App Designer, in the Condition box, verify response. This example uses response from earlier HTTP connector:
+1. On the Logic App Designer, in the Onedrive connection box, click `List files in folder`. This example uses OneDrive connector:
 
-1. Specify the HTTP response to evaluate, expression and verify it contains `EmergencyAccountsGroupObjectID` in the condition.
-    
-      ![Select "Condition to check if policy has exclusion for emergency account"](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-emergency-account-automation/images/EmergencyAccount4-edit.png)
-    
+   ![Select "List files in Onedrive folder" connector for Onedrive](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-copy-paste-automation/images/Copy4-edit.png)
+
+1. If prompted, sign in to your email account with your credentials so that Logic Apps can create a connection to your Onedrive account.
+
+1. In the connector, provide the criteria for listing all files.
+
+1. Specify the folder for listing files.
+
       | Property | Value | Description |
       |----------|-------|-------------|
-      | **Exclude Groups** | `Exclude groups` | The exclude group attribute to evaluate within policy JSON |
-      | **Expression** | `Contains` | The expression to evaluate |
-      | **Condition** | `EmergencyAccountsGroupObjectID` | response to verify in the condition |
+      | **Folder** | `/ConditionalAccess/PPE` | The Onedrive folder to list files |
+      ||||
+ 
+# Step 8: Clear previous snapshot of PPE environment within Onedrive folder.
+
+1. On the Logic App Designer, in the Onedrive connection box, click `Delete file`. This example uses OneDrive connector:
+
+   ![Select "Delete files in Onedrive folder" connector for Onedrive](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-copy-paste-automation/images/Copy5-edit.png)
+
+1. If prompted, sign in to your email account with your credentials so that Logic Apps can create a connection to your Onedrive account.
+
+1. In the connector, provide the criteria for deleting files.
+
+1. Specify the file id for deleting files.
+
+      | Property | Value | Description |
+      |----------|-------|-------------|
+      | **File** | `Id` | The Onedrive file id retrieved from list files operation |
       ||||
 
-# Step 8: Add an exclusion for emergency account if it is missing within the conditional access policy.
+# Step 9: Create a new snapshot of PPE environment within Onedrive folder.
 
-1. On the Logic App Designer, in the HTTP connection box, click `Exclude emergency accounts within conditional access policies`. This example uses HTTP connector.
+1. On the Logic App Designer, in the Onedrive connection box, click `Create file`. This example uses OneDrive connector:
 
-1. Specify the Method, URI, Headers, Body, Authentication type, Tenant, Audience, Client ID, Credential Type and Secret.
+   ![Select "Create files in Onedrive folder" connector for Onedrive](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-copy-paste-automation/images/Copy6-edit.png)
 
-   ![Select "Exclude emergency accounts within conditional access policies" HTTP connector](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-emergency-account-automation/images/EmergencyAccount5-edit.png)
+1. If prompted, sign in to your email account with your credentials so that Logic Apps can create a connection to your Onedrive account.
 
-      | Property | Value | Description |
-      |----------|-------|-------------|
-      | **Method** | `PATCH` | Method to call |
-      | **URI** | `URL variable` | Conditional Access APIs v1.0 endpoint |
-      | **Headers** | `application/json` | Content-Type |
-      | **Body** | `json body with exclude groups condition` | Updated JSON to patch the conditional access policy  |
-      | **Authentication type** | `Active Directory OAuth` | Authentication type for App-only flow |
-      | **Tenant** | `TenantID` | Tennat ID configured in step 3 |
-      | **Audience** | `https://graph.microsoft.com` | MS Graph |
-      | **Client ID** | `Client ID` | Client ID configured in step 3 |
-      | **Credential Type** | `Secret` | Client Secret  |
-      | **Secret** | `value` | Secret value retrieved from key vault |
-      ||||
-      
-# Step 9: Add a check to find if the conditional access policy update was successful. If true, fire an alert on Team channel. 
+1. In the connector, provide the criteria for creating files.
 
-1. On the Logic App Designer, in the conditions connection box, click `check if the conditional access policy was updated successfully`. This example uses logic app condition evaluation:
-
-   ![Select "check to find if the conditional access policy update was successful" condition](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-emergency-account-automation/images/EmergencyAccount6-edit.png)
-
-1. In the condition, provide the criteria for checking the condition.
-
-1. Specify the HTTP response to evaluate, expression and verify it is equal to `204` response in the condition.
+1. Specify the folder path, file name and file content for creating files.
 
       | Property | Value | Description |
       |----------|-------|-------------|
-      | **Status code** | `Status code` | The status code from previous step to evaluate |
-      | **Expression** | `is equal to` | The expression to evaluate |
-      | **Condition** | `204` | response to verify in the condition |
-      ||||   
-  
-1. On the Logic App Designer, in the Teams connection box, click `Post a message to Team channel notifying remediation for emergency account`. This example uses Teams connector:
+      | **Folder Path** | `/ConditionalAccess/PPE` | The Onedrive folder to take snapshot of PPE |
+      | **File Name** | `[id] display name.json` | The file name to use for each policy |
+      | **File Content** | `Hour` | The unit of time to use for the recurrence |
+      ||||    
 
-1. If prompted, sign in to your email account with your credentials so that Logic Apps can create a connection to your Teams account.
 
-1. In the connector box, provide the criteria for posting an adaptive card to Teams channel.
 
-1. Specify the Team, channel and message for posting to Teams. The message is shorterned for readability.
-
-      | Property | Value | Description |
-      |----------|-------|-------------|
-      | **Team** | `ConditionalAccess` | The Team to post alert |
-      | **Channel** | `Emergency Accounts` | The Teams channel to post alert |
-      | **message** | `message` | Post the adaptive card with an alert message |
-      ||||
-
-1. On the Logic App Designer, in the Teams connection box, click `Post a message to Team channel that remediation failed but scheduled for retry`. This example uses Teams connector:
-
-1. If prompted, sign in to your email account with your credentials so that Logic Apps can create a connection to your Teams account.
-
-1. In the connector box, provide the criteria for posting an adaptive card to Teams channel.
-
-1. Specify the Team, channel and message for posting to Teams. The message is shorterned for readability.
-
-      | Property | Value | Description |
-      |----------|-------|-------------|
-      | **Team** | `ConditionalAccess` | The Team to post alert |
-      | **Channel** | `Emergency Accounts` | The Teams channel to post alert |
-      | **message** | `message` | Post the adaptive card with an alert message |
-      ||||
 
