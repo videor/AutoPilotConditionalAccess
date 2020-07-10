@@ -1,4 +1,4 @@
-# Tutorial: How to use Conditional Access APIs 101
+# Tutorial: Easy configuration using Conditional Access API Templates
 
 Planning your Conditional Access deployment is critical to achieving your organization's access strategy for apps and resources.
 
