@@ -1,4 +1,4 @@
-# Tutorial:	Easy deploy conditional acess policies
+# Tutorial:	Safe rollout of policies from pre-production to production with approval workflow
 
 Intent: As an IT admin, I want to be able to easily copy-paste conditional access policies from pre-production to production environment.
 
