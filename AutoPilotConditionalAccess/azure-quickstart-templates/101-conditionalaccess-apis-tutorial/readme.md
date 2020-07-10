@@ -88,7 +88,7 @@ The following common definitions are used to build a request body:
 
 ## Example request body
 
-The following example body is used to create a conditional access policy with display name "CA002: Require MFA for medium + sign-in risk".
+The following template is used to create a conditional access policy with display name "CA002: Require MFA for medium + sign-in risk".
 
 ```json
 { 
@@ -487,7 +487,7 @@ Once the 'DELETE' request is submitted, a 204 (successful) response is returned.
 
 ## Next steps
 
-Try practising the above steps with some quick-start api templates here
+Try practising the above steps with some other quick-start api templates here:
 
 - [Template 1](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/101-conditionalaccess-apis-tutorial/Quickstart%20api%20template%201%20-%20MFA%20registration%20restrictions.json)
 - [Template 2](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/101-conditionalaccess-apis-tutorial/Quickstart%20api%20template%202%20-%20Require%20mfa%20for%20privileged%20accounts.json)
