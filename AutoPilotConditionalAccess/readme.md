@@ -23,12 +23,9 @@ With code, you have source control, check-in, check-out, versioning, roll-back, 
 # Instead, the right way to think about the CA policy engine is
 
 1. Configure
-2. Simulate
-3. Deploy
+2. Deploy
+3. Monitor
 4. Manage
-5. Enforce
-6. Monitor
-7. Adjust your configuration
 
 # And with the Conditional Access APIs, now *you* can too!
 With the Conditional Access APIs, you can now nearly eliminate all the risk, uncertainty, and unpredictability currently involved in creating, deploying, and managing your organization’s Conditional Access Policy set. Would you like to learn how?
