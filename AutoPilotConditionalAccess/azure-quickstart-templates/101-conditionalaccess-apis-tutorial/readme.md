@@ -25,6 +25,11 @@ In this tutorial, you'll learn how to:
 :heavy_check_mark: Update a conditional access policy  <br /> 
 :heavy_check_mark: Delete a conditional access policy  <br /> 
 
+### The contents of this repository are unsupported and may or not be current. Replies to questions about unsupported material have the lowest priority.
+
+# Why unsupported?
+Unsupported samples and documentation are provided for our fans and partners for training, and feedback only.
+
 
 # Step 1: Authenticate with the right roles
 
