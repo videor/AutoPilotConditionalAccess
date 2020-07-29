@@ -7,11 +7,11 @@
             "type": "String"
         },
         "userAssignedIdentities_AutoPilotCAUAI1_externalid": {
-            "defaultValue": "/subscriptions/e047b6ea-7532-4b75-8b21-2cd113c17048/resourceGroups/AutoPilotConditionalAccess/providers/Microsoft.ManagedIdentity/userAssignedIdentities/AutoPilotCAUAI1",
+            "defaultValue": "/subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group-name>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<UMI-name>",
             "type": "String"
         },
         "connections_onedriveforbusiness_1_externalid": {
-            "defaultValue": "/subscriptions/e047b6ea-7532-4b75-8b21-2cd113c17048/resourceGroups/ConditionalAccess/providers/Microsoft.Web/connections/onedriveforbusiness-1",
+            "defaultValue": "/subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group-name>/providers/Microsoft.Web/connections/<onedrive-name>",
             "type": "String"
         },
         "connections_teams_1_externalid": {
@@ -19,7 +19,7 @@
             "type": "String"
         },
         "connections_teams_2_externalid": {
-            "defaultValue": "/subscriptions/e047b6ea-7532-4b75-8b21-2cd113c17048/resourceGroups/ConditionalAccess/providers/Microsoft.Web/connections/teams-2",
+            "defaultValue": "/subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group-name>/providers/Microsoft.Web/connections/<teams-name>",
             "type": "String"
         }
     },
