@@ -5,22 +5,6 @@
         "workflows_301_conditionalaccess_policy_blueprint_automation_name": {
             "defaultValue": "301-conditionalaccess-policy-blueprint-automation",
             "type": "String"
-        },
-        "userAssignedIdentities_AutoPilotCAUAI1_externalid": {
-            "defaultValue": "/subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group-name>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<MI-name>",
-            "type": "String"
-        },
-        "connections_onedriveforbusiness_1_externalid": {
-            "defaultValue": "/subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group-name>/providers/Microsoft.Web/connections/<onedrive-name>",
-            "type": "String"
-        },
-        "connections_teams_1_externalid": {
-            "defaultValue": "/subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group-name>/providers/Microsoft.Web/connections/teams1-name>",
-            "type": "String"
-        },
-        "connections_teams_2_externalid": {
-            "defaultValue": "/subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group-name>/providers/Microsoft.Web/connections/<teams2-name>",
-            "type": "String"
         }
     },
     "variables": {},
@@ -467,17 +451,17 @@
                     "$connections": {
                         "value": {
                             "onedriveforbusiness_1": {
-                                "connectionId": "[parameters('connections_onedriveforbusiness_1_externalid')]",
+                                "connectionId": "OneDrive for Business connector",
                                 "connectionName": "onedriveforbusiness-1",
                                 "id": "/subscriptions/e047b6ea-7532-4b75-8b21-2cd113c17048/providers/Microsoft.Web/locations/uksouth/managedApis/onedriveforbusiness"
                             },
                             "teams_2": {
-                                "connectionId": "[parameters('connections_teams_1_externalid')]",
+                                "connectionId": "Teams connector 1",
                                 "connectionName": "teams-1",
                                 "id": "/subscriptions/e047b6ea-7532-4b75-8b21-2cd113c17048/providers/Microsoft.Web/locations/uksouth/managedApis/teams"
                             },
                             "teams_3": {
-                                "connectionId": "[parameters('connections_teams_2_externalid')]",
+                                "connectionId": "Teams connector 2",
                                 "connectionName": "teams-2",
                                 "id": "/subscriptions/e047b6ea-7532-4b75-8b21-2cd113c17048/providers/Microsoft.Web/locations/uksouth/managedApis/teams"
                             }
