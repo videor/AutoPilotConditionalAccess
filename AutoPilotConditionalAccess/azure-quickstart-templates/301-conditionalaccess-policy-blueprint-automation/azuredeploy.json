@@ -15,12 +15,20 @@
     },
     "variables": {},
     "resources": [
-        {
-            "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
-            "name": "[parameters('MANAGED_IDENTITY')]",
-            "apiVersion": "2018-11-30",
-            "location": "[resourceGroup().location]"
-        },
+    {
+            "type": "Microsoft.Logic/workflows",
+            "apiVersion": "2017-07-01",
+            "name": "[parameters('workflows_301_conditionalaccess_policy_copy_automation_name')]",
+            "location": "centralus",
+            "identity": {
+                "type": "UserAssigned",
+                "userAssignedIdentities": {
+                    "/subscriptions/e047b6ea-7532-4b75-8b21-2cd113c17048/resourceGroups/AutoPilotConditionalAccess/providers/Microsoft.ManagedIdentity/userAssignedIdentities/AutoPilotCAUAI1": {
+                        "principalId": "e8629116-d7ed-41ba-9777-4314322f6e7b",
+                        "clientId": "3dbf63ef-53d9-491b-abe1-fb5cf1eab911"
+                    }
+                }
+            },
             "properties": {
                 "state": "Enabled",
                 "definition": {
