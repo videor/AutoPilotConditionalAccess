@@ -5,10 +5,22 @@
         "workflows_301_conditionalaccess_policy_blueprint_automation_name": {
             "defaultValue": "301-conditionalaccess-policy-blueprint-automation",
             "type": "String"
+        },
+        "MANAGED_IDENTITY": {
+          "type": "string",
+          "metadata": {
+            "description": "USER ASSIGNED MANAGED IDENTITY"
+          }
         }
     },
     "variables": {},
     "resources": [
+        {
+            "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
+            "name": "[parameters('MANAGED_IDENTITY')]",
+            "apiVersion": "2018-11-30",
+            "location": "[resourceGroup().location]"
+        }
             "properties": {
                 "state": "Enabled",
                 "definition": {
