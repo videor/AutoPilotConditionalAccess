@@ -20,7 +20,7 @@
             "name": "[parameters('MANAGED_IDENTITY')]",
             "apiVersion": "2018-11-30",
             "location": "[resourceGroup().location]"
-        }
+        },
             "properties": {
                 "state": "Enabled",
                 "definition": {
