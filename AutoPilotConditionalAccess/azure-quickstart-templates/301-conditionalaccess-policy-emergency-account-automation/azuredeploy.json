@@ -21,7 +21,7 @@
             "type": "Microsoft.Logic/workflows",
             "apiVersion": "2017-07-01",
             "name": "[parameters('workflows_301_conditionalaccess_policy_emergency_account_automation_name')]",
-            "location": "centralus",
+            "location": "[resourceGroup().location]",
             "identity": {
                 "type": "UserAssigned",
                 "userAssignedIdentities": {
