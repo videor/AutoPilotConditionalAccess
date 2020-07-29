@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "workflows_301_conditionalaccess_policy_blueprint_automation_name": {
-            "value": null
+            "value": "Conditional Access Policy Blueprint"
         }
     }
 }
