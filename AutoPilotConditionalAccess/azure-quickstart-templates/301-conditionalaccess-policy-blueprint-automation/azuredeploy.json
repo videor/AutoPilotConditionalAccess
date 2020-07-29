@@ -9,7 +9,7 @@
             "type": "Microsoft.Logic/workflows",
             "apiVersion": "2017-07-01",
             "name": "301-conditionalaccess-policy-blueprint-automation",
-            "location": "centralus",       
+            "location": "[resourceGroup().location]",    
             "properties": {
                 "state": "Enabled",
                 "definition": {
