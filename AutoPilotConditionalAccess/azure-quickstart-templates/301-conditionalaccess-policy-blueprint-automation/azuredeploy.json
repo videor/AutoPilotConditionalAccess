@@ -203,7 +203,7 @@
                                     "inputs": {
                                         "authentication": {
                                             "audience": "https://vault.azure.net",
-                                            "identity": "[parameters('userAssignedIdentities_AutoPilotCAUAI1_externalid')]",
+                                            "identity": "Managed Identity",
                                             "type": "ManagedServiceIdentity"
                                         },
                                         "method": "GET",
