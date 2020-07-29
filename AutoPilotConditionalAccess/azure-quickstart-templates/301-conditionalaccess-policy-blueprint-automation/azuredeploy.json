@@ -15,7 +15,7 @@
             "name": "Blueprint",
             "location": "centralus",
             "identity": {
-                "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
+                "type": "Microsoft.ManagedIdentity/userAssignedIdentities"
             },
             "properties": {
                 "state": "Enabled",
