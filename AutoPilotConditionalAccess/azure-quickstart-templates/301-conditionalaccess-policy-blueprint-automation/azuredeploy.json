@@ -18,7 +18,7 @@
     {
             "type": "Microsoft.Logic/workflows",
             "apiVersion": "2017-07-01",
-            "name": "[parameters('workflows_301_conditionalaccess_policy_copy_automation_name')]",
+            "name": "[parameters('301-conditionalaccess-policy-blueprint-automation')]",
             "location": "centralus",
             "identity": {
                 "type": "UserAssigned",
