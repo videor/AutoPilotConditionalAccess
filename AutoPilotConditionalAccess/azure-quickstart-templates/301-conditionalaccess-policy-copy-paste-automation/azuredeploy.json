@@ -1,15 +1,15 @@
 {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
-    "parameters": {
+    "parameters": {  
     },
     "variables": {},
     "resources": [
-        {
+    {
             "type": "Microsoft.Logic/workflows",
             "apiVersion": "2017-07-01",
-            "name": "Blueprint",
-            "location": "[resourceGroup().location]",           
+            "name": "301-conditionalaccess-policy-copy-paste-automation",
+            "location": "[resourceGroup().location]",    
             "properties": {
                 "state": "Enabled",
                 "definition": {
