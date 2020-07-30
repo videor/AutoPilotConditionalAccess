@@ -9,7 +9,7 @@
             "type": "Microsoft.Logic/workflows",
             "apiVersion": "2017-07-01",
             "name": "301_conditionalaccess_alerts_automation",
-            "location": "uksouth",
+            "location": "[resourceGroup().location]",
             "properties": {
                 "state": "Enabled",
                 "definition": {
@@ -471,7 +471,7 @@
                             "inputs": {
                                 "authentication": {
                                     "audience": "https://vault.azure.net",
-                                    "identity": "[parameters('userAssignedIdentities_AutoPilotCAUAI1_externalid')]",
+                                    "identity": "ManagedIdentity"
                                     "type": "ManagedServiceIdentity"
                                 },
                                 "method": "GET",
@@ -608,10 +608,10 @@
                     "$connections": {
                         "value": {
                             "teams": {
-                                "connectionId": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Web/locations/', resourceGroup().location, '/managedApis/teams')]",
-                                "connectionName": "teams-1",
+                               "connectionId": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Web/locations/', resourceGroup().location, '/managedApis/teams')]",
+                                "connectionName": "teams-2",
                                 "id": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Web/locations/', resourceGroup().location, '/managedApis/teams')]"
-                            },
+                            }
                         }
                     }
                 }
