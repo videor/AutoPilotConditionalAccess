@@ -2,35 +2,14 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "workflows_301_conditionalaccess_contingency_policies_automation_name": {
-            "defaultValue": "301-conditionalaccess-contingency-policies-automation",
-            "type": "String"
-        },
-        "userAssignedIdentities_AutoPilotCAUAI1_externalid": {
-            "defaultValue": "/subscriptions/e047b6ea-7532-4b75-8b21-2cd113c17048/resourceGroups/AutoPilotConditionalAccess/providers/Microsoft.ManagedIdentity/userAssignedIdentities/AutoPilotCAUAI1",
-            "type": "String"
-        },
-        "connections_teams_1_externalid": {
-            "defaultValue": "/subscriptions/e047b6ea-7532-4b75-8b21-2cd113c17048/resourceGroups/AutoPilotConditionalAccess/providers/Microsoft.Web/connections/teams-1",
-            "type": "String"
-        }
     },
     "variables": {},
     "resources": [
         {
             "type": "Microsoft.Logic/workflows",
             "apiVersion": "2017-07-01",
-            "name": "[parameters('workflows_301_conditionalaccess_contingency_policies_automation_name')]",
-            "location": "centralus",
-            "identity": {
-                "type": "UserAssigned",
-                "userAssignedIdentities": {
-                    "/subscriptions/e047b6ea-7532-4b75-8b21-2cd113c17048/resourceGroups/AutoPilotConditionalAccess/providers/Microsoft.ManagedIdentity/userAssignedIdentities/AutoPilotCAUAI1": {
-                        "principalId": "e8629116-d7ed-41ba-9777-4314322f6e7b",
-                        "clientId": "3dbf63ef-53d9-491b-abe1-fb5cf1eab911"
-                    }
-                }
-            },
+            "name": "301_conditionalaccess_contingency_policies_automation",
+            "location": "[resourceGroup().location]", 
             "properties": {
                 "state": "Enabled",
                 "definition": {
@@ -505,7 +484,7 @@
                             "inputs": {
                                 "authentication": {
                                     "audience": "https://vault.azure.net",
-                                    "identity": "[parameters('userAssignedIdentities_AutoPilotCAUAI1_externalid')]",
+                                    "identity": "Managed Identity",
                                     "type": "ManagedServiceIdentity"
                                 },
                                 "method": "GET",
@@ -688,9 +667,9 @@
                     "$connections": {
                         "value": {
                             "teams": {
-                                "connectionId": "[parameters('connections_teams_1_externalid')]",
-                                "connectionName": "teams-1",
-                                "id": "/subscriptions/e047b6ea-7532-4b75-8b21-2cd113c17048/providers/Microsoft.Web/locations/centralus/managedApis/teams"
+                               "connectionId": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Web/locations/', resourceGroup().location, '/managedApis/teams')]",
+                                "connectionName": "teams-2",
+                                "id": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Web/locations/', resourceGroup().location, '/managedApis/teams')]"
                             }
                         }
                     }
