@@ -471,7 +471,7 @@
                             "inputs": {
                                 "authentication": {
                                     "audience": "https://vault.azure.net",
-                                    "identity": "ManagedIdentity"
+                                    "identity": "ManagedIdentity",
                                     "type": "ManagedServiceIdentity"
                                 },
                                 "method": "GET",
