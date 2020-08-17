@@ -79,9 +79,21 @@ Once completed, connect to Azure AD.
 Connect-AzureAD
 ```
 
+To get help with Conditional Access policy cmdlets use the following Get-help command.
+
+```
+Get-help AzureADMSConditionalAccessPolicy
+```
+
 # Step 3: Create a Conditional Access Policy 
 
 The steps to create a Sign-in risk-based Conditional Access policy [create sign-in risk policy](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/howto-conditional-access-policy-risk) within Azure Portal is documented. Let us use this document as a reference to create a policy called "CA002: Require MFA for medium + sign-in risk" using the APIs.
+
+To get help with New Conditional Access policy creation cmdlets, use the following *Get-help* command.
+
+```
+Get-help New-AzureADMSConditionalAccessPolicy
+```
 
 To create a conditional access policy, use the following *POST* operation.
 
