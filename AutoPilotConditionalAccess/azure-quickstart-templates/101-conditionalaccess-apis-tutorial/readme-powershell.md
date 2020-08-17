@@ -64,6 +64,20 @@ All of the below three permissions are required to call the read and write API. 
 |Delegated (personal Microsoft account) | Not supported. |
 |Application                            | Policy.Read.All, Policy.ReadWrite.ConditionalAccess and Application.Read.All |
 
+# Step 3: Connect to Azure AD PowerShell module
+
+Connect to the General Availability release of Azure Active Directory V2 PowerShell Module. A minimum version of [2.0.2.106](https://www.powershellgallery.com/packages/AzureAD/2.0.2.106) is required. 
+
+To install version '2.0.2.106', run Install-Module and add the -Force parameter, this command will install version '2.0.2.106' side-by-side with previous version.
+
+```
+Install-Module -Name AzureAD -Force
+```
+Once completed, connect to Azure AD.
+
+```
+Connect-AzureAD
+```
 
 # Step 3: Create a Conditional Access Policy 
 
