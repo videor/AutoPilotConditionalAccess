@@ -48,7 +48,15 @@ For reading conditional access policies:
 
 # Step 2: Authenticate with the right permissions
 
-One of the following permissions is required to call this API. To learn more, including how to choose permissions, see [Permissions](/graph/permissions-reference).
+One of the following permissions is required to call the read API. To learn more, including how to choose permissions, see [Permissions](/graph/permissions-reference).
+
+|Permission type                        | Permissions (all three roles below are required for read and write operations)                    |
+|:--------------------------------------|:---------------------------------------------------------------|
+|Delegated (work or school account)     | Policy.Read.All |
+|Delegated (personal Microsoft account) | Not supported. |
+|Application                            | Policy.Read.All |
+
+All of the below three permissions are required to call the read and write API. To learn more, including how to choose permissions, see [Permissions](/graph/permissions-reference).
 
 |Permission type                        | Permissions (all three roles below are required for read and write operations)                    |
 |:--------------------------------------|:---------------------------------------------------------------|
