@@ -136,7 +136,7 @@ $controls.BuiltInControls = "mfa"
 To create the policy using the above template for conditions and control use the below command 
 
 ```
-New-AzureADMSConditionalAccessPolicy -DisplayName "CA0002: Require MFA for medium + sign-in risk" -State "Enabled" -Conditions $conditions -GrantControls $controls 
+New-AzureADMSConditionalAccessPolicy -DisplayName "CA0002: Require MFA for medium + sign-in risk" -State "enabledForReportingButNotEnforced" -Conditions $conditions -GrantControls $controls
 ```
 
 ## Responses
@@ -145,7 +145,7 @@ New-AzureADMSConditionalAccessPolicy -DisplayName "CA0002: Require MFA for mediu
 
 A *successful* response from the previous example request body shows an *id* has been assigned and the *state* is *enabledForReportingButNotEnforced*:
 
-```http
+```
 Id              : 46a45d1a-2ac8-43d2-b087-78f587f417db
 DisplayName     : CA0002: Require MFA for medium + sign-in risk
 State           : enabledForReportingButNotEnforced
