@@ -120,30 +120,35 @@ The following common definitions are used to build a request body:
 
 The following template is used to create a conditional access policy with display name "CA002: Require MFA for medium + sign-in risk".
 
-```json
+```
 $conditions = New-Object -TypeName Microsoft.Open.MSGraph.Model.ConditionalAccessConditionSet
 $conditions.Applications = New-Object -TypeName Microsoft.Open.MSGraph.Model.ConditionalAccessApplicationCondition
-$conditions.Applications.IncludeApplications = "00000002-0000-0ff1-ce00-000000000000"
+$conditions.Applications.IncludeApplications = "All"
 $conditions.Users = New-Object -TypeName Microsoft.Open.MSGraph.Model.ConditionalAccessUserCondition
-$conditions.Users.IncludeUsers = "all"
+$conditions.Users.IncludeGroups = "6c96716b-b32b-40b8-9009-49748bb6fcd5"
+$conditions.Users.ExcludeGroups = "f753047e-de31-4c74-a6fb-c38589047723"
+$conditions.SignInRiskLevels = @('high', 'medium')
 $controls = New-Object -TypeName Microsoft.Open.MSGraph.Model.ConditionalAccessGrantControls
 $controls._Operator = "OR"
-$controls.BuiltInControls = "block"
-New-AzureADMSConditionalAccessPolicy -DisplayName "CA002: Require MFA for medium + sign-in risk" -State "Enabled" -Conditions $conditions -GrantControls $controls 
+$controls.BuiltInControls = "mfa"
+```
+
+To create the policy using the above template for conditions and control use the below command 
+
+```
+New-AzureADMSConditionalAccessPolicy -DisplayName "CA0002: Require MFA for medium + sign-in risk" -State "Enabled" -Conditions $conditions -GrantControls $controls 
 ```
 
 ## Responses
-
-A successful response for the operation to create a conditional access policy:
 
 ### Example response
 
 A *successful* response from the previous example request body shows an *id* has been assigned and the *state* is *enabledForReportingButNotEnforced*:
 
-```json
-Id              : ba7e8f14-dcd5-4479-b858-d5276021adb2
-DisplayName     : MFA policy
-State           : enabled
+```http
+Id              : 46a45d1a-2ac8-43d2-b087-78f587f417db
+DisplayName     : CA0002: Require MFA for medium + sign-in risk
+State           : enabledForReportingButNotEnforced
 Conditions      : class ConditionalAccessConditionSet {
                     Applications: class ConditionalAccessApplicationCondition {
                     IncludeApplications: System.Collections.Generic.List`1[System.String]
