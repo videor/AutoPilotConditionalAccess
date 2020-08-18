@@ -625,9 +625,9 @@
                     "$connections": {
                         "value": {
                             "onedriveforbusiness": {
-                               "connectionId": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Web/locations/', resourceGroup().location, '/managedApis/onedriveforbusiness')]",
+                               "connectionId": "[concat('/subscriptions/', '/92f162f8-5a09-476c-9b4d-e3a4d6c8abe7/', '/providers/Microsoft.Web/locations/', resourceGroup().location, '/managedApis/onedriveforbusiness')]",
                                 "connectionName": "onedriveforbusiness-1",
-                                "id": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Web/locations/', resourceGroup().location, '/managedApis/onedriveforbusiness')]"
+                                "id": "[concat('/subscriptions/', '/92f162f8-5a09-476c-9b4d-e3a4d6c8abe7/', '/providers/Microsoft.Web/locations/', resourceGroup().location, '/managedApis/onedriveforbusiness')]"
                             }
                         }
                     }
