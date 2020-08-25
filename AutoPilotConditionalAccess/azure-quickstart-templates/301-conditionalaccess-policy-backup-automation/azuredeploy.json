@@ -254,7 +254,7 @@
                                                                                 "method": "get",
                                                                                 "path": "/datasets/default/folders/@{encodeURIComponent(encodeURIComponent('b!S_mQ8pRickKStdgCwQA2ZYs5CwfTlTdFgOHtghxQUT-NGQ06AnNzSqHWQhBs6nsx.01DNPMLTGVSJPFF2VDJVDKQHB3UOEHCXI3'))}/search",
                                                                                 "queries": {
-                                                                                    "findMode": "OneDriveSearch",
+                                                                                    "findMode": "Pattern",
                                                                                     "maxFileCount": 1,
                                                                                     "query": "@body('Parse_newly_created_conditional_access_policies')?['Id']"
                                                                                 }
@@ -355,7 +355,7 @@
                                                                                 "method": "get",
                                                                                 "path": "/datasets/default/folders/@{encodeURIComponent(encodeURIComponent('b!S_mQ8pRickKStdgCwQA2ZYs5CwfTlTdFgOHtghxQUT-NGQ06AnNzSqHWQhBs6nsx.01DNPMLTGVSJPFF2VDJVDKQHB3UOEHCXI3'))}/search",
                                                                                 "queries": {
-                                                                                    "findMode": "OneDriveSearch",
+                                                                                    "findMode": "Pattern",
                                                                                     "maxFileCount": 1,
                                                                                     "query": "@body('Parse_JSON')?['Id']"
                                                                                 }
