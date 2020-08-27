@@ -420,7 +420,7 @@
                                             "channelId": "19:9120f93514ec41679d8f2c34b9fa536e@thread.tacv2"
                                         },
                                         "shouldUpdateCard": true,
-                                        "updateMessage": "Your approval/rejection decision is noted. If you selected approval of copy-paste action you will see a further message confirming the status of your request. If you rejected the copy-paste operation, no further action or message will be provided."
+                                        "updateMessage": "Your approval/rejection decision is noted."
                                     },
                                     "notificationUrl": "@{listCallbackUrl()}"
                                 },
