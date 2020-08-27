@@ -27,11 +27,7 @@
                         "ClientID": {
                             "defaultValue": "3ad0fe30-3640-4364-a39a-bd1fae04ac9a",
                             "type": "String"
-                        },
-                        "EmergencyAccountsGroupObjectID": {
-                            "defaultValue": "f753047e-de31-4c74-a6fb-c38589047723",
-                            "type": "String"
-                        },
+                        },                      
                         "TenantID": {
                             "defaultValue": "638f6240-1182-4adb-a12a-fdb1c768d7f2",
                             "type": "String"
@@ -111,7 +107,7 @@
                                         "path": "/datasets/default/files",
                                         "queries": {
                                             "folderPath": "/ConditionalAccess/PPE",
-                                            "name": "[[[@{item()?['id']}] @{item()?['displayName']}.json"
+                                            "name": "[@{item()?['id']}] @{item()?['displayName']}.json"
                                         }
                                     },
                                     "runtimeConfiguration": {
