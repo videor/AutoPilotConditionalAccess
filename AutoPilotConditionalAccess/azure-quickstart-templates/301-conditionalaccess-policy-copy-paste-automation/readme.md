@@ -255,7 +255,7 @@ This logic app uses managed identity for getting secrets from key vault in order
 
 # Step 10: Deploy logic app to paste the policy in PROD.
 
-1. Select the following image to sign in with your Azure account and deploy the logic app for paste action in the Azure portal:
+1. Select the following image to sign in with your Azure account and deploy the logic app for paste action in the Azure portal. This is only necessary if you have not already deployed the paste logic app as per the instruction in Step 1:
 
  [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fvideor%2FAutoPilotConditionalAccess%2Fmaster%2FAutoPilotConditionalAccess%2Fazure-quickstart-templates%2F301-conditionalaccess-policy-copy-paste-automation%2F301-conditionalaccess-policy-paste-automation%2Fazuredeploy.json)
 
