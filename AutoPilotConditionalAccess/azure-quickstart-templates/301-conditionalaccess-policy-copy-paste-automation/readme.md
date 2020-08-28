@@ -452,7 +452,12 @@ When you're done, your logic app looks like this workflow at a high level:
 
 # Forward Looking
 
-Try cloning the logic and build workflows to also support line of business application ids. If you would like to request a logic app to do this, please send a request on Twitter @Vi_Deora.
+Try the following challenge:
+
+:heavy_check_mark: Edit this logic app to send a custom message on Teams channel when the approval workflow selection is Reject copy-paste action.  <br /> 
+:heavy_check_mark: Edit this logic app to delete the policy file in PROD Onedrive folder when the approval workflow selection is Reject copy-paste action. <br /> 
+
+Finally, Try cloning the logic and build workflows to also support line of business application ids. If you would like to request a logic app to do this, please send a request on Twitter @Vi_Deora.
 
 
 
