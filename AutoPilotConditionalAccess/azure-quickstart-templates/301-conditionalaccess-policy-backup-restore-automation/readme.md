@@ -1,16 +1,16 @@
-# Tutorial:	Backup and Restore Conditional Access policies with approval workflow
+# Tutorial:	Safe rollout of policies from pre-production to production with approval workflow
 
-Intent: As an IT admin, I want to be able to easily backup-restore conditional access policies.
+Intent: As an IT admin, I want to be able to easily copy-paste conditional access policies from pre-production to production environment.
 
-You can use the conditional access APIs to easily backup conditional access policies. For example, you can:
+You can use the conditional access APIs to easily deploy conditional access policies from one environment to another. For example, you can:
 
-As a IT admin, be able to automate a regular snapshot of all conditional access policies within your environment. Select a policy to Restore. Finally, restore the conditional access policy in your production environment. 
+As a IT admin, be able to automate a regular snapshot of all conditional access policies within pre-production environment. Select a policy to copy from pre-production. Finally, paste the conditional access policy in production environment. 
 
 This automation can be very useful for: 
 - Organizations that manages large numbers of conditional access policies. OR
 - Identity partners that manages policies for customers. 
 
-This tutorial shows how to build a [logic app](https://docs.microsoft.com/en-us/azure/logic-apps/) that allows backup-restore of conditional access policies. Specifically, this logic app takes a snapshot of all conditional access policies as a scheduled task within Onedrive. Another logic app monitors any policies being queued in the Restore folder of Ondrive. If a new policy is detected, an approval workflow is triggered on Team channel. On approval, the policy is restored to production environment.
+This tutorial shows how to build a [logic app](https://docs.microsoft.com/en-us/azure/logic-apps/) that allows copy-paste of conditional access policies. Specifically, this logic app takes a snapshot of all conditional access policies as a scheduled task within Onedrive. Another logic app monitors any policies being pasted in the production folder of Ondrive. If a new policy is detected, an approval workflow is triggered on Team channel. On approval, the policy is pasted to production environment.
 
 In this tutorial, you learn how to:
 
@@ -20,14 +20,15 @@ In this tutorial, you learn how to:
 :heavy_check_mark: Add the recurrence trigger to run a schedule workflow task.<br /> 
 :heavy_check_mark: Get client secret from key vault using managed identity.<br /> 
 :heavy_check_mark: Get all conditional access policies. <br /> 
-:heavy_check_mark: Creates a snapshot of all conditional access policy within production environment. <br /> 
-:heavy_check_mark: Add a trigger that monitors Restore OneDrive folder for new file requests.<br /> 
+:heavy_check_mark: Clears any previous snapshot from Onedrive. <br /> 
+:heavy_check_mark: Creates a snapshot of all conditional access policy within pre-production environment. <br /> 
+:heavy_check_mark: Add a trigger that monitors PROD OneDrive folder for paste requests.<br /> 
 :heavy_check_mark: Add an action that sends a message to Team channel for approving or rejecting these requests.<br /> 
 :heavy_check_mark: Add a condition that checks the approval response.<br /> 
 :heavy_check_mark: Get client secret from key vault using managed identity.<br /> 
-:heavy_check_mark: Add an action that restores the policy in PROD environment.<br /> 
-:heavy_check_mark: Add a condition that checks whether the policy was restored successfully.<br /> 
-:heavy_check_mark: Add an action that sends a message to Team channel confirming the outcome of restoring the policy.<br /> 
+:heavy_check_mark: Add an action that paste the policy in PROD environment.<br /> 
+:heavy_check_mark: Add a condition that checks whether the policy was pasted successfully.<br /> 
+:heavy_check_mark: Add an action that sends a message to Team channel confirming the outcome of policy deployment.<br /> 
 
 When you're done, your logic app looks like this workflow at a high level:
 
@@ -61,13 +62,13 @@ Follow the option that you want to use for deploying the quickstart template:
 
 1. Select the following image to sign in with your Azure account and open the logic app in the Azure portal:
 
-:heavy_check_mark: Logic App 1 for Backup of Conditional Access Policies (Backup)
+:heavy_check_mark: Logic App 1 for Export of Conditional Access Policies (Copy)
 
    [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fvideor%2FAutoPilotConditionalAccess%2Fmaster%2FAutoPilotConditionalAccess%2Fazure-quickstart-templates%2F301-conditionalaccess-policy-copy-paste-automation%2Fazuredeploy.json)
    
    [Video Link that takes you through the deployment process for copy/export of conditional access policies](https://www.screencast.com/t/OXNJj2xWaiCM)
    
- :heavy_check_mark: Logic App 2 for Restore of Conditional Access Policies (Restore)
+ :heavy_check_mark: Logic App 2 for Import of Conditional Access Policies (Paste)
   
    [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fvideor%2FAutoPilotConditionalAccess%2Fmaster%2FAutoPilotConditionalAccess%2Fazure-quickstart-templates%2F301-conditionalaccess-policy-copy-paste-automation%2F301-conditionalaccess-policy-paste-automation%2Fazuredeploy.json)
 
@@ -457,7 +458,6 @@ Try the following challenge:
 :heavy_check_mark: Edit this logic app to delete the policy file in PROD Onedrive folder when the approval workflow selection is Reject copy-paste action. <br /> 
 
 Finally, Try cloning the logic and build workflows to also support line of business application ids. If you would like to request a logic app to do this, please send a request on Twitter @Vi_Deora.
-
 
 
 
