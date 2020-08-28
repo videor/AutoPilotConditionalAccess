@@ -83,7 +83,7 @@
                                 "path": "/datasets/default/files",
                                 "queries": {
                                     "folderPath": "/ConditionalAccess/Backup/@{variables('DateTime')}",
-                                    "name": "file.txt"
+                                    "name": "readme.txt"
                                 }
                             },
                             "runtimeConfiguration": {
