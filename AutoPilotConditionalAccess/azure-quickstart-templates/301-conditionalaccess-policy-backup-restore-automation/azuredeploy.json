@@ -1,14 +1,14 @@
 {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
-    "parameters": {  
+    "parameters": {   
     },
     "variables": {},
     "resources": [
-    {
+        {
             "type": "Microsoft.Logic/workflows",
             "apiVersion": "2017-07-01",
-            "name": "301-conditionalaccess-policy-copy-automation",
+            "name": "301_conditionalaccess_policy_backup_automation",
             "location": "[resourceGroup().location]",    
             "properties": {
                 "state": "Enabled",
@@ -21,55 +21,80 @@
                             "type": "Object"
                         },
                         "AutoPilotConditionalAccessKeyVaultClientCredentials": {
-                            "defaultValue": "https://autopilotcavault2.vault.azure.net/secrets/AutoPilotConditionalAccessClientSecret/04e3b95b7f0e49dea10e4189b5374595",
+                            "defaultValue": "https://conditionalaccessapi.vault.azure.net/secrets/CAAPISecret/5cabc0534679485da9d86f72f59c419c",
                             "type": "String"
                         },
                         "ClientID": {
-                            "defaultValue": "3ad0fe30-3640-4364-a39a-bd1fae04ac9a",
+                            "defaultValue": "74ee4ba5-0209-483b-b523-f312c22894fd",
                             "type": "String"
-                        },                      
+                        },
                         "TenantID": {
-                            "defaultValue": "638f6240-1182-4adb-a12a-fdb1c768d7f2",
+                            "defaultValue": "92f162f8-5a09-476c-9b4d-e3a4d6c8abe7",
                             "type": "String"
                         }
                     },
                     "triggers": {
-                        "Schedule_snapshot_of_pre-production_conditional_access_policies": {
+                        "Schedule_backup_of_production_conditional_access_policies": {
                             "recurrence": {
                                 "frequency": "Day",
-                                "interval": 1
+                                "interval": 1,
+                                "schedule": {
+                                    "hours": [
+                                        "18"
+                                    ],
+                                    "minutes": [
+                                        0
+                                    ]
+                                },
+                                "timeZone": "GMT Standard Time"
                             },
                             "type": "Recurrence"
                         }
                     },
                     "actions": {
-                        "Clear_snapshot": {
-                            "foreach": "@body('List_files_in_folder')?['value']",
-                            "actions": {
-                                "Delete_file": {
-                                    "runAfter": {},
-                                    "type": "ApiConnection",
-                                    "inputs": {
-                                        "host": {
-                                            "connection": {
-                                                "name": "@parameters('$connections')['onedriveforbusiness']['connectionId']"
-                                            }
-                                        },
-                                        "method": "delete",
-                                        "path": "/datasets/default/files/@{encodeURIComponent(encodeURIComponent(items('Clear_snapshot')?['Id']))}"
+                        "Backup_folder_display_name": {
+                            "runAfter": {},
+                            "type": "InitializeVariable",
+                            "inputs": {
+                                "variables": [
+                                    {
+                                        "name": "DateTime",
+                                        "type": "string",
+                                        "value": "@{substring(utcNow(),0,10)}"
                                     }
-                                }
-                            },
+                                ]
+                            }
+                        },
+                        "Create_daily_backup_folder": {
                             "runAfter": {
-                                "List_files_in_folder": [
+                                "Parse_all_conditional_access_policies": [
                                     "Succeeded"
                                 ]
                             },
-                            "type": "Foreach"
+                            "type": "ApiConnection",
+                            "inputs": {
+                                "body": "This backup of conditional access policies was taken at @{utcNow()}",
+                                "host": {
+                                    "connection": {
+                                        "name": "@parameters('$connections')['onedriveforbusiness_1']['connectionId']"
+                                    }
+                                },
+                                "method": "post",
+                                "path": "/datasets/default/files",
+                                "queries": {
+                                    "folderPath": "/ConditionalAccess/Backup/@{variables('DateTime')}",
+                                    "name": "file.txt"
+                                }
+                            },
+                            "runtimeConfiguration": {
+                                "contentTransfer": {
+                                    "transferMode": "Chunked"
+                                }
+                            }
                         },
                         "Delay": {
                             "runAfter": {
-                                "Clear_snapshot": [
+                                "Create_daily_backup_folder": [
                                     "Succeeded"
                                 ]
                             },
@@ -100,14 +125,14 @@
                                         "body": "@outputs('Conditional_access_policy_json')",
                                         "host": {
                                             "connection": {
-                                                "name": "@parameters('$connections')['onedriveforbusiness']['connectionId']"
+                                                "name": "@parameters('$connections')['onedriveforbusiness_1']['connectionId']"
                                             }
                                         },
                                         "method": "post",
                                         "path": "/datasets/default/files",
                                         "queries": {
-                                            "folderPath": "/ConditionalAccess/PPE",
-                                            "name": "[@{item()?['id']}] @{item()?['displayName']}.json"
+                                            "folderPath": "/ConditionalAccess/Backup/@{variables('DateTime')}",
+                                            "name": "[[[@{item()?['id']}] @{item()?['displayName']}.json"
                                         }
                                     },
                                     "runtimeConfiguration": {
@@ -144,12 +169,16 @@
                             }
                         },
                         "GET_client_secret_from_key_vault_using_managed_identity": {
-                            "runAfter": {},
+                            "runAfter": {
+                                "Backup_folder_display_name": [
+                                    "Succeeded"
+                                ]
+                            },
                             "type": "Http",
                             "inputs": {
                                 "authentication": {
                                     "audience": "https://vault.azure.net",
-                                    "identity": "ManagedIdentity",
+                                    "identity": "ManagedServiceIdentity",
                                     "type": "ManagedServiceIdentity"
                                 },
                                 "method": "GET",
@@ -157,36 +186,6 @@
                                     "api-version": "2016-10-01"
                                 },
                                 "uri": "@parameters('AutoPilotConditionalAccessKeyVaultClientCredentials')"
-                            }
-                        },
-                        "List_files_in_folder": {
-                            "runAfter": {
-                                "Parse_all_conditional_access_policies": [
-                                    "Succeeded"
-                                ]
-                            },
-                            "metadata": {
-                                "b!S_mQ8pRickKStdgCwQA2ZYs5CwfTlTdFgOHtghxQUT-NGQ06AnNzSqHWQhBs6nsx.01DNPMLTBV7TVXZGINTNAIFX33NUW4LSHJ": "/ConditionalAccess/Pre-Production",
-                                "b!S_mQ8pRickKStdgCwQA2ZYs5CwfTlTdFgOHtghxQUT-NGQ06AnNzSqHWQhBs6nsx.01DNPMLTFLD3SDMVQRDNHZ2OMKFBOXMFLJ": "/ConditionalAccess/PPE"
-                            },
-                            "type": "ApiConnection",
-                            "inputs": {
-                                "host": {
-                                    "connection": {
-                                        "name": "@parameters('$connections')['onedriveforbusiness']['connectionId']"
-                                    }
-                                },
-                                "method": "get",
-                                "path": "/datasets/default/foldersV2/@{encodeURIComponent(encodeURIComponent('b!S_mQ8pRickKStdgCwQA2ZYs5CwfTlTdFgOHtghxQUT-NGQ06AnNzSqHWQhBs6nsx.01DNPMLTFLD3SDMVQRDNHZ2OMKFBOXMFLJ'))}",
-                                "queries": {
-                                    "skipToken": "",
-                                    "top": 20
-                                }
-                            },
-                            "runtimeConfiguration": {
-                                "paginationPolicy": {
-                                    "minimumItemCount": 195
-                                }
                             }
                         },
                         "Parse_all_conditional_access_policies": {
@@ -361,8 +360,8 @@
                 "parameters": {
                     "$connections": {
                         "value": {
-                            "onedriveforbusiness": {
-                                "connectionId": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Web/locations/', resourceGroup().location, '/managedApis/onedriveforbusiness')]",
+                            "onedriveforbusiness_1": {
+                                 "connectionId": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Web/locations/', resourceGroup().location, '/managedApis/onedriveforbusiness')]",
                                 "connectionName": "onedriveforbusiness-1",
                                 "id": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Web/locations/', resourceGroup().location, '/managedApis/onedriveforbusiness')]"
                             }
