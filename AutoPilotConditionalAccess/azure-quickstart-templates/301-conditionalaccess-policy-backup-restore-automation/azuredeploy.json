@@ -132,7 +132,7 @@
                                         "path": "/datasets/default/files",
                                         "queries": {
                                             "folderPath": "/ConditionalAccess/Backup/@{variables('DateTime')}",
-                                            "name": "[[[@{item()?['id']}] @{item()?['displayName']}.json"
+                                            "name": "[@{item()?['id']}] @{item()?['displayName']}.json"
                                         }
                                     },
                                     "runtimeConfiguration": {
