@@ -4,7 +4,7 @@ Intent: As an IT admin, I want to be able to easily backup-restore conditional a
 
 You can use the conditional access APIs to easily backup conditional access policies. For example, you can:
 
-As a IT admin, be able to automate a regular snapshot of all conditional access policies within your environment. Select a policy to Restore. Finally, restore the conditional access policy in your production environment.
+As a IT admin, be able to automate a regular backup/snapshot of all conditional access policies within your environment. Select a policy to Restore. Finally, restore the conditional access policy in your production environment.
 
 This automation can be very useful for: 
 - Organizations that manages large numbers of conditional access policies. OR
