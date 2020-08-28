@@ -1,4 +1,4 @@
-# Tutorial:	Safe rollout of policies from pre-production to production with approval workflow
+# Tutorial:	Backup and Restore Conditional Access policies with approval workflow
 
 Intent: As an IT admin, I want to be able to easily copy-paste conditional access policies from pre-production to production environment.
 
