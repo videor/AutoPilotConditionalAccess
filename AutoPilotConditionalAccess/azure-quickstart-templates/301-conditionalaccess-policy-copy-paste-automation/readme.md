@@ -38,6 +38,8 @@ When you're done, your logic app looks like this workflow at a high level:
 
 If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you start.
 
+You will also need knowledge of key concepts within Azure logic apps, Onedrive and Teams. 
+
 ### The contents of this repository are unsupported and may or not be current. Replies to questions about unsupported material have the lowest priority.
 
 # Why unsupported?
