@@ -8,7 +8,7 @@
         {
             "type": "Microsoft.Logic/workflows",
             "apiVersion": "2017-07-01",
-            "name": "301-conditionalaccess-policy-paste-automation",
+            "name": "301-conditionalaccess-policy-restore-automation",
             "location": "[resourceGroup().location]",    
             "properties": {
                 "state": "Enabled",
@@ -40,7 +40,7 @@
                                 "interval": 1
                             },
                             "metadata": {
-                                "b!S_mQ8pRickKStdgCwQA2ZYs5CwfTlTdFgOHtghxQUT-NGQ06AnNzSqHWQhBs6nsx.01DNPMLTDAILMIG3AUBVF27BDXT5O6LSJS": "/ConditionalAccess/PROD",
+                                "b!S_mQ8pRickKStdgCwQA2ZYs5CwfTlTdFgOHtghxQUT-NGQ06AnNzSqHWQhBs6nsx.01DNPMLTDAILMIG3AUBVF27BDXT5O6LSJS": "/ConditionalAccess/Restore",
                                 "b!S_mQ8pRickKStdgCwQA2ZYs5CwfTlTdFgOHtghxQUT-NGQ06AnNzSqHWQhBs6nsx.01DNPMLTF7PD7RYZPMM5DYP45B2QYYPN65": "/AI Hero/AzureAD/ConditionalAccess/Restore"
                             },
                             "type": "ApiConnection",
