@@ -25,6 +25,8 @@ In this tutorial, you'll learn how to:
 :heavy_check_mark: Update a conditional access policy  <br /> 
 :heavy_check_mark: Delete a conditional access policy  <br /> 
 
+For Conditional Access APIs and PowerShell cmdlets, see [PowerShell cmdlets](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/101-conditionalaccess-apis-tutorial/readme-powershell.md).
+
 ### The contents of this repository are unsupported and may or not be current. Replies to questions about unsupported material have the lowest priority.
 
 # Why unsupported?
