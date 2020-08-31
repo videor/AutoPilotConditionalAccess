@@ -236,3 +236,56 @@ GrantControls   : class ConditionalAccessGrantControls {
 SessionControls :
 ```
 
+# Step 5: Get a specific conditional access policy
+
+To fetch all conditional access policies, use the following *Get-AzureADMSConditionalAccessPolicy* command
+
+```
+Get-AzureADMSConditionalAccessPolicy -PolicyId 46a45d1a-2ac8-43d2-b087-78f587f417db
+```
+
+The GET command has all the required parameters in the command.
+
+
+#### Responses
+
+##### Example response
+
+Once the 'GET' request is submitted, all conditional access policies (upto the current maximum limit of 194 policies) are returned in the response. 
+
+```
+Id              : 46a45d1a-2ac8-43d2-b087-78f587f417db
+DisplayName     : CA0002: Require MFA for medium + sign-in risk
+State           : enabledForReportingButNotEnforced
+Conditions      : class ConditionalAccessConditionSet {
+                    Applications: class ConditionalAccessApplicationCondition {
+                    IncludeApplications: System.Collections.Generic.List`1[System.String]
+                    ExcludeApplications: System.Collections.Generic.List`1[System.String]
+                    IncludeUserActions: System.Collections.Generic.List`1[System.String]
+                    IncludeProtectionLevels:
+                  }
+
+                    Users: class ConditionalAccessUserCondition {
+                    IncludeUsers: System.Collections.Generic.List`1[System.String]
+                    ExcludeUsers: System.Collections.Generic.List`1[System.String]
+                    IncludeGroups: System.Collections.Generic.List`1[System.String]
+                    ExcludeGroups: System.Collections.Generic.List`1[System.String]
+                    IncludeRoles: System.Collections.Generic.List`1[System.String]
+                    ExcludeRoles: System.Collections.Generic.List`1[System.String]
+                  }
+
+                    Platforms:
+                    Locations:
+                    SignInRiskLevels: System.Collections.Generic.List`1[Microsoft.Open.MSGraph.Model.ConditionalAccessRiskLevel]
+                    ClientAppTypes: System.Collections.Generic.List`1[Microsoft.Open.MSGraph.Model.ConditionalAccessClientApp]
+                  }
+
+GrantControls   : class ConditionalAccessGrantControls {
+                    _Operator: OR
+                    BuiltInControls: System.Collections.Generic.List`1[Microsoft.Open.MSGraph.Model.ConditionalAccessGrantControl]
+                    CustomAuthenticationFactors: System.Collections.Generic.List`1[System.String]
+                    TermsOfUse: System.Collections.Generic.List`1[System.String]
+                  }
+
+SessionControls :
+```
