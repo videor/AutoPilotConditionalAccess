@@ -251,7 +251,7 @@ The GET command has all the required parameters in the command.
 
 ##### Example response
 
-Once the 'GET' request is submitted, all conditional access policies (upto the current maximum limit of 194 policies) are returned in the response. 
+Once the 'GET' request is submitted, the specified conditional access policy is returned in the response. 
 
 ```
 Id              : 46a45d1a-2ac8-43d2-b087-78f587f417db
@@ -289,3 +289,19 @@ GrantControls   : class ConditionalAccessGrantControls {
 
 SessionControls :
 ```
+
+# Step 6: Delete a specific conditional access policy
+
+To delete a specific conditional access policy, use the following *Remove-AzureADMSConditionalAccessPolicy* operation
+
+```
+Remove-AzureADMSConditionalAccessPolicy -PolicyId 46a45d1a-2ac8-43d2-b087-78f587f417db
+```
+
+The Remove command has all the required parameters in the command.
+
+#### Responses
+
+##### Example response
+
+Once the 'Remove' request is submitted, the specified conditional access policy is deleted. 
