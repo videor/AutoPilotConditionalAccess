@@ -290,7 +290,44 @@ GrantControls   : class ConditionalAccessGrantControls {
 SessionControls :
 ```
 
-# Step 6: Delete a specific conditional access policy
+# Step 6: Update a Conditional Access Policy 
+
+To update a conditional access policy, use the following *Set-AzureADMSConditionalAccessPolicy command*.
+
+```
+Set-AzureADMSConditionalAccessPolicy -PolicyId 46a45d1a-2ac8-43d2-b087-78f587f417db -DisplayName "CA002: Require MFA for medium + sign-in risk" -State "Enabled" -Conditions $conditions -GrantControls $controls 
+```
+
+## Create a request
+
+To create the *Set-AzureADMSConditionalAccessPolicy* request
+
+## Create the request body
+
+The following common definitions are used to build a request body:
+
+|Name  |Required  |Type  |Description  |
+|---------|---------|---------|---------|
+|DisplayName     |   true      |   String      |  Policy name       |
+|State     |  true       |String         |   Policy state      |
+|Conditions     |   true      | [Condition Set](https://docs.microsoft.com/en-us/graph/api/resources/conditionalaccessconditionset?view=graph-rest-beta)        |  Represents the type of conditions that govern when the policy applies       |
+|GrantControls     |  true       |  [Grant Controls Set](https://docs.microsoft.com/en-us/graph/api/resources/conditionalaccessgrantcontrols?view=graph-rest-beta)       |    Represents grant controls that must be fulfilled to pass the policy     |
+
+## Example request body
+
+The following command is used to update a conditional access policy by including an additional group.
+
+```
+$conditions.Users.IncludeGroups = @('5f6ed05f-c5f4-41d0-96d4-516e2abf825d', 'f5471a71-6fd7-475f-bd09-cda32245e3aa')
+```
+
+To update the policy using the above conditions use the below command 
+
+```
+Set-AzureADMSConditionalAccessPolicy -PolicyId 46a45d1a-2ac8-43d2-b087-78f587f417db -Conditions $conditions
+```
+
+# Step 7: Delete a specific conditional access policy
 
 To delete a specific conditional access policy, use the following *Remove-AzureADMSConditionalAccessPolicy* operation
 
