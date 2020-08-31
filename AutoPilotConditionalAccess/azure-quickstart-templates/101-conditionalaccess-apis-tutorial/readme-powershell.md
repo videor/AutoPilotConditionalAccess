@@ -1,4 +1,4 @@
-# Tutorial: Easy configuration using Conditional Access API Templates
+# Tutorial: Easy configuration using Conditional Access PowerShell cmdlets
 
 Planning your Conditional Access deployment is critical to achieving your organization's access strategy for apps and resources.
 
