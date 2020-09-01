@@ -27,7 +27,7 @@ In this tutorial, you learn how to:
 
 When you're done, your logic app looks like this workflow at a high level:
 
-![High-level finished logic app overview](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-copy-paste-automation/images/Copy0.PNG)
+![High-level finished logic app overview](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-copy-paste-automation/images/Paste0.PNG)
 
 # Pre-requisites
 
@@ -61,7 +61,7 @@ Logic App for Easy Configuration of Conditional Access Policies using Templates.
  
    [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fvideor%2FAutoPilotConditionalAccess%2Fmaster%2FAutoPilotConditionalAccess%2Fazure-quickstart-templates%2F301-conditionalaccess-policy-template-automation%2Fazuredeploy.json)
 
-  [Video Link that takes you through the deployment process for easy configuration of conditional access policies using templates](https://www.screencast.com/t/ahW29WCqy)
+  [Video Link that takes you through the deployment process for easy configuration of conditional access policies using templates](https://www.screencast.com/t/JNwjeB4mfwi)
   
 1. In the portal, on the **Custom deployment** page, enter or select these values:
 
@@ -135,126 +135,7 @@ This logic app uses managed identity for getting secrets from key vault in order
 
 ![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/images/LA-parameters-edit.png)
 
-
-# Step 4: Add the Recurrence trigger
-
-1. On the Logic App Designer, click `schedule snapshot of pre-production conditional access policies` box. This example uses a recurrence trigger.
-
-   ![Change the Recurrence trigger's interval and frequency](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-copy-paste-automation/images/Copy1-edit.png)
-
-   | Property | Required | Value | Description |
-   |----------|----------|-------|-------------|
-   | **Interval** | Yes | 1 | The number of intervals to wait between checks |
-   | **Frequency** | Yes | Day | The unit of time to use for the recurrence |
-   |||||
-      
- This trigger fires every `day`. The **schedule** trigger box shows the recurrence schedule. For more information, see [Schedule tasks and workflows](https://docs.microsoft.com/en-us/azure/connectors/connectors-native-recurrence) and [Workflow actions and triggers](https://docs.microsoft.com/en-us/azure/logic-apps/logic-apps-workflow-actions-triggers#recurrence-trigger).
- 
-# Step 5: Get client secret from key vault using managed identity.
-
-1. On the Logic App Designer, in the HTTP connection box, click `GET client secret from key vault using managed identity`. This example uses HTTP connector.
-
-1. Specify the Method, URI, Queries, Authentication type, Managed Identity and Audience.
-
-   ![Select "GET client secret from key vault using managed identity" HTTP connector](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-copy-paste-automation/images/Copy2-edit.png)
-
-      | Property | Value | Description |
-      |----------|-------|-------------|
-      | **Method** | `GET` | Method to call |
-      | **URI** | `AutoPilotConditionalAccessKeyVaultClientCredentials` | The key vault parameter URI configured in step 3  |
-      | **Queries** | `2016-10-01` | api-version |
-      | **Authentication type** | `Managed Identity` | Authentication type is managed identity |
-      | **Managed Identity** | `AutoPilotCAUAI1` | User assigned managed identity connected in step 2 |
-      | **Audience** | `https://vault.azure.net` | Key vault |
-      ||||
-    
-1. Response from Key vault is parsed.
-
-# Step 6: Get all conditional access policies.
-
-1. On the Logic App Designer, in the HTTP connection box, click `Get all conditional access policies`. This example uses HTTP connector.
-
-1. Specify the Method, URI, Headers, Body, Authentication type, Tenant, Audience, Client ID, Credential Type and Secret.
-
-   ![Select "GET all conditional access policies" HTTP connector](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-copy-paste-automation/images/Copy3-edit.png)
-
-      | Property | Value | Description |
-      |----------|-------|-------------|
-      | **Method** | `GET` | Method to call |
-      | **URI** | `URL variable` | Conditional Access APIs v1.0 endpoint |
-      | **Headers** | `application/json` | Content-Type |
-      | **Authentication type** | `Active Directory OAuth` | Authentication type for App-only flow |
-      | **Tenant** | `TenantID` | Tennat ID configured in step 3 |
-      | **Audience** | `https://graph.microsoft.com` | MS Graph |
-      | **Client ID** | `Client ID` | Client ID configured in step 3 |
-      | **Credential Type** | `Secret` | Client Secret  |
-      | **Secret** | `value` | Secret value retrieved from key vault |
-      ||||
-      
-# Step 7: List files in Onedrive folder.
-
-1. On the Logic App Designer, in the Onedrive connection box, click `List files in folder`. This example uses OneDrive connector:
-
-   ![Select "List files in Onedrive folder" connector for Onedrive](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-copy-paste-automation/images/Copy4-edit.png)
-
-1. If prompted, sign in to your email account with your credentials so that Logic Apps can create a connection to your Onedrive account.
-
-1. In the connector, provide the criteria for listing all files.
-
-1. Specify the folder for listing files.
-
-      | Property | Value | Description |
-      |----------|-------|-------------|
-      | **Folder** | `/ConditionalAccess/PPE` | The Onedrive folder to list files |
-      ||||
- 
-# Step 8: Clear previous snapshot of PPE environment within Onedrive folder.
-
-1. On the Logic App Designer, in the Onedrive connection box, click `Delete file`. This example uses OneDrive connector:
-
-   ![Select "Delete files in Onedrive folder" connector for Onedrive](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-copy-paste-automation/images/Copy5-edit.png)
-
-1. If prompted, sign in to your email account with your credentials so that Logic Apps can create a connection to your Onedrive account.
-
-1. In the connector, provide the criteria for deleting files.
-
-1. Specify the file id for deleting files.
-
-      | Property | Value | Description |
-      |----------|-------|-------------|
-      | **File** | `Id` | The Onedrive file id retrieved from list files operation |
-      ||||
-
-# Step 9: Create a new snapshot of PPE environment within Onedrive folder.
-
-1. On the Logic App Designer, in the Onedrive connection box, click `Create file`. This example uses OneDrive connector:
-
-   ![Select "Create files in Onedrive folder" connector for Onedrive](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-copy-paste-automation/images/Copy6-edit.png)
-
-1. If prompted, sign in to your email account with your credentials so that Logic Apps can create a connection to your Onedrive account.
-
-1. In the connector, provide the criteria for creating files.
-
-1. Specify the folder path, file name and file content for creating files.
-
-      | Property | Value | Description |
-      |----------|-------|-------------|
-      | **Folder Path** | `/ConditionalAccess/PPE` | The Onedrive folder to take snapshot of PPE |
-      | **File Name** | `[id] display name.json` | The file name to use for each policy |
-      | **File Content** | `Hour` | The unit of time to use for the recurrence |
-      ||||    
-
-# Step 10: Deploy logic app to paste the policy in PROD.
-
-1. Select the following image to sign in with your Azure account and deploy the logic app for paste action in the Azure portal. This is only necessary if you have not already deployed the paste logic app as per the instruction in Step 1:
-
- [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fvideor%2FAutoPilotConditionalAccess%2Fmaster%2FAutoPilotConditionalAccess%2Fazure-quickstart-templates%2F301-conditionalaccess-policy-copy-paste-automation%2F301-conditionalaccess-policy-paste-automation%2Fazuredeploy.json)
-
-When you're done, your logic app looks like this workflow at a high level:
-
-![High-level finished logic app overview](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-copy-paste-automation/images/Paste0.PNG)
-
-# Step 11: Add a trigger that monitors PROD OneDrive folder for paste requests
+# Step 4: Add a trigger that monitors OneDrive folder for template requests
 
 1. On the Logic App Designer, in the Onedrive connection box, click `When a file is created`. This example uses OneDrive trigger:
 
@@ -277,7 +158,7 @@ When you're done, your logic app looks like this workflow at a high level:
       
 1. Following the trigger, the response is parsed.
 
-# Step 12: Add an action that sends a message to Teams channel for approving or rejecting these requests.
+# Step 5: Add an action that sends a message to Teams channel for approving or rejecting these requests.
 
 1. On the Logic App Designer, in the Teams connection box, click `Post an adaptive card to team channel and wait for response`. This example uses Teams connector:
 
@@ -298,9 +179,9 @@ When you're done, your logic app looks like this workflow at a high level:
       | **update message** | `Processing requested blueprint deployment` | Update the adaptive card to show a message once an approval action is taken |
       ||||
       
-# Step 13: Add a condition that checks the approval response.
+# Step 6: Add a condition that checks the approval response.
 
-1. On the Logic App Designer, select the Condition box `Check for approval of copy-paste action from PPE to PROD`. This example uses response from earlier Teams connector:
+1. On the Logic App Designer, select the Condition box `Check for approval`. This example uses response from earlier Teams connector:
 
 1. Specify the Team card response, expression and verify `approve` response in the condition.
     
@@ -313,7 +194,7 @@ When you're done, your logic app looks like this workflow at a high level:
       | **Condition** | `Approve` | response to verify in the condition |
       ||||
 
-# Step 14: Get client secret from key vault using managed identity.
+# Step 7: Get client secret from key vault using managed identity.
 
 1. On the Logic App Designer, in the HTTP connection box, click `GET client secret from key vault using managed identity`. This example uses HTTP connector.
 
@@ -337,13 +218,13 @@ When you're done, your logic app looks like this workflow at a high level:
   
   ![Select "Remove read-only attributes from pasted policy" Data compose action](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-copy-paste-automation/images/Paste5-edit.png)
 
-# Step 15: Paste the conditional access policy in PROD environment.
+# Step 8: Configure the conditional access policy in PPE environment.
 
-1. On the Logic App Designer, in the HTTP connection box, click `Paste conditional access policy`. This example uses HTTP connector.
+1. On the Logic App Designer, in the HTTP connection box, click `Configure conditional access policy`. This example uses HTTP connector.
 
 1. Specify the Method, URI, Headers, Body, Authentication type, Tenant, Audience, Client ID, Credential Type and Secret.
 
-   ![Select "Paste conditional access policy" HTTP connector](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-copy-paste-automation/images/Paste6-edit.png)
+   ![Select "Configure conditional access policy" HTTP connector](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-copy-paste-automation/images/Paste6-edit.png)
 
       | Property | Value | Description |
       |----------|-------|-------------|
@@ -359,11 +240,11 @@ When you're done, your logic app looks like this workflow at a high level:
       | **Secret** | `value` | Secret value retrieved from key vault |
       ||||
 
-# Step 16: Add a check to find if the paste operation was successful. If true, fire an alert on Team channel. 
+# Step 9: Add a check to find if the operation was successful. If true, fire an alert on Team channel. 
 
-1. On the Logic App Designer, in the conditions connection box, click `check if the conditional access policy was pasted successfully`. This example uses logic app condition evaluation:
+1. On the Logic App Designer, in the conditions connection box, click `check if the conditional access policy was configured successfully`. This example uses logic app condition evaluation:
 
-   ![Select "check to find if the conditional access policy was pasted successfully" condition](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-copy-paste-automation/images/Paste7-edit.png)
+   ![Select "check to find if the conditional access policy was configured successfully" condition](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-copy-paste-automation/images/Paste7-edit.png)
 
 1. In the condition, provide the criteria for checking the condition.
 
@@ -376,7 +257,7 @@ When you're done, your logic app looks like this workflow at a high level:
       | **Condition** | `204` | response to verify in the condition |
       ||||   
   
-1. On the Logic App Designer, in the Teams connection box, click `Post to team channel that the copy-paste action was completed successfully`. This example uses Teams connector:
+1. On the Logic App Designer, in the Teams connection box, click `Post to team channel that the action was completed successfully`. This example uses Teams connector:
 
 1. If prompted, sign in to your email account with your credentials so that Logic Apps can create a connection to your Teams account.
 
@@ -391,7 +272,7 @@ When you're done, your logic app looks like this workflow at a high level:
       | **message** | `message` | Post the adaptive card with an alert message |
       ||||
 
-1. On the Logic App Designer, in the Onedrive connection box, click `Delete file after successful copy-paste action`. This example uses OneDrive connector:
+1. On the Logic App Designer, in the Onedrive connection box, click `Delete file after successful action`. This example uses OneDrive connector:
 
 1. If prompted, sign in to your email account with your credentials so that Logic Apps can create a connection to your Onedrive account.
 
@@ -405,7 +286,7 @@ When you're done, your logic app looks like this workflow at a high level:
       | **File** | `File identifier` | The Onedrive file id to delete |
       ||||
 
-# Step 17: If the paste operation was un-successful. Fire an alert on Team channel. 
+# Step 10: If the paste operation was un-successful. Fire an alert on Team channel. 
 
 1. On the Logic App Designer, in the conditions connection box, click `if invalid application id`. This example uses logic app condition evaluation:
 
@@ -438,15 +319,14 @@ When you're done, your logic app looks like this workflow at a high level:
       ||||
 
 
-
 # Forward Looking
 
 Try the following challenge:
 
-:heavy_check_mark: Edit this logic app to send a custom message on Teams channel when the approval workflow selection is Reject copy-paste action.  <br /> 
-:heavy_check_mark: Edit this logic app to delete the policy file in PROD Onedrive folder when the approval workflow selection is Reject copy-paste action. <br /> 
+:heavy_check_mark: Edit this logic app to send a custom message on Teams channel when the approval workflow selection is Reject action.  <br /> 
+:heavy_check_mark: Edit this logic app to delete the policy file in Onedrive template folder when the approval workflow selection is Reject action. <br /> 
 
-Finally, Try cloning the logic and build workflows to also support line of business application ids. If you would like to request a logic app to do this, please send a request on Twitter @Vi_Deora.
+If you would like to request a logic app to do the above, please send a request on Twitter @Vi_Deora.
 
 
 
