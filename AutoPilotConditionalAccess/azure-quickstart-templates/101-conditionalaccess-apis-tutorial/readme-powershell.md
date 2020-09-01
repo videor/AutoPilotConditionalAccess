@@ -297,6 +297,17 @@ $policy = Get-AzureADMSConditionalAccessPolicy -PolicyId 9de529ed-3051-4643-bb9f
 $policy.Conditions.Users
 ```
 
+Once the '$policy.Conditions.Users' command is submitted, the specified conditional access policy object details is returned in the response. 
+
+```
+IncludeUsers  : {}
+ExcludeUsers  : {}
+IncludeGroups : {6c96716b-b32b-40b8-9009-49748bb6fcd5}
+ExcludeGroups : {f753047e-de31-4c74-a6fb-c38589047723}
+IncludeRoles  : {}
+ExcludeRoles  : {}
+```
+
 # Step 6: Update a Conditional Access Policy 
 
 To update a conditional access policy, use the following *Set-AzureADMSConditionalAccessPolicy command*.
