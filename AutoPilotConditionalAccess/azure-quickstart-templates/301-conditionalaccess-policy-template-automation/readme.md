@@ -55,9 +55,9 @@ Follow the option that you want to use for deploying the quickstart template:
 
 #### [Azure Portal](#tab/azure-portal)
 
-1. Select the following image to sign in with your Azure account and open the logic app in the Azure portal:
+Select the following image to sign in with your Azure account and open the logic app in the Azure portal:
 
- :heavy_check_mark: Logic App for Easy Configuration of Conditional Access Policies using Templates.
+Logic App for Easy Configuration of Conditional Access Policies using Templates.
  
    [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fvideor%2FAutoPilotConditionalAccess%2Fmaster%2FAutoPilotConditionalAccess%2Fazure-quickstart-templates%2F301-conditionalaccess-policy-template-automation%2Fazuredeploy.json)
 
