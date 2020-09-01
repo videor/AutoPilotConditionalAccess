@@ -290,6 +290,13 @@ GrantControls   : class ConditionalAccessGrantControls {
 SessionControls :
 ```
 
+To view details on a specific object within the response, for example, Users. Use the below example to reference the object.
+
+```
+$policy = Get-AzureADMSConditionalAccessPolicy -PolicyId 9de529ed-3051-4643-bb9f-111309fe187d
+$policy.Conditions.Users
+```
+
 # Step 6: Update a Conditional Access Policy 
 
 To update a conditional access policy, use the following *Set-AzureADMSConditionalAccessPolicy command*.
