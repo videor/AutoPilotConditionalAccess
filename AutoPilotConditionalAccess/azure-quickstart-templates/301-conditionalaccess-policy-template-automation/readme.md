@@ -137,9 +137,7 @@ This logic app uses managed identity for getting secrets from key vault in order
 
 # Step 4: Add a trigger that monitors OneDrive folder for template requests
 
-1. On the Logic App Designer, in the Onedrive connection box, click `When a file is created`. This example uses OneDrive trigger:
-
-   ![Select "When a new file is pasted" trigger for Onedrive](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-copy-paste-automation/images/Paste1-edit.png)
+1. On the Logic App Designer, in the Onedrive connection box, click `When a file is created`. This example uses OneDrive trigger.
 
 1. If prompted, sign in to your email account with your credentials so that Logic Apps can create a connection to your Onedrive account.
 
@@ -150,7 +148,7 @@ This logic app uses managed identity for getting secrets from key vault in order
 
       | Property | Value | Description |
       |----------|-------|-------------|
-      | **Folder** | `/ConditionalAccess/PROD` | The Onedrive folder to monitor |
+      | **Folder** | `/ConditionalAccess/Template` | The Onedrive folder to monitor |
       | **Include sub folder** | `No` | Should the sub folders be included |
       | **Infer content type** | `Yes` | Infer the content type of the file |
       | **How often do you want to check for items** | `1 Minute` | The unit of time to use for monitoring the folder |
