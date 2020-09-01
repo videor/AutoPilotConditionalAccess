@@ -494,6 +494,8 @@ Once the 'DELETE' request is submitted, a 204 (successful) response is returned.
 
 ## Next steps
 
+Next, [try easy configuration of conditional access policies using templates and Onedrive](https://github.com/videor/AutoPilotConditionalAccess/tree/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-template-automation).
+
 Try practising the above steps with some other quick-start api templates here:
 
 - [Template 1](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/101-conditionalaccess-apis-tutorial/Quickstart%20api%20template%201%20-%20MFA%20registration%20restrictions.json)
