@@ -29,7 +29,7 @@ When you're done, you will get the below simple way to deploy Conditional Access
 
 #  Copy your template and drop it to Onedrive Template folder: 
 
-![Copy to OneDrive](/media/Templates-Step1.PNG)
+![Copy to OneDrive](./media/Templates-Step1.PNG)
 
 
 
