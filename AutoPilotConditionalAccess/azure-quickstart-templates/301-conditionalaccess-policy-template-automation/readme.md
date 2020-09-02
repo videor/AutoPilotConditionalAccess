@@ -25,6 +25,14 @@ In this tutorial, you learn how to:
 :heavy_check_mark: Add a condition that checks whether the policy was configured successfully.<br /> 
 :heavy_check_mark: Add an action that sends a message to Team channel confirming the outcome of policy configuration in pre-production.<br /> 
 
+When you're done, you will get the below simple way to deploy Conditional Access policies using templates:
+
+#  Copy your template and drop it to Onedrive Template folder: 
+
+![Copy to OneDrive](/media/Templates-Step1.PNG)
+
+
+
 When you're done, your logic app looks like this workflow at a high level:
 
 ![High-level finished logic app overview](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-copy-paste-automation/images/Paste0.PNG)
