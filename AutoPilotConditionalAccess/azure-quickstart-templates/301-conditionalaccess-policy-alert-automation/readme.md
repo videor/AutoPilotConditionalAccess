@@ -148,7 +148,7 @@ This logic app uses managed identity for getting secrets from key vault in order
         > [!NOTE]
         > You will notice a additional log entry for Conditional Access policy changes which targets Default policy. We will filter the duplicates later in the logic app. 
 
-          ![Alert template](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-alert-automation/images/Alert-5.PNG)
+![Alert template](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-alert-automation/images/Alert-5.PNG)
 
     1. Under **Alert logic**, enter the following:
 
