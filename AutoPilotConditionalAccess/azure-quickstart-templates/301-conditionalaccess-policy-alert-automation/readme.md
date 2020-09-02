@@ -130,7 +130,58 @@ This logic app uses managed identity for getting secrets from key vault in order
 ![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/images/LA-parameters-edit.png)
 
 
-# Step 4: Add the Audit Logs trigger
+# Step 4: Add the Audit Logs Webhook
+
+### Create an alert rule
+
+1. Sign in to the [Azure portal](https://portal.azure.com) with an account assigned to the Monitoring Contributor role in Azure Monitor.
+1. Select **All services**", enter "log analytics" in Search and then select **Log Analytics workspaces**.
+1. Select a workspace.
+1. In your workspace, select **Alerts** > **New alert rule**.
+    1. Under **Resource**, verify that the subscription is the one with which you want to associate the alert rule.
+    1. Under **Condition**, select **Add**.
+    1. Select **Custom log search** under **Signal name**.
+    1. Under **Search query**, enter the following query.
+        > [!NOTE]
+        > You will notice a additional log entry for Conditional Access policy changes which targets Default policy. We will filter the duplicates later in the logic app. 
+
+        ![Add the query to an alert rule](./media/directory-emergency-access/query-image1.png)
+
+    1. Under **Alert logic**, enter the following:
+
+        - Based on: Number of results
+        - Operator: Greater than
+        - Threshold value: 0
+
+    1. Under **Evaluated based on**, select the **Period (in minutes)** for how long you want the query to run, and the **Frequency (in minutes)** for how often you want the query to run. The frequency should be less than or equal to the period.
+
+        ![alert logic](./media/directory-emergency-access/alert-image2.png)
+
+    1. Select **Done**. You may now view the estimated monthly cost of this alert.
+1. Select an action group of users to be notified by the alert. If you want to create one, see [Create an action group](#create-an-action-group).
+1. To customize the email notification sent to the members of the action group, select actions under **Customize Actions**.
+1. Under **Alert Details**, specify the alert rule name and add an optional description.
+1. Set the **Severity level** of the event. We recommend that you set it to **Critical(Sev 0)**.
+1. Under **Enable rule upon creation**, leave it set as **yes**.
+1. To turn off alerts for a while, select the **Suppress Alerts** check box and enter the wait duration before alerting again, and then select **Save**.
+1. Click **Create alert rule**.
+
+### Create an action group
+
+1. Select **Create an action group**.
+
+    ![create an action group for notification actions](./media/directory-emergency-access/action-group-image3.png)
+
+1. Enter the action group name and a short name.
+1. Verify the subscription and resource group.
+1. Under action type, select **Email/SMS/Push/Voice**.
+1. Enter an action name such as **Notify global admin**.
+1. Select the **Action Type** as **Email/SMS/Push/Voice**.
+1. Select **Edit details** to select the notification methods you want to configure and enter the required contact information, and then select **Ok** to save the details.
+1. Add any additional actions you want to trigger.
+1. Select **OK**.
+
+# Step 4: Get Audit Logs details
 
 1. On the Logic App Designer, click `Audit logs endpoint for conditional access policies` box. Provide the details for your variable as described here:
 
