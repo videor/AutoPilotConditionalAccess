@@ -69,7 +69,7 @@ Follow the option that you want to use for deploying the quickstart template:
 
    Here is how the page looks with the values used in this example:
 
-   ![Provide information for quickstart template](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/images/Deploy-LA-edit.png)
+   ![Provide information for quickstart template](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/images/Alert-1.png)
 
 1. When you're done, select **Purchase**.
 
