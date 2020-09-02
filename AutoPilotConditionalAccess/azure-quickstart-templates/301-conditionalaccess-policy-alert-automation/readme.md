@@ -4,28 +4,24 @@ Intent: As an IT admin, I want to be able to easily setup alerts on conditional 
 
 You can use the conditional access APIs to manage alerts on policy changes. For example, you can:
 
-As a IT admin, add, update or delete a conditional access policy using conditional APIs and be able to set up alerts that fire when key CA policies are changed. 
+As a IT admin, add, update or delete a conditional access policy using conditional APIs or UI and be able to set up alerts that fire when CA policies are changed. 
 
 This automation can be very useful for: 
 - Organizations that manages large numbers of conditional access policies. OR
 - Identity partners that manages policies for customers. 
 
-This tutorial shows how to build a [logic app](https://docs.microsoft.com/en-us/azure/logic-apps/) that automates policy alerts. Specifically, this logic app monitors the audit logs for policy changes made using conditional access APIs and triggers alert on Teams channel.
+This tutorial shows how to build a [logic app](https://docs.microsoft.com/en-us/azure/logic-apps/) that automates policy alerts. Specifically, this logic app monitors the audit logs for policy changes and triggers alert on Teams channel.
 
 In this tutorial, you learn how to:
 
 :heavy_check_mark: Deploy this logic app to your organization.  <br /> 
 :heavy_check_mark: Authenticate your logic app to Azure AD with the right permissions.  <br /> 
 :heavy_check_mark: Add parameters specific to your organization within logic app.  <br /> 
-:heavy_check_mark: Add the Recurrence trigger to run a schedule workflow task.<br /> 
+:heavy_check_mark: Add the webhook trigger from audit logs to run a custom workflow task.<br /> 
 :heavy_check_mark: Get client secret from key vault using managed identity.<br /> 
 :heavy_check_mark: Get audit logs for CRUD operation on conditional access policies.<br /> 
 :heavy_check_mark: Add a condition that checks if any CRUD operations were returned.<br /> 
-:heavy_check_mark: Add a switch statement that checks whether the conditional access policy was added, updated or deleted.<br /> 
-:heavy_check_mark: Add a check to find if the newly created conditional access policy has block controls.<br /> 
-:heavy_check_mark: Fire an alert on Team channel if a policy alert condition is satisfied for new policy. <br /> 
-:heavy_check_mark: Add a check to find if the any conditional access policy update has changed conditional access policy from grant access to block controls. <br /> 
-:heavy_check_mark: Fire an alert on Team channel if a policy alert condition is satisfied for any policy updates. <br /> 
+:heavy_check_mark: Fire an alert on Team channel if a policy alert condition is satisfied. <br /> 
 
 When you're done, your logic app looks like this workflow at a high level:
 
