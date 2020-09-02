@@ -76,7 +76,7 @@ To learn more on user-assigned managed identity refer to this
 
 [**Create User-Assigned manage identities**](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal#create-a-user-assigned-managed-identity)
 
-create a user-assigned managed identity
+Create a user-assigned managed identity
 
 1. To create a user-assigned managed identity, your account needs the Managed Identity Contributor role assignment.
 2. Sign in to the Azure portal using an account associated with the Azure subscription to create the user-assigned managed identity.
