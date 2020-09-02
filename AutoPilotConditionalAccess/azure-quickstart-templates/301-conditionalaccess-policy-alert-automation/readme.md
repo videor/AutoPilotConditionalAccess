@@ -171,16 +171,14 @@ This logic app uses managed identity for getting secrets from key vault in order
 
 1. Select **Create an action group**.
 
-    ![create an action group for notification actions](./media/directory-emergency-access/action-group-image3.png)
+    ![create an action group for notification actions](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-alert-automation/images/Alert-6.PNG)
 
-1. Enter the action group name and a short name.
 1. Verify the subscription and resource group.
-1. Under action type, select **Email/SMS/Push/Voice**.
-1. Enter an action name such as **Notify global admin**.
-1. Select the **Action Type** as **Email/SMS/Push/Voice**.
-1. Select **Edit details** to select the notification methods you want to configure and enter the required contact information, and then select **Ok** to save the details.
-1. Add any additional actions you want to trigger.
-1. Select **OK**.
+1. Enter the action group name and a display name.
+1. Under Actions, action type, select **Logic App**.
+1. Enter an action name such as **ConditionalAccessAlerts**.
+1. Select the **Logic App** that you deployed for this sample.
+1. Select **Review + Create** to review the information, and then select **Create** to save the details.
 
 # Step 4: Get Audit Logs details
 
