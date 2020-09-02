@@ -69,7 +69,7 @@ Follow the option that you want to use for deploying the quickstart template:
 
    Here is how the page looks:
 
-   ![Provide information for quickstart template](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-alert-automation/images/Alert-1.PNG)
+   ![Provide information for quickstart template](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-alert-automation/images/Alert-2.PNG)
 
 1. When you're done, select **Review + Create**. Finally select **Create**.
 
