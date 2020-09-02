@@ -45,7 +45,7 @@ The following screenshot shows the Application Permissions required for Microsof
 
 Generate The Application Secret for your app in the app registration portal. 
 
-![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/images/AppRegistration7.PNG)
+![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/images/Permissions.PNG)
 
 # Step 3: Create a Managed Identity for your Automation
 
