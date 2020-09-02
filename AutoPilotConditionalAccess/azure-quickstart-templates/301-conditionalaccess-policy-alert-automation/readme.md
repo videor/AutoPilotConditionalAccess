@@ -150,15 +150,15 @@ This logic app uses managed identity for getting secrets from key vault in order
 
 ![Alert template](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-alert-automation/images/Alert-5.PNG)
 
-    1. Under **Alert logic**, enter the following:
+1. Under **Alert logic**, enter the following:
 
-        - Based on: Number of results
-        - Operator: Greater than
-        - Threshold value: 0
+ - Based on: Number of results
+ - Operator: Greater than
+ - Threshold value: 0
+ 
+1. Under **Evaluated based on**, select the **Period (in minutes)** for how long you want the query to run, and the **Frequency (in minutes)** for how often you want the query to run. The frequency should be less than or equal to the period.
+1. Select **Done**. You may now view the estimated monthly cost of this alert.
 
-    1. Under **Evaluated based on**, select the **Period (in minutes)** for how long you want the query to run, and the **Frequency (in minutes)** for how often you want the query to run. The frequency should be less than or equal to the period.
-
-    1. Select **Done**. You may now view the estimated monthly cost of this alert.
 1. Select an action group of users to be notified by the alert. If you want to create one, see [Create an action group](#create-an-action-group).
 1. To customize the email notification sent to the members of the action group, select actions under **Customize Actions**.
 1. Under **Alert Details**, specify the alert rule name and add an optional description.
