@@ -72,7 +72,9 @@ There are two types of managed identities: System-assigned managed identity and 
 
 For a collection of automations needing to share a managed identity, you can enable user-assigned managed identities. 
 
-To learn more on user-assigned managed identity refer to this [**Create User-Assigned manage identities**] (https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal#create-a-user-assigned-managed-identity)
+To learn more on user-assigned managed identity refer to this 
+
+![**Create User-Assigned manage identities**](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal#create-a-user-assigned-managed-identity)
 
 create a user-assigned managed identity
 
