@@ -27,10 +27,17 @@ In this tutorial, you learn how to:
 
 When you're done, you will get the below simple way to deploy Conditional Access policies using templates:
 
-#  Copy your template and drop it to Onedrive Template folder: 
+## Admin Experince Step 1: Copy your template and drop it to Onedrive Template folder: 
 
 ![Copy to OneDrive](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-template-automation/media/Templates-Step1.png)
 
+## Admin Experince Step 2: Copy your template and drop it to Onedrive Template folder: 
+
+![Copy to OneDrive](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-template-automation/media/Templates-Step1.png)
+
+## Admin Experince Step 3: Copy your template and drop it to Onedrive Template folder: 
+
+![Copy to OneDrive](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-template-automation/media/Templates-Step1.png)
 
 
 When you're done, your logic app looks like this workflow at a high level:
