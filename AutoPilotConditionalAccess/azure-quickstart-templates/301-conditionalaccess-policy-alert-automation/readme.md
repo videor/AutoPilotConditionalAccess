@@ -142,10 +142,13 @@ This logic app uses managed identity for getting secrets from key vault in order
     1. Under **Condition**, select **Add**.
     1. Select **Custom log search** under **Signal name**.
     1. Under **Search query**, enter the following query.
+    
+    **AuditLogs | where OperationName == "Add policy" or OperationName == "Update policy" or OperationName == "Delete policy"**
+
         > [!NOTE]
         > You will notice a additional log entry for Conditional Access policy changes which targets Default policy. We will filter the duplicates later in the logic app. 
 
-        ![Add the query to an alert rule](./media/directory-emergency-access/query-image1.png)
+          ![Alert template](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-alert-automation/images/Alert-5.PNG)
 
     1. Under **Alert logic**, enter the following:
 
@@ -154,8 +157,6 @@ This logic app uses managed identity for getting secrets from key vault in order
         - Threshold value: 0
 
     1. Under **Evaluated based on**, select the **Period (in minutes)** for how long you want the query to run, and the **Frequency (in minutes)** for how often you want the query to run. The frequency should be less than or equal to the period.
-
-        ![alert logic](./media/directory-emergency-access/alert-image2.png)
 
     1. Select **Done**. You may now view the estimated monthly cost of this alert.
 1. Select an action group of users to be notified by the alert. If you want to create one, see [Create an action group](#create-an-action-group).
