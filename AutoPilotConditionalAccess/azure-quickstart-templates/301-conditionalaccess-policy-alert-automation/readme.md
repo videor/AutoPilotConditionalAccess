@@ -67,11 +67,11 @@ Follow the option that you want to use for deploying the quickstart template:
    | **Logic App Name** | <*logic-app-name*> | The name to use for your logic app. This example uses `301-conditionalaccess-policy-alert-automation`. |
    ||||
 
-   Here is how the page looks with the values used in this example:
+   Here is how the page looks:
 
    ![Provide information for quickstart template](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-alert-automation/images/Alert-1.PNG)
 
-1. When you're done, select **Purchase**.
+1. When you're done, select **Review + Create**. Finally select **Create**.
 
 #### [CLI](#tab/azure-cli)
 
