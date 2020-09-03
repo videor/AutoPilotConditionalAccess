@@ -50,7 +50,7 @@ When you're done, you will get the below simple way to deploy Conditional Access
 <br /> 
 ## Admin Experince Step 5: Assign Test users within pre-production to the Conditional Access Policy: 
 
-![Assign test users](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-template-automation/media/Templates-Step4.png)
+![Assign test users](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-template-automation/media/Templates-Step5.png)
 <br /> 
 <br /> 
 Also, your logic app looks like this workflow at a high level:
