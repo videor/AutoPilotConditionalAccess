@@ -10,7 +10,7 @@ As a IT admin, be able to copy a template policy file and **configure** it in yo
 <br /> 
 
 This automation can be very useful for: 
-- Organizations that manages large numbers of conditional access policies and want to easily test out new Conditional Access features. OR
+- Organizations that manages large numbers of conditional access policies and want to easily test out new Conditional Access features in the safety of pre-production environment. OR
 - Identity partners that manages policies for customers. 
 
 This tutorial shows how to build a [logic app](https://docs.microsoft.com/en-us/azure/logic-apps/) that allows easy configuration of conditional access policies using Templates. Specifically, this logic app monitors any policies being pasted in the template folder of Ondrive. If a new policy is detected, an approval workflow is triggered on Team channel. On approval, the policy is configured in pre-production environment.
