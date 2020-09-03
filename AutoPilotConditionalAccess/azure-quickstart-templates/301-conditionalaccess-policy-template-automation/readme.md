@@ -41,7 +41,7 @@ When you're done, you will get the below simple way to deploy Conditional Access
 ![Approve configuration](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-template-automation/media/Templates-Step2.png)
 <br /> 
 <br /> 
-## 3. Template is successfully deployed in your Tenant
+## 3. Receive notification that Template is successfully deployed in your pre-production environment
 
 ![Confirmation](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-template-automation/media/Templates-Step3.png)
 <br /> 
