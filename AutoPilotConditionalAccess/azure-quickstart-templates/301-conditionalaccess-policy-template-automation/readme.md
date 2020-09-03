@@ -1,13 +1,13 @@
 # Tutorial:	Configure policies using Templates with approval workflow
 
-Intent: As an IT admin, I want to be able to easily configure conditional access policies within my pre-production environment.
+Intent: As an IT admin, I want to be able to easily configure conditional access policies within my pre-production environment and test the end to end experience.
 
 You can use the conditional access APIs to easily deploy conditional access policies in your pre-production environment using Temlates. For example, you can:
 
 As a IT admin, be able to copy a template policy file and configure it in your pre-production environment. 
 
 This automation can be very useful for: 
-- Organizations that manages large numbers of conditional access policies. OR
+- Organizations that manages large numbers of conditional access policies and want to easily test out new Conditional Access features. OR
 - Identity partners that manages policies for customers. 
 
 This tutorial shows how to build a [logic app](https://docs.microsoft.com/en-us/azure/logic-apps/) that allows easy configuration of conditional access policies using Templates. Specifically, this logic app monitors any policies being pasted in the template folder of Ondrive. If a new policy is detected, an approval workflow is triggered on Team channel. On approval, the policy is configured in pre-production environment.
@@ -21,7 +21,7 @@ In this tutorial, you learn how to:
 :heavy_check_mark: Add an action that sends a message to Team channel for approving or rejecting these requests.<br /> 
 :heavy_check_mark: Add a condition that checks the approval response.<br /> 
 :heavy_check_mark: Get client secret from key vault using managed identity.<br /> 
-:heavy_check_mark: Add an action that configures the policy in PRE-PROD environment.<br /> 
+:heavy_check_mark: Add an action that configures the policy in pre-production environment.<br /> 
 :heavy_check_mark: Add a condition that checks whether the policy was configured successfully.<br /> 
 :heavy_check_mark: Add an action that sends a message to Team channel confirming the outcome of policy configuration in pre-production.<br /> 
 
@@ -43,7 +43,11 @@ When you're done, you will get the below simple way to deploy Conditional Access
 ![Copy to OneDrive](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-template-automation/media/Templates-Step3.png)
 <br /> 
 <br /> 
+## Admin Experince Step 4: View your newly deployed Conditional Access policy using Automation in Azure portal: 
 
+![Copy to OneDrive](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-template-automation/media/Templates-Step4.png)
+<br /> 
+<br /> 
 Also, your logic app looks like this workflow at a high level:
 
 ![High-level finished logic app overview](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-copy-paste-automation/images/Paste0.PNG)
