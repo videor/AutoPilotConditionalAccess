@@ -4,7 +4,10 @@ Intent: As an IT admin, I want to be able to easily configure conditional access
 
 You can use the conditional access APIs to easily deploy conditional access policies in your pre-production environment using Temlates. For example, you can:
 
-As a IT admin, be able to copy a template policy file and configure it in your pre-production environment. 
+As a IT admin, be able to copy a template policy file and **configure** it in your pre-production environment. 
+
+![Configure](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-template-automation/media/Configure.png)
+<br /> 
 
 This automation can be very useful for: 
 - Organizations that manages large numbers of conditional access policies and want to easily test out new Conditional Access features. OR
