@@ -48,7 +48,7 @@ When you're done, you will get the below simple way to deploy Conditional Access
 ![View policy](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-template-automation/media/Templates-Step4.PNG)
 <br /> 
 <br /> 
-## Admin Experince Step 5: Assign Test users within pre-production to the Conditional Access Policy: 
+## Admin Experince Step 5: Check your Test users are assigned to the Conditional Access Policy: 
 
 ![Assign test users](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-template-automation/media/Templates-Step5.png)
 <br /> 
