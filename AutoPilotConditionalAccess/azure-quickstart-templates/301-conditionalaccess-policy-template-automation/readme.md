@@ -35,17 +35,22 @@ When you're done, you will get the below simple way to deploy Conditional Access
 <br /> 
 ## Admin Experince Step 2: Approve configuration of policy using Templates in Team Conditional Access security channel: 
 
-![Copy to OneDrive](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-template-automation/media/Templates-Step2.png)
+![Approve configuration](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-template-automation/media/Templates-Step2.png)
 <br /> 
 <br /> 
 ## Admin Experince Step 3: Template is successfully deployed in your tenant: 
 
-![Copy to OneDrive](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-template-automation/media/Templates-Step3.png)
+![Confirmation](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-template-automation/media/Templates-Step3.png)
 <br /> 
 <br /> 
 ## Admin Experince Step 4: View your newly deployed Conditional Access policy using Automation in Azure portal: 
 
-![Copy to OneDrive](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-template-automation/media/Templates-Step4.png)
+![View policy](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-template-automation/media/Templates-Step4.png)
+<br /> 
+<br /> 
+## Admin Experince Step 5: Assign Test users within pre-production to the Conditional Access Policy: 
+
+![Assign test users](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-template-automation/media/Templates-Step4.png)
 <br /> 
 <br /> 
 Also, your logic app looks like this workflow at a high level:
