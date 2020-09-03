@@ -28,27 +28,27 @@ In this tutorial, you learn how to:
 When you're done, you will get the below simple way to deploy Conditional Access policies using templates:
 <br /> 
 <br /> 
-## Admin Experince Step 1: Copy your template and drop it in your specified Onedrive Template folder: 
+## 1: Copy your template and drop it in your Onedrive folder: 
 
 ![Copy to OneDrive](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-template-automation/media/Templates-Step1.png)
 <br /> 
 <br /> 
-## Admin Experince Step 2: Approve configuration of policy using Templates in Team Conditional Access security channel: 
+## 2: Approve Template configuration in Teams: 
 
 ![Approve configuration](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-template-automation/media/Templates-Step2.png)
 <br /> 
 <br /> 
-## Admin Experince Step 3: Template is successfully deployed in your tenant: 
+## 3: Template is successfully deployed in your Tenant: 
 
 ![Confirmation](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-template-automation/media/Templates-Step3.png)
 <br /> 
 <br /> 
-## Admin Experince Step 4: View your newly deployed Conditional Access policy using Automation in Azure portal: 
+## 4: View your newly deployed Conditional Access policy in Azure portal: 
 
 ![View policy](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-template-automation/media/Templates-Step4.PNG)
 <br /> 
 <br /> 
-## Admin Experince Step 5: Check your Test users are assigned to the Conditional Access Policy: 
+## 5: Check your test users are assigned to the policy: 
 
 ![Assign test users](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-template-automation/media/Templates-Step5.png)
 <br /> 
