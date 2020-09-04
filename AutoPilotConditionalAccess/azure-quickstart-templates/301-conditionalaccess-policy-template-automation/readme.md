@@ -108,7 +108,7 @@ Logic App for Easy Configuration of Conditional Access Policies using Templates.
 
    Here is how the page looks with the values used in this example:
 
-   ![Provide information for quickstart template](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/images/Deploy-LA-edit.png)
+   ![Provide information for quickstart template](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-template-automation/media/Templates-Step6.png)
 
 1. When you're done, select **Purchase**.
 
