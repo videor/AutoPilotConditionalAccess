@@ -97,9 +97,9 @@ Logic App for Easy Configuration of Conditional Access Policies using Templates.
 
    Here is how the page looks with the values used in this example:
 
-   ![Provide information for quickstart template](/media/Templates-Step6.png)
+   ![Provide information for quickstart template](/media/Deploy.png)
 
-1. When you're done, select **Purchase**.
+1. When you're done, select **Review + Create** and finally **Create**.
 
 #### [CLI](#tab/azure-cli)
 
