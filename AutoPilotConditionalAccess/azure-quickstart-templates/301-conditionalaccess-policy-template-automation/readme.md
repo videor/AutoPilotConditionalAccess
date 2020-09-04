@@ -203,7 +203,7 @@ Similar to above, update remaining OneDrive and Teams connectors within the samp
 
 # Note
 
-Please ensure you follow the best practise guidelines on managing secrets within Logic apps by using secure inputs and outputs as [Select "documented here"](https://docs.microsoft.com/en-us/azure/logic-apps/logic-apps-securing-a-logic-app).
+Please ensure you follow the best practise guidelines on managing secrets within Logic apps by using secure inputs and outputs as [documented here](https://docs.microsoft.com/en-us/azure/logic-apps/logic-apps-securing-a-logic-app).
 
 
 # Forward Looking
