@@ -195,7 +195,13 @@ This logic app uses managed identity for getting secrets from key vault in order
 
 1. Specify the Managed Identity to use.
 
-   ![Select "GET client secret from key vault using managed identity" HTTP connector](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-copy-paste-automation/images/Paste4-edit.png)
+![Select "Managed Identity"](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-template-automation/media/Templates-Step9.PNG)
+
+# Step 7: Update all other connectors within Logic App.
+
+Similar to above, update remaining OneDrive and Teams connectors within the sample Logic App by selecting appropriate OneDrive and Teams account that needs to be used for automation.
+
+Note: Please ensure you follow the best practise guidelines on managing secrets within Logic apps by using secure inputs and outputs as ![Select "documented here"](https://docs.microsoft.com/en-us/azure/logic-apps/logic-apps-securing-a-logic-app).
 
 
 # Forward Looking
