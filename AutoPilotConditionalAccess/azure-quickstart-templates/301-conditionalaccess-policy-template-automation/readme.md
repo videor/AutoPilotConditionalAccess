@@ -183,7 +183,7 @@ This logic app uses managed identity for getting secrets from key vault in order
 
 1. On the Logic App Designer, in the Teams connection box, click `Connections`. This example uses Teams connector:
 
-![Select "Post an adaptive card to Teams channel and wait for a response" connector for Teams (https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-template-automation/media/Templates-Step8.PNG)
+![Select "Post an adaptive card to Teams channel and wait for a response" connector for Teams(https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-template-automation/media/Templates-Step8.PNG)
 
 1. If prompted, sign in to your email account with your credentials so that Logic Apps can create a connection to your Teams account.
 
