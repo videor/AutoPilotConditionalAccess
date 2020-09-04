@@ -103,7 +103,7 @@ Logic App for Easy Configuration of Conditional Access Policies using Templates.
    | **Subscription** | <*Azure-subscription-name*> | The name for the Azure subscription to use |
    | **Resource group** | <*Azure-resource-group-name*> | The name for a new or existing Azure resource group. This example uses `AutoPilotConditionalAccess`. |
    | **Location** |  <*Azure-region-for-all-resources*> | The Azure region to use for all resources, if different from the default value. This example uses the default value, `[resourceGroup().location]`, which is the resource group location. |
-   | **Logic App Name** | <*logic-app-name*> | The name to use for your logic app. This example uses `301-conditionalaccess-policy-copy-paste-automation`. |
+   | **Logic App Name** | <*logic-app-name*> | The name to use for your logic app. This example uses `301-conditionalaccess-policy-template-automation`. |
    ||||
 
    Here is how the page looks with the values used in this example:
@@ -117,7 +117,7 @@ Logic App for Easy Configuration of Conditional Access Policies using Templates.
 ```azurecli-interactive
 read -p "Enter a project name name to use for generating resource names:" projectName &&
 read -p "Enter the location, such as 'westus':" location &&
-templateUri="https://raw.githubusercontent.com/videor/AutoPilotConditionalAccess/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-copy-paste-automation/azuredeploy.json" &&
+templateUri="https://raw.githubusercontent.com/videor/AutoPilotConditionalAccess/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-template-automation/azuredeploy.json" &&
 resourceGroupName="${projectName}rg" &&
 az group create --name $resourceGroupName --location "$location" &&
 az deployment group create --resource-group $resourceGroupName --template-uri  $templateUri &&
@@ -135,7 +135,7 @@ For more information, see these topics:
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter a project name to use for generating resource names"
 $location = Read-Host -Prompt "Enter the location, such as 'westus'"
-$templateUri = "https://raw.githubusercontent.com/videor/AutoPilotConditionalAccess/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-copy-paste-automation/azuredeploy.json"
+$templateUri = "https://raw.githubusercontent.com/videor/AutoPilotConditionalAccess/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-template-automation/azuredeploy.json"
 
 $resourceGroupName = "${projectName}rg"
 
@@ -164,30 +164,20 @@ This logic app uses managed identity for getting secrets from key vault in order
 
 # Step 3: Update parameters
 
-1. In the left-hand navigation pane, select Logic App designer > Parameters > Replace the default value with Key Vault URI, Client ID and Tenant ID.
+1. In the left-hand navigation pane, select Logic App designer > Parameters > Replace the default value with Key Vault URI (storing Client Secret), Client ID and Tenant ID.
 
 ![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/images/LA-parameters-edit.png)
 
-# Step 4: Add a trigger that monitors OneDrive folder for template requests
+# Step 4: Connect to your OneDrive account and select the template folder you will like to use for automation
 
-1. On the Logic App Designer, in the Onedrive connection box, click `When a file is created`. This example uses OneDrive trigger.
+1. On the Logic App Designer, in the OneDrive for Business connection box, click `Connection`. This example uses OneDrive connector for Logic apps:
 
-1. If prompted, sign in to your email account with your credentials so that Logic Apps can create a connection to your Onedrive account.
+   ![Select "Connection"](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-template-automation/media/Templates-Step7.png)
 
-1. In the trigger, provide the criteria for checking all new files.
+1. If prompted, sign in to your email account with your credentials so that Logic Apps can create a connection to your OneDrive account.
 
-1. Specify folder, include sub folder, infer content type and how often do you want to check for items
+1. If connection is successful, select the OneDrive folder you would like to use for Template automation.
 
-
-      | Property | Value | Description |
-      |----------|-------|-------------|
-      | **Folder** | `/ConditionalAccess/Template` | The Onedrive folder to monitor |
-      | **Include sub folder** | `No` | Should the sub folders be included |
-      | **Infer content type** | `Yes` | Infer the content type of the file |
-      | **How often do you want to check for items** | `1 Minute` | The unit of time to use for monitoring the folder |
-      ||||
-      
-1. Following the trigger, the response is parsed.
 
 # Step 5: Add an action that sends a message to Teams channel for approving or rejecting these requests.
 
