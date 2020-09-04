@@ -26,27 +26,27 @@ When you're done, you will be able to manage Conditional Access policies using t
 <br /> 
 ## 1. Copy your Template and drop it in your Onedrive folder
 
-![Copy to OneDrive](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-template-automation/media/Templates-Step1.png)
+![Copy to OneDrive](./media/Templates-Step1.png)
 <br /> 
 <br /> 
 ## 2. Approve Template configuration in Teams
 
-![Approve configuration](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-template-automation/media/Templates-Step2.png)
+![Approve configuration](./media/Templates-Step2.png)
 <br /> 
 <br /> 
 ## 3. Receive notification that Template is successfully deployed in your pre-production environment
 
-![Confirmation](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-template-automation/media/Templates-Step3.png)
+![Confirmation](./media/Templates-Step3.png)
 <br /> 
 <br /> 
 ## 4. View your newly deployed Conditional Access policy in Azure portal
 
-![View policy](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-template-automation/media/Templates-Step4.PNG)
+![View policy](./media/Templates-Step4.PNG)
 <br /> 
 <br /> 
 ## 5. Check your Test users are assigned to the policy
 
-![Assign test users](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-template-automation/media/Templates-Step5.png)
+![Assign test users](./media/Templates-Step5.png)
 <br /> 
 <br /> 
 
