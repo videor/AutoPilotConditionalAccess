@@ -97,7 +97,7 @@ Logic App for Easy Configuration of Conditional Access Policies using Templates.
 
    Here is how the page looks with the values used in this example:
 
-   ![Provide information for quickstart template](./media/Templates-Step16.png)
+   ![Provide information for quickstart template](./media/Templates-Step6.png)
 
 1. When you're done, select **Purchase**.
 
@@ -161,7 +161,7 @@ This logic app uses managed identity for getting secrets from key vault in order
 
 1. On the Logic App Designer, in the OneDrive for Business connection box, click `Connections`. This example uses OneDrive connector for Logic apps:
 
-![Select "Connections"](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-template-automation/media/Templates-Step7.PNG)
+![Select "Connections"](./media/Templates-Step7.PNG)
 
 1. If prompted, sign in to your email account with your credentials so that Logic Apps can create a connection to your OneDrive account.
 
@@ -172,7 +172,7 @@ This logic app uses managed identity for getting secrets from key vault in order
 
 1. On the Logic App Designer, in the Teams connection box, click `Connections`. This example uses Teams connector:
 
-![Select "Connections"](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-template-automation/media/Templates-Step8.PNG)
+![Select "Connections"](./media/Templates-Step8.PNG)
 
 1. If prompted, sign in to your email account with your credentials so that Logic Apps can create a connection to your Teams account.
 
@@ -184,7 +184,7 @@ This logic app uses managed identity for getting secrets from key vault in order
 
 1. Specify the Managed Identity to use.
 
-![Select "Managed Identity"](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-template-automation/media/Templates-Step9.PNG)
+![Select "Managed Identity"](./media/Templates-Step9.PNG)
 
 # Step 7: Update all other connectors within Logic App.
 
