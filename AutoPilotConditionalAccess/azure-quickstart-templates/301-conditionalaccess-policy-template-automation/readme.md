@@ -149,13 +149,13 @@ This logic app uses managed identity for getting secrets from key vault in order
 
 2. Select the User-assigned managed identity from the context pane that appears on the right, select Add.
 
-![](./media/MI-edit.png).
+![ManagedIdentity](./media/MI-edit.png)
 
 # Step 3: Update parameters
 
 1. In the left-hand navigation pane, select Logic App designer > Parameters > Replace the default value with Key Vault URI (storing Client Secret), Client ID and Tenant ID.
 
-![](./media/LA-parameters-edit.png)
+![Parameters](./media/LA-parameters-edit.png)
 
 # Step 4: Connect to your OneDrive account and select the template folder you will like to use for automation
 
