@@ -26,27 +26,27 @@ When you're done, you will be able to manage Conditional Access policies using t
 <br /> 
 ## 1. Copy your Template and drop it in your Onedrive folder
 
-![Copy to OneDrive](./media/Templates-Step1.png)
+![Copy to OneDrive](/media/Templates-Step1.png)
 <br /> 
 <br /> 
 ## 2. Approve Template configuration in Teams
 
-![Approve configuration](./media/Templates-Step2.png)
+![Approve configuration](/media/Templates-Step2.png)
 <br /> 
 <br /> 
 ## 3. Receive notification that Template is successfully deployed in your pre-production environment
 
-![Confirmation](./media/Templates-Step3.png)
+![Confirmation](/media/Templates-Step3.png)
 <br /> 
 <br /> 
 ## 4. View your newly deployed Conditional Access policy in Azure portal
 
-![View policy](./media/Templates-Step4.PNG)
+![View policy](/media/Templates-Step4.PNG)
 <br /> 
 <br /> 
 ## 5. Check your Test users are assigned to the policy
 
-![Assign test users](./media/Templates-Step5.png)
+![Assign test users](/media/Templates-Step5.png)
 <br /> 
 <br /> 
 
@@ -97,7 +97,7 @@ Logic App for Easy Configuration of Conditional Access Policies using Templates.
 
    Here is how the page looks with the values used in this example:
 
-   ![Provide information for quickstart template](./media/Templates-Step6.png)
+   ![Provide information for quickstart template](/media/Templates-Step6.png)
 
 1. When you're done, select **Purchase**.
 
@@ -149,19 +149,19 @@ This logic app uses managed identity for getting secrets from key vault in order
 
 2. Select the User-assigned managed identity from the context pane that appears on the right, select Add.
 
-![ManagedIdentity](./media/MI-edit.png)
+![ManagedIdentity](/media/MI-edit.png)
 
 # Step 3: Update parameters
 
 1. In the left-hand navigation pane, select Logic App designer > Parameters > Replace the default value with Key Vault URI (storing Client Secret), Client ID and Tenant ID.
 
-![Parameters](./media/LA-parameters-edit.png)
+![Parameters](/media/LA-parameters-edit.png)
 
 # Step 4: Connect to your OneDrive account and select the template folder you will like to use for automation
 
 1. On the Logic App Designer, in the OneDrive for Business connection box, click `Connections`. This example uses OneDrive connector for Logic apps:
 
-![Select "Connections"](./media/Templates-Step7.PNG)
+![Select "Connections"](/media/Templates-Step7.PNG)
 
 1. If prompted, sign in to your email account with your credentials so that Logic Apps can create a connection to your OneDrive account.
 
@@ -172,7 +172,7 @@ This logic app uses managed identity for getting secrets from key vault in order
 
 1. On the Logic App Designer, in the Teams connection box, click `Connections`. This example uses Teams connector:
 
-![Select "Connections"](./media/Templates-Step8.PNG)
+![Select "Connections"](/media/Templates-Step8.PNG)
 
 1. If prompted, sign in to your email account with your credentials so that Logic Apps can create a connection to your Teams account.
 
@@ -184,7 +184,7 @@ This logic app uses managed identity for getting secrets from key vault in order
 
 1. Specify the Managed Identity to use.
 
-![Select "Managed Identity"](./media/Templates-Step9.PNG)
+![Select "Managed Identity"](/media/Templates-Step9.PNG)
 
 # Step 7: Update all other connectors within Logic App.
 
