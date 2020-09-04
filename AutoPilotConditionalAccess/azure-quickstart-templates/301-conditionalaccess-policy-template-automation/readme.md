@@ -19,16 +19,9 @@ In this tutorial, you learn how to:
 
 :heavy_check_mark: Deploy this logic app to your organization.  <br /> 
 :heavy_check_mark: Authenticate your logic app to Azure AD with the right permissions.  <br /> 
-:heavy_check_mark: Add parameters specific to your organization within logic app.  <br /> 
-:heavy_check_mark: Add a trigger that monitors Template OneDrive folder for new requests.<br /> 
-:heavy_check_mark: Add an action that sends a message to Team channel for approving or rejecting these requests.<br /> 
-:heavy_check_mark: Add a condition that checks the approval response.<br /> 
-:heavy_check_mark: Get client secret from key vault using managed identity.<br /> 
-:heavy_check_mark: Add an action that configures the policy in pre-production environment.<br /> 
-:heavy_check_mark: Add a condition that checks whether the policy was configured successfully.<br /> 
-:heavy_check_mark: Add an action that sends a message to Team channel confirming the outcome of policy configuration in pre-production.<br /> 
+:heavy_check_mark: Add parameters and connections specific to your organization within logic app.  <br /> 
 
-When you're done, you will get the below simple way to deploy Conditional Access policies using templates:
+When you're done, you will be able to manage Conditional Access policies using templates within your pre-production environment:
 <br /> 
 <br /> 
 ## 1. Copy your Template and drop it in your Onedrive folder
@@ -63,10 +56,6 @@ When you're done, you will get the below simple way to deploy Conditional Access
 If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you start.
 
 You will also need knowledge of key concepts within Azure logic apps, Onedrive and Teams. 
-
-Also, your logic app looks like this workflow at a high level:
-
-![High-level finished logic app overview](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-copy-paste-automation/images/Paste0.PNG)
 
 ### The contents of this repository are unsupported and may or not be current. Replies to questions about unsupported material have the lowest priority.
 
