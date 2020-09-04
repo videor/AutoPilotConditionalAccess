@@ -201,7 +201,9 @@ This logic app uses managed identity for getting secrets from key vault in order
 
 Similar to above, update remaining OneDrive and Teams connectors within the sample Logic App by selecting appropriate OneDrive and Teams account that needs to be used for automation.
 
-Note: Please ensure you follow the best practise guidelines on managing secrets within Logic apps by using secure inputs and outputs as ![Select "documented here"](https://docs.microsoft.com/en-us/azure/logic-apps/logic-apps-securing-a-logic-app).
+# Note
+
+Please ensure you follow the best practise guidelines on managing secrets within Logic apps by using secure inputs and outputs as [Select "documented here"](https://docs.microsoft.com/en-us/azure/logic-apps/logic-apps-securing-a-logic-app).
 
 
 # Forward Looking
