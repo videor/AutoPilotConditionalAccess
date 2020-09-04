@@ -173,7 +173,7 @@ This logic app uses managed identity for getting secrets from key vault in order
 
 1. If prompted, sign in to your email account with your credentials so that Logic Apps can create a connection to your OneDrive account.
 
-1. If connection is successful, select the OneDrive folder you would like to use for Template automation.
+1. If connection is successful, select the OneDrive folder you would like to use for automation.
 
 
 # Step 5: Connect to Teams channel for approving or rejecting Copy-Paste requests.
