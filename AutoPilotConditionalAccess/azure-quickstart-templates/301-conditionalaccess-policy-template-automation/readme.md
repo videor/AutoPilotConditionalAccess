@@ -6,7 +6,7 @@ You can use the conditional access APIs to easily deploy conditional access poli
 
 As a IT admin, be able to copy a template policy file and **configure** it in your pre-production environment. 
 
-![Configure](./AutoPilotConditionalAccess/media/Configure1.PNG)
+![Configure](/media/Configure1.PNG)
 <br /> 
 
 This automation can be very useful for: 
