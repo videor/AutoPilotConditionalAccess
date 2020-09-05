@@ -135,13 +135,13 @@ This logic app uses managed identity for getting secrets from key vault in order
 
 2. Select the User-assigned managed identity from the context pane that appears on the right, select Add.
 
-![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/images/MI-edit.png).
+![ManagedIdentity](/media/MI-edit.png)
 
 # Step 3: Update parameters
 
 1. In the left-hand navigation pane, select Logic App designer > Parameters > Replace the default value with Key Vault URI for the Secret, Client ID and Tenant ID.
 
-![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/images/LA-parameters-edit.png)
+![Parameters](/media/LA-parameters-edit.png)
 
 
 # Step 4: Add the Audit Logs Webhook
