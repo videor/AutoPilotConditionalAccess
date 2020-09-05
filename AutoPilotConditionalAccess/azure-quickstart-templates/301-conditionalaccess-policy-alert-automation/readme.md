@@ -145,7 +145,7 @@ This logic app uses managed identity for getting secrets from key vault in order
 
 # Step 3: Update parameters
 
-1. In the left-hand navigation pane, select Logic App designer > Parameters > Replace the default value with Key Vault URI for the Secret, Client ID and Tenant ID.
+1. In the left-hand navigation pane, select Logic App designer > Parameters > Replace the default value with Key Vault URI(storing Client Secret), Client ID and Tenant ID.
 
 ![Parameters](/media/LA-parameters-edit.png)
 
