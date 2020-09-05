@@ -6,6 +6,9 @@ You can use the conditional access APIs to manage alerts on policy changes. For 
 
 As a IT admin, add, update or delete a conditional access policy using conditional APIs or UI and be able to set up alerts that fire when CA policies are changed. 
 
+![Monitor](/media/Configure4.PNG)
+<br />
+
 This automation can be very useful for: 
 - Organizations that manages large numbers of conditional access policies. OR
 - Identity partners that manages policies for customers. 
@@ -16,16 +19,27 @@ In this tutorial, you learn how to:
 
 :heavy_check_mark: Deploy this logic app to your organization.  <br /> 
 :heavy_check_mark: Authenticate your logic app to Azure AD with the right permissions.  <br /> 
-:heavy_check_mark: Add parameters specific to your organization within logic app.  <br /> 
-:heavy_check_mark: Add the webhook trigger from audit logs to run a custom workflow task.<br /> 
-:heavy_check_mark: Get client secret from key vault using managed identity.<br /> 
-:heavy_check_mark: Get audit logs for CRUD operation on conditional access policies.<br /> 
-:heavy_check_mark: Add a condition that checks if any CRUD operations were returned.<br /> 
-:heavy_check_mark: Fire an alert on Team channel if a policy alert condition is satisfied. <br /> 
+:heavy_check_mark: Add parameters and connections specific to your organization within logic app.  <br /> 
 
-When you're done, your logic app looks like this workflow at a high level:
+When you're done, you will be able to get alert on changes made to Conditional Access policies in your production environment.
+<br /> 
+<br /> 
+## 1. Delete a Ring 0 conditional access policy when you have tested and enabled policy with Ring 0 and Ring 1 assignment.
 
-![High-level logic app overview](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-alert-automation/images/Alert0-new.PNG)
+![Copy to OneDrive](/media/Alert-Step1.PNG)
+<br /> 
+<br /> 
+## 2. Approve Alert in Teams as planned change
+
+![Approve configuration](/media/Alert-Step2.PNG)
+<br /> 
+<br /> 
+
+## 3. Rejection sends an email alert with policy details for further investigation
+
+![Approve configuration](/media/Alert-Step3.PNG)
+<br /> 
+<br /> 
 
 # Pre-requisites
 
@@ -67,11 +81,11 @@ Follow the option that you want to use for deploying the quickstart template:
    | **Logic App Name** | <*logic-app-name*> | The name to use for your logic app. This example uses `301-conditionalaccess-policy-alert-automation`. |
    ||||
 
-   Here is how the page looks:
+Here is how the page looks with the values used in this example:
 
-   ![Provide information for quickstart template](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-alert-automation/images/Alert-2.PNG)
+![Provide information for quickstart template](/media/Deploy.png)
 
-1. When you're done, select **Review + Create**. Finally select **Create**.
+1. When you're done, select **Review + Create** and finally **Create**.
 
 #### [CLI](#tab/azure-cli)
 
