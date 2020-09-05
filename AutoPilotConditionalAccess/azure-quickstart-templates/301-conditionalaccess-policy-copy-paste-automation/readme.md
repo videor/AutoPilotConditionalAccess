@@ -31,12 +31,12 @@ When you're done, you will be able to copy-paste Conditional Access policies fro
 <br /> 
 ## 2. Approve Copy-Paste in Teams
 
-![Approve configuration](/media/CopyPaste-Step2.png)
+![Approve configuration](/media/CopyPaste-Step2.PNG)
 <br /> 
 <br /> 
 ## 3. Receive notification that Copy-Paste action is successfully completed in your production environment
 
-![Confirmation](/media/CopyPaste-Step3.png)
+![Confirmation](/media/CopyPaste-Step3.PNG)
 <br /> 
 <br /> 
 ## 4. View your newly deployed Conditional Access policy in Azure portal
@@ -46,7 +46,7 @@ When you're done, you will be able to copy-paste Conditional Access policies fro
 <br /> 
 ## 5. Check your production Ring 0 users are assigned to the policy
 
-![Assign test users](/media/CopyPaste-Step5.png)
+![Assign test users](/media/CopyPaste-Step5.PNG)
 <br /> 
 <br /> 
 
