@@ -194,93 +194,47 @@ This logic app uses managed identity for getting secrets from key vault in order
 1. Select the **Logic App** that you deployed for this sample.
 1. Select **Review + Create** to review the information, and then select **Create** to save the details.
 
-# Step 4: Get Audit Logs details
-
-1. On the Logic App Designer, click `Audit logs endpoint for conditional access policies` box. Provide the details for your variable as described here:
-
-   ![Provide information for quickstart template](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-alert-automation/images/Alert-3.PNG)
-
-   | Property | Required | Value | Description |
-   |----------|----------|-------|-------------|
-   | **Name** | Yes | URL | The name for your variable. This example uses "URL". |
-   | **Type** | Yes | String | The data type for your variable |
-   | **Value** | No| MS graph audit logs endpoint. | The initial value for your variable |
-   ||||
-   
-
-# Step 5: Get client secret from key vault using managed identity.
+# Step 5: Select appropriate managed identity.
 
 1. On the Logic App Designer, in the HTTP connection box, click `GET client secret from key vault using managed identity`. This example uses HTTP connector.
 
-1. Specify the Method, URI, Queries, Authentication type, Managed Identity and Audience.
+1. Specify the Managed Identity to use.
 
-   ![Select "GET client secret from key vault using managed identity" HTTP connector](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-backup-automation/images/backup2-edit.png)
+![Select "Managed Identity"](/media/MInew.PNG)
+   
+# Step 6: Connect to Teams channel for accepting or notifying for further investigation.
 
-      | Property | Value | Description |
-      |----------|-------|-------------|
-      | **Method** | `GET` | Method to call |
-      | **URI** | `AutoPilotConditionalAccessKeyVaultClientCredentials` | The key vault parameter URI configured in step 3  |
-      | **Queries** | `2016-10-01` | api-version |
-      | **Authentication type** | `Managed Identity` | Authentication type is managed identity |
-      | **Managed Identity** | `AutoPilotCAUAI1` | User assigned managed identity connected in step 2 |
-      | **Audience** | `https://vault.azure.net` | Key vault |
-      ||||
-    
-1. Response from Key vault is parsed.
+1. On the Logic App Designer, in the Teams connection box, click `Connections`. This example uses Teams connector:
 
-# Step 6: Get audit logs for CRUD operation on conditional access policies.
-
-1. On the Logic App Designer, in the HTTP connection box, click `Get audit logs for CRUD operation on conditional access policies`. This example uses HTTP connector.
-
-1. Specify the Method, URI, Headers, Body, Authentication type, Tenant, Audience, Client ID, Credential Type and Secret.
-
-   ![Select "GET audit logs for CRUD operation on conditional access policies" HTTP connector](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-backup-automation/images/backup3-edit.png)
-
-      | Property | Value | Description |
-      |----------|-------|-------------|
-      | **Method** | `GET` | Method to call |
-      | **URI** | `URL variable` | Audit Logs API v1.0 endpoint |
-      | **Headers** | `application/json` | Content-Type |
-      | **Authentication type** | `Active Directory OAuth` | Authentication type for App-only flow |
-      | **Tenant** | `TenantID` | Tennat ID configured in step 3 |
-      | **Audience** | `https://graph.microsoft.com` | MS Graph |
-      | **Client ID** | `Client ID` | Client ID configured in step 3 |
-      | **Credential Type** | `Secret` | Client Secret  |
-      | **Secret** | `value` | Secret value retrieved from key vault |
-      ||||
-      
-# Step 7: Add a condition that checks if any CRUD operations were returned.
-
-1. On the Logic App Designer, in the Condition box, verify response. This example uses response from earlier HTTP connector:
-
-1. Specify the HTTP response to evaluate, expression and verify the greater than or equal to `1` response in the condition.
-    
-      ![Select "Condition to check the response from get audit logs HTTP connector"](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-backup-automation/images/backup4-edit.png)
-    
-      | Property | Value | Description |
-      |----------|-------|-------------|
-      | **Length** | `length of array` | The length of array response to evaluate |
-      | **Expression** | `is greater than or equal to` | The expression to evaluate |
-      | **Condition** | `1` | response to verify in the condition |
-      ||||
-      
-# Step 8: Fire an alert on Team channel<br /> 
-
-1. On the Logic App Designer, in the Teams connection box, click `Post an Adaptive Card to a Teams channel and wait for a response`. This example uses Teams connector:
-
-   ![Teams alert](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-alert-automation/images/Alert-4.PNG)
+![Select "Connections"](/media/Teamsnew.PNG)
 
 1. If prompted, sign in to your email account with your credentials so that Logic Apps can create a connection to your Teams account.
 
-1. In the connector box, provide the criteria for posting an adaptive card to Teams channel.
+1. Specify the Team and channel you will like to use for automation of approval workflow.
 
-1. Specify the Team, channel and message for posting to Teams. The message is shorterned for readability.
+# Step 7: Connect to your Outlook account you will like to use for automation.
 
-      | Property | Value | Description |
-      |----------|-------|-------------|
-      | **Team** | `ConditionalAccess` | The Team to post alert |
-      | **Channel** | `General` | The Teams channel to post alert |
-      | **message** | `message` | Post the adaptive card with an alert message |
-      ||||
+1. On the Logic App Designer, in the Outlook connection box, click `Connections`. This example uses Outlook connector for Logic apps:
 
+![Select "Connections"](/media/OneDrivenew.PNG)
+
+1. If prompted, sign in to your email account with your credentials so that Logic Apps can create a connection to your Outlook account.
+
+1. If connection is successful, select the Outlook account you would like to sent alerts for further investigation.
+      
+# Step 8: Update all other connectors within Logic App.
+
+Similar to above, update remaining OneDrive and Teams connectors within the sample Logic App by selecting appropriate OneDrive and Teams account that needs to be used for automation.
+
+# Note
+
+Please ensure you follow the best practise guidelines on managing secrets within Logic apps by using secure inputs and outputs as [documented here](https://docs.microsoft.com/en-us/azure/logic-apps/logic-apps-securing-a-logic-app).
+
+# Forward Looking
+
+Try the following challenge:
+
+:heavy_check_mark: Edit this logic app to send further policy details such as Policy State information. This will allow you to check of the policy was changed to **Report-only** or **Off** state before it was deleted as part of lifecycle.<br /> 
+
+If you would like to request a logic app to do this, please send a request on Twitter @Vi_Deora.
 
