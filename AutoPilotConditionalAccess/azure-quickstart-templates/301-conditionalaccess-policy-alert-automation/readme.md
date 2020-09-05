@@ -29,15 +29,21 @@ When you're done, you will be able to get alert on changes made to Conditional A
 ![Copy to OneDrive](/media/Alert-Step1.PNG)
 <br /> 
 <br /> 
-## 2. Approve Alert in Teams as planned change
+## 2. Acknowledge Alert in Teams as planned change
 
 ![Approve configuration](/media/Alert-Step2.PNG)
 <br /> 
 <br /> 
 
-## 3. Rejection sends an email alert with policy details for further investigation
+## 3. Investigate a change to conditional access policy action in Teams
 
 ![Approve configuration](/media/Alert-Step3.PNG)
+<br /> 
+<br /> 
+
+## 3. Investigate a change to conditional access policy further email
+
+![Investigate change](/media/Alert-Step4.PNG)
 <br /> 
 <br /> 
 
