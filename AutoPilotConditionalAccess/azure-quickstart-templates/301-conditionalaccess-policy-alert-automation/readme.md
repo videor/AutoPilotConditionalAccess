@@ -222,7 +222,7 @@ This logic app uses managed identity for getting secrets from key vault in order
 
 1. On the Logic App Designer, in the Outlook connection box, click `Connections`. This example uses Outlook connector for Logic apps:
 
-![Select "Connections"](/media/OneDrivenew.PNG)
+![Select "Connections"](/media/Outlook.PNG)
 
 1. If prompted, sign in to your email account with your credentials so that Logic Apps can create a connection to your Outlook account.
 
