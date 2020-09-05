@@ -26,7 +26,7 @@ When you're done, you will be able to copy-paste Conditional Access policies fro
 <br /> 
 ## 1. Copy your Conditional Access policies from PPE folder and drop it in your PROD Onedrive folder
 
-![Copy to OneDrive](/media/CopyPaste-Step1.png)
+![Copy to OneDrive](/media/CopyPaste-Step1.PNG)
 <br /> 
 <br /> 
 ## 2. Approve Copy-Paste in Teams
