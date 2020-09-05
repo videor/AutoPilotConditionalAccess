@@ -41,7 +41,7 @@ When you're done, you will be able to get alert on changes made to Conditional A
 <br /> 
 <br /> 
 
-## 3. Investigate a change to conditional access policy further email
+## 4. Investigate a change to conditional access policy further email
 
 ![Investigate change](/media/Alert-Step4.PNG)
 <br /> 
