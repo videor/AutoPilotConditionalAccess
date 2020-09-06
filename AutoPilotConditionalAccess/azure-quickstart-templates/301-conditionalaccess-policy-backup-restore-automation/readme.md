@@ -25,30 +25,30 @@ When you're done, you will be able to copy-paste Conditional Access policies fro
 <br /> 
 <br /> 
 
-## 1. Select the policy you want to restore from BAckup and copy to Restore Onedrive folder
+## 1. Select the policy you want to restore from Backup and copy to Restore Onedrive folder. 
 
-![Copy to OneDrive](/media/CopyPaste-Step1.PNG)
+![Copy to OneDrive](/media/BackupRestore-Step1.PNG)
 <br /> 
 <br /> 
 
 ## 2. Approve Restore action in Teams
 
-![Approve configuration](/media/CopyPaste-Step2.PNG)
+![Approve configuration](/media/BackupRestore-Step2.PNG)
 <br /> 
 <br /> 
 ## 3. Receive notification that Restore action is successfully completed in your production environment
 
-![Confirmation](/media/CopyPaste-Step3.PNG)
+![Confirmation](/media/BackupRestore-Step3.PNG)
 <br /> 
 <br /> 
 ## 4. View your restored Conditional Access policy in Azure portal
 
-![View policy](/media/CopyPaste-Step4.PNG)
+![View policy](/media/BackupRestore-Step4.PNG)
 <br /> 
 <br /> 
 ## 5. Check your user assignments are correct within the policy
 
-![Assign test users](/media/CopyPaste-Step5.PNG)
+![Assign test users](/media/BackupRestore-Step5.PNG)
 <br /> 
 <br /> 
 
@@ -168,8 +168,16 @@ This logic app uses managed identity for getting secrets from key vault in order
 ![Parameters](/media/LA-parameters-edit.png)
 
 
+# Step 4: Select appropriate managed identity.
 
-# Step 4: Connect to your OneDrive account and select the PPE and PROD folders in respective logic apps you will like to use for automation.
+1. On the Logic App Designer, in the HTTP connection box, click `GET client secret from key vault using managed identity`. This example uses HTTP connector.
+
+1. Specify the Managed Identity to use.
+
+![Select "Managed Identity"](/media/MInew.PNG)
+
+
+# Step 5: Connect to your OneDrive account and select the Backup and Restore folders in respective logic apps you will like to use for automation.
 
 1. On the Logic App Designer, in the OneDrive for Business connection box, click `Connections`. This example uses OneDrive connector for Logic apps:
 
@@ -180,7 +188,7 @@ This logic app uses managed identity for getting secrets from key vault in order
 1. If connection is successful, select the OneDrive folder you would like to use for automation.
 
 
-# Step 5: Connect to Teams channel for approving or rejecting Copy-Paste requests.
+# Step 6: Connect to Teams channel for approving or rejecting Restore requests.
 
 1. On the Logic App Designer, in the Teams connection box, click `Connections`. This example uses Teams connector:
 
@@ -190,13 +198,7 @@ This logic app uses managed identity for getting secrets from key vault in order
 
 1. Specify the Team and channel you will like to use for automation of approval workflow.
 
-# Step 6: Select appropriate managed identity.
 
-1. On the Logic App Designer, in the HTTP connection box, click `GET client secret from key vault using managed identity`. This example uses HTTP connector.
-
-1. Specify the Managed Identity to use.
-
-![Select "Managed Identity"](/media/MInew.PNG)
 
 # Step 7: Update all other connectors within Logic App.
 
@@ -210,10 +212,9 @@ Please ensure you follow the best practise guidelines on managing secrets within
 
 Try the following challenge:
 
-:heavy_check_mark: Edit this logic app to send a custom message on Teams channel when the approval workflow selection is Reject copy-paste action.  <br /> 
-:heavy_check_mark: Edit this logic app to delete the policy file in PROD Onedrive folder when the approval workflow selection is Reject copy-paste action. <br /> 
+:heavy_check_mark: Edit this logic app to send a custom message on Teams channel when the approval workflow selection is Reject restore action. <br /> 
 
-Finally, Try cloning the logic and build workflows to also support line of business application ids. If you would like to request a logic app to do this, please send a request on Twitter @Vi_Deora.
+If you would like to request a logic app to do this, please send a request on Twitter @Vi_Deora.
 
 
 
