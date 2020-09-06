@@ -71,7 +71,7 @@ If your Azure environment meets the prerequisites, and you're familiar with usin
 
 <a name="deploy-azure-portal"></a>
 
-#### [Azure Portal](#tab/azure-portal)
+## Azure Portal
 
 1. Select the following image to sign in with your Azure account and open the logic app in the Azure portal:
 
