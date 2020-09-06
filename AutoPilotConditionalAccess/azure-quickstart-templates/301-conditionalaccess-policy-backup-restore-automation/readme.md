@@ -71,17 +71,15 @@ If your Azure environment meets the prerequisites, and you're familiar with usin
 
 <a name="deploy-azure-portal"></a>
 
-## Azure Portal
+Select the following image to sign in with your Azure account and open the logic app in the Azure portal:
 
-1. Select the following image to sign in with your Azure account and open the logic app in the Azure portal:
-
-:heavy_check_mark: Logic App for Backup
+## Logic App for Backup
 
  [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fvideor%2FAutoPilotConditionalAccess%2Fmaster%2FAutoPilotConditionalAccess%2Fazure-quickstart-templates%2F301-conditionalaccess-policy-backup-restore-automation%2Fazuredeploy.json)
  
    [Video Link that takes you through the deployment process for Backup of conditional access policies](https://www.screencast.com/t/c8VXNe7FhANS)
    
-  :heavy_check_mark: Logic App for Restore
+## Logic App for Restore
   
    [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fvideor%2FAutoPilotConditionalAccess%2Fmaster%2FAutoPilotConditionalAccess%2Fazure-quickstart-templates%2F301-conditionalaccess-policy-backup-restore-automation%2F301-conditionalaccess-policy-restore-automation%2Fazuredeploy.json)
 
@@ -102,7 +100,7 @@ Here is how the page looks with the values used in this example:
 
 ![Provide information for quickstart template](/media/Deploy.png)
 
-1. When you're done, select **Review + Create** and finally **Create**.
+2. When you're done, select **Review + Create** and finally **Create**.
 
 
 # Step 2: Authenticate your logic app to Azure AD with the right permissions
