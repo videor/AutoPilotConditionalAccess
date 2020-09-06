@@ -1,4 +1,4 @@
-# Tutorial: One-click deploy policy blueprints using Conditional Access APIs
+# Tutorial: One-click deploy conditional access policies to large number of branch offices and subsidiaries
 
 Intent: As an IT admin, I want to be able to easily deploy conditional access policies to large number of branch offices and subsidiaries.
 
