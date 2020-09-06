@@ -4,14 +4,16 @@ Intent: As an IT admin, I want to be able to easily deploy conditional access po
 
 You can use the conditional access APIs to manage policy blueprints that you can make available to your branch offices and subsidiaries. For example, you can:
 
-As a central IT admin, add a new policy blueprint using conditional access schema to a shared onedrive. All subsidieries and branch offices who have been given access to this onedrive will receive notification to create a new conditional access policy based on the policy blueprint. Admins in branch offices and subsidiaries can approve or reject this blueprint. If approved, the policy blueprint will be deployed.
+As a central IT admin, add a new policy blueprint to branch offices and subsidiaries shared onedrive folder. All subsidieries and branch offices will receive notification to create a new conditional access policy based on the policy blueprint. Admins in branch offices and subsidiaries can approve or reject this blueprint. If approved, the policy blueprint will be deployed.
 
 This automation can be very useful for: 
 - Organizations that manages large numbers of Azure AD tenants representing branch offices and subsidiaries.
 - Identity partners that manages policy blueprints for a large number of customers. OR
 - Mergers and acquisitions. 
 
-This tutorial shows how to build a [logic app](../logic-apps/logic-apps-overview.md) that automates policy blueprint deployment to branch offices and subsidiaries based on an approval-based workflow. Specifically, this logic app monitors a shared onedrive account for new policy blueprints submissions, sends requests for approval, and deploys the policy blueprint to approved branch offices and subsidiaries.
+This tutorial shows how to build a [logic app](../logic-apps/logic-apps-overview.md) that automates policy blueprint deployment to branch offices and subsidiaries based on an approval-based workflow. Specifically, this logic app monitors a branch offices or subsidiaries onedrive folder for new policy blueprints submissions, sends requests for approval, and deploys the policy blueprint on approval.
+
+Note: The logic app needs to be deployed in each branch offices and subsidiaries tenant that needs to automate one click deployment of conditional access policies.
 
 In this tutorial, you learn how to:
 
