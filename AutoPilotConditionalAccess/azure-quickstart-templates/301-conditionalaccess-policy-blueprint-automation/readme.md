@@ -6,6 +6,9 @@ You can use the conditional access APIs to manage policy blueprints that you can
 
 As a central IT admin, add a new policy blueprint to branch offices and subsidiaries shared onedrive folder. All subsidieries and branch offices will receive notification to create a new conditional access policy based on the policy blueprint. Admins in branch offices and subsidiaries can approve or reject this blueprint. If approved, the policy blueprint will be deployed.
 
+![Deploy](/media/Configure3.PNG)
+<br /> 
+
 This automation can be very useful for: 
 - Organizations that manages large numbers of Azure AD tenants representing branch offices and subsidiaries.
 - Identity partners that manages policy blueprints for a large number of customers. OR
@@ -19,19 +22,39 @@ In this tutorial, you learn how to:
 
 :heavy_check_mark: Deploy this logic app to your organization.  <br /> 
 :heavy_check_mark: Authenticate your logic app to Azure AD with the right permissions.  <br /> 
-:heavy_check_mark: Add parameters specific to your organization within logic app.  <br /> 
-:heavy_check_mark: Add a trigger that monitors OneDrive folder for policy blueprint requests.<br /> 
-:heavy_check_mark: Add an action that sends a message to Team channel for approving or rejecting these requests.<br /> 
-:heavy_check_mark: Add a condition that checks the approval response.<br /> 
-:heavy_check_mark: Get client secret from key vault using managed identity.<br /> 
-:heavy_check_mark: Add an action that deploys the policy blueprint request.<br /> 
-:heavy_check_mark: Add a condition that checks whether the policy blueprint was deployed successfully.<br /> 
-:heavy_check_mark: Add an action that sends a message to Team channel confirming the outcome of policy blueprint deployment.<br /> 
+:heavy_check_mark: Add parameters and connections specific to your organization within logic app.  <br /> 
 
+When you're done, you will be able to deploy Conditional Access policies to large number of branch offices and subsidiaries
+<br /> 
+<br /> 
 
-When you're done, your logic app looks like this workflow at a high level:
+## 1. Central IT admin, uploads a blueprint to a branch office Onedrive folder. 
 
-![High-level finished logic app overview](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-blueprint-automation/images/blueprint0.PNG)
+![Copy to OneDrive](/media/BranchOffice-Step1.PNG)
+<br /> 
+<br /> 
+
+## 2. Branch office admin gets approval request in Teams
+
+![Approve configuration](/media/BranchOffice-Step2.PNG)
+<br /> 
+<br /> 
+## 3. Branch office admin receives notification that deployment action is successfully completed.
+
+![Confirmation](/media/BranchOffice-Step3.PNG)
+<br /> 
+<br /> 
+## 4. Branch office admin can view the newly deployed Conditional Access policy in Azure portal
+
+![View policy](/media/BranchOffice-Step4.PNG)
+<br /> 
+<br /> 
+## 5. Branch office admin checks user assignment within the policy
+
+![Assign test users](/media/BranchOffice-Step5.PNG)
+<br /> 
+<br /> 
+
 
 # Pre-requisites
 
@@ -44,20 +67,9 @@ Unsupported samples and documentation are provided for our fans and partners for
 
 # Step 1: Deploy this logic app to your organization
 
-Follow the option that you want to use for deploying the quickstart template:
+If your Azure environment meets the prerequisites, and you're familiar with using ARM templates, these steps help you sign in directly to Azure and open the ARM template in the Azure portal. For more information, see [Deploy resources with ARM templates and Azure portal](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/overview). 
 
-| Option | Description |
-|--------|-------------|
-| [Azure portal](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=azure-portal#deploy-template) | If your Azure environment meets the prerequisites, and you're familiar with using ARM templates, these steps help you sign in directly to Azure and open the quickstart template in the Azure portal. For more information, see [Deploy resources with ARM templates and Azure portal](../azure-resource-manager/templates/deploy-portal.md). |
-| [Azure CLI](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=azure-cli#deploy-template) | The Azure command-line interface (Azure CLI) is a set of commands for creating and managing Azure resources. To run these commands, you need Azure CLI version 2.6 or later. To check your CLI version, type `az --version`. For more information, see these topics: <p><p>- [What is Azure CLI](https://docs.microsoft.com/cli/azure/what-is-azure-cli?view=azure-cli-latest) <br>- [Get started with Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) |
-| [Azure PowerShell](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=azure-powershell#deploy-template) | Azure PowerShell provides a set of cmdlets that use the Azure Resource Manager model for managing your Azure resources. For more information, see these topics: <p><p>- [Azure PowerShell Overview](https://docs.microsoft.com/powershell/azure/azurerm/overview) <br>- [Introducing the Azure PowerShell Az module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) <br>- [Get started with Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps) |
-|||
-
-<a name="deploy-azure-portal"></a>
-
-#### [Azure Portal](#tab/azure-portal)
-
-1. Select the following image to sign in with your Azure account and open the logic app in the Azure portal:
+Select the following image to sign in with your Azure account and open the logic app in the Azure portal:
 
    [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fvideor%2FAutoPilotConditionalAccess%2Fmaster%2FAutoPilotConditionalAccess%2Fazure-quickstart-templates%2F301-conditionalaccess-policy-blueprint-automation%2Fazuredeploy.json)
 
@@ -71,50 +83,11 @@ Follow the option that you want to use for deploying the quickstart template:
    | **Logic App Name** | <*logic-app-name*> | The name to use for your logic app. This example uses `301-conditionalaccess-policy-blueprint-automation`. |
    ||||
 
-   Here is how the page looks with the values used in this example:
+Here is how the page looks with the values used in this example:
 
-   ![Provide information for quickstart template](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-blueprint-automation/images/Deploy-LA-edit.png)
+![Provide information for quickstart template](/media/Deploy.png)
 
-1. When you're done, select **Purchase**.
-
-#### [CLI](#tab/azure-cli)
-
-```azurecli-interactive
-read -p "Enter a project name name to use for generating resource names:" projectName &&
-read -p "Enter the location, such as 'westus':" location &&
-templateUri="https://raw.githubusercontent.com/videor/AutoPilotConditionalAccess/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-blueprint-automation/azuredeploy.json" &&
-resourceGroupName="${projectName}rg" &&
-az group create --name $resourceGroupName --location "$location" &&
-az deployment group create --resource-group $resourceGroupName --template-uri  $templateUri &&
-echo "Press [ENTER] to continue ..." &&
-read
-```
-
-For more information, see these topics:
-
-* [Azure CLI: az deployment group](https://docs.microsoft.com/cli/azure/deployment/group)
-* [Deploy resources with ARM templates and Azure CLI](../azure-resource-manager/templates/deploy-cli.md)
-
-#### [PowerShell](#tab/azure-powershell)
-
-```azurepowershell-interactive
-$projectName = Read-Host -Prompt "Enter a project name to use for generating resource names"
-$location = Read-Host -Prompt "Enter the location, such as 'westus'"
-$templateUri = "https://raw.githubusercontent.com/videor/AutoPilotConditionalAccess/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-blueprint-automation/azuredeploy.json"
-
-$resourceGroupName = "${projectName}rg"
-
-New-AzResourceGroup -Name $resourceGroupName -Location "$location"
-New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri $templateUri
-
-Read-Host -Prompt "Press [ENTER] to continue ..."
-```
-
-For more information, see these topics:
-
-* [Azure PowerShell: New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup)
-* [Azure PowerShell: New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment)
-* [Deploy resources with ARM templates and Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md)
+2. When you're done, select **Review + Create** and finally **Create**.
 
 
 # Step 2: Authenticate your logic app to Azure AD with the right permissions
@@ -129,130 +102,48 @@ This logic app uses managed identity for getting secrets from key vault in order
 
 # Step 3: Update parameters
 
-1. In the left-hand navigation pane, select Logic App designer > Parameters > Replace the default value with Key Vault URI, Client ID and Tenant ID.
+1. In the left-hand navigation pane, select Logic App designer > Parameters > Replace the default value with Key Vault URI (storing Client Secret), Client ID and Tenant ID.
 
 ![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-blueprint-automation/images/blueprint-parameters-edit.png)
 
+# Step 4: Connect to your OneDrive account and select the Backup and Restore folders in respective logic apps you will like to use for automation.
 
-# Step 4: Add a trigger that monitors OneDrive folder for policy blueprint requests
+1. On the Logic App Designer, in the OneDrive for Business connection box, click `Connections`. This example uses OneDrive connector for Logic apps:
 
-1. On the Logic App Designer, in the Onedrive connection box, click `Add new`. This example uses OneDrive trigger:
+![Select "Connections"](/media/OneDrivenew.PNG)
 
-   ![Select "When a new file arrives" trigger for Onedrive](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-blueprint-automation/images/blueprint1-edit.png)
+1. If prompted, sign in to your email account with your credentials so that Logic Apps can create a connection to your OneDrive account.
 
-1. If prompted, sign in to your email account with your credentials so that Logic Apps can create a connection to your Onedrive account.
+1. If connection is successful, select the OneDrive folder you would like to use for automation.
 
-1. In the trigger, provide the criteria for checking all new files.
 
-   1. Specify the folder, interval, and frequency for checking files.
+# Step 5: Connect to Teams channel for approving or rejecting Restore requests.
 
-      ![Specify folder, interval, and frequency for checking mails](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-blueprint-automation/images/blueprint2-edit.png)
+1. On the Logic App Designer, in the Teams connection box, click `Connections`. This example uses Teams connector:
 
-      | Property | Value | Description |
-      |----------|-------|-------------|
-      | **Folder** | `/ConditionalAccess/Blueprints` | The Onedrive folder to monitor |
-      | **Interval** | `1` | The number of intervals to wait between checks |
-      | **Frequency** | `Hour` | The unit of time to use for the recurrence |
-      ||||
-      
-1. Following the trigger, the response is parsed.
-
-# Step 5: Add an action that sends a message to Teams channel for approving or rejecting these requests.
-
-1. On the Logic App Designer, in the Teams connection box, click `Add new`. This example uses Teams connector:
-
-   ![Select "Post an adaptive card to Teams channel and wait for a response" connector for Teams](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-blueprint-automation/images/blueprint3-edit.png)
+![Select "Connections"](/media/Teamsnew.PNG)
 
 1. If prompted, sign in to your email account with your credentials so that Logic Apps can create a connection to your Teams account.
 
-1. In the connector box, provide the criteria for posting an adaptive card to Teams channel.
+1. Specify the Team and channel you will like to use for automation of approval workflow.
 
-   1. Specify the Team, channel, update card and update message for posting to Teams.
 
-      ![Specify Team, channel, update card and update message for posting to Teams](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-blueprint-automation/images/blueprint4-edit.png)
-
-      | Property | Value | Description |
-      |----------|-------|-------------|
-      | **Team** | `ConditionalAccess` | The Team to post approval workflow |
-      | **Channel** | `Blueprints` | The Teams channel to post approval workflow |
-      | **Update card** | `Yes` | Update the adaptive card to show a member of Teams channel has taken an action |
-      | **update message** | `Processing requested blueprint deployment` | Update the adaptive card to show a message once an approval action is taken |
-      ||||
-      
-# Step 6: Add a condition that checks the approval response.
-
-1. On the Logic App Designer, in the Condition box, verify response. This example uses response from earlier Teams connector:
-
-1. Specify the Team card response, expression and verify `approve` response in the condition.
-    
-      ![Select "Condition to check the response from adaptive card that was posted earlier to Teams channel"](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-blueprint-automation/images/blueprint5-edit.png)
-    
-      | Property | Value | Description |
-      |----------|-------|-------------|
-      | **Team Card** | `data.action` | The Team card response to evaluate |
-      | **Expression** | `is equal to` | The expression to evaluate |
-      | **Condition** | `Approve` | response to verify in the condition |
-      ||||
-
-# Step 7: Get client secret from key vault using managed identity.
+# Step 6: Select appropriate managed identity.
 
 1. On the Logic App Designer, in the HTTP connection box, click `GET client secret from key vault using managed identity`. This example uses HTTP connector.
 
-1. Specify the Method, URI, Queries, Authentication type, Managed Identity and Audience.
+1. Specify the Managed Identity to use.
 
-   ![Select "GET client secret from key vault using managed identity" HTTP connector](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-blueprint-automation/images/blueprint6-edit.png)
+![Select "Managed Identity"](/media/MInew.PNG)
 
-      | Property | Value | Description |
-      |----------|-------|-------------|
-      | **Method** | `GET` | Method to call |
-      | **URI** | `AutoPilotConditionalAccessKeyVaultClientCredentials` | The key vault parameter URI configured in step 3  |
-      | **Queries** | `2016-10-01` | api-version |
-      | **Authentication type** | `Managed Identity` | Authentication type is managed identity |
-      | **Managed Identity** | `AutoPilotCAUAI1` | User assigned managed identity connected in step 2 |
-      | **Audience** | `https://vault.azure.net` | Key vault |
-      ||||
 
-1. Response from Key vault is parsed.
+# Step 7: Update all other connectors within Logic App.
 
-1. The blueprint is checked to ensure it is enabled in report-only mode and read-only attributes (`id`, `createdDateTime` and `modifiedDateTime`) are removed.
+Similar to above, update remaining OneDrive and Teams connectors within the sample Logic App by selecting appropriate OneDrive and Teams account that needs to be used for automation.
 
-# Step 8: Add an action that deploys the policy blueprint request.
+# Note
 
-1. On the Logic App Designer, in the HTTP connection box, click `Deploy new conditional access policy blueprint to branch office and subsidiaries`. This example uses HTTP connector.
-
-1. Specify the Method, URI, Headers, Body, Authentication type, Tenant, Audience, Client ID, Credential Type and Secret.
-
-   ![Select "GET client secret from key vault using managed identity" HTTP connector](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-blueprint-automation/images/blueprint7-edit.png)
-
-      | Property | Value | Description |
-      |----------|-------|-------------|
-      | **Method** | `POST` | Method to call |
-      | **URI** | `https://graph.microsoft.com/v1.0/identity/conditionalAccess/policies` | Conditional Access API v1.0 endpoint |
-      | **Headers** | `application/json` | Content-Type |
-      | **Body** | `Outputs` | Output from blueprint JSON after clensing from previous step |
-      | **Authentication type** | `Active Directory OAuth` | Authentication type for App-only flow |
-      | **Tenant** | `TenantID` | Tennat ID configured in step 3 |
-      | **Audience** | `https://graph.microsoft.com` | MS Graph |
-      | **Client ID** | `Client ID` | Client ID configured in step 3 |
-      | **Credential Type** | `Secret` | Client Secret  |
-      | **Secret** | `value` | Secret value retrieved from key vault |
-      ||||
-
-# Step 9: Add a condition that checks whether the policy blueprint was deployed successfully and send message in Team channel.
-
-1. On the Logic App Designer, in the HTTP connection box, click `Check if deployment is successful`. This example uses logic app conditions.
-
-1. Specify the Status code, Team, channel and message for posting to Team channel. The message is shorterned for readability.
-
-   ![Select "Check if deployment is successful" condition](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-blueprint-automation/images/blueprint8-edit.png)
-
-      | Property | Value | Description |
-      |----------|-------|-------------|
-      | **Status code** | `201` | Check the status code for deployment |
-      | **Team** | `ConditionalAccess` | The Team to post the outcome of deployment |
-      | **Channel** | `Blueprints` | The Teams channel to post the outcome of deployment |
-      | **Message** | `Adaptive card message` | Update the adaptive card to show a message depending on the outcome of deployment |
-      ||||
+Please ensure you follow the best practise guidelines on managing secrets within Logic apps by using secure inputs and outputs as [documented here](https://docs.microsoft.com/en-us/azure/logic-apps/logic-apps-securing-a-logic-app).
 
 # Forward Looking
 
