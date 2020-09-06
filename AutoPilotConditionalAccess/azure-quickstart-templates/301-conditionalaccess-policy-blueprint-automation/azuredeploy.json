@@ -319,89 +319,25 @@
                             },
                             "type": "If"
                         },
-                        "Parse_the_new_conditional_access_policy_blueprint": {
-                            "runAfter": {},
-                            "type": "ParseJson",
-                            "inputs": {
-                                "content": "@json(triggerBody())",
-                                "schema": {
-                                    "properties": {
-                                        "conditions": {
-                                            "properties": {
-                                                "applications": {
-                                                    "properties": {
-                                                        "includeUserActions": {
-                                                            "items": {
-                                                                "type": "string"
-                                                            },
-                                                            "type": "array"
-                                                        }
-                                                    },
-                                                    "type": "object"
-                                                },
-                                                "locations": {
-                                                    "properties": {
-                                                        "excludeLocations": {
-                                                            "items": {
-                                                                "type": "string"
-                                                            },
-                                                            "type": "array"
-                                                        },
-                                                        "includeLocations": {
-                                                            "items": {
-                                                                "type": "string"
-                                                            },
-                                                            "type": "array"
-                                                        }
-                                                    },
-                                                    "type": "object"
-                                                },
-                                                "users": {
-                                                    "properties": {
-                                                        "excludeGroups": {
-                                                            "items": {
-                                                                "type": "string"
-                                                            },
-                                                            "type": "array"
-                                                        },
-                                                        "includeGroups": {
-                                                            "items": {
-                                                                "type": "string"
-                                                            },
-                                                            "type": "array"
-                                                        }
-                                                    },
-                                                    "type": "object"
-                                                }
-                                            },
-                                            "type": "object"
-                                        },
-                                        "displayName": {
-                                            "type": "string"
-                                        },
-                                        "grantControls": {
-                                            "properties": {
-                                                "builtInControls": {
-                                                    "items": {
-                                                        "type": "string"
-                                                    },
-                                                    "type": "array"
-                                                },
-                                                "operator": {
-                                                    "type": "string"
-                                                }
-                                            },
-                                            "type": "object"
-                                        },
-                                        "state": {
-                                            "type": "string"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
+             "Parse_the_new_conditional_access_policy_blueprint": {
+                "inputs": {
+                    "content": "@json(triggerBody())",
+                    "schema": {
+                        "properties": {
+                            "displayName": {
+                                "type": "string"
+                            },
+                            "state": {
+                                "type": "string"
                             }
                         },
-                        "Post_an_Adaptive_Card_to_a_Teams_channel_and_wait_for_a_response": {
+                        "type": "object"
+                    }
+                },
+                "runAfter": {},
+                "type": "ParseJson"
+            },
+            "Post_an_Adaptive_Card_to_a_Teams_channel_and_wait_for_a_response": {
                             "runAfter": {
                                 "Parse_the_new_conditional_access_policy_blueprint": [
                                     "Succeeded"
