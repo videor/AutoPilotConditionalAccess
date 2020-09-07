@@ -27,24 +27,33 @@ When you're done, you will be able to automate management of contingency policie
 <br /> 
 
 
-## 1. Ensure you have Conditional Access policies for MFA distruption configured.
+## 1. Ensure you have contingency policies for a given distruption configured and any operation policies tagged for same disruption. In below example we demonstrate using contingency policies configured for MFA Disruption.
 
 ![RemoveEmergency](/media/Contingency-Step1.PNG)
 <br /> 
-<br /> 
-## 2. Trigger contingency plan for MFA disruption.
+<br />  
 
-![Notification](/media/Contingency-Step2.PNG)
+## 3. When logic app is triggered, receive Approval request to enable contingency policies in Teams.
+
+![Check](/media/Contingency-Step2.PNG)
 <br /> 
 <br /> 
-## 3. Receive Approval request in Teams
+
+## 4. Receive success notification in Teams
 
 ![Check](/media/Contingency-Step3.PNG)
 <br /> 
 <br /> 
-## 3. Receive success notification in Teams
+
+## 5. Receive Approval request to disable tagged operational policies in Teams
 
 ![Check](/media/Contingency-Step4.PNG)
+<br /> 
+<br /> 
+
+## 6. Check contingency policies are now enabled in Azure Portal
+
+![Check](/media/Contingency-Step5.PNG)
 <br /> 
 <br /> 
 
