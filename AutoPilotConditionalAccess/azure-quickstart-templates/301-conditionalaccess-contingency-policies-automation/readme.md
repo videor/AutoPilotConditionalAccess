@@ -108,7 +108,7 @@ This logic app uses managed identity for getting secrets from key vault in order
 
 1. In the left-hand navigation pane, select Logic App designer > Parameters > Replace the default value with Key Vault URI, Client ID and Tenant ID.
 
-![Parameters](/media/ContingencyAccountsPara.PNG)
+![Parameters](/media/ContingencyPara.PNG)
 
 
 # Step 4: Select appropriate managed identity.
