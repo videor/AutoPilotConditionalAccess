@@ -28,10 +28,6 @@
                             "defaultValue": "3ad0fe30-3640-4364-a39a-bd1fae04ac9a",
                             "type": "String"
                         },
-                        "ContingencyAccessGroupObjectID": {
-                            "defaultValue": "f753047e-de31-4c74-a6fb-c38589047723",
-                            "type": "String"
-                        },
                         "EnableTag": {
                             "defaultValue": "ENABLE IN EMERGENCY",
                             "type": "String"
@@ -107,7 +103,7 @@
                                                             "type": "ApiConnection",
                                                             "inputs": {
                                                                 "body": {
-                                                                    "messageBody": "{\n    \"type\": \"AdaptiveCard\",\n    \"body\": [\n        {\n            \"type\": \"Container\",\n            \"style\": \"emphasis\",\n            \"items\": [\n                {\n                    \"type\": \"ColumnSet\",\n                    \"columns\": [\n                        {\n                            \"type\": \"Column\",\n                            \"items\": [\n                                {\n                                    \"type\": \"TextBlock\",\n                                    \"size\": \"Large\",\n                                    \"weight\": \"Bolder\",\n                                    \"text\": \"**Azure Active Directory**\"\n                                }\n                            ],\n                            \"width\": \"stretch\"\n                        },\n                        {\n                            \"type\": \"Column\",\n                            \"items\": [\n                                {\n                                    \"type\": \"Image\",\n                                    \"url\": \"\",\n                                    \"altText\": \"Pending\",\n                                    \"height\": \"30px\"\n                                }\n                            ],\n                            \"width\": \"auto\"\n                        }\n                    ]\n                }\n            ],\n            \"bleed\": true\n        },\n        {\n            \"type\": \"Container\",\n            \"items\": [\n                {\n                    \"type\": \"ColumnSet\",\n                    \"columns\": [\n                        {\n                            \"type\": \"Column\",\n                            \"items\": [\n                                {\n                                    \"type\": \"TextBlock\",\n                                    \"size\": \"ExtraLarge\",\n                                    \"text\": \"Conditional Access\",\n                                    \"wrap\": true\n                                },\n                                {\n                                    \"type\": \"TextBlock\",\n                                    \"spacing\": \"Small\",\n                                    \"size\": \"Small\",\n                                    \"weight\": \"Bolder\",\n                                    \"color\": \"Accent\",\n                                    \"text\": \"Alert\"\n                                }\n                            ],\n                            \"width\": \"stretch\"\n                        },\n                        {\n                            \"type\": \"Column\",\n                           \"items\": [\n                                {\n                                    \"type\": \"ActionSet\",\n                                    \"actions\": [\n                                        {\n                                            \"type\": \"Action.OpenUrl\",\n                                            \"title\": \"OPERATIONAL POLICY DISABLED!\",\n                                            \"url\": \"https://portal.azure.com\"\n                                        }\n                                    ]\n                                }\n                            ],\n                            \"width\": \"auto\"\n                        }\n                    ]\n                },\n                {\n                    \"type\": \"FactSet\",\n                    \"spacing\": \"Large\",\n                    \"facts\": [\n                        {\n                            \"title\": \"Type\",\n                            \"value\": \"**Operational policy disabled successfully**\"\n                        },\n                        {\n                            \"title\": \"Policy Name\",\n                            \"value\": \"@{items('For_each_Conditional_Access_Policy')?['displayName']}\"\n                        },\n                        {\n                            \"title\": \"Policy ID\",\n                            \"value\": \"@{items('For_each_Conditional_Access_Policy')?['id']}\"\n                        },\n                       {\n                            \"title\": \"Policy State\",\n                            \"value\": \"@{items('For_each_Conditional_Access_Policy')?['state']}\"\n                        },\n                        {\n                            \"title\": \"Message\",\n                            \"value\": \"A contingency action to disable operational   policy was completed successfully.  Message also reported to secops@contoso.com\"\n                        }\n                    ]\n                }\n            ]\n        }\n    ],\n    \"$schema\": \"http://adaptivecards.io/schemas/adaptive-card.json\",\n    \"version\": \"1.2\",\n    \"fallbackText\": \"This card requires Adaptive Cards v1.2 support to be rendered properly.\"\n}",
+                                                                    "messageBody": "{\n    \"type\": \"AdaptiveCard\",\n    \"body\": [\n        {\n            \"type\": \"Container\",\n            \"style\": \"emphasis\",\n            \"items\": [\n                {\n                    \"type\": \"ColumnSet\",\n                    \"columns\": [\n                        {\n                            \"type\": \"Column\",\n                            \"items\": [\n                                {\n                                    \"type\": \"TextBlock\",\n                                    \"size\": \"Large\",\n                                    \"weight\": \"Bolder\",\n                                    \"text\": \"**Azure Active Directory**\"\n                                }\n                            ],\n                            \"width\": \"stretch\"\n                        },\n                        {\n                            \"type\": \"Column\",\n                            \"items\": [\n                                {\n                                    \"type\": \"Image\",\n                                    \"url\": \"\",\n                                    \"altText\": \"Pending\",\n                                    \"height\": \"30px\"\n                                }\n                            ],\n                            \"width\": \"auto\"\n                        }\n                    ]\n                }\n            ],\n            \"bleed\": true\n        },\n        {\n            \"type\": \"Container\",\n            \"items\": [\n                {\n                    \"type\": \"ColumnSet\",\n                    \"columns\": [\n                        {\n                            \"type\": \"Column\",\n                            \"items\": [\n                                {\n                                    \"type\": \"TextBlock\",\n                                    \"size\": \"ExtraLarge\",\n                                    \"text\": \"Conditional Access\",\n                                    \"wrap\": true\n                                },\n                                {\n                                    \"type\": \"TextBlock\",\n                                    \"spacing\": \"Small\",\n                                    \"size\": \"Small\",\n                                    \"weight\": \"Bolder\",\n                                    \"color\": \"Accent\",\n                                    \"text\": \"Alert\"\n                                }\n                            ],\n                            \"width\": \"stretch\"\n                        },\n                        {\n                            \"type\": \"Column\",\n                           \"items\": [\n                                {\n                                    \"type\": \"ActionSet\",\n                                    \"actions\": [\n                                        {\n                                            \"type\": \"Action.OpenUrl\",\n                                            \"title\": \"OPERATIONAL POLICY DISABLED!\",\n                                            \"url\": \"https://portal.azure.com\"\n                                        }\n                                    ]\n                                }\n                            ],\n                            \"width\": \"auto\"\n                        }\n                    ]\n                },\n                {\n                    \"type\": \"FactSet\",\n                    \"spacing\": \"Large\",\n                    \"facts\": [\n                        {\n                            \"title\": \"Type\",\n                            \"value\": \"**Operational policy disabled successfully**\"\n                        },\n                        {\n                            \"title\": \"Policy Name\",\n                            \"value\": \"@{items('For_each_Conditional_Access_Policy')?['displayName']}\"\n                        },\n                        {\n                            \"title\": \"Policy ID\",\n                            \"value\": \"@{items('For_each_Conditional_Access_Policy')?['id']}\"\n                        },\n                                  {\n                            \"title\": \"Message\",\n                            \"value\": \"A contingency action to disable operational   policy was completed successfully.  Message also reported to secops@contoso.com\"\n                        }\n                    ]\n                }\n            ]\n        }\n    ],\n    \"$schema\": \"http://adaptivecards.io/schemas/adaptive-card.json\",\n    \"version\": \"1.2\",\n    \"fallbackText\": \"This card requires Adaptive Cards v1.2 support to be rendered properly.\"\n}",
                                                                     "recipient": {
                                                                         "channelId": "19:23eada0e39e041d58dbb2d02a02056d4@thread.tacv2"
                                                                     }
@@ -275,7 +271,7 @@
                                                             "type": "ApiConnection",
                                                             "inputs": {
                                                                 "body": {
-                                                                    "messageBody": "{\n    \"type\": \"AdaptiveCard\",\n    \"body\": [\n        {\n            \"type\": \"Container\",\n            \"style\": \"emphasis\",\n            \"items\": [\n                {\n                    \"type\": \"ColumnSet\",\n                    \"columns\": [\n                        {\n                            \"type\": \"Column\",\n                            \"items\": [\n                                {\n                                    \"type\": \"TextBlock\",\n                                    \"size\": \"Large\",\n                                    \"weight\": \"Bolder\",\n                                    \"text\": \"**Azure Active Directory**\"\n                                }\n                            ],\n                            \"width\": \"stretch\"\n                        },\n                        {\n                            \"type\": \"Column\",\n                            \"items\": [\n                                {\n                                    \"type\": \"Image\",\n                                    \"url\": \"\",\n                                    \"altText\": \"Pending\",\n                                    \"height\": \"30px\"\n                                }\n                            ],\n                            \"width\": \"auto\"\n                        }\n                    ]\n                }\n            ],\n            \"bleed\": true\n        },\n        {\n            \"type\": \"Container\",\n            \"items\": [\n                {\n                    \"type\": \"ColumnSet\",\n                    \"columns\": [\n                        {\n                            \"type\": \"Column\",\n                            \"items\": [\n                                {\n                                    \"type\": \"TextBlock\",\n                                    \"size\": \"ExtraLarge\",\n                                    \"text\": \"Conditional Access\",\n                                    \"wrap\": true\n                                },\n                                {\n                                    \"type\": \"TextBlock\",\n                                    \"spacing\": \"Small\",\n                                    \"size\": \"Small\",\n                                    \"weight\": \"Bolder\",\n                                    \"color\": \"Accent\",\n                                    \"text\": \"Alert\"\n                                }\n                            ],\n                            \"width\": \"stretch\"\n                        },\n                        {\n                            \"type\": \"Column\",\n                           \"items\": [\n                                {\n                                    \"type\": \"ActionSet\",\n                                    \"actions\": [\n                                        {\n                                            \"type\": \"Action.OpenUrl\",\n                                            \"title\": \"CONTINGENCY POLICY ENABLED!\",\n                                            \"url\": \"https://portal.azure.com\"\n                                        }\n                                    ]\n                                }\n                            ],\n                            \"width\": \"auto\"\n                        }\n                    ]\n                },\n                {\n                    \"type\": \"FactSet\",\n                    \"spacing\": \"Large\",\n                    \"facts\": [\n                        {\n                            \"title\": \"Type\",\n                            \"value\": \"**Contingency policy enabled successfully**\"\n                        },\n                        {\n                            \"title\": \"Policy Name\",\n                            \"value\": \"@{item()?['displayName']}\"\n                        },\n                        {\n                            \"title\": \"Policy ID\",\n                            \"value\": \"@{item()?['id']}\"\n                        },\n                       {\n                            \"title\": \"Policy State\",\n                            \"value\": \"@{item()?['state']}\"\n                        },\n                        {\n                            \"title\": \"Message\",\n                            \"value\": \"A contingency action for conditional access policy was completed successfully.  Message also reported to secops@contoso.com\"\n                        }\n                    ]\n                }\n            ]\n        }\n    ],\n    \"$schema\": \"http://adaptivecards.io/schemas/adaptive-card.json\",\n    \"version\": \"1.2\",\n    \"fallbackText\": \"This card requires Adaptive Cards v1.2 support to be rendered properly.\"\n}",
+                                                                    "messageBody": "{\n    \"type\": \"AdaptiveCard\",\n    \"body\": [\n        {\n            \"type\": \"Container\",\n            \"style\": \"emphasis\",\n            \"items\": [\n                {\n                    \"type\": \"ColumnSet\",\n                    \"columns\": [\n                        {\n                            \"type\": \"Column\",\n                            \"items\": [\n                                {\n                                    \"type\": \"TextBlock\",\n                                    \"size\": \"Large\",\n                                    \"weight\": \"Bolder\",\n                                    \"text\": \"**Azure Active Directory**\"\n                                }\n                            ],\n                            \"width\": \"stretch\"\n                        },\n                        {\n                            \"type\": \"Column\",\n                            \"items\": [\n                                {\n                                    \"type\": \"Image\",\n                                    \"url\": \"\",\n                                    \"altText\": \"Pending\",\n                                    \"height\": \"30px\"\n                                }\n                            ],\n                            \"width\": \"auto\"\n                        }\n                    ]\n                }\n            ],\n            \"bleed\": true\n        },\n        {\n            \"type\": \"Container\",\n            \"items\": [\n                {\n                    \"type\": \"ColumnSet\",\n                    \"columns\": [\n                        {\n                            \"type\": \"Column\",\n                            \"items\": [\n                                {\n                                    \"type\": \"TextBlock\",\n                                    \"size\": \"ExtraLarge\",\n                                    \"text\": \"Conditional Access\",\n                                    \"wrap\": true\n                                },\n                                {\n                                    \"type\": \"TextBlock\",\n                                    \"spacing\": \"Small\",\n                                    \"size\": \"Small\",\n                                    \"weight\": \"Bolder\",\n                                    \"color\": \"Accent\",\n                                    \"text\": \"Alert\"\n                                }\n                            ],\n                            \"width\": \"stretch\"\n                        },\n                        {\n                            \"type\": \"Column\",\n                           \"items\": [\n                                {\n                                    \"type\": \"ActionSet\",\n                                    \"actions\": [\n                                        {\n                                            \"type\": \"Action.OpenUrl\",\n                                            \"title\": \"CONTINGENCY POLICY ENABLED!\",\n                                            \"url\": \"https://portal.azure.com\"\n                                        }\n                                    ]\n                                }\n                            ],\n                            \"width\": \"auto\"\n                        }\n                    ]\n                },\n                {\n                    \"type\": \"FactSet\",\n                    \"spacing\": \"Large\",\n                    \"facts\": [\n                        {\n                            \"title\": \"Type\",\n                            \"value\": \"**Contingency policy enabled successfully**\"\n                        },\n                        {\n                            \"title\": \"Policy Name\",\n                            \"value\": \"@{item()?['displayName']}\"\n                        },\n                        {\n                            \"title\": \"Policy ID\",\n                            \"value\": \"@{item()?['id']}\"\n                        },\n                                   {\n                            \"title\": \"Message\",\n                            \"value\": \"A contingency action for conditional access policy was completed successfully.  Message also reported to secops@contoso.com\"\n                        }\n                    ]\n                }\n            ]\n        }\n    ],\n    \"$schema\": \"http://adaptivecards.io/schemas/adaptive-card.json\",\n    \"version\": \"1.2\",\n    \"fallbackText\": \"This card requires Adaptive Cards v1.2 support to be rendered properly.\"\n}",
                                                                     "recipient": {
                                                                         "channelId": "19:23eada0e39e041d58dbb2d02a02056d4@thread.tacv2"
                                                                     }
@@ -494,133 +490,31 @@
                                 "uri": "@parameters('AutoPilotConditionalAccessKeyVaultClientCredentials')"
                             }
                         },
-                        "Parse_all_conditional_access_policies": {
-                            "runAfter": {
-                                "GET_all_conditional_access_policies_": [
-                                    "Succeeded"
-                                ]
+                       "Parse_all_conditional_access_policies": {
+                "inputs": {
+                    "content": "@body('GET_all_conditional_access_policies_')",
+                    "schema": {
+                        "properties": {
+                            "displayName": {
+                                "type": "string"
                             },
-                            "type": "ParseJson",
-                            "inputs": {
-                                "content": "@body('GET_all_conditional_access_policies_')",
-                                "schema": {
-                                    "properties": {
-                                        "@@odata.context": {
-                                            "type": "string"
-                                        },
-                                        "value": {
-                                            "items": {
-                                                "properties": {
-                                                    "conditions": {
-                                                        "properties": {
-                                                            "applications": {
-                                                                "properties": {
-                                                                    "excludeApplications": {
-                                                                        "type": "array"
-                                                                    },
-                                                                    "includeApplications": {
-                                                                        "items": {
-                                                                            "type": "string"
-                                                                        },
-                                                                        "type": "array"
-                                                                    },
-                                                                    "includeUserActions": {
-                                                                        "type": "array"
-                                                                    }
-                                                                },
-                                                                "type": "object"
-                                                            },
-                                                            "clientAppTypes": {
-                                                                "type": "array"
-                                                            },
-                                                            "deviceStates": {},
-                                                            "locations": {},
-                                                            "platforms": {},
-                                                            "signInRiskLevels": {
-                                                                "type": "array"
-                                                            },
-                                                            "users": {
-                                                                "properties": {
-                                                                    "excludeGroups": {
-                                                                        "type": "array"
-                                                                    },
-                                                                    "excludeRoles": {
-                                                                        "type": "array"
-                                                                    },
-                                                                    "excludeUsers": {
-                                                                        "type": "array"
-                                                                    },
-                                                                    "includeGroups": {
-                                                                        "type": "array"
-                                                                    },
-                                                                    "includeRoles": {
-                                                                        "type": "array"
-                                                                    },
-                                                                    "includeUsers": {
-                                                                        "items": {
-                                                                            "type": "string"
-                                                                        },
-                                                                        "type": "array"
-                                                                    }
-                                                                },
-                                                                "type": "object"
-                                                            }
-                                                        },
-                                                        "type": "object"
-                                                    },
-                                                    "createdDateTime": {},
-                                                    "displayName": {
-                                                        "type": "string"
-                                                    },
-                                                    "grantControls": {
-                                                        "properties": {
-                                                            "builtInControls": {
-                                                                "items": {
-                                                                    "type": "string"
-                                                                },
-                                                                "type": "array"
-                                                            },
-                                                            "customAuthenticationFactors": {
-                                                                "type": "array"
-                                                            },
-                                                            "operator": {
-                                                                "type": "string"
-                                                            },
-                                                            "termsOfUse": {
-                                                                "type": "array"
-                                                            }
-                                                        },
-                                                        "type": [
-                                                            "object",
-                                                            "null"
-                                                        ]
-                                                    },
-                                                    "id": {
-                                                        "type": "string"
-                                                    },
-                                                    "modifiedDateTime": {
-                                                        "type": [
-                                                            "string",
-                                                            "null"
-                                                        ]
-                                                    },
-                                                    "sessionControls": {},
-                                                    "state": {
-                                                        "type": "string"
-                                                    }
-                                                },
-                                                "required": [
-                                                    "id"
-                                                ],
-                                                "type": "object"
-                                            },
-                                            "type": "array"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
+                            "id": {
+                                "type": "string"
+                            },
+                            "state": {
+                                "type": "string"
                             }
                         },
+                        "type": "object"
+                    }
+                },
+                "runAfter": {
+                    "GET_all_conditional_access_policies_": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "ParseJson"
+            },
                         "Parse_response_from_key_vault": {
                             "runAfter": {
                                 "GET_client_secret_from_key_vault_using_managed_identity": [
