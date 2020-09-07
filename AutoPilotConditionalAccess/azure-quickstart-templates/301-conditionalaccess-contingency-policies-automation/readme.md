@@ -27,13 +27,13 @@ When you're done, you will be able to automate management of contingency policie
 <br /> 
 
 
-## 1. Ensure you have contingency policies for a given distruption configured and any operation policies tagged for same disruption. In below example we demonstrate using contingency policies configured for MFA Disruption.
+## 1. Ensure you have contingency policies configured for a given distruption and relevant operational policies are tagged for same disruption. Below example shows contingency policies configured for MFA Disruption.
 
-![RemoveEmergency](/media/Contingency-Step1.PNG)
+![Contingency](/media/Contingency-Step1.PNG)
 <br /> 
 <br />  
 
-## 3. When logic app is triggered, receive Approval request to enable contingency policies in Teams.
+## 3. When the logic app is triggered, receive approval request to **enable contingency policies** in Teams.
 
 ![Check](/media/Contingency-Step2.PNG)
 <br /> 
@@ -45,7 +45,7 @@ When you're done, you will be able to automate management of contingency policie
 <br /> 
 <br /> 
 
-## 5. Receive Approval request to disable tagged operational policies in Teams
+## 5. Receive approval request to **disable tagged operational policies** in Teams
 
 ![Check](/media/Contingency-Step4.PNG)
 <br /> 
@@ -106,7 +106,7 @@ This logic app uses managed identity for getting secrets from key vault in order
 
 # Step 3: Update parameters
 
-1. In the left-hand navigation pane, select Logic App designer > Parameters > Replace the default value with Key Vault URI, Client ID and Tenant ID.
+1. In the left-hand navigation pane, select Logic App designer > Parameters > Replace the default value with Key Vault URI (that stores client secret), Client ID, Enable Tag (based on your naming convention) and Tenant ID.
 
 ![Parameters](/media/ContingencyPara.PNG)
 
@@ -143,6 +143,6 @@ Please ensure you follow the best practise guidelines on managing secrets within
 
 Try the following challenge:
 
-:heavy_check_mark: Edit this logic app to trigger alerts based on sequence number within policy display name. This sequence represents the order in which you must activate the policies. <br /> 
+:heavy_check_mark: Edit this logic app to trigger staggered alerts based on sequence number within policy display name. This sequence represents the order in which you must activate the policies. <br /> 
 
 If you would like to request a logic app to do this, please send a request on Twitter @Vi_Deora.
