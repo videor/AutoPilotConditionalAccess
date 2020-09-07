@@ -39,7 +39,7 @@ When you're done, you will be able to backup-restore Conditional Access policies
 <br /> 
 ## 3. View your remediated Conditional Access policy in Azure portal
 
-![Check](EmergencyAccounts-Step3.png)
+![Check](/media/EmergencyAccounts-Step3.PNG)
 <br /> 
 <br /> 
 
