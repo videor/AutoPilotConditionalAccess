@@ -27,19 +27,19 @@ When you're done, you will be able to backup-restore Conditional Access policies
 <br /> 
 
 
-## 1. Receive notification that a policy was missing emergency account exclusion and it was remediated.
+## 1. Remove emergency account from a Conditional Access policy.
 
-![Confirmation](/media/EmergencyAccounts-Step1.PNG)
+![RemoveEmergency](/media/EmergencyAccounts-Step1.PNG)
 <br /> 
 <br /> 
-## 2. View your restored Conditional Access policy in Azure portal
+## 2. Receive notification that a policy was missing emergency account exclusion and it was remediated.
 
-![View policy](/media/EmergencyAccounts-Step2.PNG)
+![Notification](/media/EmergencyAccounts-Step2.PNG)
 <br /> 
 <br /> 
-## 3. Check your emergency accounts are automatically excluded from all your conditional access policy
+## 3. View your remediated Conditional Access policy in Azure portal
 
-![Assign test users](EmergencyAccounts-Step3.PNG)
+![Check](EmergencyAccounts-Step3.PNG)
 <br /> 
 <br /> 
 
