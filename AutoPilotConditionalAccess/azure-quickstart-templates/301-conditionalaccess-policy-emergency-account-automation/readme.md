@@ -22,7 +22,7 @@ In this tutorial, you learn how to:
 :heavy_check_mark: Authenticate your logic app to Azure AD with the right permissions.  <br /> 
 :heavy_check_mark: Add parameters and connections specific to your organization within logic app.  <br /> 
 
-When you're done, you will be able to backup-restore Conditional Access policies in your production environment:
+When you're done, you will be able to automate management of emergency account within conditional access policies.
 <br /> 
 <br /> 
 
