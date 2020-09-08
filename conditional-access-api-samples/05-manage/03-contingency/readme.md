@@ -41,7 +41,7 @@ When you're done, you will be able to automate management of contingency policie
 
    ![Check](./media/contingency-step4.png)
 
-## 6. Check contingency policies are now enabled in Azure Portal
+1. Check contingency policies are now enabled in Azure Portal
 
    ![Check](./media/contingency-step5.png)
 
