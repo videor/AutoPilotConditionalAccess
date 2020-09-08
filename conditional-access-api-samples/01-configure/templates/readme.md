@@ -56,7 +56,7 @@ When you're done, you will be able to manage Conditional Access policies using t
 ![View policy](/media/Templates-Step4.PNG)
 <br /> 
 <br /> 
-## 5. Check your Test users are assigned to the policy
+## 5. Assign your Test users to the policy
 
 ![Assign test users](/media/Templates-Step5.png)
 <br /> 
