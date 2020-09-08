@@ -54,7 +54,7 @@ When you're done, you will be able to manage Conditional Access policies using t
 
    ![Assign test users](./media/templates-step5.png)
 
-## Pre-requisites
+## Prerequisites
 
 If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you start.
 
@@ -62,7 +62,7 @@ You will also need knowledge of key concepts within Azure logic apps, OneDrive a
 
 ## Step 1: Deploy this logic app to your organization
 
-If your Azure environment meets the prerequisites, and you're familiar with using ARM templates, these steps help you sign in directly to Azure and open the ARM template in the Azure portal. For more information, see [Deploy resources with ARM templates and Azure portal](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview).
+If your Azure environment meets the prerequisites, and you're familiar with using Azure Resource Manager templates, these steps help you sign in directly to Azure and open the Azure Resource Manager template in the Azure portal. For more information, see the article [Deploy resources with Azure Resource Manager templates and Azure portal](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview).
 
 ### Azure Portal
 
@@ -91,7 +91,7 @@ Logic App for Easy Configuration of Conditional Access Policies using Templates.
 
 ## Step 2: Authenticate your logic app to Azure AD with the right permissions
 
-This logic app uses managed identity for getting secrets from key vault in order to call Conditional Access APIs. Please look at [Authenticate your logic app to Azure AD with the right permissions](https://github.com/videor/AutoPilotConditionalAccess/tree/master/AutoPilotConditionalAccess/azure-quickstart-templates/docs) on how to create key vault and connect to managed identity. To learn more on how to use managed identities within Logic App please look at [**Logic Apps and Managed Identities**](https://docs.microsoft.com/azure/logic-apps/create-managed-service-identity) .
+This logic app uses managed identity for getting secrets from key vault in order to call Conditional Access APIs. Please look at [Authenticate your logic app to Azure AD with the right permissions](https://github.com/videor/AutoPilotConditionalAccess/tree/master/AutoPilotConditionalAccess/azure-quickstart-templates/docs) on how to create key vault and connect to managed identity. To learn more about how to use managed identities within Logic Apps, see the article [**Logic Apps and Managed Identities**](https://docs.microsoft.com/azure/logic-apps/create-managed-service-identity).
 
 1. In the left-hand navigation pane, select Identity > User Assigned > Select Add.
 
@@ -138,7 +138,7 @@ This logic app uses managed identity for getting secrets from key vault in order
 Similar to above, update remaining OneDrive and Teams connectors within the sample Logic App by selecting appropriate OneDrive and Teams account that needs to be used for automation.
 
 > [!WARNING]
-> Please ensure you follow the best practice guidelines on managing secrets within Logic apps by using secure inputs and outputs as [documented here](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app).
+> Ensure you follow best practices regarding managing secrets within Logic apps by using secure inputs and outputs as documented in the article, [Secure access and data in Azure Logic Apps]](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app).
 
 ## Next steps
 
@@ -147,3 +147,8 @@ Try the following challenge:
 :heavy_check_mark: Edit this logic app to send a custom message on Teams channel when the approval workflow selection is Reject action.
 
 :heavy_check_mark: Edit this logic app to delete the policy file in OneDrive template folder when the approval workflow selection is Reject action.
+
+For more information on the Conditional Access APIs, see the following documents:
+
+- [Conditional Access API](/graph/api/resources/conditionalaccesspolicy?view=graph-rest-1.0)
+- [Named location API](/graph/api/resources/namedlocation?view=graph-rest-1.0)

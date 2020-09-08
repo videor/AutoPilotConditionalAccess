@@ -1,10 +1,10 @@
-# Tutorial: One-click deploy conditional access policies to large number of branch offices and subsidiaries
+# Tutorial: One-click deploy Conditional Access policies to large number of branch offices and subsidiaries
 
-Intent: As an IT admin, I want to be able to easily deploy conditional access policies to large number of branch offices and subsidiaries.
+Intent: As an IT admin, I want to be able to easily deploy Conditional Access policies to large number of branch offices and subsidiaries.
 
-You can use the conditional access APIs to manage policy blueprints that you can make available to your branch offices and subsidiaries. For example, you can:
+You can use the Conditional Access APIs to manage policy blueprints that you can make available to your branch offices and subsidiaries. For example, you can:
 
-As a central IT admin, add a new policy blueprint to branch offices and subsidiaries shared OneDrive folder. All subsidieries and branch offices will receive notification to create a new conditional access policy based on the policy blueprint. Admins in branch offices and subsidiaries can approve or reject this blueprint. If approved, the policy blueprint will be deployed.
+As a central IT admin, add a new policy blueprint to branch offices and subsidiaries shared OneDrive folder. All subsidieries and branch offices will receive notification to create a new Conditional Access policy based on the policy blueprint. Admins in branch offices and subsidiaries can approve or reject this blueprint. If approved, the policy blueprint will be deployed.
 
    ![Deploy](./media/configure3.png)
 
@@ -16,7 +16,7 @@ This automation can be very useful for:
 
 This tutorial shows how to build a [logic app](../logic-apps/logic-apps-overview.md) that automates policy blueprint deployment to branch offices and subsidiaries based on an approval-based workflow. Specifically, this logic app monitors a branch offices or subsidiaries OneDrive folder for new policy blueprints submissions, sends requests for approval, and deploys the policy blueprint on approval.
 
-Note: The logic app needs to be deployed in each branch offices and subsidiaries tenant that needs to automate one click deployment of conditional access policies.
+Note: The logic app needs to be deployed in each branch offices and subsidiaries tenant that needs to automate one click deployment of Conditional Access policies.
 
 In this tutorial, you learn how to:
 
@@ -48,13 +48,13 @@ When you're done, you will be able to deploy Conditional Access policies to larg
 
    ![Assign test users](./media/branch-office-step5.png)
 
-## Pre-requisites
+## Prerequisites
 
 If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you start.
 
 ## Step 1: Deploy this logic app to your organization
 
-If your Azure environment meets the prerequisites, and you're familiar with using ARM templates, these steps help you sign in directly to Azure and open the ARM template in the Azure portal. For more information, see [Deploy resources with ARM templates and Azure portal](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview).
+If your Azure environment meets the prerequisites, and you're familiar with using Azure Resource Manager templates, these steps help you sign in directly to Azure and open the Azure Resource Manager template in the Azure portal. For more information, see the article, [Deploy resources with Azure Resource Manager templates and Azure portal](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview).
 
 Select the following image to sign in with your Azure account and open the logic app in the Azure portal:
 
@@ -77,19 +77,19 @@ Select the following image to sign in with your Azure account and open the logic
 
 ## Step 2: Authenticate your logic app to Azure AD with the right permissions
 
-This logic app uses managed identity for getting secrets from key vault in order to call conditional access APIs. Please look at [Authenticate your logic app to Azure AD with the right permissions](https://github.com/videor/AutoPilotConditionalAccess/tree/master/AutoPilotConditionalAccess/azure-quickstart-templates/docs) on how to create key vault and connect to managed identity. To learn more on how to use managed identities within Logic App please look at [**Logic Apps and Managed Identities**](https://docs.microsoft.com/azure/logic-apps/create-managed-service-identity).
+This logic app uses managed identity for getting secrets from key vault in order to call Conditional Access APIs. For more information, see the article, [Authenticate your logic app to Azure AD with the right permissions](https://github.com/videor/AutoPilotConditionalAccess/tree/master/AutoPilotConditionalAccess/azure-quickstart-templates/docs) for steps to create key vault and connect to managed identity. To learn more on how to use managed identities within a logic app, see the article, [**Logic Apps and Managed Identities**](https://docs.microsoft.com/azure/logic-apps/create-managed-service-identity).
 
 1. In the left-hand navigation pane, select Identity > User Assigned > Select Add.
 
 1. Select the User-assigned managed identity from the context pane that appears on the right, select Add.
 
-   ![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-blueprint-automation/images/blueprintMI-edit.png).
+   ![Select managed identity](./media/blueprint-mi-edit.png)
 
 ## Step 3: Update parameters
 
 1. In the left-hand navigation pane, select Logic App designer > Parameters > Replace the default value with Key Vault URI (storing Client Secret), Client ID and Tenant ID.
 
-   ![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-blueprint-automation/images/blueprint-parameters-edit.png)
+   ![Replace defaults with tenant specific values](./media/blueprint-parameters-edit.png)
 
 ## Step 4: Connect to your OneDrive account and select the Backup and Restore folders in respective logic apps you will like to use for automation
 
@@ -124,8 +124,8 @@ This logic app uses managed identity for getting secrets from key vault in order
 Similar to above, update remaining OneDrive and Teams connectors within the sample Logic App by selecting appropriate OneDrive and Teams account that needs to be used for automation.
 
 > [!WARNING]
-> Please ensure you follow the best practice guidelines on managing secrets within Logic apps by using secure inputs and outputs as [documented here](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app).
+> Ensure you follow best practices regarding managing secrets within Logic apps by using secure inputs and outputs as documented in the article, [Secure access and data in Azure Logic Apps]](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app).
 
 ## Next steps
 
-Try cloning the logic and build workflows to manage update and deletion of policy blueprints and rollout the changes to your organization. If you would like to request a logic app to do this, please send a request on Twitter @Vi_Deora.
+Try cloning the logic and build workflows to manage update and deletion of policy blueprints and rollout the changes to your organization.

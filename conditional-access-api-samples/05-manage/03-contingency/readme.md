@@ -2,18 +2,18 @@
 
 Intent: As an IT admin, I want to be able to easily fail-over to contingency policies during service issues.
 
-You can use the conditional access APIs to manage failover to contingency policies. For example, you can:
+You can use the Conditional Access APIs to manage failover to contingency policies. For example, you can:
 
-As a IT admin, trigger fail-over and post an approval workflow to a Team channel. Members of contingency plan can approve or reject the fail-over. If approved, the contingency policy is enabled and relevant operational policies are disabled.
+Trigger fail-over with an approval workflow in a Teams channel. Members can approve or reject the fail-over. If approved, the contingency policy is enabled and relevant operational policies are disabled.
 
    ![Manage](./media/configure5.png)
 
 This automation can be very useful for:
 
-- Organizations that manages large numbers of conditional access policies.
+- Organizations that manages large numbers of Conditional Access policies.
 - Identity partners that manages policies for customers.
 
-This tutorial shows how to build a [logic app](https://docs.microsoft.com/azure/logic-apps/) that automates fail-over to contingency policies. Specifically, this logic app is triggired with a specific disruption tag. This sends an alert on Teams channel with list of contingency policies specific to that disruption. Admins, can individually select and approve fail-over.
+This tutorial shows how to build a [logic app](https://docs.microsoft.com/azure/logic-apps/) that automates fail-over to contingency policies. Specifically, this logic app is triggered with a specific disruption tag. This sends an alert to a Teams channel with list of contingency policies specific to that disruption. Admins, can individually select and approve fail-over.
 
 In this tutorial, you learn how to:
 
@@ -25,7 +25,7 @@ In this tutorial, you learn how to:
 
 When you're done, you will be able to automate management of contingency policies.
 
-1. Ensure you have contingency policies configured for a given distruption and relevant operational policies are tagged for same disruption. Below example shows contingency policies configured for MFA Disruption.
+1. Ensure you have contingency policies configured for a given disruption and relevant operational policies are tagged for same disruption. Below example shows contingency policies configured for MFA Disruption.
 
    ![Contingency](./media/contingency-step1.png)
 
@@ -45,13 +45,13 @@ When you're done, you will be able to automate management of contingency policie
 
    ![Check](./media/contingency-step5.png)
 
-## Pre-requisites
+## Prerequisites
 
 If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you start.
 
 ## Step 1: Deploy this logic app to your organization
 
-If your Azure environment meets the prerequisites, and you're familiar with using ARM templates, these steps help you sign in directly to Azure and open the ARM template in the Azure portal. For more information, see [Deploy resources with ARM templates and Azure portal](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview).
+If your Azure environment meets the prerequisites, and you're familiar with using Azure Resource Manager templates, these steps help you sign in directly to Azure and open the Azure Resource Manager template in the Azure portal. For more information, see the article, [Deploy resources with Azure Resource Manager templates and Azure portal](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview).
 
 <a name="deploy-azure-portal"></a>
 
@@ -76,7 +76,7 @@ Select the following image to sign in with your Azure account and open the logic
 
 ## Step 2: Authenticate your logic app to Azure AD with the right permissions
 
-This logic app uses managed identity for getting secrets from key vault in order to call conditional access APIs. Please look at [Authenticate your logic app to Azure AD with the right permissions](https://github.com/videor/AutoPilotConditionalAccess/tree/master/AutoPilotConditionalAccess/azure-quickstart-templates/docs) on how to create key vault and connect to managed identity. To learn more on how to use managed identities within Logic App please look at [**Logic Apps and Managed Identities**](https://docs.microsoft.com/azure/logic-apps/create-managed-service-identity) .
+This logic app uses managed identity for getting secrets from key vault in order to call Conditional Access APIs. For more information, see the article, [Authenticate your logic app to Azure AD with the right permissions](https://github.com/videor/AutoPilotConditionalAccess/tree/master/AutoPilotConditionalAccess/azure-quickstart-templates/docs) for steps to create key vault and connect to managed identity. To learn more on how to use managed identities within a logic app, see the article, [**Logic Apps and Managed Identities**](https://docs.microsoft.com/azure/logic-apps/create-managed-service-identity).
 
 1. In the left-hand navigation pane, select Identity > User Assigned > Select Add.
 
@@ -113,12 +113,10 @@ This logic app uses managed identity for getting secrets from key vault in order
 Similar to above, update remaining Teams connectors within the sample Logic App by selecting appropriate Teams account that needs to be used for automation.
 
 > [!WARNING]
-> Please ensure you follow the best practice guidelines on managing secrets within Logic apps by using secure inputs and outputs as [documented here](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app).
+> Ensure you follow best practices regarding managing secrets within Logic apps by using secure inputs and outputs as documented in the article, [Secure access and data in Azure Logic Apps]](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app).
 
 ## Next steps
 
 Try the following challenge:
 
 :heavy_check_mark: Edit this logic app to trigger staggered alerts based on sequence number within policy display name. This sequence represents the order in which you must activate the policies. <br /> 
-
-If you would like to request a logic app to do this, please send a request on Twitter @Vi_Deora.

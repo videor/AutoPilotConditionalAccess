@@ -1,19 +1,19 @@
 # Tutorial: Safe rollout of policies from pre-production to production with approval workflow
 
-Intent: As an IT admin, I want to be able to easily copy-paste conditional access policies from pre-production to production environment.
+Intent: As an IT admin, I want to be able to easily copy-paste Conditional Access policies from pre-production to production environment.
 
-You can use the conditional access APIs to easily deploy conditional access policies from one environment to another. For example, you can:
+You can use the Conditional Access APIs to easily deploy Conditional Access policies from one environment to another. For example, you can:
 
-As a IT admin, be able to automate a regular snapshot of all conditional access policies within pre-production environment. Select a policy to copy from pre-production. Finally, paste the conditional access policy in production environment.  
+As a IT admin, be able to automate a regular snapshot of all Conditional Access policies within pre-production environment. Select a policy to copy from pre-production. Finally, paste the Conditional Access policy in production environment.  
 
    ![Test](./media/configure2.png)
 
 This automation can be very useful for:
 
-- Organizations that manages large numbers of conditional access policies.
+- Organizations that manages large numbers of Conditional Access policies.
 - Identity partners that manages policies for customers.
 
-This tutorial shows how to build a [logic app](https://docs.microsoft.com/azure/logic-apps/) that allows copy-paste of conditional access policies. Specifically, this logic app takes a snapshot of all conditional access policies as a scheduled task within OneDrive. Another logic app monitors any policies being pasted in the production folder of Ondrive. If a new policy is detected, an approval workflow is triggered on Team channel. On approval, the policy is pasted to production environment.
+This tutorial shows how to build a [logic app](https://docs.microsoft.com/azure/logic-apps/) that allows copy-paste of Conditional Access policies. Specifically, this logic app takes a snapshot of all Conditional Access policies as a scheduled task within OneDrive. Another logic app monitors any policies being pasted in the production folder of OneDrive. If a new policy is detected, an approval workflow is triggered on Team channel. On approval, the policy is pasted to production environment.
 
 In this tutorial, you learn how to:
 
@@ -45,7 +45,7 @@ When you're done, you will be able to copy-paste Conditional Access policies fro
 
    ![Assign test users](./media/copy-paste-step5.png)
 
-## Pre-requisites
+## Prerequisites
 
 If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you start.
 
@@ -53,7 +53,7 @@ You will also need knowledge of key concepts within Azure Logic apps, OneDrive a
 
 ## Step 1: Deploy this logic app to your organization
 
-If your Azure environment meets the prerequisites, and you're familiar with using ARM templates, these steps help you sign in directly to Azure and open the ARM template in the Azure portal. For more information, see [Deploy resources with ARM templates and Azure portal](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview).
+If your Azure environment meets the prerequisites, and you're familiar with using Azure Resource Manager templates, these steps help you sign in directly to Azure and open the Azure Resource Manager template in the Azure portal. For more information, see [Deploy resources with Azure Resource Manager templates and Azure portal](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview).
 
 <a name="deploy-azure-portal"></a>
 
@@ -63,13 +63,13 @@ Select the following image to sign in with your Azure account and open the logic
 
    [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fvideor%2FAutoPilotConditionalAccess%2Fmaster%2FAutoPilotConditionalAccess%2Fazure-quickstart-templates%2F301-conditionalaccess-policy-copy-paste-automation%2Fazuredeploy.json)
 
-   [Video Link that takes you through the deployment process for copy/export of conditional access policies](https://www.screencast.com/t/OXNJj2xWaiCM)
+   [Video Link that takes you through the deployment process for copy/export of Conditional Access policies](https://www.screencast.com/t/OXNJj2xWaiCM)
 
 ### Logic App for Import or Paste
   
    [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fvideor%2FAutoPilotConditionalAccess%2Fmaster%2FAutoPilotConditionalAccess%2Fazure-quickstart-templates%2F301-conditionalaccess-policy-copy-paste-automation%2F301-conditionalaccess-policy-paste-automation%2Fazuredeploy.json)
 
-  [Video Link that takes you through the deployment process for paste/import of conditional access policies](https://www.screencast.com/t/ahW29WCqy)
+  [Video Link that takes you through the deployment process for paste/import of Conditional Access policies](https://www.screencast.com/t/ahW29WCqy)
   
 1. In the portal, on the **Custom deployment** page, enter or select these values:
 
@@ -88,7 +88,7 @@ Select the following image to sign in with your Azure account and open the logic
 
 ## Step 2: Authenticate your logic app to Azure AD with the right permissions
 
-This logic app uses managed identity for getting secrets from key vault in order to call conditional access APIs. Please look at [Authenticate your logic app to Azure AD with the right permissions](https://github.com/videor/AutoPilotConditionalAccess/tree/master/AutoPilotConditionalAccess/azure-quickstart-templates/docs) on how to create key vault and connect to managed identity. To learn more on how to use managed identities within Logic App please look at [**Logic Apps and Managed Identities**](https://docs.microsoft.com/azure/logic-apps/create-managed-service-identity) .
+This logic app uses managed identity for getting secrets from key vault in order to call Conditional Access APIs. For more information, see the article, [Authenticate your logic app to Azure AD with the right permissions](https://github.com/videor/AutoPilotConditionalAccess/tree/master/AutoPilotConditionalAccess/azure-quickstart-templates/docs) for steps to create key vault and connect to managed identity. To learn more on how to use managed identities within a logic app, see the article, [**Logic Apps and Managed Identities**](https://docs.microsoft.com/azure/logic-apps/create-managed-service-identity).
 
 1. In the left-hand navigation pane, select Identity > User Assigned > Select Add.
 
@@ -135,7 +135,7 @@ This logic app uses managed identity for getting secrets from key vault in order
 Similar to above, update remaining OneDrive and Teams connectors within the sample Logic App by selecting appropriate OneDrive and Teams account that needs to be used for automation.
 
 > [!WARNING]
-> Please ensure you follow the best practice guidelines on managing secrets within Logic apps by using secure inputs and outputs as [documented here](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app).
+> Ensure you follow best practices regarding managing secrets within Logic apps by using secure inputs and outputs as documented in the article, [Secure access and data in Azure Logic Apps]](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app).
 
 ## Next steps
 
@@ -145,4 +145,4 @@ Try the following challenge:
 
 :heavy_check_mark: Edit this logic app to delete the policy file in PROD OneDrive folder when the approval workflow selection is Reject copy-paste action.
 
-Finally, Try cloning the logic and build workflows to also support line of business application ids. If you would like to request a logic app to do this, please send a request on Twitter @Vi_Deora.
+Finally, Try cloning the logic and build workflows to also support line of business application ids.

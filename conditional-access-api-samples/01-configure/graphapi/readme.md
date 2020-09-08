@@ -61,7 +61,7 @@ One of the following permissions is required to call this API. To learn more, in
 
 ## Step 2: Create a Conditional Access Policy
 
-The steps to create a Sign-in risk-based Conditional Access policy [create sign-in risk policy](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-policy-risk) within Azure Portal is documented. Let us use this document as a reference to create a policy called "CA002: Require MFA for medium + sign-in risk" using the APIs.
+The steps to create a Sign-in risk-based Conditional Access policy within Azure Portal is documented in the article, [Conditional Access: Sign-in risk-based Conditional Access](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-policy-risk). We will use that document as a reference to create a policy called "CA002: Require MFA for medium + sign-in risk" using the APIs.
 
 To create a Conditional Access policy, use the following `POST` operation.
 
@@ -136,7 +136,7 @@ A successful response for the operation to create a Conditional Access policy:
 | --- | --- |
 | 201 Created | Created |
 
-For more information about REST API responses, see [Process the response message](https://docs.microsoft.com/rest/api/azure/#process-the-response-message).
+For more information about REST API responses, see the article [Process the response message](https://docs.microsoft.com/rest/api/azure/#process-the-response-message).
 
 ### Example POST response
 
@@ -369,7 +369,7 @@ The following headers are required:
 | *Content-Type:* | Required. Set to `application/json`. |
 | *Authorization:* | Required. Set to a valid `Bearer` [access token](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients). |
 
-For more information about how to create the request, see [Components of API request/response](https://docs.microsoft.com/rest/api/azure/#components-of-a-rest-api-requestresponse).
+For more information about how to create the request, see the article [Components of API request/response](https://docs.microsoft.com/rest/api/azure/#components-of-a-rest-api-requestresponse).
 
 ### Create the PATCH request body
 
@@ -406,7 +406,7 @@ A successful response for the operation to create a Conditional Access policy:
 | --- | --- |
 | 204 No Content | Updated |
 
-For more information about REST API responses, see [Process the response message](https://docs.microsoft.com/rest/api/azure/#process-the-response-message).
+For more information about REST API responses, see the article [Process the response message](https://docs.microsoft.com/rest/api/azure/#process-the-response-message).
 
 #### Example PATCH response
 
@@ -495,14 +495,14 @@ Once the `DELETE` request is submitted, a 204 (successful) response is returned.
 
 Try creating and updating a Conditional Access policy using the following JSON templates:
 
-- [JSON template - Require MFA for administrative roles](conditional-access-api-samples\01-configure\graphapi\template-require-mfa-admin-roles.json)
-- [JSON template - Require MFA for B2B guest users](conditional-access-api-samples\01-configure\graphapi\template-require-mfa-b2b-users.json)
-- [JSON template - Require MFA for security info registration](conditional-access-api-samples\01-configure\graphapi\template-require-mfa-security-info-registration.json)
-- [JSON template - Require a trusted device for specific applications](conditional-access-api-samples\01-configure\graphapi\template-require-trusted-device-app-access.json)
-- [JSON template - Require MFA on medium or high risk (Requires Azure AD Identity Protection)](conditional-access-api-samples\01-configure\graphapi\template-require-mfa-risk.json)
-- [JSON template - Require MAM policy for Android and IOS devices](conditional-access-api-samples\01-configure\graphapi\template-require-mam-android-ios.json)
+- [JSON template - Require MFA for administrative roles](./template-require-mfa-admin-roles.json)
+- [JSON template - Require MFA for B2B guest users](./template-require-mfa-b2b-users.json)
+- [JSON template - Require MFA for security info registration](./template-require-mfa-security-info-registration.json)
+- [JSON template - Require a trusted device for specific applications](./template-require-trusted-device-app-access.json)
+- [JSON template - Require MFA on medium or high risk (Requires Azure AD Identity Protection)](./template-require-mfa-risk.json)
+- [JSON template - Require MAM policy for Android and IOS devices](./template-require-mam-android-ios.json)
 
-Next, [Try promoting Conditional Access policies from test environments](conditional-access-api-samples\02-test\readme.md).
+Next, [Try promoting Conditional Access policies from test environments](../../02-test/readme.md).
 
 For more information on the Conditional Access APIs, see the following documents:
 

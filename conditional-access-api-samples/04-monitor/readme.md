@@ -1,16 +1,16 @@
 # Tutorial: Alert on Conditional Access Policy changes
 
-Intent: As an IT admin, I want to be able to easily setup alerts on conditional access policy changes.
+Intent: As an IT admin, I want to be able to easily setup alerts on Conditional Access policy changes.
 
-You can use the conditional access APIs to manage alerts on policy changes. For example, you can:
+You can use the Conditional Access APIs to manage alerts on policy changes. For example, you can:
 
-As a IT admin, add, update or delete a conditional access policy using conditional APIs or UI and be able to set up alerts that fire when CA policies are changed.
+As a IT admin, add, update or delete a Conditional Access policy using conditional APIs or UI and be able to set up alerts that fire when CA policies are changed.
 
    ![Monitor](./media/configure4.png)
 
 This automation can be very useful for:
 
-- Organizations that manages large numbers of conditional access policies.
+- Organizations that manages large numbers of Conditional Access policies.
 - Identity partners that manages policies for customers.
 
 This tutorial shows how to build a [logic app](https://docs.microsoft.com/azure/logic-apps/) that automates policy alerts. Specifically, this logic app monitors the audit logs for policy changes and triggers alert on Teams channel.
@@ -25,7 +25,7 @@ In this tutorial, you learn how to:
 
 When you're done, you will be able to get alert on changes made to Conditional Access policies in your production environment.
 
-1. Delete a Ring 0 conditional access policy when you have tested and enabled policy with Ring 0 and Ring 1 assignment.
+1. Delete a Ring 0 Conditional Access policy when you have tested and enabled policy with Ring 0 and Ring 1 assignment.
 
    ![Copy to OneDrive](./media/alert-step1.png)
 
@@ -33,21 +33,21 @@ When you're done, you will be able to get alert on changes made to Conditional A
 
    ![Approve configuration](./media/alert-step2.png)
 
-1. Investigate a change to conditional access policy action in Teams
+1. Investigate a change to Conditional Access policy action in Teams
 
    ![Approve configuration](./media/alert-step3.png)
 
-1. Investigate a change to conditional access policy further email
+1. Investigate a change to Conditional Access policy further email
 
    ![Investigate change](./media/alert-step4.png)
 
-## Pre-requisites
+## Prerequisites
 
 If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you start.
 
 ## Step 1: Deploy this logic app to your organization
 
-If your Azure environment meets the prerequisites, and you're familiar with using ARM templates, these steps help you sign in directly to Azure and open the ARM template in the Azure portal. For more information, see [Deploy resources with ARM templates and Azure portal](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview).
+If your Azure environment meets the prerequisites, and you're familiar with using Azure Resource Manager templates, these steps help you sign in directly to Azure and open the Azure Resource Manager template in the Azure portal. For more information, see [Deploy resources with Azure Resource Manager templates and Azure portal](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview).
 
 Select the following image to sign in with your Azure account and open the logic app in the Azure portal:
 
@@ -72,7 +72,7 @@ Here is how the page looks with the values used in this example:
 
 ## Step 2: Authenticate your logic app to Azure AD with the right permissions
 
-This logic app uses managed identity for getting secrets from key vault in order to call conditional access APIs. Please look at [Authenticate your logic app to Azure AD with the right permissions](https://github.com/videor/AutoPilotConditionalAccess/tree/master/AutoPilotConditionalAccess/azure-quickstart-templates/docs) on how to create key vault and connect to managed identity. To learn more on how to use managed identities within Logic App please look at [**Logic Apps and Managed Identities**](https://docs.microsoft.com/azure/logic-apps/create-managed-service-identity) .
+This logic app uses managed identity for getting secrets from key vault in order to call Conditional Access APIs. For more information, see the article, [Authenticate your logic app to Azure AD with the right permissions](https://github.com/videor/AutoPilotConditionalAccess/tree/master/AutoPilotConditionalAccess/azure-quickstart-templates/docs) for steps to create key vault and connect to managed identity. To learn more on how to use managed identities within a logic app, see the article, [**Logic Apps and Managed Identities**](https://docs.microsoft.com/azure/logic-apps/create-managed-service-identity).
 
 1. In the left-hand navigation pane, select Identity > User Assigned > Select Add.
 
@@ -168,12 +168,10 @@ This logic app uses managed identity for getting secrets from key vault in order
 Similar to above, update remaining OneDrive and Teams connectors within the sample Logic App by selecting appropriate OneDrive and Teams account that needs to be used for automation.
 
 > [!WARNING]
-> Please ensure you follow the best practice guidelines on managing secrets within Logic apps by using secure inputs and outputs as [documented here](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app).
+> Ensure you follow best practices regarding managing secrets within Logic apps by using secure inputs and outputs as documented in the article, [Secure access and data in Azure Logic Apps]](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app).
 
 ## Next steps
 
 Try the following challenge:
 
 :heavy_check_mark: Edit this logic app to send further policy details such as Policy State information. This will allow you to check of the policy was changed to **Report-only** or **Off** state before it was deleted as part of lifecycle.
-
-If you would like to request a logic app to do this, please send a request on Twitter @Vi_Deora.

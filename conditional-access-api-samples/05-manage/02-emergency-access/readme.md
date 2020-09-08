@@ -1,19 +1,21 @@
 # Tutorial: Emergency Account management within conditional acess policies
 
-Intent: As an IT admin, I want to be able to automate management of emergency account within conditional access policies.
+Intent: As an IT admin, I want to be able to automate management of emergency account within Conditional Access policies.
 
-You can use the conditional access APIs to automate management of emergency accounts within conditional access policies. For example, you can:
+You can use the Conditional Access APIs to automate management of emergency accounts within Conditional Access policies. For example, you can:
 
-As a IT admin, be able to automatically exclude emergency accounts from all new conditional access policies. Auto-remediate when a conditional access policy has been updated accidently or maliciously to remove emergency account. Finally, get an alert on missing emergency account and remediation taken for a conditional access policy.
+- Automatically exclude emergency accounts from all new Conditional Access policies.
+- Auto-remediate when a Conditional Access policy has been updated accidentally or maliciously to remove emergency account.
+- Get an alert on missing emergency account and remediation actions taken for a Conditional Access policy.
 
    ![Manage](./media/configure5.png)
 
 This automation can be very useful for:
 
-- Organizations that manages large numbers of conditional access policies.
+- Organizations that manages large numbers of Conditional Access policies.
 - Identity partners that manages policies for customers.
 
-This tutorial shows how to build a [logic app](https://docs.microsoft.com/azure/logic-apps/) that automates emergency account management. Specifically, this logic app retrieves all conditional access policies as a scheduled task. Checks if the policy has necessary exclusions, and if it doesn't, updates the conditional access policy and triggers an alert on Team channel.
+This tutorial shows how to build a [logic app](https://docs.microsoft.com/azure/logic-apps/) that automates emergency account management. Specifically, this logic app retrieves all Conditional Access policies as a scheduled task. Checks if the policy has necessary exclusions, and if it doesn't, updates the Conditional Access policy and triggers an alert on Team channel.
 
 In this tutorial, you learn how to:
 
@@ -23,7 +25,7 @@ In this tutorial, you learn how to:
 
 :heavy_check_mark: Add parameters and connections specific to your organization within logic app.
 
-When you're done, you will be able to automate management of emergency account within conditional access policies.
+When you're done, you will be able to automate management of emergency account within Conditional Access policies.
 
 1. Remove emergency account from a Conditional Access policy.
 
@@ -37,13 +39,13 @@ When you're done, you will be able to automate management of emergency account w
 
    ![Check](./media/emergency-accounts-step3.png)
 
-## Pre-requisites
+## Prerequisites
 
 If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you start.
 
 ## Step 1: Deploy this logic app to your organization
 
-If your Azure environment meets the prerequisites, and you're familiar with using ARM templates, these steps help you sign in directly to Azure and open the ARM template in the Azure portal. For more information, see [Deploy resources with ARM templates and Azure portal](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview).
+If your Azure environment meets the prerequisites, and you're familiar with using Azure Resource Manager templates, these steps help you sign in directly to Azure and open the Azure Resource Manager template in the Azure portal. For more information, see the article [Deploy resources with Azure Resource Manager templates and Azure portal](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview).
 
 <a name="deploy-azure-portal"></a>
 
@@ -69,7 +71,7 @@ Select the following image to sign in with your Azure account and open the logic
 
 ## Step 2: Authenticate your logic app to Azure AD with the right permissions
 
-This logic app uses managed identity for getting secrets from key vault in order to call conditional access APIs. Please look at [Authenticate your logic app to Azure AD with the right permissions](https://github.com/videor/AutoPilotConditionalAccess/tree/master/AutoPilotConditionalAccess/azure-quickstart-templates/docs) on how to create key vault and connect to managed identity. To learn more on how to use managed identities within Logic App please look at [**Logic Apps and Managed Identities**](https://docs.microsoft.com/azure/logic-apps/create-managed-service-identity).
+This logic app uses managed identity for getting secrets from key vault in order to call Conditional Access APIs. For more information, see the article [Authenticate your logic app to Azure AD with the right permissions](https://github.com/videor/AutoPilotConditionalAccess/tree/master/AutoPilotConditionalAccess/azure-quickstart-templates/docs) for how to create key vault and connect to managed identity. To learn more about how to use managed identities within Logic Apps, see the article [**Logic Apps and Managed Identities**](https://docs.microsoft.com/azure/logic-apps/create-managed-service-identity).
 
 1. In the left-hand navigation pane, select Identity > User Assigned > Select Add.
 
@@ -106,12 +108,10 @@ This logic app uses managed identity for getting secrets from key vault in order
 Similar to above, update remaining Teams connectors within the sample Logic App by selecting appropriate Teams account that needs to be used for automation.
 
 > [!WARNING]
-> Please ensure you follow the best practice guidelines on managing secrets within Logic apps by using secure inputs and outputs as [documented here](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app).
+> Ensure you follow best practices regarding managing secrets within Logic apps by using secure inputs and outputs as documented in the article, [Secure access and data in Azure Logic Apps]](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app).
 
 ## Next steps
 
 Try the following challenge:
 
 :heavy_check_mark: Edit this logic app to send a approval request on Teams channel before remediation action is taken.
-
-If you would like to request a logic app to do this, please send a request on Twitter @Vi_Deora.
