@@ -499,7 +499,7 @@ Try creating and updating a Conditional Access policy using the following JSON t
 - [JSON template - Require MFA for B2B guest users](conditional-access-api-samples\01-configure\graphapi\template-require-mfa-b2b-users.json)
 - [JSON template - Require MFA for security info registration](conditional-access-api-samples\01-configure\graphapi\template-require-mfa-security-info-registration.json)
 - [JSON template - Require a trusted device for specific applications](conditional-access-api-samples\01-configure\graphapi\template-require-trusted-device-app-access.json)
-- [JSON template - Require MFA and a password change on medium or high risk (Requires Azure AD Identity Protection)](conditional-access-api-samples\01-configure\graphapi\template-require-password-change-and-mfa-risk.json)
+- [JSON template - Require MFA on medium or high risk (Requires Azure AD Identity Protection)](conditional-access-api-samples\01-configure\graphapi\template-require-mfa-risk.json)
 - [JSON template - Require MAM policy for Android and IOS devices](conditional-access-api-samples\01-configure\graphapi\template-require-mam-android-ios.json)
 
 Next, [Try promoting Conditional Access policies from test environments](conditional-access-api-samples\02-test\readme.md).
