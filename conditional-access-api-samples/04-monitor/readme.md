@@ -1,31 +1,51 @@
 # Tutorial:	Alert on Conditional Acess Policy changes
 
-Intent: As an IT admin, I want to be able to easily setup alerts on Conditional Access policy changes.
+Intent: As an IT admin, I want to be able to easily setup alerts on conditional access policy changes.
 
-You can use the Conditional Access APIs to manage alerts on policy changes. For example, you can:
+You can use the conditional access APIs to manage alerts on policy changes. For example, you can:
 
-As a IT admin, add, update or delete a Conditional Access policy using conditional APIs or UI and be able to set up alerts that fire when CA policies are changed. 
+As a IT admin, add, update or delete a conditional access policy using conditional APIs or UI and be able to set up alerts that fire when CA policies are changed. 
+
+![Monitor](/media/Configure4.PNG)
+<br />
 
 This automation can be very useful for: 
-- Organizations that manages large numbers of Conditional Access policies. OR
+- Organizations that manages large numbers of conditional access policies. OR
 - Identity partners that manages policies for customers. 
 
-This tutorial shows how to build a [logic app](https://docs.microsoft.com/azure/logic-apps/) that automates policy alerts. Specifically, this logic app monitors the audit logs for policy changes and triggers alert on Teams channel.
+This tutorial shows how to build a [logic app](https://docs.microsoft.com/en-us/azure/logic-apps/) that automates policy alerts. Specifically, this logic app monitors the audit logs for policy changes and triggers alert on Teams channel.
 
 In this tutorial, you learn how to:
 
 :heavy_check_mark: Deploy this logic app to your organization.  <br /> 
 :heavy_check_mark: Authenticate your logic app to Azure AD with the right permissions.  <br /> 
-:heavy_check_mark: Add parameters specific to your organization within logic app.  <br /> 
-:heavy_check_mark: Add the webhook trigger from audit logs to run a custom workflow task.<br /> 
-:heavy_check_mark: Get client secret from key vault using managed identity.<br /> 
-:heavy_check_mark: Get audit logs for CRUD operation on Conditional Access policies.<br /> 
-:heavy_check_mark: Add a condition that checks if any CRUD operations were returned.<br /> 
-:heavy_check_mark: Fire an alert on Team channel if a policy alert condition is satisfied. <br /> 
+:heavy_check_mark: Add parameters and connections specific to your organization within logic app.  <br /> 
 
-When you're done, your logic app looks like this workflow at a high level:
+When you're done, you will be able to get alert on changes made to Conditional Access policies in your production environment.
+<br /> 
+<br /> 
+## 1. Delete a Ring 0 conditional access policy when you have tested and enabled policy with Ring 0 and Ring 1 assignment.
 
-![High-level logic app overview](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-alert-automation/images/Alert0-new.PNG)
+![Copy to OneDrive](/media/Alert-Step1.PNG)
+<br /> 
+<br /> 
+## 2. Acknowledge Alert in Teams as planned change
+
+![Approve configuration](/media/Alert-Step2.PNG)
+<br /> 
+<br /> 
+
+## 3. Investigate a change to conditional access policy action in Teams
+
+![Approve configuration](/media/Alert-Step3.PNG)
+<br /> 
+<br /> 
+
+## 4. Investigate a change to conditional access policy further email
+
+![Investigate change](/media/Alert-Step4.PNG)
+<br /> 
+<br /> 
 
 # Pre-requisites
 
@@ -38,24 +58,13 @@ Unsupported samples and documentation are provided for our fans and partners for
 
 # Step 1: Deploy this logic app to your organization
 
-Follow the option that you want to use for deploying the quickstart template:
+If your Azure environment meets the prerequisites, and you're familiar with using ARM templates, these steps help you sign in directly to Azure and open the ARM template in the Azure portal. For more information, see [Deploy resources with ARM templates and Azure portal](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/overview). 
 
-| Option | Description |
-|--------|-------------|
-| [Azure portal](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=azure-portal#deploy-template) | If your Azure environment meets the prerequisites, and you're familiar with using ARM templates, these steps help you sign in directly to Azure and open the quickstart template in the Azure portal. For more information, see [Deploy resources with ARM templates and Azure portal](../azure-resource-manager/templates/deploy-portal.md). |
-| [Azure CLI](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=azure-cli#deploy-template) | The Azure command-line interface (Azure CLI) is a set of commands for creating and managing Azure resources. To run these commands, you need Azure CLI version 2.6 or later. To check your CLI version, type `az --version`. For more information, see these topics: <p><p>- [What is Azure CLI](https://docs.microsoft.com/cli/azure/what-is-azure-cli?view=azure-cli-latest) <br>- [Get started with Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) |
-| [Azure PowerShell](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=azure-powershell#deploy-template) | Azure PowerShell provides a set of cmdlets that use the Azure Resource Manager model for managing your Azure resources. For more information, see these topics: <p><p>- [Azure PowerShell Overview](https://docs.microsoft.com/powershell/azure/azurerm/overview) <br>- [Introducing the Azure PowerShell Az module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) <br>- [Get started with Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps) |
-|||
-
-<a name="deploy-azure-portal"></a>
-
-#### [Azure Portal](#tab/azure-portal)
-
-1. Select the following image to sign in with your Azure account and open the logic app in the Azure portal:
+Select the following image to sign in with your Azure account and open the logic app in the Azure portal:
 
    [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fvideor%2FAutoPilotConditionalAccess%2Fmaster%2FAutoPilotConditionalAccess%2Fazure-quickstart-templates%2F301-conditionalaccess-policy-alert-automation%2Fazuredeploy.json)
    
-      [Video Link that takes you through the deployment process for Alert on Conditional Access policies](https://www.screencast.com/t/Fw4gKvf5)
+[Video Link that takes you through the deployment process for Alert on Conditional Access policies](https://www.screencast.com/t/Fw4gKvf5)
 
 1. In the portal, on the **Custom deployment** page, enter or select these values:
 
@@ -67,67 +76,27 @@ Follow the option that you want to use for deploying the quickstart template:
    | **Logic App Name** | <*logic-app-name*> | The name to use for your logic app. This example uses `301-conditionalaccess-policy-alert-automation`. |
    ||||
 
-   Here is how the page looks:
+Here is how the page looks with the values used in this example:
 
-   ![Provide information for quickstart template](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-alert-automation/images/Alert-2.PNG)
+![Provide information for quickstart template](/media/Deploy.png)
 
-1. When you're done, select **Review + Create**. Finally select **Create**.
-
-#### [CLI](#tab/azure-cli)
-
-```azurecli-interactive
-read -p "Enter a project name name to use for generating resource names:" projectName &&
-read -p "Enter the location, such as 'westus':" location &&
-templateUri="https://raw.githubusercontent.com/videor/AutoPilotConditionalAccess/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-alert-automation/azuredeploy.json" &&
-resourceGroupName="${projectName}rg" &&
-az group create --name $resourceGroupName --location "$location" &&
-az deployment group create --resource-group $resourceGroupName --template-uri  $templateUri &&
-echo "Press [ENTER] to continue ..." &&
-read
-```
-
-For more information, see these topics:
-
-* [Azure CLI: az deployment group](https://docs.microsoft.com/cli/azure/deployment/group)
-* [Deploy resources with ARM templates and Azure CLI](../azure-resource-manager/templates/deploy-cli.md)
-
-#### [PowerShell](#tab/azure-powershell)
-
-```azurepowershell-interactive
-$projectName = Read-Host -Prompt "Enter a project name to use for generating resource names"
-$location = Read-Host -Prompt "Enter the location, such as 'westus'"
-$templateUri = "https://raw.githubusercontent.com/videor/AutoPilotConditionalAccess/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-alert-automation/azuredeploy.json"
-
-$resourceGroupName = "${projectName}rg"
-
-New-AzResourceGroup -Name $resourceGroupName -Location "$location"
-New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri $templateUri
-
-Read-Host -Prompt "Press [ENTER] to continue ..."
-```
-
-For more information, see these topics:
-
-* [Azure PowerShell: New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup)
-* [Azure PowerShell: New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment)
-* [Deploy resources with ARM templates and Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md)
-
+1. When you're done, select **Review + Create** and finally **Create**.
 
 # Step 2: Authenticate your logic app to Azure AD with the right permissions
 
-This logic app uses managed identity for getting secrets from key vault in order to call Conditional Access APIs. Please look at [Authenticate your logic app to Azure AD with the right permissions](https://github.com/videor/AutoPilotConditionalAccess/tree/master/AutoPilotConditionalAccess/azure-quickstart-templates/docs) on how to create key vault and connect to managed identity. To learn more on how to use managed identities within Logic App please look at [**Logic Apps and Managed Identities**](https://docs.microsoft.com/azure/logic-apps/create-managed-service-identity) .
+This logic app uses managed identity for getting secrets from key vault in order to call conditional access APIs. Please look at [Authenticate your logic app to Azure AD with the right permissions](https://github.com/videor/AutoPilotConditionalAccess/tree/master/AutoPilotConditionalAccess/azure-quickstart-templates/docs) on how to create key vault and connect to managed identity. To learn more on how to use managed identities within Logic App please look at [**Logic Apps and Managed Identities**](https://docs.microsoft.com/en-us/azure/logic-apps/create-managed-service-identity) .
 
 1. In the left-hand navigation pane, select Identity > User Assigned > Select Add.
 
 2. Select the User-assigned managed identity from the context pane that appears on the right, select Add.
 
-![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/images/MI-edit.png).
+![ManagedIdentity](/media/MI-edit.png)
 
 # Step 3: Update parameters
 
-1. In the left-hand navigation pane, select Logic App designer > Parameters > Replace the default value with Key Vault URI for the Secret, Client ID and Tenant ID.
+1. In the left-hand navigation pane, select Logic App designer > Parameters > Replace the default value with Key Vault URI(storing Client Secret), Client ID and Tenant ID.
 
-![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/images/LA-parameters-edit.png)
+![Parameters](/media/LA-parameters-edit.png)
 
 
 # Step 4: Add the Audit Logs Webhook
@@ -180,93 +149,47 @@ This logic app uses managed identity for getting secrets from key vault in order
 1. Select the **Logic App** that you deployed for this sample.
 1. Select **Review + Create** to review the information, and then select **Create** to save the details.
 
-# Step 4: Get Audit Logs details
-
-1. On the Logic App Designer, click `Audit logs endpoint for Conditional Access policies` box. Provide the details for your variable as described here:
-
-   ![Provide information for quickstart template](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-alert-automation/images/Alert-3.PNG)
-
-   | Property | Required | Value | Description |
-   |----------|----------|-------|-------------|
-   | **Name** | Yes | URL | The name for your variable. This example uses "URL". |
-   | **Type** | Yes | String | The data type for your variable |
-   | **Value** | No| MS graph audit logs endpoint. | The initial value for your variable |
-   ||||
-   
-
-# Step 5: Get client secret from key vault using managed identity.
+# Step 5: Select appropriate managed identity.
 
 1. On the Logic App Designer, in the HTTP connection box, click `GET client secret from key vault using managed identity`. This example uses HTTP connector.
 
-1. Specify the Method, URI, Queries, Authentication type, Managed Identity and Audience.
+1. Specify the Managed Identity to use.
 
-   ![Select "GET client secret from key vault using managed identity" HTTP connector](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-backup-automation/images/backup2-edit.png)
+![Select "Managed Identity"](/media/MInew.PNG)
+   
+# Step 6: Connect to Teams channel for accepting or notifying for further investigation.
 
-      | Property | Value | Description |
-      |----------|-------|-------------|
-      | **Method** | `GET` | Method to call |
-      | **URI** | `AutoPilotConditionalAccessKeyVaultClientCredentials` | The key vault parameter URI configured in step 3  |
-      | **Queries** | `2016-10-01` | api-version |
-      | **Authentication type** | `Managed Identity` | Authentication type is managed identity |
-      | **Managed Identity** | `AutoPilotCAUAI1` | User assigned managed identity connected in step 2 |
-      | **Audience** | `https://vault.azure.net` | Key vault |
-      ||||
-    
-1. Response from Key vault is parsed.
+1. On the Logic App Designer, in the Teams connection box, click `Connections`. This example uses Teams connector:
 
-# Step 6: Get audit logs for CRUD operation on Conditional Access policies.
-
-1. On the Logic App Designer, in the HTTP connection box, click `Get audit logs for CRUD operation on Conditional Access policies`. This example uses HTTP connector.
-
-1. Specify the Method, URI, Headers, Body, Authentication type, Tenant, Audience, Client ID, Credential Type and Secret.
-
-   ![Select "GET audit logs for CRUD operation on Conditional Access policies" HTTP connector](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-backup-automation/images/backup3-edit.png)
-
-      | Property | Value | Description |
-      |----------|-------|-------------|
-      | **Method** | `GET` | Method to call |
-      | **URI** | `URL variable` | Audit Logs API v1.0 endpoint |
-      | **Headers** | `application/json` | Content-Type |
-      | **Authentication type** | `Active Directory OAuth` | Authentication type for App-only flow |
-      | **Tenant** | `TenantID` | Tennat ID configured in step 3 |
-      | **Audience** | `https://graph.microsoft.com` | MS Graph |
-      | **Client ID** | `Client ID` | Client ID configured in step 3 |
-      | **Credential Type** | `Secret` | Client Secret  |
-      | **Secret** | `value` | Secret value retrieved from key vault |
-      ||||
-      
-# Step 7: Add a condition that checks if any CRUD operations were returned.
-
-1. On the Logic App Designer, in the Condition box, verify response. This example uses response from earlier HTTP connector:
-
-1. Specify the HTTP response to evaluate, expression and verify the greater than or equal to `1` response in the condition.
-    
-      ![Select "Condition to check the response from get audit logs HTTP connector"](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-backup-automation/images/backup4-edit.png)
-    
-      | Property | Value | Description |
-      |----------|-------|-------------|
-      | **Length** | `length of array` | The length of array response to evaluate |
-      | **Expression** | `is greater than or equal to` | The expression to evaluate |
-      | **Condition** | `1` | response to verify in the condition |
-      ||||
-      
-# Step 8: Fire an alert on Team channel<br /> 
-
-1. On the Logic App Designer, in the Teams connection box, click `Post an Adaptive Card to a Teams channel and wait for a response`. This example uses Teams connector:
-
-   ![Teams alert](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-alert-automation/images/Alert-4.PNG)
+![Select "Connections"](/media/Teamsnew.PNG)
 
 1. If prompted, sign in to your email account with your credentials so that Logic Apps can create a connection to your Teams account.
 
-1. In the connector box, provide the criteria for posting an adaptive card to Teams channel.
+1. Specify the Team and channel you will like to use for automation of approval workflow.
 
-1. Specify the Team, channel and message for posting to Teams. The message is shorterned for readability.
+# Step 7: Connect to your Outlook account you will like to use for automation.
 
-      | Property | Value | Description |
-      |----------|-------|-------------|
-      | **Team** | `ConditionalAccess` | The Team to post alert |
-      | **Channel** | `General` | The Teams channel to post alert |
-      | **message** | `message` | Post the adaptive card with an alert message |
-      ||||
+1. On the Logic App Designer, in the Outlook connection box, click `Connections`. This example uses Outlook connector for Logic apps:
 
+![Select "Connections"](/media/Outlook.PNG)
+
+1. If prompted, sign in to your email account with your credentials so that Logic Apps can create a connection to your Outlook account.
+
+1. If connection is successful, select the Outlook account you would like to sent alerts for further investigation.
+      
+# Step 8: Update all other connectors within Logic App.
+
+Similar to above, update remaining OneDrive and Teams connectors within the sample Logic App by selecting appropriate OneDrive and Teams account that needs to be used for automation.
+
+# Note
+
+Please ensure you follow the best practise guidelines on managing secrets within Logic apps by using secure inputs and outputs as [documented here](https://docs.microsoft.com/en-us/azure/logic-apps/logic-apps-securing-a-logic-app).
+
+# Forward Looking
+
+Try the following challenge:
+
+:heavy_check_mark: Edit this logic app to send further policy details such as Policy State information. This will allow you to check of the policy was changed to **Report-only** or **Off** state before it was deleted as part of lifecycle.<br /> 
+
+If you would like to request a logic app to do this, please send a request on Twitter @Vi_Deora.
 
