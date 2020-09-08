@@ -6,7 +6,7 @@ You can use the conditional access APIs to easily backup conditional access poli
 
 As a IT admin, be able to automate a regular backup/snapshot of all conditional access policies within your environment. Select a policy to Restore. Finally, restore the conditional access policy in your production environment.
 
-   ![Manage](/media/Configure5.PNG)
+   ![Manage](./media/configure5.png)
 
 This automation can be very useful for:
 
@@ -25,25 +25,25 @@ In this tutorial, you learn how to:
 
 When you're done, you will be able to backup-restore Conditional Access policies in your production environment:
 
-1. Select the policy you want to restore from Backup and copy to Restore OneDrive folder. 
+1. Select the policy you want to restore from Backup and copy to Restore OneDrive folder.
 
-   ![Copy to OneDrive](/media/BackupRestore-Step1.PNG)
+   ![Copy to OneDrive](./media/backup-restore-step1.png)
 
 1. Approve Restore action in Teams
 
-   ![Approve configuration](/media/BackupRestore-Step2.PNG)
+   ![Approve configuration](./media/backup-restore-step2.png)
 
 1. Receive notification that Restore action is successfully completed in your production environment
 
-   ![Confirmation](/media/BackupRestore-Step3.PNG)
+   ![Confirmation](./media/backup-restore-step3.png)
 
 1. View your restored Conditional Access policy in Azure portal
 
-   ![View policy](/media/BackupRestore-Step4.PNG)
+   ![View policy](./media/backup-restore-step4.png)
 
 1. Check your user assignments are correct within the policy
 
-   ![Assign test users](/media/BackupRestore-Step5.PNG)
+   ![Assign test users](./media/backup-restore-step5.png)
 
 ## Pre-requisites
 
@@ -82,7 +82,7 @@ Select the following image to sign in with your Azure account and open the logic
 
    Here is how the page looks with the values used in this example:
 
-   ![Provide information for quickstart template](/media/Deploy.png)
+   ![Provide information for quickstart template](./media/deploy.png)
 
 1. When you're done, select **Review + Create** and finally **Create**.
 
@@ -94,13 +94,13 @@ This logic app uses managed identity for getting secrets from key vault in order
 
 2. Select the User-assigned managed identity from the context pane that appears on the right, select Add.
 
-   ![ManagedIdentity](/media/MI-edit.png)
+   ![ManagedIdentity](./media/mi-edit.png)
 
 ## Step 3: Update parameters
 
 1. In the left-hand navigation pane, select Logic App designer > Parameters > Replace the default value with Key Vault URI (storing Client Secret), Client ID and Tenant ID.
 
-   ![Parameters](/media/LA-parameters-edit.png)
+   ![Parameters](./media/la-parameters-edit.png)
 
 ## Step 4: Select appropriate managed identity
 
@@ -108,13 +108,13 @@ This logic app uses managed identity for getting secrets from key vault in order
 
 1. Specify the Managed Identity to use.
 
-   ![Select "Managed Identity"](/media/MInew.PNG)
+   ![Select "Managed Identity"](./media/mi-new.png)
 
 ## Step 5: Connect to your OneDrive account and select the Backup and Restore folders in respective logic apps you will like to use for automation
 
 1. On the Logic App Designer, in the OneDrive for Business connection box, click `Connections`. This example uses OneDrive connector for Logic apps:
 
-   ![Select "Connections"](/media/OneDrivenew.PNG)
+   ![Select "Connections"](./media/onedrive-new.png)
 
 1. If prompted, sign in to your email account with your credentials so that Logic Apps can create a connection to your OneDrive account.
 
@@ -124,7 +124,7 @@ This logic app uses managed identity for getting secrets from key vault in order
 
 1. On the Logic App Designer, in the Teams connection box, click `Connections`. This example uses Teams connector:
 
-   ![Select "Connections"](/media/Teamsnew.PNG)
+   ![Select "Connections"](./media/teams-new.png)
 
 1. If prompted, sign in to your email account with your credentials so that Logic Apps can create a connection to your Teams account.
 
