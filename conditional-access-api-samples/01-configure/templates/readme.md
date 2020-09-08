@@ -90,11 +90,11 @@ Logic App for Easy Configuration of Conditional Access Policies using Templates.
    | **Subscription** | <*Azure-subscription-name*> | The name for the Azure subscription to use |
    | **Resource group** | <*Azure-resource-group-name*> | The name for a new or existing Azure resource group. This example uses `AutoPilotConditionalAccess`. |
    | **Location** |  <*Azure-region-for-all-resources*> | The Azure region to use for all resources, if different from the default value. This example uses the default value, `[resourceGroup().location]`, which is the resource group location. |
-   | **Logic App Name** | <*logic-app-name*> | The name to use for your logic app. This example uses `301-conditionalaccess-policy-copy-paste-automation`. |
+   | **Logic App Name** | <*logic-app-name*> | The name to use for your logic app. This example uses `301-conditionalaccess-policy-template-automation`. |
 
    Here is how the page looks with the values used in this example:
 
-   ![Provide information for quickstart template](./media/custom-deployment-values.png)
+   ![Provide information for quickstart template](/media/Deploy.png)
 
 1. When you're done, select **Review + Create** and finally **Create**.
 
@@ -111,7 +111,7 @@ This logic app uses managed identity for getting secrets from key vault in order
 
 ## Step 3: Update parameters
 
-1. In the left-hand navigation pane, select Logic App designer > Parameters > Replace the default value with Key Vault URI, Client ID and Tenant ID.
+1. In the left-hand navigation pane, select Logic App designer > Parameters > Replace the default value with Key Vault URI (storing Client Secret), Client ID and Tenant ID.
 
    ![Update the parameters in the Logic App](./media/update-parameters-logic-app.png)
 
