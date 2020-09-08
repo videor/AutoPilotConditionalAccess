@@ -15,6 +15,9 @@ You can use the Conditional Access APIs to easily deploy Conditional Access poli
 
 As a IT admin, be able to copy a template policy file and configure it in your pre-production environment. 
 
+![Configure](/media/Configure1.PNG)
+<br /> 
+
 This automation can be very useful for:
 
 - Organizations that manages large numbers of Conditional Access policies. OR
@@ -28,25 +31,37 @@ In this tutorial, you learn how to:
 
 :heavy_check_mark: Authenticate your logic app to Azure AD with the right permissions.  
 
-:heavy_check_mark: Add parameters specific to your organization within logic app.  
+:heavy_check_mark: Add parameters and connections specific to your organization within logic app.  
 
-:heavy_check_mark: Add a trigger that monitors Template OneDrive folder for new requests.
+When you're done, you will be able to manage Conditional Access policies using templates within your pre-production environment:
+<br /> 
+<br /> 
+## 1. Copy your Template and drop it in your Onedrive folder
 
-:heavy_check_mark: Add an action that sends a message to Teams channel for approving or rejecting these requests.
+![Copy to OneDrive](/media/Templates-Step1.png)
+<br /> 
+<br /> 
+## 2. Approve Template configuration in Teams
 
-:heavy_check_mark: Add a condition that checks the approval response.
+![Approve configuration](/media/Templates-Step2.png)
+<br /> 
+<br /> 
+## 3. Receive notification that Template is successfully deployed in your pre-production environment
 
-:heavy_check_mark: Get client secret from key vault using managed identity.
+![Confirmation](/media/Templates-Step3.png)
+<br /> 
+<br /> 
+## 4. View your newly deployed Conditional Access policy in Azure portal
 
-:heavy_check_mark: Add an action that configures the policy in PRE-PROD environment.
+![View policy](/media/Templates-Step4.PNG)
+<br /> 
+<br /> 
+## 5. Check your Test users are assigned to the policy
 
-:heavy_check_mark: Add a condition that checks whether the policy was configured successfully.
+![Assign test users](/media/Templates-Step5.png)
+<br /> 
+<br /> 
 
-:heavy_check_mark: Add an action that sends a message to a Teams channel confirming the outcome of policy configuration in pre-production.
-
-When you're done, your logic app looks like this workflow at a high level:
-
-![High-level finished logic app overview](./media/logic-app-high-level.png)
 
 ## Pre-requisites
 
@@ -56,13 +71,7 @@ You will also need knowledge of key concepts within Azure logic apps, OneDrive a
 
 ## Step 1: Deploy this logic app to your organization
 
-Follow the option that you want to use for deploying the template:
-
-| Option | Description |
-|--------|-------------|
-| [Azure portal](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=azure-portal#deploy-template) | If your Azure environment meets the prerequisites, and you're familiar with using ARM templates, these steps help you sign in directly to Azure and open the quickstart template in the Azure portal. For more information, see [Deploy resources with ARM templates and Azure portal](../azure-resource-manager/templates/deploy-portal.md). |
-| [Azure CLI](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=azure-cli#deploy-template) | The Azure command-line interface (Azure CLI) is a set of commands for creating and managing Azure resources. To run these commands, you need Azure CLI version 2.6 or later. To check your CLI version, type `az --version`. For more information, see these topics: <p><p>- [What is Azure CLI](https://docs.microsoft.com/cli/azure/what-is-azure-cli?view=azure-cli-latest) <br>- [Get started with Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) |
-| [Azure PowerShell](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=azure-powershell#deploy-template) | Azure PowerShell provides a set of cmdlets that use the Azure Resource Manager model for managing your Azure resources. For more information, see these topics: <p><p>- [Azure PowerShell Overview](https://docs.microsoft.com/powershell/azure/azurerm/overview) <br>- [Introducing the Azure PowerShell Az module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) <br>- [Get started with Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps) |
+If your Azure environment meets the prerequisites, and you're familiar with using ARM templates, these steps help you sign in directly to Azure and open the ARM template in the Azure portal. For more information, see [Deploy resources with ARM templates and Azure portal](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/overview). 
 
 ### Azure Portal
 
@@ -87,46 +96,8 @@ Logic App for Easy Configuration of Conditional Access Policies using Templates.
 
    ![Provide information for quickstart template](./media/custom-deployment-values.png)
 
-1. When you're done, select **Purchase**.
+1. When you're done, select **Review + Create** and finally **Create**.
 
-### CLI
-
-```azurecli-interactive
-read -p "Enter a project name name to use for generating resource names:" projectName &&
-read -p "Enter the location, such as 'westus':" location &&
-templateUri="https://raw.githubusercontent.com/videor/AutoPilotConditionalAccess/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-copy-paste-automation/azuredeploy.json" &&
-resourceGroupName="${projectName}rg" &&
-az group create --name $resourceGroupName --location "$location" &&
-az deployment group create --resource-group $resourceGroupName --template-uri  $templateUri &&
-echo "Press [ENTER] to continue ..." &&
-read
-```
-
-For more information, see these topics:
-
-- [Azure CLI: az deployment group](https://docs.microsoft.com/cli/azure/deployment/group)
-- [Deploy resources with ARM templates and Azure CLI](../azure-resource-manager/templates/deploy-cli.md)
-
-### PowerShell
-
-```azurepowershell-interactive
-$projectName = Read-Host -Prompt "Enter a project name to use for generating resource names"
-$location = Read-Host -Prompt "Enter the location, such as 'westus'"
-$templateUri = "https://raw.githubusercontent.com/videor/AutoPilotConditionalAccess/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-copy-paste-automation/azuredeploy.json"
-
-$resourceGroupName = "${projectName}rg"
-
-New-AzResourceGroup -Name $resourceGroupName -Location "$location"
-New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri $templateUri
-
-Read-Host -Prompt "Press [ENTER] to continue ..."
-```
-
-For more information, see these topics:
-
-- [Azure PowerShell: New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup)
-- [Azure PowerShell: New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment)
-- [Deploy resources with ARM templates and Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md)
 
 ## Step 2: Authenticate your logic app to Azure AD with the right permissions
 
@@ -144,174 +115,43 @@ This logic app uses managed identity for getting secrets from key vault in order
 
    ![Update the parameters in the Logic App](./media/update-parameters-logic-app.png)
 
-## Step 4: Add a trigger that monitors OneDrive folder for template requests
+# Step 4: Connect to your OneDrive account and select the template folder you will like to use for automation
 
-1. On the Logic App Designer, in the OneDrive connection box, click `When a file is created`. This example uses OneDrive trigger.
+1. On the Logic App Designer, in the OneDrive for Business connection box, click `Connections`. This example uses OneDrive connector for Logic apps:
+
+![Select "Connections"](/media/OneDrivenew.PNG)
 
 1. If prompted, sign in to your email account with your credentials so that Logic Apps can create a connection to your OneDrive account.
 
-1. In the trigger, provide the criteria for checking all new files.
+1. If connection is successful, select the OneDrive folder you would like to use for Template automation.
 
-1. Specify folder, include sub folder, infer content type and how often do you want to check for items
 
-   | Property | Value | Description |
-   |----------|-------|-------------|
-   | **Folder** | `/ConditionalAccess/Template` | The OneDrive folder to monitor |
-   | **Include sub folder** | `No` | Should the sub folders be included |
-   | **Infer content type** | `Yes` | Infer the content type of the file |
-   | **How often do you want to check for items** | `1 Minute` | The unit of time to use for monitoring the folder |
+# Step 5: Connect to Teams channel for approving or rejecting Template requests.
 
-1. Following the trigger, the response is parsed.
+1. On the Logic App Designer, in the Teams connection box, click `Connections`. This example uses Teams connector:
 
-## Step 5: Add an action that sends a message to Teams channel for approving or rejecting these requests
-
-1. On the Logic App Designer, in the Teams connection box, click `Post an adaptive card to a Teams channel and wait for response`. This example uses Teams connector:
-
-   ![Select "Post an adaptive card to Teams channel and wait for a response" connector for Teams](./media/post-to-teams-channel.png)
+![Select "Connections"](/media/Teamsnew.PNG)
 
 1. If prompted, sign in to your email account with your credentials so that Logic Apps can create a connection to your Teams account.
 
-1. In the connector box, provide the criteria for posting an adaptive card to Teams channel.
+1. Specify the Team and channel you will like to use for automation of approval workflow.
 
-1. Specify the Team, channel, update card and update message for posting to Teams. Message is shortened for readability.
-
-   | Property | Value | Description |
-   |----------|-------|-------------|
-   | **Team** | `ConditionalAccess` | The Team to post approval workflow |
-   | **Message** | `Adaptive card message` | The message to send in workflow |
-   | **Channel** | `General` | The Teams channel to post approval workflow |
-   | **Update card** | `Yes` | Update the adaptive card to show a member of Teams channel has taken an action |
-   | **update message** | `Processing requested blueprint deployment` | Update the adaptive card to show a message once an approval action is taken |
-
-## Step 6: Add a condition that checks the approval response
-
-1. On the Logic App Designer, select the Condition box `Check for approval`. This example uses response from earlier Teams connector:
-
-1. Specify the Team card response, expression and verify `approve` response in the condition.
-
-   ![Select "Condition to check the response from adaptive card that was posted earlier to Teams channel"](./media/check-for-approval-response.png)
-
-   | Property | Value | Description |
-   |----------|-------|-------------|
-   | **Team Card** | `data.action` | The Team card response to evaluate |
-   | **Expression** | `is equal to` | The expression to evaluate |
-   | **Condition** | `Approve` | response to verify in the condition |
-
-## Step 7: Get client secret from key vault using managed identity
+# Step 6: Select appropriate managed identity.
 
 1. On the Logic App Designer, in the HTTP connection box, click `GET client secret from key vault using managed identity`. This example uses HTTP connector.
 
-1. Specify the Method, URI, Queries, Authentication type, Managed Identity and Audience.
+1. Specify the Managed Identity to use.
 
-   ![Select "GET client secret from key vault using managed identity" HTTP connector]./media/get-client-secret-key-vault.png)
+![Select "Managed Identity"](/media/MInew.PNG)
 
-   | Property | Value | Description |
-   |----------|-------|-------------|
-   | **Method** | `GET` | Method to call |
-   | **URI** | `AutoPilotConditionalAccessKeyVaultClientCredentials` | The key vault parameter URI configured in step 3  |
-   | **Queries** | `2016-10-01` | api-version |
-   | **Authentication type** | `Managed Identity` | Authentication type is managed identity |
-   | **Managed Identity** | `AutoPilotCAUAI1` | User assigned managed identity connected in step 2 |
-   | **Audience** | `https://vault.azure.net` | Key vault |
+# Step 7: Update all other connectors within Logic App.
 
-1. Response from Key vault is parsed.
+Similar to above, update remaining OneDrive and Teams connectors within the sample Logic App by selecting appropriate OneDrive and Teams account that needs to be used for automation.
 
-1. The pasted policy is checked to ensure it is set to report-only mode and read-only attributes (`id`, `createdDateTime` and `modifiedDateTime`) are removed.
-  
-  ![Select "Remove read-only attributes from pasted policy" Data compose action](./media/remove-read-only-properties.png)
+# Note
 
-## Step 8: Configure the Conditional Access policy in PPE environment
+Please ensure you follow the best practise guidelines on managing secrets within Logic apps by using secure inputs and outputs as [documented here](https://docs.microsoft.com/en-us/azure/logic-apps/logic-apps-securing-a-logic-app).
 
-1. On the Logic App Designer, in the HTTP connection box, click `Configure Conditional Access policy`. This example uses HTTP connector.
-
-1. Specify the Method, URI, Headers, Body, Authentication type, Tenant, Audience, Client ID, Credential Type and Secret.
-
-   ![Select "Configure Conditional Access policy" HTTP connector](./media/configure-paste-logic.png)
-
-   | Property | Value | Description |
-   |----------|-------|-------------|
-   | **Method** | `POST` | Method to call |
-   | **URI** | `https://graph.microsoft.com/v1.0/identity/conditionalAccess/policies` | Conditional Access API v1.0 endpoint |
-   | **Headers** | `application/json` | Content-Type |
-   | **Body** | `Outputs` | Output from blueprint JSON after clensing from previous step |
-   | **Authentication type** | `Active Directory OAuth` | Authentication type for App-only flow |
-   | **Tenant** | `TenantID` | Tennat ID configured in step 3 |
-   | **Audience** | `https://graph.microsoft.com` | MS Graph |
-   | **Client ID** | `Client ID` | Client ID configured in step 3 |
-   | **Credential Type** | `Secret` | Client Secret  |
-   | **Secret** | `value` | Secret value retrieved from key vault |
-
-## Step 9: If the operation was successful alert on Team channel
-
-1. On the Logic App Designer, in the conditions connection box, click `check if the Conditional Access policy was configured successfully`. This example uses logic app condition evaluation:
-
-   ![Select "check to find if the Conditional Access policy was configured successfully" condition](./media/check-for-success.png)
-
-1. In the condition, provide the criteria for checking the condition.
-
-1. Specify the HTTP response to evaluate, expression and verify it is equal to `204` response in the condition.
-
-   | Property | Value | Description |
-   |----------|-------|-------------|
-   | **Status code** | `Status code` | The status code from previous step to evaluate |
-   | **Expression** | `is equal to` | The expression to evaluate |
-   | **Condition** | `204` | response to verify in the condition |
-  
-1. On the Logic App Designer, in the Teams connection box, click `Post to Teams channel that the action was completed successfully`. This example uses Teams connector:
-
-1. If prompted, sign in to your email account with your credentials so that Logic Apps can create a connection to your Teams account.
-
-1. In the connector box, provide the criteria for posting an adaptive card to Teams channel.
-
-1. Specify the Team, channel and message for posting to Teams. The message is shortened for readability.
-
-   | Property | Value | Description |
-   |----------|-------|-------------|
-   | **Team** | `ConditionalAccess` | The Team to post alert |
-   | **Channel** | `General` | The Teams channel to post alert |
-   | **message** | `message` | Post the adaptive card with an alert message |
-
-1. On the Logic App Designer, in the OneDrive connection box, click `Delete file after successful action`. This example uses OneDrive connector:
-
-1. If prompted, sign in to your email account with your credentials so that Logic Apps can create a connection to your OneDrive account.
-
-1. In the connector, provide the criteria for deleting the file.
-
-1. Specify the file id within OneDrive.
-
-   | Property | Value | Description |
-   |----------|-------|-------------|
-   | **File** | `File identifier` | The OneDrive file id to delete |
-
-## Step 10: If the paste operation was un-successful alert on Teams channel
-
-1. On the Logic App Designer, in the conditions connection box, click `if invalid application id`. This example uses logic app condition evaluation:
-
-   ![Select "check to find if the Conditional Access policy paste failed" condition](./media/check-for-failure.png)
-
-1. In the condition, provide the criteria for checking the condition.
-
-1. Specify the HTTP response to evaluate, expression and verify it is equal to `1034: Policy contains invalid applications` response in the condition.
-
-   | Property | Value | Description |
-   |----------|-------|-------------|
-   | **Error Message** | `error message` | The error message from previous step to evaluate |
-   | **Expression** | `contains` | The expression to evaluate |
-   | **Condition** | `1034: Policy contains invalid applications` | response to verify in the condition |
-
-1. On the Logic App Designer, in the Teams connection box, click `Post message in Teams channel that policy contains un-supported application ids`. This example uses Teams connector:
-
-1. If prompted, sign in to your email account with your credentials so that Logic Apps can create a connection to your Teams account.
-
-1. In the connector box, provide the criteria for posting an adaptive card to Teams channel.
-
-1. Specify the Team, channel and message for posting to Teams. The message is shorterned for readability.
-
-   | Property | Value | Description |
-   |----------|-------|-------------|
-   | **Team** | `ConditionalAccess` | The Team to post alert |
-   | **Channel** | `General` | The Teams channel to post alert |
-   | **message** | `message` | Post the adaptive card with an alert message |
 
 ## Challenge
 
