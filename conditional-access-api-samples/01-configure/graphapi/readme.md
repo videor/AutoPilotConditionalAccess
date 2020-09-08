@@ -51,7 +51,7 @@ For reading Conditional Access policies:
 
 ### Specific permissions
 
-One of the following permissions is required to call this API. To learn more, including how to choose permissions, see [Permissions](/graph/permissions-reference).
+One of the following permissions is required to call this API. To learn more, including how to choose permissions, see the article [Microsoft Graph permissions reference](/graph/permissions-reference).
 
 | Permission type | Permissions (all three roles below are required for read and write operations) |
 | --- | --- |
@@ -63,7 +63,7 @@ One of the following permissions is required to call this API. To learn more, in
 
 The steps to create a Sign-in risk-based Conditional Access policy [create sign-in risk policy](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-policy-risk) within Azure Portal is documented. Let us use this document as a reference to create a policy called "CA002: Require MFA for medium + sign-in risk" using the APIs.
 
-To create a Conditional Access policy, use the following *POST* operation.
+To create a Conditional Access policy, use the following `POST` operation.
 
 ```http
 POST https://graph.microsoft.com/v1.0/identity/conditionalAccess/policies
