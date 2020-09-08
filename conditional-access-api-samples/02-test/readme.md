@@ -6,7 +6,7 @@ You can use the conditional access APIs to easily deploy conditional access poli
 
 As a IT admin, be able to automate a regular snapshot of all conditional access policies within pre-production environment. Select a policy to copy from pre-production. Finally, paste the conditional access policy in production environment.  
 
-   ![Test](/media/Configure2.PNG)
+   ![Test](./media/configure2.png)
 
 This automation can be very useful for:
 
@@ -27,33 +27,33 @@ When you're done, you will be able to copy-paste Conditional Access policies fro
 
 1. Copy your Conditional Access policies from PPE folder and drop it in your PROD OneDrive folder
 
-   ![Copy to OneDrive](/media/CopyPaste-Step1.PNG)
+   ![Copy to OneDrive](./media/copy-paste-step1.png)
 
 1. Approve Copy-Paste in Teams
 
-   ![Approve configuration](/media/CopyPaste-Step2.PNG)
+   ![Approve configuration](./media/copy-paste-step2.png)
 
 1. Receive notification that Copy-Paste action is successfully completed in your production environment
 
-   ![Confirmation](/media/CopyPaste-Step3.PNG)
+   ![Confirmation](./media/copy-paste-step3.png)
 
 1. View your newly deployed Conditional Access policy in Azure portal
 
-   ![View policy](/media/CopyPaste-Step4.PNG)
+   ![View policy](./media/copy-paste-step4.png)
 
 1. Check your production Ring 0 users are assigned to the policy
 
-   ![Assign test users](/media/CopyPaste-Step5.PNG)
+   ![Assign test users](./media/copy-paste-step5.png)
 
 ## Pre-requisites
 
 If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you start.
 
-You will also need knowledge of key concepts within Azure Logic apps, OneDrive and Teams. 
+You will also need knowledge of key concepts within Azure Logic apps, OneDrive and Teams.
 
 ## Step 1: Deploy this logic app to your organization
 
-If your Azure environment meets the prerequisites, and you're familiar with using ARM templates, these steps help you sign in directly to Azure and open the ARM template in the Azure portal. For more information, see [Deploy resources with ARM templates and Azure portal](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview). 
+If your Azure environment meets the prerequisites, and you're familiar with using ARM templates, these steps help you sign in directly to Azure and open the ARM template in the Azure portal. For more information, see [Deploy resources with ARM templates and Azure portal](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview).
 
 <a name="deploy-azure-portal"></a>
 
@@ -82,7 +82,7 @@ Select the following image to sign in with your Azure account and open the logic
 
    Here is how the page looks with the values used in this example:
 
-   ![Provide information for quickstart template](/media/Templates-Step6.png)
+   ![Provide information for quickstart template](./media/templates-step6.png)
 
 1. When you're done, select **Review + Create** and finally **Create**.
 
@@ -94,19 +94,19 @@ This logic app uses managed identity for getting secrets from key vault in order
 
 1. Select the User-assigned managed identity from the context pane that appears on the right, select Add.
 
-   ![ManagedIdentity](/media/MI-edit.png)
+   ![ManagedIdentity](./media/mi-edit.png)
 
 ## Step 3: Update parameters
 
 1. In the left-hand navigation pane, select Logic App designer > Parameters > Replace the default value with Key Vault URI (storing Client Secret), Client ID and Tenant ID.
 
-   ![Parameters](/media/LA-parameters-edit.png)
+   ![Parameters](./media/la-parameters-edit.png)
 
 ## Step 4: Connect to your OneDrive account and select the PPE and PROD folders in respective logic apps you will like to use for automation
 
 1. On the Logic App Designer, in the OneDrive for Business connection box, click `Connections`. This example uses OneDrive connector for Logic apps:
 
-   ![Select "Connections"](/media/OneDrivenew.PNG)
+   ![Select "Connections"](./media/onedrive-new.png)
 
 1. If prompted, sign in to your email account with your credentials so that Logic Apps can create a connection to your OneDrive account.
 
@@ -116,7 +116,7 @@ This logic app uses managed identity for getting secrets from key vault in order
 
 1. On the Logic App Designer, in the Teams connection box, click `Connections`. This example uses Teams connector:
 
-![Select "Connections"](/media/Teamsnew.PNG)
+![Select "Connections"](./media/teams-new.png)
 
 1. If prompted, sign in to your email account with your credentials so that Logic Apps can create a connection to your Teams account.
 
@@ -128,7 +128,7 @@ This logic app uses managed identity for getting secrets from key vault in order
 
 1. Specify the Managed Identity to use.
 
-   ![Select "Managed Identity"](/media/MInew.PNG)
+   ![Select "Managed Identity"](./media/mi-new.png)
 
 ## Step 7: Update all other connectors within Logic App
 
@@ -141,7 +141,8 @@ Similar to above, update remaining OneDrive and Teams connectors within the samp
 
 Try the following challenge:
 
-:heavy_check_mark: Edit this logic app to send a custom message on Teams channel when the approval workflow selection is Reject copy-paste action.  <br /> 
-:heavy_check_mark: Edit this logic app to delete the policy file in PROD OneDrive folder when the approval workflow selection is Reject copy-paste action. <br /> 
+:heavy_check_mark: Edit this logic app to send a custom message on Teams channel when the approval workflow selection is Reject copy-paste action.
+
+:heavy_check_mark: Edit this logic app to delete the policy file in PROD OneDrive folder when the approval workflow selection is Reject copy-paste action.
 
 Finally, Try cloning the logic and build workflows to also support line of business application ids. If you would like to request a logic app to do this, please send a request on Twitter @Vi_Deora.

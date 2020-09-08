@@ -6,7 +6,7 @@ You can use the conditional access APIs to manage policy blueprints that you can
 
 As a central IT admin, add a new policy blueprint to branch offices and subsidiaries shared OneDrive folder. All subsidieries and branch offices will receive notification to create a new conditional access policy based on the policy blueprint. Admins in branch offices and subsidiaries can approve or reject this blueprint. If approved, the policy blueprint will be deployed.
 
-   ![Deploy](/media/Configure3.PNG)
+   ![Deploy](./media/configure3.png)
 
 This automation can be very useful for:
 
@@ -30,23 +30,23 @@ When you're done, you will be able to deploy Conditional Access policies to larg
 
 1. Central IT admin, uploads a blueprint to a branch office OneDrive folder.
 
-   ![Copy to OneDrive](/media/BranchOffice-Step1.PNG)
+   ![Copy to OneDrive](./media/branch-office-step1.png)
 
 1. Branch office admin gets approval request in Teams
 
-   ![Approve configuration](/media/BranchOffice-Step2.PNG)
+   ![Approve configuration](./media/branch-office-step2.png)
 
 1. Branch office admin receives notification that deployment action is successfully completed.
 
-   ![Confirmation](/media/BranchOffice-Step3.PNG)
+   ![Confirmation](./media/branch-office-step3.png)
 
 1. Branch office admin can view the newly deployed Conditional Access policy in Azure portal
 
-   ![View policy](/media/BranchOffice-Step4.PNG)
+   ![View policy](./media/branch-office-step4.png)
 
 1. Branch office admin checks user assignment within the policy
 
-   ![Assign test users](/media/BranchOffice-Step5.PNG)
+   ![Assign test users](./media/branch-office-step5.png)
 
 ## Pre-requisites
 
@@ -71,7 +71,7 @@ Select the following image to sign in with your Azure account and open the logic
 
    Here is how the page looks with the values used in this example:
 
-   ![Provide information for quickstart template](/media/Deploy.png)
+   ![Provide information for quickstart template](./media/deploy.png)
 
 1. When you're done, select **Review + Create** and finally **Create**.
 
@@ -95,7 +95,7 @@ This logic app uses managed identity for getting secrets from key vault in order
 
 1. On the Logic App Designer, in the OneDrive for Business connection box, click `Connections`. This example uses OneDrive connector for Logic apps:
 
-   ![Select "Connections"](/media/OneDrivenew.PNG)
+   ![Select "Connections"](./media/onedrive-new.png)
 
 1. If prompted, sign in to your email account with your credentials so that Logic Apps can create a connection to your OneDrive account.
 
@@ -105,7 +105,7 @@ This logic app uses managed identity for getting secrets from key vault in order
 
 1. On the Logic App Designer, in the Teams connection box, click `Connections`. This example uses Teams connector:
 
-   ![Select "Connections"](/media/Teamsnew.PNG)
+   ![Select "Connections"](./media/teams-new.png)
 
 1. If prompted, sign in to your email account with your credentials so that Logic Apps can create a connection to your Teams account.
 
@@ -117,7 +117,7 @@ This logic app uses managed identity for getting secrets from key vault in order
 
 1. Specify the Managed Identity to use.
 
-   ![Select "Managed Identity"](/media/MInew.PNG)
+   ![Select "Managed Identity"](./media/mi-new.png)
 
 ## Step 7: Update all other connectors within Logic App
 

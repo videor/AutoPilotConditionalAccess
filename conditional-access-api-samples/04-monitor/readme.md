@@ -6,7 +6,7 @@ You can use the conditional access APIs to manage alerts on policy changes. For 
 
 As a IT admin, add, update or delete a conditional access policy using conditional APIs or UI and be able to set up alerts that fire when CA policies are changed.
 
-   ![Monitor](/media/Configure4.PNG)
+   ![Monitor](./media/configure4.png)
 
 This automation can be very useful for:
 
@@ -27,19 +27,19 @@ When you're done, you will be able to get alert on changes made to Conditional A
 
 1. Delete a Ring 0 conditional access policy when you have tested and enabled policy with Ring 0 and Ring 1 assignment.
 
-   ![Copy to OneDrive](/media/Alert-Step1.PNG)
+   ![Copy to OneDrive](./media/alert-step1.png)
 
 1. Acknowledge Alert in Teams as planned change
 
-   ![Approve configuration](/media/Alert-Step2.PNG)
+   ![Approve configuration](./media/alert-step2.png)
 
 1. Investigate a change to conditional access policy action in Teams
 
-   ![Approve configuration](/media/Alert-Step3.PNG)
+   ![Approve configuration](./media/alert-step3.png)
 
 1. Investigate a change to conditional access policy further email
 
-   ![Investigate change](/media/Alert-Step4.PNG)
+   ![Investigate change](./media/alert-step4.png)
 
 ## Pre-requisites
 
@@ -66,7 +66,7 @@ Select the following image to sign in with your Azure account and open the logic
 
 Here is how the page looks with the values used in this example:
 
-   ![Provide information for quickstart template](/media/Deploy.png)
+   ![Provide information for quickstart template](./media/deploy.png)
 
 1. When you're done, select **Review + Create** and finally **Create**.
 
@@ -78,13 +78,13 @@ This logic app uses managed identity for getting secrets from key vault in order
 
 1. Select the User-assigned managed identity from the context pane that appears on the right, select Add.
 
-   ![ManagedIdentity](/media/MI-edit.png)
+   ![ManagedIdentity](./media/mi-edit.png)
 
 ## Step 3: Update parameters
 
 1. In the left-hand navigation pane, select Logic App designer > Parameters > Replace the default value with Key Vault URI(storing Client Secret), Client ID and Tenant ID.
 
-   ![Parameters](/media/LA-parameters-edit.png)
+   ![Parameters](/media/la-parameters-edit.png)
 
 ## Step 4: Add the Audit Logs Webhook
 
@@ -104,7 +104,7 @@ This logic app uses managed identity for getting secrets from key vault in order
       > [!NOTE]
       > You will notice a additional log entry for Conditional Access policy changes which targets Default policy. We will filter the duplicates later in the logic app.
 
-![Alert template](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-alert-automation/images/Alert-5.PNG)
+![Alert template](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-alert-automation/images/Alert-5.png)
 
 1. Under **Alert logic**, enter the following:
 
@@ -126,7 +126,7 @@ This logic app uses managed identity for getting secrets from key vault in order
 
 1. Select **Create an action group**.
 
-   ![create an action group for notification actions](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-alert-automation/images/Alert-6.PNG)
+   ![create an action group for notification actions](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-alert-automation/images/Alert-6.png)
 
 1. Verify the subscription and resource group.
 1. Enter the action group name and a display name.
@@ -141,13 +141,13 @@ This logic app uses managed identity for getting secrets from key vault in order
 
 1. Specify the Managed Identity to use.
 
-   ![Select "Managed Identity"](/media/MInew.PNG)
+   ![Select "Managed Identity"](./media/mi-new.png)
 
 ## Step 6: Connect to Teams channel for accepting or notifying for further investigation
 
 1. On the Logic App Designer, in the Teams connection box, click `Connections`. This example uses Teams connector:
 
-   ![Select "Connections"](/media/Teamsnew.PNG)
+   ![Select "Connections"](./media/teams-new.png)
 
 1. If prompted, sign in to your email account with your credentials so that Logic Apps can create a connection to your Teams account.
 
@@ -157,7 +157,7 @@ This logic app uses managed identity for getting secrets from key vault in order
 
 1. On the Logic App Designer, in the Outlook connection box, click `Connections`. This example uses Outlook connector for Logic apps:
 
-   ![Select "Connections"](/media/Outlook.PNG)
+   ![Select "Connections"](./media/outlook.png)
 
 1. If prompted, sign in to your email account with your credentials so that Logic Apps can create a connection to your Outlook account.
 

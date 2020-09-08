@@ -15,7 +15,7 @@ You can use the Conditional Access APIs to easily deploy Conditional Access poli
 
 As a IT admin, be able to copy a template policy file and configure it in your pre-production environment.
 
-![Configure](/media/configure1.png)
+![Configure](./media/configure1.png)
 
 This automation can be very useful for:
 
@@ -109,7 +109,7 @@ This logic app uses managed identity for getting secrets from key vault in order
 
 1. On the Logic App Designer, in the OneDrive for Business connection box, click `Connections`. This example uses OneDrive connector for Logic apps:
 
-   ![Select "Connections"](./media/onedrivenew.png)
+   ![Select "Connections"](./media/onedrive-new.png)
 
 1. If prompted, sign in to your email account with your credentials so that Logic Apps can create a connection to your OneDrive account.
 
@@ -119,7 +119,7 @@ This logic app uses managed identity for getting secrets from key vault in order
 
 1. On the Logic App Designer, in the Teams connection box, click `Connections`. This example uses Teams connector:
 
-   ![Select "Connections"](./media/teamsnew.png)
+   ![Select "Connections"](./media/teams-new.png)
 
 1. If prompted, sign in to your email account with your credentials so that Logic Apps can create a connection to your Teams account.
 
@@ -131,7 +131,7 @@ This logic app uses managed identity for getting secrets from key vault in order
 
 1. Specify the Managed Identity to use.
 
-   ![Select "Managed Identity"](./media/minew.png)
+   ![Select "Managed Identity"](./media/mi-new.png)
 
 ## Step 7: Update all other connectors within Logic App
 
