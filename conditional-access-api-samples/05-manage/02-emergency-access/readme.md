@@ -6,7 +6,7 @@ You can use the conditional access APIs to automate management of emergency acco
 
 As a IT admin, be able to automatically exclude emergency accounts from all new conditional access policies. Auto-remediate when a conditional access policy has been updated accidently or maliciously to remove emergency account. Finally, get an alert on missing emergency account and remediation taken for a conditional access policy.
 
-   ![Manage](/media/Configure5.PNG)
+   ![Manage](./media/configure5.png)
 
 This automation can be very useful for:
 
@@ -27,15 +27,15 @@ When you're done, you will be able to automate management of emergency account w
 
 1. Remove emergency account from a Conditional Access policy.
 
-   ![RemoveEmergency](/media/EmergencyAccounts-Step1.PNG)
+   ![RemoveEmergency](./media/emergency-accounts-step1.png)
 
 1. Receive notification that a policy was missing emergency account exclusion and it was remediated.
 
-   ![Notification](/media/EmergencyAccounts-Step2.PNG)
+   ![Notification](./media/emergency-accounts-step2.png)
 
 1. View your remediated Conditional Access policy in Azure portal
 
-   ![Check](/media/EmergencyAccounts-Step3.PNG)
+   ![Check](./media/emergency-accounts-step3.png)
 
 ## Pre-requisites
 
@@ -63,7 +63,7 @@ Select the following image to sign in with your Azure account and open the logic
 
    Here is how the page looks with the values used in this example:
 
-   ![Provide information for quickstart template](/media/Deploy.png)
+   ![Provide information for quickstart template](./media/deploy.png)
 
 1. When you're done, select **Review + Create** and finally **Create**.
 
@@ -75,13 +75,13 @@ This logic app uses managed identity for getting secrets from key vault in order
 
 1. Select the User-assigned managed identity from the context pane that appears on the right, select Add.
 
-   ![ManagedIdentity](/media/MI-edit.png)
+   ![ManagedIdentity](./media/mi-edit.png)
 
 ## Step 3: Update parameters
 
 1. In the left-hand navigation pane, select Logic App designer > Parameters > Replace the default value with Key Vault URI (storing Client Secret), Client ID, Emergency accounts group object ID (group you want to exclude from all Conditional Access policies) and Tenant ID.
 
-   ![Parameters](/media/EmergencyAccountsPara.PNG)
+   ![Parameters](./media/emergency-accounts-params.png)
 
 ## Step 4: Select appropriate managed identity
 
@@ -89,13 +89,13 @@ This logic app uses managed identity for getting secrets from key vault in order
 
 1. Specify the Managed Identity to use.
 
-   ![Select "Managed Identity"](/media/MInew.PNG)
+   ![Select "Managed Identity"](./media/mi-new.png)
 
 ## Step 5: Connect to Teams channel for notification
 
 1. On the Logic App Designer, in the Teams connection box, click `Connections`. This example uses Teams connector:
 
-   ![Select "Connections"](/media/Teamsnew.PNG)
+   ![Select "Connections"](./media/teams-new.png)
 
 1. If prompted, sign in to your email account with your credentials so that Logic Apps can create a connection to your Teams account.
 
