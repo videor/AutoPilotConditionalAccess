@@ -58,20 +58,9 @@ Unsupported samples and documentation are provided for our fans and partners for
 
 # Step 1: Deploy this logic app to your organization
 
-Follow the option that you want to use for deploying the quickstart template:
+If your Azure environment meets the prerequisites, and you're familiar with using ARM templates, these steps help you sign in directly to Azure and open the ARM template in the Azure portal. For more information, see [Deploy resources with ARM templates and Azure portal](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/overview). 
 
-| Option | Description |
-|--------|-------------|
-| [Azure portal](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=azure-portal#deploy-template) | If your Azure environment meets the prerequisites, and you're familiar with using ARM templates, these steps help you sign in directly to Azure and open the quickstart template in the Azure portal. For more information, see [Deploy resources with ARM templates and Azure portal](../azure-resource-manager/templates/deploy-portal.md). |
-| [Azure CLI](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=azure-cli#deploy-template) | The Azure command-line interface (Azure CLI) is a set of commands for creating and managing Azure resources. To run these commands, you need Azure CLI version 2.6 or later. To check your CLI version, type `az --version`. For more information, see these topics: <p><p>- [What is Azure CLI](https://docs.microsoft.com/cli/azure/what-is-azure-cli?view=azure-cli-latest) <br>- [Get started with Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) |
-| [Azure PowerShell](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=azure-powershell#deploy-template) | Azure PowerShell provides a set of cmdlets that use the Azure Resource Manager model for managing your Azure resources. For more information, see these topics: <p><p>- [Azure PowerShell Overview](https://docs.microsoft.com/powershell/azure/azurerm/overview) <br>- [Introducing the Azure PowerShell Az module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) <br>- [Get started with Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps) |
-|||
-
-<a name="deploy-azure-portal"></a>
-
-#### [Azure Portal](#tab/azure-portal)
-
-1. Select the following image to sign in with your Azure account and open the logic app in the Azure portal:
+Select the following image to sign in with your Azure account and open the logic app in the Azure portal:
 
    [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fvideor%2FAutoPilotConditionalAccess%2Fmaster%2FAutoPilotConditionalAccess%2Fazure-quickstart-templates%2F301-conditionalaccess-policy-alert-automation%2Fazuredeploy.json)
    
@@ -92,46 +81,6 @@ Here is how the page looks with the values used in this example:
 ![Provide information for quickstart template](/media/Deploy.png)
 
 1. When you're done, select **Review + Create** and finally **Create**.
-
-#### [CLI](#tab/azure-cli)
-
-```azurecli-interactive
-read -p "Enter a project name name to use for generating resource names:" projectName &&
-read -p "Enter the location, such as 'westus':" location &&
-templateUri="https://raw.githubusercontent.com/videor/AutoPilotConditionalAccess/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-alert-automation/azuredeploy.json" &&
-resourceGroupName="${projectName}rg" &&
-az group create --name $resourceGroupName --location "$location" &&
-az deployment group create --resource-group $resourceGroupName --template-uri  $templateUri &&
-echo "Press [ENTER] to continue ..." &&
-read
-```
-
-For more information, see these topics:
-
-* [Azure CLI: az deployment group](https://docs.microsoft.com/cli/azure/deployment/group)
-* [Deploy resources with ARM templates and Azure CLI](../azure-resource-manager/templates/deploy-cli.md)
-
-#### [PowerShell](#tab/azure-powershell)
-
-```azurepowershell-interactive
-$projectName = Read-Host -Prompt "Enter a project name to use for generating resource names"
-$location = Read-Host -Prompt "Enter the location, such as 'westus'"
-$templateUri = "https://raw.githubusercontent.com/videor/AutoPilotConditionalAccess/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-alert-automation/azuredeploy.json"
-
-$resourceGroupName = "${projectName}rg"
-
-New-AzResourceGroup -Name $resourceGroupName -Location "$location"
-New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri $templateUri
-
-Read-Host -Prompt "Press [ENTER] to continue ..."
-```
-
-For more information, see these topics:
-
-* [Azure PowerShell: New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup)
-* [Azure PowerShell: New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment)
-* [Deploy resources with ARM templates and Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md)
-
 
 # Step 2: Authenticate your logic app to Azure AD with the right permissions
 
