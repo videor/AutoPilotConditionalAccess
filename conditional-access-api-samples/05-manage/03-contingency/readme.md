@@ -6,7 +6,7 @@ You can use the conditional access APIs to manage failover to contingency polici
 
 As a IT admin, trigger fail-over and post an approval workflow to a Team channel. Members of contingency plan can approve or reject the fail-over. If approved, the contingency policy is enabled and relevant operational policies are disabled.
 
-   ![Manage](/media/Configure5.PNG)
+   ![Manage](./media/configure5.png)
 
 This automation can be very useful for:
 
@@ -27,23 +27,23 @@ When you're done, you will be able to automate management of contingency policie
 
 1. Ensure you have contingency policies configured for a given distruption and relevant operational policies are tagged for same disruption. Below example shows contingency policies configured for MFA Disruption.
 
-   ![Contingency](/media/Contingency-Step1.PNG)
+   ![Contingency](./media/contingency-step1.png)
 
 1. When the logic app is triggered, receive approval request to **enable contingency policies** in Teams.
 
-   ![Check](/media/Contingency-Step2.PNG)
+   ![Check](./media/contingency-step2.png)
 
 1. Receive success notification in Teams
 
-   ![Check](/media/Contingency-Step3.PNG)
+   ![Check](./media/contingency-step3.png)
 
 1. Receive approval request to **disable tagged operational policies** in Teams
 
-   ![Check](/media/Contingency-Step4.PNG)
+   ![Check](./media/contingency-step4.png)
 
 ## 6. Check contingency policies are now enabled in Azure Portal
 
-   ![Check](/media/Contingency-Step5.PNG)
+   ![Check](./media/contingency-step5.png)
 
 ## Pre-requisites
 
@@ -82,13 +82,13 @@ This logic app uses managed identity for getting secrets from key vault in order
 
 1. Select the User-assigned managed identity from the context pane that appears on the right, select Add.
 
-   ![ManagedIdentity](/media/MI-edit.png)
+   ![ManagedIdentity](./media/mi-edit.png)
 
 ## Step 3: Update parameters
 
 1. In the left-hand navigation pane, select Logic App designer > Parameters > Replace the default value with Key Vault URI (that stores client secret), Client ID, Enable Tag (based on your naming convention) and Tenant ID.
 
-   ![Parameters](/media/ContingencyPara.PNG)
+   ![Parameters](./media/contingency-parms.png)
 
 ## Step 4: Select appropriate managed identity
 
@@ -96,13 +96,13 @@ This logic app uses managed identity for getting secrets from key vault in order
 
 1. Specify the Managed Identity to use.
 
-   ![Select "Managed Identity"](/media/MInew.PNG)
+   ![Select "Managed Identity"](./media/mi-new.png)
 
 ## Step 5: Connect to Teams channel for notification
 
 1. On the Logic App Designer, in the Teams connection box, click `Connections`. This example uses Teams connector:
 
-   ![Select "Connections"](/media/Teamsnew.PNG)
+   ![Select "Connections"](./media/teams-new.png)
 
 1. If prompted, sign in to your email account with your credentials so that Logic Apps can create a connection to your Teams account.
 
