@@ -154,7 +154,9 @@ Create an access policy in Key Vault for the application identity you created ea
 
    ![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/images/KeyVaultandUAI1.PNG)
 
-1. When the Add access policy page appears, enter your assignment information. (a) Secret permission - Select Get. (b) Select Principal - Select the User-assigned managed identity we created earlier, AutoPilotCAUAI1.
+1. When the Add access policy page appears, enter your assignment information.
+   1. Secret permission - Select Get.
+   1. Select Principal - Select the User-assigned managed identity we created earlier, AutoPilotCAUAI1.
 
    ![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/images/KeyVaultandUAI2.PNG)
 
