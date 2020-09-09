@@ -504,7 +504,7 @@ Once the `DELETE` request is submitted, a 204 (successful) response is returned.
 Try creating and updating a Conditional Access policy using the following JSON templates:
 
 - [JSON template - Require MFA for administrative roles](./json/template-require-mfa-admin-roles.json)
-- [JSON template - Require MFA for B2B or guest users](./json/template-require-mfa-b2b-users.json)
+- [JSON template - Require MFA for B2B and guest users](./json/template-require-mfa-b2b-users.json)
 - [JSON template - Require MFA for security info registration](./json/template-require-mfa-security-info-registration.json)
 - [JSON template - Require a trusted device for specific applications](./json/template-require-trusted-device-app-access.json)
 - [JSON template - Require MFA on medium or high risk (Requires Azure AD Identity Protection)](./json/template-require-mfa-risk.json)
