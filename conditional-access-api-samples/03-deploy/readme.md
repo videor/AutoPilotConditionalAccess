@@ -1,3 +1,12 @@
+---
+languages:
+- rest
+page_type: sample
+description: ""
+products:
+- azure
+- azure-active-directory
+---
 # Tutorial: One-click deploy Conditional Access policies to large number of branch offices and subsidiaries
 
 Intent: As an IT admin, I want to be able to easily deploy Conditional Access policies to large number of branch offices and subsidiaries.
@@ -59,6 +68,8 @@ If your Azure environment meets the prerequisites, and you're familiar with usin
 Select the following image to sign in with your Azure account and open the logic app in the Azure portal:
 
    [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fvideor%2FAutoPilotConditionalAccess%2Fmaster%2FAutoPilotConditionalAccess%2Fazure-quickstart-templates%2F301-conditionalaccess-policy-blueprint-automation%2Fazuredeploy.json)
+
+/json/azuredeploy.json
 
 1. In the portal, on the **Custom deployment** page, enter or select these values:
 
@@ -129,3 +140,5 @@ Similar to above, update remaining OneDrive and Teams connectors within the samp
 ## Next steps
 
 Try cloning the logic and build workflows to manage update and deletion of policy blueprints and rollout the changes to your organization.
+
+Next, [Configure alerts on Conditional Access Policy changes](../04-monitor/readme.md).

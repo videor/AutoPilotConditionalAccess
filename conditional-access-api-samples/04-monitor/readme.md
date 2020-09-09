@@ -1,3 +1,12 @@
+---
+languages:
+- rest
+page_type: sample
+description: ""
+products:
+- azure
+- azure-active-directory
+---
 # Tutorial: Alert on Conditional Access Policy changes
 
 Intent: As an IT admin, I want to be able to easily setup alerts on Conditional Access policy changes.
@@ -53,7 +62,7 @@ Select the following image to sign in with your Azure account and open the logic
 
    [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fvideor%2FAutoPilotConditionalAccess%2Fmaster%2FAutoPilotConditionalAccess%2Fazure-quickstart-templates%2F301-conditionalaccess-policy-alert-automation%2Fazuredeploy.json)
 
-   [Video Link that takes you through the deployment process for Alert on Conditional Access policies](https://www.screencast.com/t/Fw4gKvf5)
+/json/azuredeploy.json
 
 1. In the portal, on the **Custom deployment** page, enter or select these values:
 
@@ -104,7 +113,7 @@ This logic app uses managed identity for getting secrets from key vault in order
       > [!NOTE]
       > You will notice a additional log entry for Conditional Access policy changes which targets Default policy. We will filter the duplicates later in the logic app.
 
-![Alert template](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-alert-automation/images/Alert-5.png)
+![Alert template](./media/alert-5.png)
 
 1. Under **Alert logic**, enter the following:
 
@@ -126,7 +135,7 @@ This logic app uses managed identity for getting secrets from key vault in order
 
 1. Select **Create an action group**.
 
-   ![create an action group for notification actions](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/301-conditionalaccess-policy-alert-automation/images/Alert-6.png)
+   ![create an action group for notification actions](./media/alert-6.png)
 
 1. Verify the subscription and resource group.
 1. Enter the action group name and a display name.
@@ -175,3 +184,5 @@ Similar to above, update remaining OneDrive and Teams connectors within the samp
 Try the following challenge:
 
 :heavy_check_mark: Edit this logic app to send further policy details such as Policy State information. This will allow you to check of the policy was changed to **Report-only** or **Off** state before it was deleted as part of lifecycle.
+
+Next, [Configure backup and restore of Conditional Access policies with approval workflow](../05-manage/01-backup-restore/readme.md).

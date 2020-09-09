@@ -1,4 +1,13 @@
-# Tutorial: Backup and Restore Conditional Access policies with approval workflow
+---
+languages:
+- rest
+page_type: sample
+description: ""
+products:
+- azure
+- azure-active-directory
+---
+# Tutorial: Backup and restore Conditional Access policies with approval workflow
 
 Intent: As an IT admin, I want to be able to easily backup-restore Conditional Access policies.
 
@@ -55,22 +64,20 @@ You will also need knowledge of key concepts within Azure Logic Apps, OneDrive a
 
 If your Azure environment meets the prerequisites, and you're familiar with using Azure Resource Manager templates, these steps help you sign in directly to Azure and open the Azure Resource Manager template in the Azure portal. For more information, see the article [Deploy resources with Azure Resource Manager templates and Azure portal](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview).
 
-<a name="deploy-azure-portal"></a>
-
 Select the following image to sign in with your Azure account and open the logic app in the Azure portal:
 
 ## Logic App for Backup
 
    [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fvideor%2FAutoPilotConditionalAccess%2Fmaster%2FAutoPilotConditionalAccess%2Fazure-quickstart-templates%2F301-conditionalaccess-policy-backup-restore-automation%2Fazuredeploy.json)
 
-   [Video Link that takes you through the deployment process for Backup of Conditional Access policies](https://www.screencast.com/t/c8VXNe7FhANS)
+/json/backup/azuredeploy.json
 
 ## Logic App for Restore
   
    [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fvideor%2FAutoPilotConditionalAccess%2Fmaster%2FAutoPilotConditionalAccess%2Fazure-quickstart-templates%2F301-conditionalaccess-policy-backup-restore-automation%2F301-conditionalaccess-policy-restore-automation%2Fazuredeploy.json)
-
-   [Video Link that takes you through the deployment process for Restore of Conditional Access policies](https://www.screencast.com/t/fmUlaf3mW)
   
+/json/restore/azuredeploy.json
+
 1. In the portal, on the **Custom deployment** page, enter or select these values:
 
    | Property | Value | Description |
@@ -142,3 +149,5 @@ Similar to above, update remaining OneDrive and Teams connectors within the samp
 Try the following challenge:
 
 :heavy_check_mark: Edit this logic app to send a custom message on Teams channel when the approval workflow selection is Reject restore action.
+
+Next, [Configure emergency account management within Conditional Access policies](../02-emergency-access/readme.md).
