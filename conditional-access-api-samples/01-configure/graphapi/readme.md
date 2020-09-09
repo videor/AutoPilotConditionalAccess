@@ -59,6 +59,14 @@ One of the following permissions is required to call this API. To learn more, in
 | Delegated (personal Microsoft account) | Not supported. |
 | Application | Policy.Read.All, Policy.ReadWrite.ConditionalAccess, and Application.Read.All |
 
+One of the following permissions is required to call the read API. To learn more, including how to choose permissions, see the article [Microsoft Graph permissions reference](/graph/permissions-reference).
+
+| Permission type | Permissions |
+| --- | --- |
+| Delegated (work or school account)     | Policy.Read.All |
+| Delegated (personal Microsoft account) | Not supported. |
+| Application                            | Policy.Read.All |
+
 ## Step 2: Create a Conditional Access Policy
 
 The steps to create a Sign-in risk-based Conditional Access policy within Azure Portal is documented in the article, [Conditional Access: Sign-in risk-based Conditional Access](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-policy-risk). We will use that document as a reference to create a policy called "CA002: Require MFA for medium + sign-in risk" using the APIs.
@@ -496,7 +504,7 @@ Once the `DELETE` request is submitted, a 204 (successful) response is returned.
 Try creating and updating a Conditional Access policy using the following JSON templates:
 
 - [JSON template - Require MFA for administrative roles](./json/template-require-mfa-admin-roles.json)
-- [JSON template - Require MFA for B2B guest users](./json/template-require-mfa-b2b-users.json)
+- [JSON template - Require MFA for B2B or guest users](./json/template-require-mfa-b2b-users.json)
 - [JSON template - Require MFA for security info registration](./json/template-require-mfa-security-info-registration.json)
 - [JSON template - Require a trusted device for specific applications](./json/template-require-trusted-device-app-access.json)
 - [JSON template - Require MFA on medium or high risk (Requires Azure AD Identity Protection)](./json/template-require-mfa-risk.json)
