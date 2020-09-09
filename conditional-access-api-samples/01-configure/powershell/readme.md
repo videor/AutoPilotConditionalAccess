@@ -318,6 +318,8 @@ The Remove command has all the required parameters in the command. Once the 'Rem
 
 ## Next steps
 
+Preview features and new functionality are added to Conditional Access regularly, as they are added they become available first in the [Azure Active Directory V2 preview module](https://www.powershellgallery.com/packages/AzureADPreview).
+
 For more information on the Conditional Access APIs, see the following documents:
 
 - [Conditional Access API](/graph/api/resources/conditionalaccesspolicy?view=graph-rest-1.0)
