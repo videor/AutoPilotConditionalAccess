@@ -1,6 +1,6 @@
 ---
 languages:
-- http
+- rest
 page_type: sample
 description: ""
 products:
@@ -72,7 +72,7 @@ Logic App for Easy Configuration of Conditional Access Policies using Templates.
 
    [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fvideor%2FAutoPilotConditionalAccess%2Fmaster%2FAutoPilotConditionalAccess%2Fazure-quickstart-templates%2F301-conditionalaccess-policy-template-automation%2Fazuredeploy.json)
 
-   [Video Link that takes you through the deployment process for easy configuration of Conditional Access policies using templates](https://www.screencast.com/t/JNwjeB4mfwi)
+/json/azuredeploy.json
   
 1. In the portal, on the **Custom deployment** page, enter or select these values:
 
@@ -147,6 +147,8 @@ Try the following challenge:
 :heavy_check_mark: Edit this logic app to send a custom message on Teams channel when the approval workflow selection is Reject action.
 
 :heavy_check_mark: Edit this logic app to delete the policy file in OneDrive template folder when the approval workflow selection is Reject action.
+
+Next, [Configure Safe rollout of policies from pre-production to production with approval workflow](../../02-test/readme.md).
 
 For more information on the Conditional Access APIs, see the following documents:
 

@@ -1,4 +1,13 @@
-# Tutorial: Business Continuity with Contingency Policies and Conditional Access
+---
+languages:
+- rest
+page_type: sample
+description: ""
+products:
+- azure
+- azure-active-directory
+---
+# Tutorial: Business continuity with contingency policies and Conditional Access
 
 Intent: As an IT admin, I want to be able to easily fail-over to contingency policies during service issues.
 
@@ -53,11 +62,11 @@ If you don't have an Azure subscription, create a [free Azure account](https://a
 
 If your Azure environment meets the prerequisites, and you're familiar with using Azure Resource Manager templates, these steps help you sign in directly to Azure and open the Azure Resource Manager template in the Azure portal. For more information, see the article, [Deploy resources with Azure Resource Manager templates and Azure portal](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview).
 
-<a name="deploy-azure-portal"></a>
-
 Select the following image to sign in with your Azure account and open the logic app in the Azure portal:
 
    [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fvideor%2FAutoPilotConditionalAccess%2Fmaster%2FAutoPilotConditionalAccess%2Fazure-quickstart-templates%2F301-conditionalaccess-contingency-policies-automation%2Fazuredeploy.json)
+
+/json/azuredeploy.json
 
 1. In the portal, on the **Custom deployment** page, enter or select these values:
 
@@ -119,4 +128,4 @@ Similar to above, update remaining Teams connectors within the sample Logic App 
 
 Try the following challenge:
 
-:heavy_check_mark: Edit this logic app to trigger staggered alerts based on sequence number within policy display name. This sequence represents the order in which you must activate the policies. <br /> 
+:heavy_check_mark: Edit this logic app to trigger staggered alerts based on sequence number within policy display name. This sequence represents the order in which you must activate the policies.

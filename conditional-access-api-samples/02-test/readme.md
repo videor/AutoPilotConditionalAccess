@@ -1,3 +1,12 @@
+---
+languages:
+- rest
+page_type: sample
+description: ""
+products:
+- azure
+- azure-active-directory
+---
 # Tutorial: Safe rollout of policies from pre-production to production with approval workflow
 
 Intent: As an IT admin, I want to be able to easily copy-paste Conditional Access policies from pre-production to production environment.
@@ -55,21 +64,19 @@ You will also need knowledge of key concepts within Azure Logic apps, OneDrive a
 
 If your Azure environment meets the prerequisites, and you're familiar with using Azure Resource Manager templates, these steps help you sign in directly to Azure and open the Azure Resource Manager template in the Azure portal. For more information, see [Deploy resources with Azure Resource Manager templates and Azure portal](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview).
 
-<a name="deploy-azure-portal"></a>
-
 Select the following image to sign in with your Azure account and open the logic app in the Azure portal:
 
 ### Logic App for Export or Copy
 
    [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fvideor%2FAutoPilotConditionalAccess%2Fmaster%2FAutoPilotConditionalAccess%2Fazure-quickstart-templates%2F301-conditionalaccess-policy-copy-paste-automation%2Fazuredeploy.json)
 
-   [Video Link that takes you through the deployment process for copy/export of Conditional Access policies](https://www.screencast.com/t/OXNJj2xWaiCM)
+/json/export-copy/azuredeploy.json
 
 ### Logic App for Import or Paste
   
    [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fvideor%2FAutoPilotConditionalAccess%2Fmaster%2FAutoPilotConditionalAccess%2Fazure-quickstart-templates%2F301-conditionalaccess-policy-copy-paste-automation%2F301-conditionalaccess-policy-paste-automation%2Fazuredeploy.json)
 
-  [Video Link that takes you through the deployment process for paste/import of Conditional Access policies](https://www.screencast.com/t/ahW29WCqy)
+/json/import-paste/azuredeploy.json
   
 1. In the portal, on the **Custom deployment** page, enter or select these values:
 
@@ -145,4 +152,4 @@ Try the following challenge:
 
 :heavy_check_mark: Edit this logic app to delete the policy file in PROD OneDrive folder when the approval workflow selection is Reject copy-paste action.
 
-Finally, Try cloning the logic and build workflows to also support line of business application ids.
+Next, [Configure One-click deployment of Conditional Access policies to a large number of branch offices and subsidiaries](../03-deploy/readme.md).

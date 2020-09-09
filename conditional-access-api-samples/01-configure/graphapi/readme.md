@@ -1,6 +1,6 @@
 ---
 languages:
-- http
+- rest
 page_type: sample
 description: ""
 products:
@@ -495,14 +495,16 @@ Once the `DELETE` request is submitted, a 204 (successful) response is returned.
 
 Try creating and updating a Conditional Access policy using the following JSON templates:
 
-- [JSON template - Require MFA for administrative roles](./template-require-mfa-admin-roles.json)
-- [JSON template - Require MFA for B2B guest users](./template-require-mfa-b2b-users.json)
-- [JSON template - Require MFA for security info registration](./template-require-mfa-security-info-registration.json)
-- [JSON template - Require a trusted device for specific applications](./template-require-trusted-device-app-access.json)
-- [JSON template - Require MFA on medium or high risk (Requires Azure AD Identity Protection)](./template-require-mfa-risk.json)
-- [JSON template - Require MAM policy for Android and IOS devices](./template-require-mam-android-ios.json)
+- [JSON template - Require MFA for administrative roles](./json/template-require-mfa-admin-roles.json)
+- [JSON template - Require MFA for B2B guest users](./json/template-require-mfa-b2b-users.json)
+- [JSON template - Require MFA for security info registration](./json/template-require-mfa-security-info-registration.json)
+- [JSON template - Require a trusted device for specific applications](./json/template-require-trusted-device-app-access.json)
+- [JSON template - Require MFA on medium or high risk (Requires Azure AD Identity Protection)](./json/template-require-mfa-risk.json)
+- [JSON template - Require MAM policy for Android and IOS devices](./json/template-require-mam-android-ios.json)
 
-Next, [Try promoting Conditional Access policies from test environments](../../02-test/readme.md).
+Preview features and new functionality are added to Conditional Access regularly, as they are added they become available first in the [Conditional Access API beta endpoint](https://docs.microsoft.com/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta).
+
+Next, [Configure Conditional Access policies using templates based on Microsoft Graph APIs](../templates/readme.md).
 
 For more information on the Conditional Access APIs, see the following documents:
 
