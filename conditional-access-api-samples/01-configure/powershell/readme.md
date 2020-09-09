@@ -63,7 +63,7 @@ All of the following permissions are required to call the read and write API. To
 
 One of the following permissions is required to call the read API. To learn more, including how to choose permissions, see the article [Microsoft Graph permissions reference](/graph/permissions-reference).
 
-| Permission type | Permissions (all three roles below are required for read and write operations) |
+| Permission type | Permissions |
 | --- | --- |
 | Delegated (work or school account)     | Policy.Read.All |
 | Delegated (personal Microsoft account) | Not supported. |
