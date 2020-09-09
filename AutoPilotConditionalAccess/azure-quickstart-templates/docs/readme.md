@@ -69,7 +69,7 @@ For apps that call Microsoft Graph under their own identity, Microsoft Graph exp
 
 To configure application permissions for your app in the Azure app registrations portal: under an application's API permissions page, choose Add a permission, select Microsoft Graph, and then choose the permissions your app requires under Application permissions.
 
-The following screenshot shows the Application Permissions required for Microsoft Graph Conditional Access Automation.
+The following screenshot shows the Application Permissions required for Microsoft Graph Conditional Access automation.
 
 Generate The Application Secret for your app in the app registration portal.
 
