@@ -14,7 +14,7 @@ When we call Conditional Access APIs for break glass account management or other
 
 ### Managed identity
 
-Managed identities for Azure resources is a feature of Azure Active Directory. Please look at [**managed Identity**]( https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) for more information.
+Managed identities for Azure resources is a feature of Azure Active Directory, for more information see the article, [What are managed identities for Azure resources](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
 
 As a identity admin, you are probably looking for the simplest and most secure method to access Conditional Access APIs in your automation.
 
@@ -26,16 +26,16 @@ The managed identities for Azure can help you with this requirement because mana
 
 All Azure resources that support managed identities can obtain tokens to exchange data without having credentials in the code. The process consists of the following steps:
 
-Enable – Create the Managed Identity for the resource.
-Grant access – Allow access to resources with Azure Role-Based Access Control (RBAC).
-Access - Perform the allowed actions.
-Disable – Delete the Managed Identity.
+Enable – Create the Managed Identity for the resource
+Grant access – Allow access to resources with Azure Role-Based Access Control (RBAC)
+Access - Perform the allowed actions
+Disable – Delete the Managed Identity
 
 Managed identity types
 
-There are two types of managed identities: System-assigned and user-assigned managed identities
+There are two types of managed identities: System-assigned and user-assigned managed identities.
 
-For a collection of automations needing to share a managed identity, you can enable user-assigned managed identities.
+For a common collection of applications and automation tools that need to share a managed identity, you can enable user-assigned managed identities.
 
 For more information about user-assigned managed identities, see the article, [Create a user-assigned managed identity](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal#create-a-user-assigned-managed-identity).
 
