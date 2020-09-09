@@ -59,7 +59,7 @@ Register a new application using the Azure portal
 1. When the Register an application page appears, enter your application's registration information. (a) Name - Enter a meaningful application name that will be displayed to users of the app. (b) Supported account types - Select Accounts in this organizational directory only.
 1. When finished, select Register.
 
-   ![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/images/AppRegistration1.PNG)
+   ![](./media/app-registration1.png)
 
 With the OAuth 2.0 client credentials grant flow, your app authenticates directly at the Microsoft identity platform /token endpoint using the Application ID assigned by Azure AD and the Application Secret that you create using the portal.
 
@@ -73,7 +73,7 @@ The following screenshot shows the Application Permissions required for Microsof
 
 Generate The Application Secret for your app in the app registration portal.
 
-![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/images/Permissions.PNG)
+![](./media/permissions.png)
 
 ## Step 3: Create a user-assigned managed identity
 
@@ -81,11 +81,11 @@ Generate The Application Secret for your app in the app registration portal.
 1. Sign in to the Azure portal using an account associated with the Azure subscription to create the user-assigned managed identity.
 1. In the search box, type Managed Identities, and under Services, click Managed Identities.
 
-   ![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/images/ManagedIdentities1.PNG)
+   ![](./media/managed-identities1.png)
 
 1. Click Create/Add Managed Identities.
 
-   ![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/images/ManagedIdentities3.PNG)
+   ![](./media/managed-identities3.png)
 
 1. Enter values in the following fields under Create user assigned managed identity pane:
    1. Resource Name: This is the name for your user-assigned managed identity, for example AutoPilotCAUAI1.
@@ -93,7 +93,7 @@ Generate The Application Secret for your app in the app registration portal.
    1. Resource Group: Create a new resource group to contain your user-assigned managed identity or choose Use existing to create the user-assigned managed identity in an existing resource group. (d) 
    1. Location: Choose a location to deploy the user-assigned managed identity, for example UK South.
 
-   ![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/images/ManagedIdentities2.PNG)
+   ![](./media/managed-identities2.png)
 
 1. Click Create.
 
@@ -105,11 +105,11 @@ Create a Key vault from the Azure portal menu, or from the Home page, select Cre
 1. From the results list, choose Key Vault.
 1. On the Key Vault section, choose Create.
 
-   ![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/images/KeyVaults0.PNG).
+   ![](./media/key-vaults0.png)
 
 1. On the Create key vault section provide the following information: (a) Name: A unique name is required. For this quickstart, we use AutoPilotCAVault1.
 
-   ![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/images/KeyVaults1.PNG).
+   ![](./media/key-vaults1.png)
 
 1. Subscription: Choose a subscription.
 1. Under Resource Group, choose Create new and enter a resource group name.
@@ -119,7 +119,7 @@ Create a Key vault from the Azure portal menu, or from the Home page, select Cre
 
 Once Key Vault is deployed you should see below screen
 
-![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/images/KeyVaults2.PNG).
+![](./media/key-vaults2.png)
 
 Take note of the two properties listed below:
 
@@ -130,17 +130,17 @@ Store the secret in the newly created Key Vault using the Azure portal
 
 1. In the recent resources, select the newly created Key Vault, in the left navigation menu select secrets > Generate/Import.
 
-   ![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/images/KeyVaults5.PNG).
+   ![](./media/key-vaults5.png)
 
 1. When the Create a secret page appears, enter your secret information.
    1. Name - Enter a meaningful secret name that will be displayed to users of the secret.
    1. Secret value - Enter the Application Secret generated in the app registration portal page.
 
-   ![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/images/KeyVaults6.PNG).
+   ![](./media/key-vaults6.png)
 
 1. When finished, select Create.
 
-   ![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/images/KeyVaults7.PNG).
+   ![](./media/key-vaults7.png)
 
 ## Step 5: Connect Managed Identity to Azure Key Vault
 
@@ -152,13 +152,13 @@ Create an access policy in Key Vault for the application identity you created ea
 
 1. In the left-hand navigation pane for the selected KeyVault AutoPilotCAVault1, select the Access policies menu item, and then select + Add Access Policy.
 
-   ![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/images/KeyVaultandUAI1.PNG)
+   ![](./media/key-vault-and-uai1.png)
 
 1. When the Add access policy page appears, enter your assignment information.
    1. Secret permission - Select Get.
    1. Select Principal - Select the User-assigned managed identity we created earlier, AutoPilotCAUAI1.
 
-   ![](https://github.com/videor/AutoPilotConditionalAccess/blob/master/AutoPilotConditionalAccess/azure-quickstart-templates/images/KeyVaultandUAI2.PNG)
+   ![](./media/key-vault-and-uai2.png)
 
 1. When finished, select Add.
 1. The user-assigned managed identity will now apper in the policy list. Click Save. (Tip: Don't Forget to hit Save).
