@@ -22,7 +22,7 @@ This automation can be very useful for:
 - Organizations that manages large numbers of Conditional Access policies.
 - Identity partners that manages policies for customers.
 
-This tutorial shows how to build a [logic app](https://docs.microsoft.com/azure/logic-apps/) that automates fail-over to contingency policies. Specifically, this logic app is triggered with a specific disruption tag. This sends an alert to a Teams channel with list of contingency policies specific to that disruption. Admins, can individually select and approve fail-over.
+This tutorial shows how to build a [logic app](https://docs.microsoft.com/azure/logic-apps/) that automates fail-over to contingency policies. Specifically, this logic app is [triggered with a specific disruption tag](https://docs.microsoft.com/azure/connectors/connectors-native-reqres). This sends an alert to a Teams channel with list of contingency policies specific to that disruption. Admins, can individually select and approve fail-over.
 
 In this tutorial, you learn how to:
 
@@ -42,15 +42,15 @@ When you're done, you will be able to automate management of contingency policie
 
    ![Check](./media/contingency-step2.png)
 
-1. Receive success notification in Teams
+1. Receive success notification in Teams.
 
    ![Check](./media/contingency-step3.png)
 
-1. Receive approval request to **disable tagged operational policies** in Teams
+1. Receive approval request to **disable tagged operational policies** in Teams.
 
    ![Check](./media/contingency-step4.png)
 
-1. Check contingency policies are now enabled in Azure Portal
+1. Check contingency policies are now enabled in Azure Portal.
 
    ![Check](./media/contingency-step5.png)
 

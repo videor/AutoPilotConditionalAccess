@@ -53,7 +53,7 @@ When you're done, you will be able to deploy Conditional Access policies to larg
 
    ![View policy](./media/branch-office-step4.png)
 
-1. Branch office admin checks user assignment within the policy
+1. Branch office admin adds user assignment within the policy
 
    ![Assign test users](./media/branch-office-step5.png)
 
