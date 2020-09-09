@@ -55,9 +55,9 @@ One of the following permissions is required to call this API. To learn more, in
 
 | Permission type | Permissions (all three roles below are required for read and write operations) |
 | --- | --- |
-| Delegated (work or school account) | Policy.Read.All, Policy.ReadWrite.ConditionalAccess and Application.Read.All |
+| Delegated (work or school account) | Policy.Read.All, Policy.ReadWrite.ConditionalAccess, and Application.Read.All |
 | Delegated (personal Microsoft account) | Not supported. |
-| Application | Policy.Read.All, Policy.ReadWrite.ConditionalAccess and Application.Read.All |
+| Application | Policy.Read.All, Policy.ReadWrite.ConditionalAccess, and Application.Read.All |
 
 ## Step 2: Create a Conditional Access Policy
 
