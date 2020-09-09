@@ -53,7 +53,7 @@ For reading Conditional Access policies:
 
 One of the following permissions is required to call this API. To learn more, including how to choose permissions, see the article [Microsoft Graph permissions reference](/graph/permissions-reference).
 
-| Permission type | Permissions (all three roles below are required for read and write operations) |
+| Permission type | Permissions (all three permissions below are required for read and write operations) |
 | --- | --- |
 | Delegated (work or school account) | Policy.Read.All, Policy.ReadWrite.ConditionalAccess, and Application.Read.All |
 | Delegated (personal Microsoft account) | Not supported. |
