@@ -13,10 +13,9 @@ Intent: As an IT admin, I want to be able to easily configure Conditional Access
 
 You can use the Conditional Access APIs to easily deploy Conditional Access policies in your pre-production environment using Temlates. For example, you can:
 
-As a IT admin, be able to copy a template policy file and configure it in your pre-production environment. 
+As a IT admin, be able to copy a template policy file and configure it in your pre-production environment.
 
-![Configure](/media/Configure1.PNG)
-<br /> 
+![Configure](./media/configure1.png)
 
 This automation can be very useful for:
 
@@ -33,37 +32,29 @@ In this tutorial, you learn how to:
 
 :heavy_check_mark: Add parameters and connections specific to your organization within logic app.  
 
-When you're done, you will be able to manage Conditional Access policies using templates within your pre-production environment:
-<br /> 
-<br /> 
-## 1. Copy your Template and drop it in your Onedrive folder
+When you're done, you will be able to manage Conditional Access policies using templates and the following steps within your pre-production environment:
 
-![Copy to OneDrive](/media/Templates-Step1.png)
-<br /> 
-<br /> 
-## 2. Approve Template configuration in Teams
+1. Copy your Template and drop it in your OneDrive folder
 
-![Approve configuration](/media/Templates-Step2.png)
-<br /> 
-<br /> 
-## 3. Receive notification that Template is successfully deployed in your pre-production environment
+   ![Copy to OneDrive](./media/templates-step1.png)
 
-![Confirmation](/media/Templates-Step3.png)
-<br /> 
-<br /> 
-## 4. View your newly deployed Conditional Access policy in Azure portal
+1. Approve Template configuration in Teams
 
-![View policy](/media/Templates-Step4.PNG)
-<br /> 
-<br /> 
-## 5. Assign your Test users to the policy
+   ![Approve configuration](./media/templates-step2.png)
 
-![Assign test users](/media/Templates-Step5.png)
-<br /> 
-<br /> 
+1. Receive notification that Template is successfully deployed in your pre-production environment
 
+   ![Confirmation](./media/templates-step3.png)
 
-## Pre-requisites
+1. View your newly deployed Conditional Access policy in Azure portal
+
+   ![View policy](./media/templates-step4.png)
+
+1. Assign your Test users to the policy
+
+   ![Assign test users](./media/templates-step5.png)
+
+## Prerequisites
 
 If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you start.
 
@@ -71,7 +62,7 @@ You will also need knowledge of key concepts within Azure logic apps, OneDrive a
 
 ## Step 1: Deploy this logic app to your organization
 
-If your Azure environment meets the prerequisites, and you're familiar with using ARM templates, these steps help you sign in directly to Azure and open the ARM template in the Azure portal. For more information, see [Deploy resources with ARM templates and Azure portal](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/overview). 
+If your Azure environment meets the prerequisites, and you're familiar with using Azure Resource Manager templates, these steps help you sign in directly to Azure and open the Azure Resource Manager template in the Azure portal. For more information, see the article [Deploy resources with Azure Resource Manager templates and Azure portal](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview).
 
 ### Azure Portal
 
@@ -94,14 +85,13 @@ Logic App for Easy Configuration of Conditional Access Policies using Templates.
 
    Here is how the page looks with the values used in this example:
 
-   ![Provide information for quickstart template](/media/Deploy.png)
+   ![Provide information for quickstart template](./media/deploy.png)
 
 1. When you're done, select **Review + Create** and finally **Create**.
 
-
 ## Step 2: Authenticate your logic app to Azure AD with the right permissions
 
-This logic app uses managed identity for getting secrets from key vault in order to call Conditional Access APIs. Please look at [Authenticate your logic app to Azure AD with the right permissions](https://github.com/videor/AutoPilotConditionalAccess/tree/master/AutoPilotConditionalAccess/azure-quickstart-templates/docs) on how to create key vault and connect to managed identity. To learn more on how to use managed identities within Logic App please look at [**Logic Apps and Managed Identities**](https://docs.microsoft.com/azure/logic-apps/create-managed-service-identity) .
+This logic app uses managed identity for getting secrets from key vault in order to call Conditional Access APIs. Please look at [Authenticate your logic app to Azure AD with the right permissions](https://github.com/videor/AutoPilotConditionalAccess/tree/master/AutoPilotConditionalAccess/azure-quickstart-templates/docs) on how to create key vault and connect to managed identity. To learn more about how to use managed identities within Logic Apps, see the article [**Logic Apps and Managed Identities**](https://docs.microsoft.com/azure/logic-apps/create-managed-service-identity).
 
 1. In the left-hand navigation pane, select Identity > User Assigned > Select Add.
 
@@ -115,45 +105,42 @@ This logic app uses managed identity for getting secrets from key vault in order
 
    ![Update the parameters in the Logic App](./media/update-parameters-logic-app.png)
 
-# Step 4: Connect to your OneDrive account and select the template folder you will like to use for automation
+## Step 4: Connect to your OneDrive account and select the template folder you will like to use for automation
 
 1. On the Logic App Designer, in the OneDrive for Business connection box, click `Connections`. This example uses OneDrive connector for Logic apps:
 
-![Select "Connections"](/media/OneDrivenew.PNG)
+   ![Select "Connections"](./media/onedrive-new.png)
 
 1. If prompted, sign in to your email account with your credentials so that Logic Apps can create a connection to your OneDrive account.
 
 1. If connection is successful, select the OneDrive folder you would like to use for Template automation.
 
-
-# Step 5: Connect to Teams channel for approving or rejecting Template requests.
+## Step 5: Connect to Teams channel for approving or rejecting Template requests
 
 1. On the Logic App Designer, in the Teams connection box, click `Connections`. This example uses Teams connector:
 
-![Select "Connections"](/media/Teamsnew.PNG)
+   ![Select "Connections"](./media/teams-new.png)
 
 1. If prompted, sign in to your email account with your credentials so that Logic Apps can create a connection to your Teams account.
 
 1. Specify the Team and channel you will like to use for automation of approval workflow.
 
-# Step 6: Select appropriate managed identity.
+## Step 6: Select appropriate managed identity
 
 1. On the Logic App Designer, in the HTTP connection box, click `GET client secret from key vault using managed identity`. This example uses HTTP connector.
 
 1. Specify the Managed Identity to use.
 
-![Select "Managed Identity"](/media/MInew.PNG)
+   ![Select "Managed Identity"](./media/mi-new.png)
 
-# Step 7: Update all other connectors within Logic App.
+## Step 7: Update all other connectors within Logic App
 
 Similar to above, update remaining OneDrive and Teams connectors within the sample Logic App by selecting appropriate OneDrive and Teams account that needs to be used for automation.
 
-# Note
+> [!WARNING]
+> Ensure you follow best practices regarding managing secrets within Logic apps by using secure inputs and outputs as documented in the article, [Secure access and data in Azure Logic Apps]](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app).
 
-Please ensure you follow the best practise guidelines on managing secrets within Logic apps by using secure inputs and outputs as [documented here](https://docs.microsoft.com/en-us/azure/logic-apps/logic-apps-securing-a-logic-app).
-
-
-## Challenge
+## Next steps
 
 Try the following challenge:
 
@@ -161,4 +148,7 @@ Try the following challenge:
 
 :heavy_check_mark: Edit this logic app to delete the policy file in OneDrive template folder when the approval workflow selection is Reject action.
 
-## Next steps
+For more information on the Conditional Access APIs, see the following documents:
+
+- [Conditional Access API](/graph/api/resources/conditionalaccesspolicy?view=graph-rest-1.0)
+- [Named location API](/graph/api/resources/namedlocation?view=graph-rest-1.0)

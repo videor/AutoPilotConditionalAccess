@@ -16,7 +16,7 @@ You can use the Conditional Access APIs to manage policies at scale. For example
 - Update the list of applications you are targeting within the Conditional Access policies as new line of business application are added in your organization.
 - Delete a policy that is no longer needed.
 
-For more information about Conditional Access, see the article [Components of CA policy](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-policies).
+For more information about Conditional Access policy components, see the article [Components of CA policy](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-policies).
 
 In this tutorial, you'll learn how to:
 
@@ -93,7 +93,7 @@ Get-help AzureADMSConditionalAccessPolicy
 
 ## Step 3: Create a Conditional Access Policy
 
-In this example we will copy the policy documented in the article, [Conditional Access: Sign-in risk-based Conditional Access](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-policy-risk) using PowerShell commands instead of creating it manually in the Azure portal. We will set the policy to be in report-only mode so we can evaluate the impact before enabling it.
+In this example, we will copy the policy documented in the article [Conditional Access: Sign-in risk-based Conditional Access](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-policy-risk) using PowerShell commands instead of creating it manually in the Azure portal. We will set the policy to be in report-only mode so we can evaluate the impact before enabling it.
 
 We will create and name the policy "CA002: Require MFA for medium + sign-in risk" using PowerShell.
 
@@ -317,3 +317,8 @@ Remove-AzureADMSConditionalAccessPolicy -PolicyId 46a45d1a-2ac8-43d2-b087-78f587
 The Remove command has all the required parameters in the command. Once the 'Remove' request is submitted, the specified Conditional Access policy is deleted.
 
 ## Next steps
+
+For more information on the Conditional Access APIs, see the following documents:
+
+- [Conditional Access API](/graph/api/resources/conditionalaccesspolicy?view=graph-rest-1.0)
+- [Named location API](/graph/api/resources/namedlocation?view=graph-rest-1.0)
